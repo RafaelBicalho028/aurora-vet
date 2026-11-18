@@ -1,72 +1,1034 @@
 {
   "_comment": "Entradas do VetiDex. 'science' = conhecimento consolidado (síntese); 'didactic' = simplificação didática adotada no jogo; 'professional' = aspectos que dependem de avaliação profissional. Conteúdo pendente de validação por médico(a)-veterinário(a).",
   "categories": [
-    { "id": "especies", "name": "Espécies" },
-    { "id": "anatomia", "name": "Anatomia" },
-    { "id": "fisiologia", "name": "Fisiologia" },
-    { "id": "doencas", "name": "Doenças" },
-    { "id": "parasitas", "name": "Parasitas" },
-    { "id": "microrganismos", "name": "Microrganismos" },
-    { "id": "exames", "name": "Exames" },
-    { "id": "farmacologia", "name": "Conceitos farmacológicos" },
-    { "id": "manifestacoes", "name": "Manifestações clínicas" },
-    { "id": "prevencao", "name": "Medidas preventivas" }
+    {
+      "id": "especies",
+      "name": "Espécies"
+    },
+    {
+      "id": "anatomia",
+      "name": "Anatomia"
+    },
+    {
+      "id": "fisiologia",
+      "name": "Fisiologia"
+    },
+    {
+      "id": "doencas",
+      "name": "Doenças"
+    },
+    {
+      "id": "parasitas",
+      "name": "Parasitas"
+    },
+    {
+      "id": "microrganismos",
+      "name": "Microrganismos"
+    },
+    {
+      "id": "exames",
+      "name": "Exames"
+    },
+    {
+      "id": "farmacologia",
+      "name": "Conceitos farmacológicos"
+    },
+    {
+      "id": "manifestacoes",
+      "name": "Manifestações clínicas"
+    },
+    {
+      "id": "prevencao",
+      "name": "Medidas preventivas"
+    }
   ],
   "entries": [
-    { "id": "especie_cao", "name": "Cão (Canis lupus familiaris)", "category": "especies", "image": "dog_caramelo", "summary": "Mamífero carnívoro doméstico, de grande variação de porte e conformação entre raças.", "manifestations": ["Frequência cardíaca de referência (adulto, repouso): aprox. 60–160 bpm", "Frequência respiratória: aprox. 10–30 mpm", "Temperatura retal: aprox. 37,5–39,2 °C"], "science": "Fórmula vertebral C7 T13 L7 S3 Cd(20–23). Dentição permanente com 42 dentes. Estômago simples (monocavitário).", "didactic": "Os intervalos de referência são aproximados e variam entre referências, porte e idade.", "professional": "A interpretação de parâmetros vitais depende do contexto clínico (estresse, dor, temperatura ambiente, raça).", "refs": ["dyce2010", "klein2020", "merck"], "unlockHint": "Encontre um cão pelo campus ou atenda um paciente canino." },
-    { "id": "especie_gato", "name": "Gato (Felis catus)", "category": "especies", "image": "cat_laranja", "summary": "Carnívoro estrito doméstico, com particularidades metabólicas importantes para a farmacologia e a nutrição.", "manifestations": ["Frequência cardíaca de referência: aprox. 140–220 bpm", "Frequência respiratória: aprox. 20–30 mpm", "Temperatura retal: aprox. 38,1–39,2 °C"], "science": "Dentição permanente com 30 dentes. Capacidade reduzida de glicuronidação hepática, o que torna fármacos como paracetamol e permetrina perigosos. Necessidade dietética de taurina e arginina.", "didactic": "Gatos escondem sinais de doença; mudanças sutis de comportamento e apetite são relevantes.", "professional": "Gatos são sensíveis ao estresse do ambiente clínico, o que altera FC, glicemia e outros parâmetros.", "refs": ["klein2020", "boland2010", "merck"], "unlockHint": "Atenda um paciente felino." },
-    { "id": "especie_bovino", "name": "Bovino (Bos taurus)", "category": "especies", "image": "cow", "summary": "Ruminante de grande importância na produção de leite e carne.", "manifestations": ["Temperatura retal de referência (adulto): aprox. 38,0–39,3 °C", "Movimentos ruminais avaliados por auscultação na fossa paralombar esquerda"], "science": "Estômago com quatro compartimentos: rúmen, retículo, omaso e abomaso. Não possui incisivos superiores: há um pulvino (coxim) dentário.", "didactic": "No jogo, o bovino da fazenda-escola apresenta comportamento normal de pastejo e ruminação.", "professional": "A avaliação clínica de ruminantes inclui ambiente, manejo nutricional e dados de produção do rebanho.", "refs": ["dyce2010", "merck"], "unlockHint": "Observe a vaca na fazenda-escola do campus." },
-    { "id": "especie_ovino", "name": "Ovino (Ovis aries)", "category": "especies", "image": "sheep", "summary": "Pequeno ruminante criado para produção de lã, carne e leite.", "manifestations": ["Avaliação da coloração da conjuntiva é usada em programas de controle de verminose (ex.: método FAMACHA)"], "science": "Ruminante com estômago de quatro compartimentos. A verminose gastrintestinal (ex.: Haemonchus contortus) é um importante problema sanitário.", "didactic": "O ovino do campus serve de introdução aos pequenos ruminantes.", "professional": "Programas de controle parasitário devem ser planejados por veterinário, considerando resistência anti-helmíntica.", "refs": ["taylor2016", "merck"], "unlockHint": "Observe as ovelhas na fazenda-escola." },
-    { "id": "especie_equino", "name": "Equino (Equus caballus)", "category": "especies", "summary": "Herbívoro monogástrico com fermentação no intestino grosso (ceco e cólon).", "manifestations": ["Avaliação de motilidade intestinal por auscultação dos quatro quadrantes"], "science": "Não possui vesícula biliar. A clavícula é ausente. Grande capacidade de fermentação no ceco e cólon maior.", "didactic": "Conteúdo introdutório; casos com equinos serão adicionados na Região Rural.", "professional": "Cólica em equinos é emergência e requer avaliação veterinária imediata.", "refs": ["dyce2010"], "unlockHint": "Responda corretamente sobre anatomia comparada." },
-
-    { "id": "anat_esqueleto_cao", "name": "Esqueleto do cão", "category": "anatomia", "image": "skeleton", "summary": "Dividido em esqueleto axial (crânio, coluna, costelas e esterno) e apendicular (membros).", "manifestations": ["Membro torácico: escápula, úmero, rádio e ulna, carpo, metacarpo e falanges", "Membro pélvico: osso do quadril (íleo, ísquio e púbis), fêmur, patela, tíbia e fíbula, tarso, metatarso e falanges"], "science": "No cão, a clavícula é rudimentar — quando presente, é um pequeno osso não articulado no músculo braquiocefálico. O membro torácico une-se ao tronco por sinsarcose (músculos), sem articulação óssea.", "didactic": "O esquema do laboratório é simplificado e fora de escala.", "professional": "A identificação de estruturas em exames de imagem exige treinamento específico.", "refs": ["dyce2010"], "unlockHint": "Conclua a aula de anatomia." },
-    { "id": "anat_coluna_vertebral", "name": "Coluna vertebral", "category": "anatomia", "summary": "Regiões cervical, torácica, lombar, sacral e caudal.", "manifestations": ["Mamíferos domésticos têm 7 vértebras cervicais", "Cão: 13 torácicas e 7 lombares", "Bovino: 13 torácicas e 6 lombares", "Equino: geralmente 18 torácicas e 6 lombares"], "science": "O número de vértebras torácicas acompanha o número de pares de costelas. Há variações individuais, sobretudo nas regiões torácica, lombar e caudal.", "didactic": "Números apresentados como valores mais frequentes.", "professional": "Variações anatômicas individuais podem ocorrer.", "refs": ["dyce2010"], "unlockHint": "Conclua a aula de anatomia." },
-    { "id": "anat_estomago_ruminante", "name": "Estômago dos ruminantes", "category": "anatomia", "summary": "Rúmen, retículo e omaso (pré-estômagos aglandulares) e abomaso (estômago glandular).", "manifestations": ["O rúmen é o maior compartimento no bovino adulto", "No bezerro lactente, o abomaso predomina e a goteira esofágica direciona o leite ao abomaso"], "science": "A fermentação microbiana nos pré-estômagos produz ácidos graxos voláteis, principal fonte de energia do ruminante.", "didactic": "Proporções entre os compartimentos variam com idade e dieta.", "professional": "Distúrbios digestivos de ruminantes exigem avaliação clínica e do manejo alimentar.", "refs": ["dyce2010", "klein2020"], "unlockHint": "Conclua a aula de anatomia." },
-    { "id": "anat_formula_dentaria", "name": "Fórmulas dentárias", "category": "anatomia", "summary": "Representam o número de incisivos (I), caninos (C), pré-molares (P) e molares (M) por hemiarcada.", "manifestations": ["Cão (permanente): I3/3 C1/1 P4/4 M2/3 = 42 dentes", "Gato (permanente): I3/3 C1/1 P3/2 M1/1 = 30 dentes", "Bovino (permanente): I0/3 C0/1 P3/3 M3/3 = 32 dentes (o 'canino' inferior é incisiviforme)"], "science": "Ruminantes não possuem incisivos superiores; em seu lugar há o pulvino dentário.", "didactic": "Fórmulas apresentadas para animais adultos.", "professional": "Ausências dentárias e dentes supranumerários devem ser avaliados individualmente.", "refs": ["dyce2010"], "unlockHint": "Conclua a aula de anatomia." },
-    { "id": "anat_figado_vesicula", "name": "Fígado e vesícula biliar", "category": "anatomia", "summary": "O fígado é a maior glândula do corpo; a vesícula biliar armazena e concentra a bile.", "manifestations": ["Equinos não possuem vesícula biliar", "Cães, gatos e ruminantes possuem vesícula biliar"], "science": "No gato, o ducto colédoco frequentemente se une ao ducto pancreático antes de desembocar no duodeno — base anatômica da associação entre doenças hepatobiliares, pancreáticas e intestinais (\"triadite\").", "didactic": "Simplificação: a anatomia ductal varia entre indivíduos.", "professional": "A avaliação de vias biliares requer exames de imagem interpretados por profissional.", "refs": ["dyce2010", "nelson2019"], "unlockHint": "Conclua a aula de anatomia." },
-
-    { "id": "fisio_parametros_vitais", "name": "Parâmetros vitais", "category": "fisiologia", "summary": "Frequência cardíaca, frequência respiratória e temperatura compõem a base do exame físico geral.", "manifestations": ["Cão: FC ~60–160 bpm; FR ~10–30 mpm; T ~37,5–39,2 °C", "Gato: FC ~140–220 bpm; FR ~20–30 mpm; T ~38,1–39,2 °C", "Bovino adulto: FC ~48–84 bpm; FR ~26–50 mpm; T ~38,0–39,3 °C"], "science": "Os parâmetros são regulados por mecanismos homeostáticos (sistema nervoso autônomo, centro termorregulador hipotalâmico).", "didactic": "As faixas são aproximadas; diferentes livros apresentam valores ligeiramente distintos.", "professional": "Valores fora da faixa devem ser interpretados com o quadro clínico (estresse, exercício, dor, ambiente).", "refs": ["klein2020", "merck", "feitosa2014"], "unlockHint": "Converse com a Profa. Lívia sobre sinais vitais." },
-    { "id": "fisio_tpc_hidratacao", "name": "Perfusão e hidratação", "category": "fisiologia", "summary": "Tempo de preenchimento capilar (TPC), mucosas e turgor cutâneo estimam perfusão e hidratação.", "manifestations": ["TPC normal: inferior a 2 segundos", "Mucosas pegajosas e turgor diminuído sugerem desidratação"], "science": "A desidratação clínica costuma ser detectável a partir de cerca de 5% de déficit; sinais de hipoperfusão surgem em déficits maiores.", "didactic": "Percentuais de desidratação são estimativas clínicas, não medidas exatas.", "professional": "Turgor é afetado por idade, gordura corporal e condição da pele; associe a outros parâmetros.", "refs": ["feitosa2014", "klein2020"], "unlockHint": "Converse com a Profa. Lívia sobre sinais vitais." },
-
-    { "id": "doenca_dapp", "name": "Dermatite alérgica à picada de pulgas (DAPP)", "category": "doencas", "summary": "Hipersensibilidade a componentes da saliva da pulga; uma das causas mais comuns de prurido em cães e gatos.", "manifestations": ["Cão: prurido intenso com pápulas, crostas e alopecia na região lombossacra, base da cauda e face caudal das coxas", "Gato: dermatite miliar, alopecia autoinduzida, complexo granuloma eosinofílico"], "science": "Poucas picadas podem desencadear prurido intenso em animais sensibilizados. Diagnóstico clínico: distribuição das lesões, evidência de pulgas e resposta ao controle rigoroso.", "didactic": "No jogo, a resposta ao tratamento é resumida no desfecho do caso.", "professional": "A escolha do ectoparasiticida e do controle do prurido é prescrição do médico-veterinário.", "refs": ["miller2013", "rust1997"], "unlockHint": "Conclua o caso do Thor." },
-    { "id": "doenca_atopia", "name": "Dermatite atópica canina", "category": "doencas", "summary": "Doença cutânea inflamatória e pruriginosa, de predisposição genética, associada a IgE contra alérgenos ambientais.", "manifestations": ["Prurido em face, orelhas, patas, axilas, região inguinal e perianal", "Otites recorrentes", "Início frequentemente entre 6 meses e 3 anos"], "science": "Diagnóstico clínico e por exclusão (ectoparasitas, infecções, reação adversa ao alimento). Testes alérgicos não são diagnósticos; servem para selecionar alérgenos para imunoterapia.", "didactic": "Critérios diagnósticos completos foram resumidos.", "professional": "O manejo é multimodal e individualizado.", "refs": ["hensel2015", "miller2013"], "unlockHint": "Conclua o caso do Thor." },
-    { "id": "doenca_sarna_sarcoptica", "name": "Escabiose canina (sarna sarcóptica)", "category": "doencas", "summary": "Dermatopatia muito pruriginosa e contagiosa causada por Sarcoptes scabiei var. canis.", "manifestations": ["Prurido intenso", "Lesões nas margens das orelhas, cotovelos, jarretes e abdome ventral", "Reflexo otopodal frequentemente positivo"], "science": "Zoonose: pode causar lesões pruriginosas transitórias em pessoas (pseudoescabiose). O raspado cutâneo tem baixa sensibilidade.", "didactic": "Simplificação: há apresentações atípicas.", "professional": "Em suspeita forte com raspado negativo, o veterinário pode optar por teste terapêutico.", "refs": ["miller2013", "taylor2016"], "unlockHint": "Conclua o caso do Thor." },
-    { "id": "doenca_demodicose", "name": "Demodicose canina", "category": "doencas", "summary": "Proliferação excessiva de ácaros Demodex canis, habitantes normais dos folículos pilosos.", "manifestations": ["Alopecia focal ou generalizada, eritema, comedões", "Prurido principalmente quando há piodermite secundária"], "science": "Associada a imunocompetência alterada. O raspado profundo (ou tricograma) é confiável para o diagnóstico. Não é considerada contagiosa entre animais adultos.", "didactic": "Formas juvenil e adulta resumidas.", "professional": "Demodicose de início adulto exige investigação de doença de base.", "refs": ["miller2013"], "unlockHint": "Conclua o caso do Thor." },
-    { "id": "doenca_rafa", "name": "Reação adversa ao alimento", "category": "doencas", "summary": "Reação (imunológica ou não) a componentes da dieta, que pode causar sinais cutâneos e/ou gastrintestinais.", "manifestations": ["Prurido não sazonal", "Pode coexistir com sinais gastrintestinais"], "science": "Pode ocorrer com alimentos consumidos há longo tempo. O diagnóstico depende de dieta de eliminação (proteína nova ou hidrolisada) por várias semanas seguida de reexposição.", "didactic": "Trocar de marca de ração NÃO é dieta de eliminação.", "professional": "A escolha e a condução da dieta de eliminação devem ser orientadas por veterinário.", "refs": ["miller2013", "hensel2015"], "unlockHint": "Conclua o caso do Thor." },
-    { "id": "doenca_piodermite", "name": "Piodermite superficial", "category": "doencas", "summary": "Infecção bacteriana da epiderme e dos folículos, geralmente por Staphylococcus pseudintermedius em cães.", "manifestations": ["Pápulas, pústulas, colaretes epidérmicos", "Prurido variável"], "science": "Quase sempre secundária a uma causa de base (alergias, ectoparasitas, endocrinopatias). A citologia orienta o diagnóstico e a cultura é indicada em casos recorrentes ou sem resposta.", "didactic": "Simplificação das formas clínicas.", "professional": "O uso de antimicrobianos deve ser racional, preferindo terapia tópica quando adequada.", "refs": ["miller2013"], "unlockHint": "Conclua o caso do Thor." },
-    { "id": "doenca_lipidose", "name": "Lipidose hepática felina", "category": "doencas", "summary": "Acúmulo excessivo de triglicerídeos nos hepatócitos, levando a colestase intra-hepática e insuficiência hepática.", "manifestations": ["Anorexia prolongada, letargia, vômito", "Icterícia e hepatomegalia", "Perda de massa muscular, ptialismo (encefalopatia hepática) em casos graves"], "science": "Geralmente secundária a anorexia (balanço energético negativo), especialmente em gatos obesos. Laboratorialmente, FA tende a se elevar muito mais que a GGT. Diagnóstico presuntivo por ultrassonografia e citologia aspirativa.", "didactic": "O caso do jogo apresenta a forma clássica, sem doenças concomitantes significativas.", "professional": "Tratamento intensivo com suporte nutricional por sonda e monitorização — decisões da equipe veterinária.", "refs": ["center2005", "valtolina2017", "nelson2019"], "unlockHint": "Conclua o caso da Mimi." },
-    { "id": "doenca_realimentacao", "name": "Síndrome de realimentação", "category": "doencas", "summary": "Distúrbios metabólicos que podem ocorrer ao reintroduzir alimento após jejum prolongado.", "manifestations": ["Hipofosfatemia, hipocalemia e hipomagnesemia", "Hemólise, fraqueza muscular, arritmias"], "science": "A liberação de insulina com a alimentação desloca fósforo, potássio e magnésio para o meio intracelular.", "didactic": "Mecanismo simplificado.", "professional": "A reintrodução alimentar gradual e a monitorização de eletrólitos são definidas pela equipe.", "refs": ["valtolina2017", "center2005"], "unlockHint": "Conclua o caso da Mimi." },
-
-    { "id": "parasita_ctenocephalides", "name": "Ctenocephalides felis (pulga do gato)", "category": "parasitas", "image": "flea", "summary": "Pulga mais comum em cães e gatos.", "manifestations": ["Prurido, DAPP", "Anemia em infestações intensas (filhotes)", "Hospedeira intermediária de Dipylidium caninum"], "science": "Ciclo: ovo → larva → pupa → adulto. Ovos caem do hospedeiro para o ambiente; os estágios imaturos representam a maior parte da população. Pupas podem permanecer no casulo por semanas.", "didactic": "Percentuais da população no ambiente variam conforme a fonte; o conceito-chave é que a maior parte está fora do animal.", "professional": "O plano de controle considera todos os animais, o ambiente e o produto adequado para cada espécie.", "refs": ["rust1997", "taylor2016"], "unlockHint": "Conclua o caso do Thor." },
-    { "id": "parasita_dipylidium", "name": "Dipylidium caninum", "category": "parasitas", "summary": "Cestódeo de cães e gatos transmitido pela ingestão de pulgas contendo cisticercoides.", "manifestations": ["Proglotes semelhantes a grãos de arroz ao redor do ânus ou nas fezes", "Prurido anal"], "science": "Zoonose: pessoas, principalmente crianças, podem se infectar ao ingerir pulgas acidentalmente. A flutuação fecal tem baixa sensibilidade.", "didactic": "Ciclo apresentado de forma resumida.", "professional": "A escolha do anti-helmíntico (cestocida) é prescrição veterinária.", "refs": ["taylor2016"], "unlockHint": "Conclua o caso do Thor." },
-
-    { "id": "micro_malassezia", "name": "Malassezia pachydermatis", "category": "microrganismos", "summary": "Levedura lipofílica comensal da pele e das orelhas de cães e gatos.", "manifestations": ["Dermatite e otite com eritema, prurido, odor rançoso, secreção ceruminosa"], "science": "A proliferação costuma ser secundária (alergias, endocrinopatias). Diagnóstico por citologia; a contagem deve ser interpretada com o quadro clínico.", "didactic": "Critérios citológicos de contagem não são abordados neste nível.", "professional": "O tratamento é definido pelo veterinário.", "refs": ["miller2013"], "unlockHint": "Conclua o caso do Thor." },
-
-    { "id": "exame_raspado", "name": "Raspado cutâneo", "category": "exames", "summary": "Coleta de material da pele com lâmina para pesquisa de ácaros ao microscópio.", "manifestations": ["Superficial: Sarcoptes, Cheyletiella (baixa sensibilidade para Sarcoptes)", "Profundo: Demodex (até sangramento capilar, após compressão da pele)"], "science": "Exame de primeira linha em cães com prurido ou alopecia.", "didactic": "Técnica resumida.", "professional": "Resultado negativo deve ser interpretado com a clínica.", "refs": ["miller2013"], "unlockHint": "Conclua o caso do Thor." },
-    { "id": "exame_citologia_pele", "name": "Citologia cutânea", "category": "exames", "summary": "Avaliação microscópica de material coletado por fita adesiva, imprint ou swab.", "manifestations": ["Identifica bactérias (cocos), leveduras (Malassezia), células inflamatórias"], "science": "Exame rápido e barato que orienta a necessidade de antimicrobianos ou antifúngicos.", "didactic": "Corantes e técnicas detalhadas não são abordados.", "professional": "Interpretação por profissional treinado.", "refs": ["miller2013"], "unlockHint": "Conclua o caso do Thor." },
-    { "id": "exame_papel_umido", "name": "Teste do papel umedecido", "category": "exames", "summary": "Detritos do pelame colocados em papel branco umedecido: fezes de pulga formam halos avermelhados.", "manifestations": ["Positivo: halo vermelho-acastanhado (sangue digerido)"], "science": "Simples, barato e imediato; complementa a inspeção com pente fino.", "didactic": "—", "professional": "Resultado negativo não exclui DAPP em animais com hábito de lambedura intensa.", "refs": ["miller2013"], "unlockHint": "Conclua o caso do Thor." },
-    { "id": "exame_hemograma", "name": "Hemograma", "category": "exames", "summary": "Avaliação de eritrócitos, leucócitos e plaquetas.", "manifestations": ["Anemia: classificar como regenerativa ou não regenerativa (reticulócitos)", "Leucograma: inflamação, estresse, infecção"], "science": "Em gatos, poiquilócitos podem ser observados em hepatopatias como a lipidose.", "didactic": "Intervalos de referência ilustrativos; cada laboratório estabelece os seus.", "professional": "Interpretação integrada ao quadro clínico.", "refs": ["thrall2012"], "unlockHint": "Conclua o caso da Mimi." },
-    { "id": "exame_bioquimica", "name": "Bioquímica sérica", "category": "exames", "summary": "Painel de enzimas, metabólitos e eletrólitos (ALT, FA, GGT, bilirrubina, albumina, ureia, creatinina, eletrólitos).", "manifestations": ["ALT: lesão hepatocelular", "FA e GGT: colestase/indução", "Bilirrubina: icterícia"], "science": "Em gatos, a meia-vida da FA é curta e a enzima tem menor atividade hepática que em cães; por isso, aumentos de FA em gatos são relevantes. Na lipidose, FA tende a subir mais que a GGT.", "didactic": "Padrões simplificados para fins didáticos.", "professional": "Interpretação depende do laboratório, da espécie e do contexto.", "refs": ["thrall2012", "center2005"], "unlockHint": "Conclua o caso da Mimi." },
-    { "id": "exame_urinalise", "name": "Urinálise", "category": "exames", "summary": "Avaliação física, química e do sedimento urinário.", "manifestations": ["Densidade: capacidade de concentração", "Bilirrubinúria: sempre anormal em gatos"], "science": "Cães (especialmente machos) podem ter pequena bilirrubinúria fisiológica em urina concentrada; gatos não.", "didactic": "—", "professional": "O método de coleta (ex.: cistocentese) influencia a interpretação.", "refs": ["thrall2012"], "unlockHint": "Conclua o caso da Mimi." },
-    { "id": "exame_ultrassom", "name": "Ultrassonografia abdominal", "category": "exames", "summary": "Exame de imagem não invasivo para avaliar órgãos abdominais.", "manifestations": ["Fígado hiperecogênico em relação à gordura falciforme sugere infiltração lipídica (não é específico)", "Dilatação de vias biliares sugere obstrução"], "science": "Útil para diferenciar icterícia hepática de pós-hepática e para guiar aspirados.", "didactic": "Imagens do jogo são descritivas.", "professional": "Realizado e laudado por profissional habilitado.", "refs": ["nelson2019"], "unlockHint": "Conclua o caso da Mimi." },
-    { "id": "exame_paaf", "name": "Citologia aspirativa por agulha fina (PAAF)", "category": "exames", "summary": "Coleta de células por agulha fina, frequentemente guiada por ultrassom.", "manifestations": ["Lipidose: hepatócitos com vacúolos lipídicos claros e bem delimitados"], "science": "Minimamente invasiva; pode não detectar doenças concomitantes (ex.: colangite), que podem exigir biópsia.", "didactic": "—", "professional": "Avaliar coagulação antes do procedimento.", "refs": ["valtolina2017"], "unlockHint": "Conclua o caso da Mimi." },
-    { "id": "exame_coagulograma", "name": "Coagulograma (TP e TTPa)", "category": "exames", "summary": "Avalia as vias extrínseca/comum (TP) e intrínseca/comum (TTPa) da coagulação.", "manifestations": ["Prolongamentos em hepatopatias, deficiência de vitamina K, intoxicação por anticoagulantes"], "science": "O fígado sintetiza a maioria dos fatores de coagulação; a colestase reduz a absorção de vitamina K (lipossolúvel).", "didactic": "—", "professional": "Avaliação essencial antes de procedimentos invasivos em hepatopatas.", "refs": ["thrall2012", "center2005"], "unlockHint": "Conclua o caso da Mimi." },
-
-    { "id": "farm_isoxazolinas", "name": "Isoxazolinas", "category": "farmacologia", "summary": "Classe de ectoparasiticidas sistêmicos (ex.: afoxolaner, fluralaner, sarolaner, lotilaner).", "manifestations": ["Indicação: pulgas e carrapatos (conforme registro do produto)"], "science": "Inibem canais de cloreto controlados por GABA e glutamato dos artrópodes. Há alerta regulatório sobre eventos neurológicos (tremores, ataxia, convulsões), inclusive em animais sem histórico.", "didactic": "Doses não são apresentadas no jogo.", "professional": "Prescrição veterinária considerando espécie, idade, peso e histórico neurológico.", "refs": ["fda2018"], "unlockHint": "Conclua o caso do Thor." },
-    { "id": "farm_toxicidade_felina", "name": "Toxicidade farmacológica em felinos", "category": "farmacologia", "summary": "Gatos têm particularidades metabólicas que tornam alguns fármacos perigosos.", "manifestations": ["Permetrina (produtos caninos concentrados): tremores, fasciculações, convulsões", "Paracetamol: metemoglobinemia, corpúsculos de Heinz, edema facial, lesão hepática"], "science": "Capacidade reduzida de glicuronidação hepática (deficiência de certas isoformas de UDP-glicuronosiltransferase).", "didactic": "Lista não exaustiva.", "professional": "Toda medicação para gatos deve ser prescrita por veterinário; nunca transfira produtos entre espécies.", "refs": ["boland2010", "merck"], "unlockHint": "Conclua os casos do hospital." },
-    { "id": "farm_antipruriginosos", "name": "Antipruriginosos", "category": "farmacologia", "summary": "Fármacos que controlam o prurido: glicocorticoides, inibidores de Janus quinase, anticorpos monoclonais anti-IL-31, entre outros.", "manifestations": ["Controle sintomático em dermatites alérgicas"], "science": "Glicocorticoides reduzem a transcrição de mediadores inflamatórios; inibidores de JAK bloqueiam vias de sinalização de citocinas pruridogênicas.", "didactic": "Classes apresentadas sem doses.", "professional": "Não substituem o tratamento da causa; escolha e duração definidas pelo veterinário.", "refs": ["miller2013", "hensel2015"], "unlockHint": "Conclua o caso do Thor." },
-    { "id": "farm_antiemeticos", "name": "Antieméticos", "category": "farmacologia", "summary": "Fármacos que controlam náusea e vômito.", "manifestations": ["Antagonistas NK1 (ex.: maropitant)", "Antagonistas 5-HT3 (ex.: ondansetrona)"], "science": "O controle da náusea melhora a aceitação alimentar. Antagonistas NK1 têm metabolismo hepático — cautela em hepatopatas.", "didactic": "—", "professional": "Investigar a causa do vômito; escolha conforme o paciente.", "refs": ["nelson2019"], "unlockHint": "Conclua o caso da Mimi." },
-    { "id": "farm_fluidoterapia", "name": "Fluidoterapia", "category": "farmacologia", "summary": "Administração de fluidos para corrigir desidratação, perdas e distúrbios eletrolíticos.", "manifestations": ["Cálculo: déficit + manutenção + perdas contínuas"], "science": "Cristaloides isotônicos repõem o volume extracelular; a suplementação de potássio exige limites de velocidade.", "didactic": "Fórmulas e volumes não são apresentados neste nível.", "professional": "Prescrição e monitorização pela equipe veterinária.", "refs": ["nelson2019"], "unlockHint": "Conclua o caso da Mimi." },
-    { "id": "farm_suporte_nutricional", "name": "Suporte nutricional enteral", "category": "farmacologia", "summary": "Fornecimento de nutrientes pelo trato gastrintestinal via sonda quando o paciente não se alimenta.", "manifestations": ["Sondas nasoesofágica, de esofagostomia e de gastrostomia"], "science": "Na lipidose hepática felina, é a principal medida terapêutica. A reintrodução é gradual, iniciando com fração da necessidade energética de repouso.", "didactic": "Tipos de sonda resumidos.", "professional": "Colocação e manejo da sonda são procedimentos realizados pela equipe veterinária.", "refs": ["center2005", "valtolina2017"], "unlockHint": "Conclua o caso da Mimi." },
-
-    { "id": "manif_prurido", "name": "Prurido", "category": "manifestacoes", "summary": "Sensação desagradável que provoca o desejo de coçar, lamber ou morder a pele.", "manifestations": ["Causas parasitárias, alérgicas, infecciosas e outras"], "science": "A distribuição do prurido orienta os diferenciais: caudal (DAPP), face/patas/orelhas (atopia, alimento), margens de orelhas/cotovelos (escabiose).", "didactic": "Padrões típicos podem se sobrepor.", "professional": "Investigação sistemática conduzida pelo veterinário.", "refs": ["miller2013"], "unlockHint": "Conclua o caso do Thor." },
-    { "id": "manif_ictericia", "name": "Icterícia", "category": "manifestacoes", "summary": "Coloração amarelada de pele e mucosas por hiperbilirrubinemia.", "manifestations": ["Pré-hepática: hemólise", "Hepática: lipidose, colangite, neoplasia", "Pós-hepática: obstrução biliar"], "science": "Geralmente visível clinicamente quando a bilirrubina sérica ultrapassa cerca de 2 mg/dL.", "didactic": "Classificação simplificada em três grupos.", "professional": "Investigação com hemograma, bioquímica e imagem.", "refs": ["nelson2019", "thrall2012"], "unlockHint": "Conclua o caso da Mimi." },
-    { "id": "manif_hiporexia", "name": "Hiporexia e anorexia", "category": "manifestacoes", "summary": "Redução (hiporexia) ou ausência (anorexia) de ingestão de alimento.", "manifestations": ["Causas: dor, náusea, estresse, doença sistêmica, doença oral, mudança de dieta"], "science": "Em gatos, especialmente obesos, a anorexia por alguns dias pode precipitar lipidose hepática.", "didactic": "—", "professional": "Gatos sem comer devem ser avaliados precocemente.", "refs": ["center2005", "nelson2019"], "unlockHint": "Conclua o caso da Mimi." },
-
-    { "id": "prev_controle_pulgas", "name": "Controle integrado de pulgas", "category": "prevencao", "summary": "Tratar todos os animais da casa, de forma contínua, e o ambiente.", "manifestations": ["Produto registrado para cada espécie", "Aspiração e lavagem de camas", "Continuidade mesmo após melhora"], "science": "Como a maior parte da população está no ambiente, interrupções levam a reinfestações.", "didactic": "—", "professional": "Plano de controle prescrito pelo veterinário.", "refs": ["rust1997", "miller2013"], "unlockHint": "Conclua o caso do Thor." },
-    { "id": "prev_biosseguranca", "name": "Biossegurança no atendimento", "category": "prevencao", "summary": "Conjunto de práticas que protegem pacientes, equipe e comunidade.", "manifestations": ["Higienização das mãos antes e depois de cada paciente", "Luvas para lesões de pele de causa desconhecida (possíveis zoonoses)", "Descarte de perfurocortantes em recipiente rígido próprio, sem reencapar agulhas"], "science": "A higienização das mãos é uma das medidas mais eficazes contra infecções relacionadas à assistência.", "didactic": "Adaptação didática de diretrizes de saúde humana à rotina veterinária.", "professional": "Seguir os protocolos da instituição.", "refs": ["who2009", "cfmv1138"], "unlockHint": "Converse com a Dra. Helena no hospital." },
-    { "id": "prev_manejo_peso_felino", "name": "Manejo de peso em gatos", "category": "prevencao", "summary": "A perda de peso em gatos deve ser gradual e supervisionada.", "manifestations": ["Transição alimentar progressiva", "Monitorar ingestão diária", "Enriquecimento ambiental"], "science": "Restrição calórica abrupta e anorexia predispõem à lipidose hepática em gatos obesos.", "didactic": "Metas numéricas de perda de peso não são apresentadas.", "professional": "Plano nutricional individualizado pelo veterinário.", "refs": ["center2005"], "unlockHint": "Conclua o caso da Mimi." },
-    { "id": "prev_vacinacao", "name": "Vacinação de cães e gatos", "category": "prevencao", "summary": "Vacinas essenciais e não essenciais conforme risco individual e epidemiológico.", "manifestations": ["Cães: cinomose, parvovirose, adenovírus (essenciais); raiva onde obrigatória", "Gatos: panleucopenia, herpesvírus, calicivírus (essenciais); raiva onde obrigatória"], "science": "Diretrizes internacionais classificam vacinas em essenciais, não essenciais e não recomendadas.", "didactic": "Protocolos detalhados não são apresentados.", "professional": "Protocolo definido pelo veterinário conforme legislação e risco local.", "refs": ["day2016"], "unlockHint": "Leia na biblioteca." },
-    { "id": "prev_saude_unica", "name": "Saúde Única", "category": "prevencao", "summary": "Abordagem integrada entre saúde humana, animal e ambiental.", "manifestations": ["Zoonoses (ex.: Dipylidium caninum, escabiose, raiva)", "Uso racional de antimicrobianos"], "science": "A maioria das doenças infecciosas emergentes em humanos tem origem animal.", "didactic": "Conceito introdutório.", "professional": "O médico-veterinário atua na vigilância e prevenção em saúde pública.", "refs": ["cfmv1138"], "unlockHint": "Leia na biblioteca." }
+    {
+      "id": "especie_cao",
+      "name": "Cão (Canis lupus familiaris)",
+      "category": "especies",
+      "image": "dog_caramelo",
+      "summary": "Mamífero carnívoro doméstico, de grande variação de porte e conformação entre raças.",
+      "manifestations": [
+        "Frequência cardíaca de referência (adulto, repouso): aprox. 60–160 bpm",
+        "Frequência respiratória: aprox. 10–30 mpm",
+        "Temperatura retal: aprox. 37,5–39,2 °C"
+      ],
+      "science": "Fórmula vertebral C7 T13 L7 S3 Cd(20–23). Dentição permanente com 42 dentes. Estômago simples (monocavitário).",
+      "didactic": "Os intervalos de referência são aproximados e variam entre referências, porte e idade.",
+      "professional": "A interpretação de parâmetros vitais depende do contexto clínico (estresse, dor, temperatura ambiente, raça).",
+      "refs": [
+        "dyce2010",
+        "klein2020",
+        "merck"
+      ],
+      "unlockHint": "Encontre um cão pelo campus ou atenda um paciente canino."
+    },
+    {
+      "id": "especie_gato",
+      "name": "Gato (Felis catus)",
+      "category": "especies",
+      "image": "cat_laranja",
+      "summary": "Carnívoro estrito doméstico, com particularidades metabólicas importantes para a farmacologia e a nutrição.",
+      "manifestations": [
+        "Frequência cardíaca de referência: aprox. 140–220 bpm",
+        "Frequência respiratória: aprox. 20–30 mpm",
+        "Temperatura retal: aprox. 38,1–39,2 °C"
+      ],
+      "science": "Dentição permanente com 30 dentes. Capacidade reduzida de glicuronidação hepática, o que torna fármacos como paracetamol e permetrina perigosos. Necessidade dietética de taurina e arginina.",
+      "didactic": "Gatos escondem sinais de doença; mudanças sutis de comportamento e apetite são relevantes.",
+      "professional": "Gatos são sensíveis ao estresse do ambiente clínico, o que altera FC, glicemia e outros parâmetros.",
+      "refs": [
+        "klein2020",
+        "boland2010",
+        "merck"
+      ],
+      "unlockHint": "Atenda um paciente felino."
+    },
+    {
+      "id": "especie_bovino",
+      "name": "Bovino (Bos taurus)",
+      "category": "especies",
+      "image": "cow",
+      "summary": "Ruminante de grande importância na produção de leite e carne.",
+      "manifestations": [
+        "Temperatura retal de referência (adulto): aprox. 38,0–39,3 °C",
+        "Movimentos ruminais avaliados por auscultação na fossa paralombar esquerda"
+      ],
+      "science": "Estômago com quatro compartimentos: rúmen, retículo, omaso e abomaso. Não possui incisivos superiores: há um pulvino (coxim) dentário.",
+      "didactic": "No jogo, o bovino da fazenda-escola apresenta comportamento normal de pastejo e ruminação.",
+      "professional": "A avaliação clínica de ruminantes inclui ambiente, manejo nutricional e dados de produção do rebanho.",
+      "refs": [
+        "dyce2010",
+        "merck"
+      ],
+      "unlockHint": "Observe a vaca na fazenda-escola do campus."
+    },
+    {
+      "id": "especie_ovino",
+      "name": "Ovino (Ovis aries)",
+      "category": "especies",
+      "image": "sheep",
+      "summary": "Pequeno ruminante criado para produção de lã, carne e leite.",
+      "manifestations": [
+        "Avaliação da coloração da conjuntiva é usada em programas de controle de verminose (ex.: método FAMACHA)"
+      ],
+      "science": "Ruminante com estômago de quatro compartimentos. A verminose gastrintestinal (ex.: Haemonchus contortus) é um importante problema sanitário.",
+      "didactic": "O ovino do campus serve de introdução aos pequenos ruminantes.",
+      "professional": "Programas de controle parasitário devem ser planejados por veterinário, considerando resistência anti-helmíntica.",
+      "refs": [
+        "taylor2016",
+        "merck"
+      ],
+      "unlockHint": "Observe as ovelhas na fazenda-escola."
+    },
+    {
+      "id": "especie_equino",
+      "name": "Equino (Equus caballus)",
+      "category": "especies",
+      "summary": "Herbívoro monogástrico com fermentação no intestino grosso (ceco e cólon).",
+      "manifestations": [
+        "Avaliação de motilidade intestinal por auscultação dos quatro quadrantes"
+      ],
+      "science": "Não possui vesícula biliar. A clavícula é ausente. Grande capacidade de fermentação no ceco e cólon maior.",
+      "didactic": "Conteúdo introdutório; casos com equinos serão adicionados na Região Rural.",
+      "professional": "Cólica em equinos é emergência e requer avaliação veterinária imediata.",
+      "refs": [
+        "dyce2010"
+      ],
+      "unlockHint": "Responda corretamente sobre anatomia comparada."
+    },
+    {
+      "id": "anat_esqueleto_cao",
+      "name": "Esqueleto do cão",
+      "category": "anatomia",
+      "image": "skeleton",
+      "summary": "Dividido em esqueleto axial (crânio, coluna, costelas e esterno) e apendicular (membros).",
+      "manifestations": [
+        "Membro torácico: escápula, úmero, rádio e ulna, carpo, metacarpo e falanges",
+        "Membro pélvico: osso do quadril (íleo, ísquio e púbis), fêmur, patela, tíbia e fíbula, tarso, metatarso e falanges"
+      ],
+      "science": "No cão, a clavícula é rudimentar — quando presente, é um pequeno osso não articulado no músculo braquiocefálico. O membro torácico une-se ao tronco por sinsarcose (músculos), sem articulação óssea.",
+      "didactic": "O esquema do laboratório é simplificado e fora de escala.",
+      "professional": "A identificação de estruturas em exames de imagem exige treinamento específico.",
+      "refs": [
+        "dyce2010"
+      ],
+      "unlockHint": "Conclua a aula de anatomia."
+    },
+    {
+      "id": "anat_coluna_vertebral",
+      "name": "Coluna vertebral",
+      "category": "anatomia",
+      "summary": "Regiões cervical, torácica, lombar, sacral e caudal.",
+      "manifestations": [
+        "Mamíferos domésticos têm 7 vértebras cervicais",
+        "Cão: 13 torácicas e 7 lombares",
+        "Bovino: 13 torácicas e 6 lombares",
+        "Equino: geralmente 18 torácicas e 6 lombares"
+      ],
+      "science": "O número de vértebras torácicas acompanha o número de pares de costelas. Há variações individuais, sobretudo nas regiões torácica, lombar e caudal.",
+      "didactic": "Números apresentados como valores mais frequentes.",
+      "professional": "Variações anatômicas individuais podem ocorrer.",
+      "refs": [
+        "dyce2010"
+      ],
+      "unlockHint": "Conclua a aula de anatomia."
+    },
+    {
+      "id": "anat_estomago_ruminante",
+      "name": "Estômago dos ruminantes",
+      "category": "anatomia",
+      "summary": "Rúmen, retículo e omaso (pré-estômagos aglandulares) e abomaso (estômago glandular).",
+      "manifestations": [
+        "O rúmen é o maior compartimento no bovino adulto",
+        "No bezerro lactente, o abomaso predomina e a goteira esofágica direciona o leite ao abomaso"
+      ],
+      "science": "A fermentação microbiana nos pré-estômagos produz ácidos graxos voláteis, principal fonte de energia do ruminante.",
+      "didactic": "Proporções entre os compartimentos variam com idade e dieta.",
+      "professional": "Distúrbios digestivos de ruminantes exigem avaliação clínica e do manejo alimentar.",
+      "refs": [
+        "dyce2010",
+        "klein2020"
+      ],
+      "unlockHint": "Conclua a aula de anatomia."
+    },
+    {
+      "id": "anat_formula_dentaria",
+      "name": "Fórmulas dentárias",
+      "category": "anatomia",
+      "summary": "Representam o número de incisivos (I), caninos (C), pré-molares (P) e molares (M) por hemiarcada.",
+      "manifestations": [
+        "Cão (permanente): I3/3 C1/1 P4/4 M2/3 = 42 dentes",
+        "Gato (permanente): I3/3 C1/1 P3/2 M1/1 = 30 dentes",
+        "Bovino (permanente): I0/3 C0/1 P3/3 M3/3 = 32 dentes (o 'canino' inferior é incisiviforme)"
+      ],
+      "science": "Ruminantes não possuem incisivos superiores; em seu lugar há o pulvino dentário.",
+      "didactic": "Fórmulas apresentadas para animais adultos.",
+      "professional": "Ausências dentárias e dentes supranumerários devem ser avaliados individualmente.",
+      "refs": [
+        "dyce2010"
+      ],
+      "unlockHint": "Conclua a aula de anatomia."
+    },
+    {
+      "id": "anat_figado_vesicula",
+      "name": "Fígado e vesícula biliar",
+      "category": "anatomia",
+      "summary": "O fígado é a maior glândula do corpo; a vesícula biliar armazena e concentra a bile.",
+      "manifestations": [
+        "Equinos não possuem vesícula biliar",
+        "Cães, gatos e ruminantes possuem vesícula biliar"
+      ],
+      "science": "No gato, o ducto colédoco frequentemente se une ao ducto pancreático antes de desembocar no duodeno — base anatômica da associação entre doenças hepatobiliares, pancreáticas e intestinais (\"triadite\").",
+      "didactic": "Simplificação: a anatomia ductal varia entre indivíduos.",
+      "professional": "A avaliação de vias biliares requer exames de imagem interpretados por profissional.",
+      "refs": [
+        "dyce2010",
+        "nelson2019"
+      ],
+      "unlockHint": "Conclua a aula de anatomia."
+    },
+    {
+      "id": "fisio_parametros_vitais",
+      "name": "Parâmetros vitais",
+      "category": "fisiologia",
+      "summary": "Frequência cardíaca, frequência respiratória e temperatura compõem a base do exame físico geral.",
+      "manifestations": [
+        "Cão: FC ~60–160 bpm; FR ~10–30 mpm; T ~37,5–39,2 °C",
+        "Gato: FC ~140–220 bpm; FR ~20–30 mpm; T ~38,1–39,2 °C",
+        "Bovino adulto: FC ~48–84 bpm; FR ~26–50 mpm; T ~38,0–39,3 °C"
+      ],
+      "science": "Os parâmetros são regulados por mecanismos homeostáticos (sistema nervoso autônomo, centro termorregulador hipotalâmico).",
+      "didactic": "As faixas são aproximadas; diferentes livros apresentam valores ligeiramente distintos.",
+      "professional": "Valores fora da faixa devem ser interpretados com o quadro clínico (estresse, exercício, dor, ambiente).",
+      "refs": [
+        "klein2020",
+        "merck",
+        "feitosa2014"
+      ],
+      "unlockHint": "Converse com a Profa. Lívia sobre sinais vitais."
+    },
+    {
+      "id": "fisio_tpc_hidratacao",
+      "name": "Perfusão e hidratação",
+      "category": "fisiologia",
+      "summary": "Tempo de preenchimento capilar (TPC), mucosas e turgor cutâneo estimam perfusão e hidratação.",
+      "manifestations": [
+        "TPC normal: inferior a 2 segundos",
+        "Mucosas pegajosas e turgor diminuído sugerem desidratação"
+      ],
+      "science": "A desidratação clínica costuma ser detectável a partir de cerca de 5% de déficit; sinais de hipoperfusão surgem em déficits maiores.",
+      "didactic": "Percentuais de desidratação são estimativas clínicas, não medidas exatas.",
+      "professional": "Turgor é afetado por idade, gordura corporal e condição da pele; associe a outros parâmetros.",
+      "refs": [
+        "feitosa2014",
+        "klein2020"
+      ],
+      "unlockHint": "Converse com a Profa. Lívia sobre sinais vitais."
+    },
+    {
+      "id": "doenca_dapp",
+      "name": "Dermatite alérgica à picada de pulgas (DAPP)",
+      "category": "doencas",
+      "summary": "Hipersensibilidade a componentes da saliva da pulga; uma das causas mais comuns de prurido em cães e gatos.",
+      "manifestations": [
+        "Cão: prurido intenso com pápulas, crostas e alopecia na região lombossacra, base da cauda e face caudal das coxas",
+        "Gato: dermatite miliar, alopecia autoinduzida, complexo granuloma eosinofílico"
+      ],
+      "science": "Poucas picadas podem desencadear prurido intenso em animais sensibilizados. Diagnóstico clínico: distribuição das lesões, evidência de pulgas e resposta ao controle rigoroso.",
+      "didactic": "No jogo, a resposta ao tratamento é resumida no desfecho do caso.",
+      "professional": "A escolha do ectoparasiticida e do controle do prurido é prescrição do médico-veterinário.",
+      "refs": [
+        "miller2013",
+        "rust1997"
+      ],
+      "unlockHint": "Conclua o caso do Thor."
+    },
+    {
+      "id": "doenca_atopia",
+      "name": "Dermatite atópica canina",
+      "category": "doencas",
+      "summary": "Doença cutânea inflamatória e pruriginosa, de predisposição genética, associada a IgE contra alérgenos ambientais.",
+      "manifestations": [
+        "Prurido em face, orelhas, patas, axilas, região inguinal e perianal",
+        "Otites recorrentes",
+        "Início frequentemente entre 6 meses e 3 anos"
+      ],
+      "science": "Diagnóstico clínico e por exclusão (ectoparasitas, infecções, reação adversa ao alimento). Testes alérgicos não são diagnósticos; servem para selecionar alérgenos para imunoterapia.",
+      "didactic": "Critérios diagnósticos completos foram resumidos.",
+      "professional": "O manejo é multimodal e individualizado.",
+      "refs": [
+        "hensel2015",
+        "miller2013"
+      ],
+      "unlockHint": "Conclua o caso do Thor."
+    },
+    {
+      "id": "doenca_sarna_sarcoptica",
+      "name": "Escabiose canina (sarna sarcóptica)",
+      "category": "doencas",
+      "summary": "Dermatopatia muito pruriginosa e contagiosa causada por Sarcoptes scabiei var. canis.",
+      "manifestations": [
+        "Prurido intenso",
+        "Lesões nas margens das orelhas, cotovelos, jarretes e abdome ventral",
+        "Reflexo otopodal frequentemente positivo"
+      ],
+      "science": "Zoonose: pode causar lesões pruriginosas transitórias em pessoas (pseudoescabiose). O raspado cutâneo tem baixa sensibilidade.",
+      "didactic": "Simplificação: há apresentações atípicas.",
+      "professional": "Em suspeita forte com raspado negativo, o veterinário pode optar por teste terapêutico.",
+      "refs": [
+        "miller2013",
+        "taylor2016"
+      ],
+      "unlockHint": "Conclua o caso do Thor."
+    },
+    {
+      "id": "doenca_demodicose",
+      "name": "Demodicose canina",
+      "category": "doencas",
+      "summary": "Proliferação excessiva de ácaros Demodex canis, habitantes normais dos folículos pilosos.",
+      "manifestations": [
+        "Alopecia focal ou generalizada, eritema, comedões",
+        "Prurido principalmente quando há piodermite secundária"
+      ],
+      "science": "Associada a imunocompetência alterada. O raspado profundo (ou tricograma) é confiável para o diagnóstico. Não é considerada contagiosa entre animais adultos.",
+      "didactic": "Formas juvenil e adulta resumidas.",
+      "professional": "Demodicose de início adulto exige investigação de doença de base.",
+      "refs": [
+        "miller2013"
+      ],
+      "unlockHint": "Conclua o caso do Thor."
+    },
+    {
+      "id": "doenca_rafa",
+      "name": "Reação adversa ao alimento",
+      "category": "doencas",
+      "summary": "Reação (imunológica ou não) a componentes da dieta, que pode causar sinais cutâneos e/ou gastrintestinais.",
+      "manifestations": [
+        "Prurido não sazonal",
+        "Pode coexistir com sinais gastrintestinais"
+      ],
+      "science": "Pode ocorrer com alimentos consumidos há longo tempo. O diagnóstico depende de dieta de eliminação (proteína nova ou hidrolisada) por várias semanas seguida de reexposição.",
+      "didactic": "Trocar de marca de ração NÃO é dieta de eliminação.",
+      "professional": "A escolha e a condução da dieta de eliminação devem ser orientadas por veterinário.",
+      "refs": [
+        "miller2013",
+        "hensel2015"
+      ],
+      "unlockHint": "Conclua o caso do Thor."
+    },
+    {
+      "id": "doenca_piodermite",
+      "name": "Piodermite superficial",
+      "category": "doencas",
+      "summary": "Infecção bacteriana da epiderme e dos folículos, geralmente por Staphylococcus pseudintermedius em cães.",
+      "manifestations": [
+        "Pápulas, pústulas, colaretes epidérmicos",
+        "Prurido variável"
+      ],
+      "science": "Quase sempre secundária a uma causa de base (alergias, ectoparasitas, endocrinopatias). A citologia orienta o diagnóstico e a cultura é indicada em casos recorrentes ou sem resposta.",
+      "didactic": "Simplificação das formas clínicas.",
+      "professional": "O uso de antimicrobianos deve ser racional, preferindo terapia tópica quando adequada.",
+      "refs": [
+        "miller2013"
+      ],
+      "unlockHint": "Conclua o caso do Thor."
+    },
+    {
+      "id": "doenca_lipidose",
+      "name": "Lipidose hepática felina",
+      "category": "doencas",
+      "summary": "Acúmulo excessivo de triglicerídeos nos hepatócitos, levando a colestase intra-hepática e insuficiência hepática.",
+      "manifestations": [
+        "Anorexia prolongada, letargia, vômito",
+        "Icterícia e hepatomegalia",
+        "Perda de massa muscular, ptialismo (encefalopatia hepática) em casos graves"
+      ],
+      "science": "Geralmente secundária a anorexia (balanço energético negativo), especialmente em gatos obesos. Laboratorialmente, FA tende a se elevar muito mais que a GGT. Diagnóstico presuntivo por ultrassonografia e citologia aspirativa.",
+      "didactic": "O caso do jogo apresenta a forma clássica, sem doenças concomitantes significativas.",
+      "professional": "Tratamento intensivo com suporte nutricional por sonda e monitorização — decisões da equipe veterinária.",
+      "refs": [
+        "center2005",
+        "valtolina2017",
+        "nelson2019"
+      ],
+      "unlockHint": "Conclua o caso da Mimi."
+    },
+    {
+      "id": "doenca_realimentacao",
+      "name": "Síndrome de realimentação",
+      "category": "doencas",
+      "summary": "Distúrbios metabólicos que podem ocorrer ao reintroduzir alimento após jejum prolongado.",
+      "manifestations": [
+        "Hipofosfatemia, hipocalemia e hipomagnesemia",
+        "Hemólise, fraqueza muscular, arritmias"
+      ],
+      "science": "A liberação de insulina com a alimentação desloca fósforo, potássio e magnésio para o meio intracelular.",
+      "didactic": "Mecanismo simplificado.",
+      "professional": "A reintrodução alimentar gradual e a monitorização de eletrólitos são definidas pela equipe.",
+      "refs": [
+        "valtolina2017",
+        "center2005"
+      ],
+      "unlockHint": "Conclua o caso da Mimi."
+    },
+    {
+      "id": "parasita_ctenocephalides",
+      "name": "Ctenocephalides felis (pulga do gato)",
+      "category": "parasitas",
+      "image": "flea",
+      "summary": "Pulga mais comum em cães e gatos.",
+      "manifestations": [
+        "Prurido, DAPP",
+        "Anemia em infestações intensas (filhotes)",
+        "Hospedeira intermediária de Dipylidium caninum"
+      ],
+      "science": "Ciclo: ovo → larva → pupa → adulto. Ovos caem do hospedeiro para o ambiente; os estágios imaturos representam a maior parte da população. Pupas podem permanecer no casulo por semanas.",
+      "didactic": "Percentuais da população no ambiente variam conforme a fonte; o conceito-chave é que a maior parte está fora do animal.",
+      "professional": "O plano de controle considera todos os animais, o ambiente e o produto adequado para cada espécie.",
+      "refs": [
+        "rust1997",
+        "taylor2016"
+      ],
+      "unlockHint": "Conclua o caso do Thor."
+    },
+    {
+      "id": "parasita_dipylidium",
+      "name": "Dipylidium caninum",
+      "category": "parasitas",
+      "summary": "Cestódeo de cães e gatos transmitido pela ingestão de pulgas contendo cisticercoides.",
+      "manifestations": [
+        "Proglotes semelhantes a grãos de arroz ao redor do ânus ou nas fezes",
+        "Prurido anal"
+      ],
+      "science": "Zoonose: pessoas, principalmente crianças, podem se infectar ao ingerir pulgas acidentalmente. A flutuação fecal tem baixa sensibilidade.",
+      "didactic": "Ciclo apresentado de forma resumida.",
+      "professional": "A escolha do anti-helmíntico (cestocida) é prescrição veterinária.",
+      "refs": [
+        "taylor2016"
+      ],
+      "unlockHint": "Conclua o caso do Thor."
+    },
+    {
+      "id": "micro_malassezia",
+      "name": "Malassezia pachydermatis",
+      "category": "microrganismos",
+      "summary": "Levedura lipofílica comensal da pele e das orelhas de cães e gatos.",
+      "manifestations": [
+        "Dermatite e otite com eritema, prurido, odor rançoso, secreção ceruminosa"
+      ],
+      "science": "A proliferação costuma ser secundária (alergias, endocrinopatias). Diagnóstico por citologia; a contagem deve ser interpretada com o quadro clínico.",
+      "didactic": "Critérios citológicos de contagem não são abordados neste nível.",
+      "professional": "O tratamento é definido pelo veterinário.",
+      "refs": [
+        "miller2013"
+      ],
+      "unlockHint": "Conclua o caso do Thor."
+    },
+    {
+      "id": "exame_raspado",
+      "name": "Raspado cutâneo",
+      "category": "exames",
+      "summary": "Coleta de material da pele com lâmina para pesquisa de ácaros ao microscópio.",
+      "manifestations": [
+        "Superficial: Sarcoptes, Cheyletiella (baixa sensibilidade para Sarcoptes)",
+        "Profundo: Demodex (até sangramento capilar, após compressão da pele)"
+      ],
+      "science": "Exame de primeira linha em cães com prurido ou alopecia.",
+      "didactic": "Técnica resumida.",
+      "professional": "Resultado negativo deve ser interpretado com a clínica.",
+      "refs": [
+        "miller2013"
+      ],
+      "unlockHint": "Conclua o caso do Thor."
+    },
+    {
+      "id": "exame_citologia_pele",
+      "name": "Citologia cutânea",
+      "category": "exames",
+      "summary": "Avaliação microscópica de material coletado por fita adesiva, imprint ou swab.",
+      "manifestations": [
+        "Identifica bactérias (cocos), leveduras (Malassezia), células inflamatórias"
+      ],
+      "science": "Exame rápido e barato que orienta a necessidade de antimicrobianos ou antifúngicos.",
+      "didactic": "Corantes e técnicas detalhadas não são abordados.",
+      "professional": "Interpretação por profissional treinado.",
+      "refs": [
+        "miller2013"
+      ],
+      "unlockHint": "Conclua o caso do Thor."
+    },
+    {
+      "id": "exame_papel_umido",
+      "name": "Teste do papel umedecido",
+      "category": "exames",
+      "summary": "Detritos do pelame colocados em papel branco umedecido: fezes de pulga formam halos avermelhados.",
+      "manifestations": [
+        "Positivo: halo vermelho-acastanhado (sangue digerido)"
+      ],
+      "science": "Simples, barato e imediato; complementa a inspeção com pente fino.",
+      "didactic": "—",
+      "professional": "Resultado negativo não exclui DAPP em animais com hábito de lambedura intensa.",
+      "refs": [
+        "miller2013"
+      ],
+      "unlockHint": "Conclua o caso do Thor."
+    },
+    {
+      "id": "exame_hemograma",
+      "name": "Hemograma",
+      "category": "exames",
+      "summary": "Avaliação de eritrócitos, leucócitos e plaquetas.",
+      "manifestations": [
+        "Anemia: classificar como regenerativa ou não regenerativa (reticulócitos)",
+        "Leucograma: inflamação, estresse, infecção"
+      ],
+      "science": "Em gatos, poiquilócitos podem ser observados em hepatopatias como a lipidose.",
+      "didactic": "Intervalos de referência ilustrativos; cada laboratório estabelece os seus.",
+      "professional": "Interpretação integrada ao quadro clínico.",
+      "refs": [
+        "thrall2012"
+      ],
+      "unlockHint": "Conclua o caso da Mimi."
+    },
+    {
+      "id": "exame_bioquimica",
+      "name": "Bioquímica sérica",
+      "category": "exames",
+      "summary": "Painel de enzimas, metabólitos e eletrólitos (ALT, FA, GGT, bilirrubina, albumina, ureia, creatinina, eletrólitos).",
+      "manifestations": [
+        "ALT: lesão hepatocelular",
+        "FA e GGT: colestase/indução",
+        "Bilirrubina: icterícia"
+      ],
+      "science": "Em gatos, a meia-vida da FA é curta e a enzima tem menor atividade hepática que em cães; por isso, aumentos de FA em gatos são relevantes. Na lipidose, FA tende a subir mais que a GGT.",
+      "didactic": "Padrões simplificados para fins didáticos.",
+      "professional": "Interpretação depende do laboratório, da espécie e do contexto.",
+      "refs": [
+        "thrall2012",
+        "center2005"
+      ],
+      "unlockHint": "Conclua o caso da Mimi."
+    },
+    {
+      "id": "exame_urinalise",
+      "name": "Urinálise",
+      "category": "exames",
+      "summary": "Avaliação física, química e do sedimento urinário.",
+      "manifestations": [
+        "Densidade: capacidade de concentração",
+        "Bilirrubinúria: sempre anormal em gatos"
+      ],
+      "science": "Cães (especialmente machos) podem ter pequena bilirrubinúria fisiológica em urina concentrada; gatos não.",
+      "didactic": "—",
+      "professional": "O método de coleta (ex.: cistocentese) influencia a interpretação.",
+      "refs": [
+        "thrall2012"
+      ],
+      "unlockHint": "Conclua o caso da Mimi."
+    },
+    {
+      "id": "exame_ultrassom",
+      "name": "Ultrassonografia abdominal",
+      "category": "exames",
+      "summary": "Exame de imagem não invasivo para avaliar órgãos abdominais.",
+      "manifestations": [
+        "Fígado hiperecogênico em relação à gordura falciforme sugere infiltração lipídica (não é específico)",
+        "Dilatação de vias biliares sugere obstrução"
+      ],
+      "science": "Útil para diferenciar icterícia hepática de pós-hepática e para guiar aspirados.",
+      "didactic": "Imagens do jogo são descritivas.",
+      "professional": "Realizado e laudado por profissional habilitado.",
+      "refs": [
+        "nelson2019"
+      ],
+      "unlockHint": "Conclua o caso da Mimi."
+    },
+    {
+      "id": "exame_paaf",
+      "name": "Citologia aspirativa por agulha fina (PAAF)",
+      "category": "exames",
+      "summary": "Coleta de células por agulha fina, frequentemente guiada por ultrassom.",
+      "manifestations": [
+        "Lipidose: hepatócitos com vacúolos lipídicos claros e bem delimitados"
+      ],
+      "science": "Minimamente invasiva; pode não detectar doenças concomitantes (ex.: colangite), que podem exigir biópsia.",
+      "didactic": "—",
+      "professional": "Avaliar coagulação antes do procedimento.",
+      "refs": [
+        "valtolina2017"
+      ],
+      "unlockHint": "Conclua o caso da Mimi."
+    },
+    {
+      "id": "exame_coagulograma",
+      "name": "Coagulograma (TP e TTPa)",
+      "category": "exames",
+      "summary": "Avalia as vias extrínseca/comum (TP) e intrínseca/comum (TTPa) da coagulação.",
+      "manifestations": [
+        "Prolongamentos em hepatopatias, deficiência de vitamina K, intoxicação por anticoagulantes"
+      ],
+      "science": "O fígado sintetiza a maioria dos fatores de coagulação; a colestase reduz a absorção de vitamina K (lipossolúvel).",
+      "didactic": "—",
+      "professional": "Avaliação essencial antes de procedimentos invasivos em hepatopatas.",
+      "refs": [
+        "thrall2012",
+        "center2005"
+      ],
+      "unlockHint": "Conclua o caso da Mimi."
+    },
+    {
+      "id": "farm_isoxazolinas",
+      "name": "Isoxazolinas",
+      "category": "farmacologia",
+      "summary": "Classe de ectoparasiticidas sistêmicos (ex.: afoxolaner, fluralaner, sarolaner, lotilaner).",
+      "manifestations": [
+        "Indicação: pulgas e carrapatos (conforme registro do produto)"
+      ],
+      "science": "Inibem canais de cloreto controlados por GABA e glutamato dos artrópodes. Há alerta regulatório sobre eventos neurológicos (tremores, ataxia, convulsões), inclusive em animais sem histórico.",
+      "didactic": "Doses não são apresentadas no jogo.",
+      "professional": "Prescrição veterinária considerando espécie, idade, peso e histórico neurológico.",
+      "refs": [
+        "fda2018"
+      ],
+      "unlockHint": "Conclua o caso do Thor."
+    },
+    {
+      "id": "farm_toxicidade_felina",
+      "name": "Toxicidade farmacológica em felinos",
+      "category": "farmacologia",
+      "summary": "Gatos têm particularidades metabólicas que tornam alguns fármacos perigosos.",
+      "manifestations": [
+        "Permetrina (produtos caninos concentrados): tremores, fasciculações, convulsões",
+        "Paracetamol: metemoglobinemia, corpúsculos de Heinz, edema facial, lesão hepática"
+      ],
+      "science": "Capacidade reduzida de glicuronidação hepática (deficiência de certas isoformas de UDP-glicuronosiltransferase).",
+      "didactic": "Lista não exaustiva.",
+      "professional": "Toda medicação para gatos deve ser prescrita por veterinário; nunca transfira produtos entre espécies.",
+      "refs": [
+        "boland2010",
+        "merck"
+      ],
+      "unlockHint": "Conclua os casos do hospital."
+    },
+    {
+      "id": "farm_antipruriginosos",
+      "name": "Antipruriginosos",
+      "category": "farmacologia",
+      "summary": "Fármacos que controlam o prurido: glicocorticoides, inibidores de Janus quinase, anticorpos monoclonais anti-IL-31, entre outros.",
+      "manifestations": [
+        "Controle sintomático em dermatites alérgicas"
+      ],
+      "science": "Glicocorticoides reduzem a transcrição de mediadores inflamatórios; inibidores de JAK bloqueiam vias de sinalização de citocinas pruridogênicas.",
+      "didactic": "Classes apresentadas sem doses.",
+      "professional": "Não substituem o tratamento da causa; escolha e duração definidas pelo veterinário.",
+      "refs": [
+        "miller2013",
+        "hensel2015"
+      ],
+      "unlockHint": "Conclua o caso do Thor."
+    },
+    {
+      "id": "farm_antiemeticos",
+      "name": "Antieméticos",
+      "category": "farmacologia",
+      "summary": "Fármacos que controlam náusea e vômito.",
+      "manifestations": [
+        "Antagonistas NK1 (ex.: maropitant)",
+        "Antagonistas 5-HT3 (ex.: ondansetrona)"
+      ],
+      "science": "O controle da náusea melhora a aceitação alimentar. Antagonistas NK1 têm metabolismo hepático — cautela em hepatopatas.",
+      "didactic": "—",
+      "professional": "Investigar a causa do vômito; escolha conforme o paciente.",
+      "refs": [
+        "nelson2019"
+      ],
+      "unlockHint": "Conclua o caso da Mimi."
+    },
+    {
+      "id": "farm_fluidoterapia",
+      "name": "Fluidoterapia",
+      "category": "farmacologia",
+      "summary": "Administração de fluidos para corrigir desidratação, perdas e distúrbios eletrolíticos.",
+      "manifestations": [
+        "Cálculo: déficit + manutenção + perdas contínuas"
+      ],
+      "science": "Cristaloides isotônicos repõem o volume extracelular; a suplementação de potássio exige limites de velocidade.",
+      "didactic": "Fórmulas e volumes não são apresentados neste nível.",
+      "professional": "Prescrição e monitorização pela equipe veterinária.",
+      "refs": [
+        "nelson2019"
+      ],
+      "unlockHint": "Conclua o caso da Mimi."
+    },
+    {
+      "id": "farm_suporte_nutricional",
+      "name": "Suporte nutricional enteral",
+      "category": "farmacologia",
+      "summary": "Fornecimento de nutrientes pelo trato gastrintestinal via sonda quando o paciente não se alimenta.",
+      "manifestations": [
+        "Sondas nasoesofágica, de esofagostomia e de gastrostomia"
+      ],
+      "science": "Na lipidose hepática felina, é a principal medida terapêutica. A reintrodução é gradual, iniciando com fração da necessidade energética de repouso.",
+      "didactic": "Tipos de sonda resumidos.",
+      "professional": "Colocação e manejo da sonda são procedimentos realizados pela equipe veterinária.",
+      "refs": [
+        "center2005",
+        "valtolina2017"
+      ],
+      "unlockHint": "Conclua o caso da Mimi."
+    },
+    {
+      "id": "manif_prurido",
+      "name": "Prurido",
+      "category": "manifestacoes",
+      "summary": "Sensação desagradável que provoca o desejo de coçar, lamber ou morder a pele.",
+      "manifestations": [
+        "Causas parasitárias, alérgicas, infecciosas e outras"
+      ],
+      "science": "A distribuição do prurido orienta os diferenciais: caudal (DAPP), face/patas/orelhas (atopia, alimento), margens de orelhas/cotovelos (escabiose).",
+      "didactic": "Padrões típicos podem se sobrepor.",
+      "professional": "Investigação sistemática conduzida pelo veterinário.",
+      "refs": [
+        "miller2013"
+      ],
+      "unlockHint": "Conclua o caso do Thor."
+    },
+    {
+      "id": "manif_ictericia",
+      "name": "Icterícia",
+      "category": "manifestacoes",
+      "summary": "Coloração amarelada de pele e mucosas por hiperbilirrubinemia.",
+      "manifestations": [
+        "Pré-hepática: hemólise",
+        "Hepática: lipidose, colangite, neoplasia",
+        "Pós-hepática: obstrução biliar"
+      ],
+      "science": "Geralmente visível clinicamente quando a bilirrubina sérica ultrapassa cerca de 2 mg/dL.",
+      "didactic": "Classificação simplificada em três grupos.",
+      "professional": "Investigação com hemograma, bioquímica e imagem.",
+      "refs": [
+        "nelson2019",
+        "thrall2012"
+      ],
+      "unlockHint": "Conclua o caso da Mimi."
+    },
+    {
+      "id": "manif_hiporexia",
+      "name": "Hiporexia e anorexia",
+      "category": "manifestacoes",
+      "summary": "Redução (hiporexia) ou ausência (anorexia) de ingestão de alimento.",
+      "manifestations": [
+        "Causas: dor, náusea, estresse, doença sistêmica, doença oral, mudança de dieta"
+      ],
+      "science": "Em gatos, especialmente obesos, a anorexia por alguns dias pode precipitar lipidose hepática.",
+      "didactic": "—",
+      "professional": "Gatos sem comer devem ser avaliados precocemente.",
+      "refs": [
+        "center2005",
+        "nelson2019"
+      ],
+      "unlockHint": "Conclua o caso da Mimi."
+    },
+    {
+      "id": "prev_controle_pulgas",
+      "name": "Controle integrado de pulgas",
+      "category": "prevencao",
+      "summary": "Tratar todos os animais da casa, de forma contínua, e o ambiente.",
+      "manifestations": [
+        "Produto registrado para cada espécie",
+        "Aspiração e lavagem de camas",
+        "Continuidade mesmo após melhora"
+      ],
+      "science": "Como a maior parte da população está no ambiente, interrupções levam a reinfestações.",
+      "didactic": "—",
+      "professional": "Plano de controle prescrito pelo veterinário.",
+      "refs": [
+        "rust1997",
+        "miller2013"
+      ],
+      "unlockHint": "Conclua o caso do Thor."
+    },
+    {
+      "id": "prev_biosseguranca",
+      "name": "Biossegurança no atendimento",
+      "category": "prevencao",
+      "summary": "Conjunto de práticas que protegem pacientes, equipe e comunidade.",
+      "manifestations": [
+        "Higienização das mãos antes e depois de cada paciente",
+        "Luvas para lesões de pele de causa desconhecida (possíveis zoonoses)",
+        "Descarte de perfurocortantes em recipiente rígido próprio, sem reencapar agulhas"
+      ],
+      "science": "A higienização das mãos é uma das medidas mais eficazes contra infecções relacionadas à assistência.",
+      "didactic": "Adaptação didática de diretrizes de saúde humana à rotina veterinária.",
+      "professional": "Seguir os protocolos da instituição.",
+      "refs": [
+        "who2009",
+        "cfmv1138"
+      ],
+      "unlockHint": "Converse com a Dra. Helena no hospital."
+    },
+    {
+      "id": "prev_manejo_peso_felino",
+      "name": "Manejo de peso em gatos",
+      "category": "prevencao",
+      "summary": "A perda de peso em gatos deve ser gradual e supervisionada.",
+      "manifestations": [
+        "Transição alimentar progressiva",
+        "Monitorar ingestão diária",
+        "Enriquecimento ambiental"
+      ],
+      "science": "Restrição calórica abrupta e anorexia predispõem à lipidose hepática em gatos obesos.",
+      "didactic": "Metas numéricas de perda de peso não são apresentadas.",
+      "professional": "Plano nutricional individualizado pelo veterinário.",
+      "refs": [
+        "center2005"
+      ],
+      "unlockHint": "Conclua o caso da Mimi."
+    },
+    {
+      "id": "prev_vacinacao",
+      "name": "Vacinação de cães e gatos",
+      "category": "prevencao",
+      "summary": "Vacinas essenciais e não essenciais conforme risco individual e epidemiológico.",
+      "manifestations": [
+        "Cães: cinomose, parvovirose, adenovírus (essenciais); raiva onde obrigatória",
+        "Gatos: panleucopenia, herpesvírus, calicivírus (essenciais); raiva onde obrigatória"
+      ],
+      "science": "Diretrizes internacionais classificam vacinas em essenciais, não essenciais e não recomendadas.",
+      "didactic": "Protocolos detalhados não são apresentados.",
+      "professional": "Protocolo definido pelo veterinário conforme legislação e risco local.",
+      "refs": [
+        "day2016"
+      ],
+      "unlockHint": "Leia na biblioteca."
+    },
+    {
+      "id": "prev_saude_unica",
+      "name": "Saúde Única",
+      "category": "prevencao",
+      "summary": "Abordagem integrada entre saúde humana, animal e ambiental.",
+      "manifestations": [
+        "Zoonoses (ex.: Dipylidium caninum, escabiose, raiva)",
+        "Uso racional de antimicrobianos"
+      ],
+      "science": "A maioria das doenças infecciosas emergentes em humanos tem origem animal.",
+      "didactic": "Conceito introdutório.",
+      "professional": "O médico-veterinário atua na vigilância e prevenção em saúde pública.",
+      "refs": [
+        "cfmv1138"
+      ],
+      "unlockHint": "Leia na biblioteca."
+    },
+    {
+      "id": "doenca_obstrucao_uretral",
+      "name": "Obstrução uretral felina",
+      "category": "doencas",
+      "image": "cat_cinza",
+      "summary": "Emergência em que o fluxo de urina é bloqueado, geralmente em gatos machos, por tampões uretrais, urólitos ou espasmo.",
+      "manifestations": [
+        "Esforço para urinar com pouca ou nenhuma urina",
+        "Lambedura da região genital, vocalização",
+        "Vômitos, prostração, bradicardia e hipotermia nos casos graves",
+        "Bexiga túrgida, dolorosa e não compressível"
+      ],
+      "science": "A obstrução leva a azotemia pós-renal, acidose metabólica e hipercalemia, que pode causar arritmias fatais. A estabilização precede a desobstrução.",
+      "didactic": "O tempo clínico do jogo é uma simplificação da urgência real.",
+      "professional": "Desobstrução, sedação e manejo de fluidos e eletrólitos são procedimentos da equipe veterinária.",
+      "refs": [
+        "lee2003",
+        "cooper2015",
+        "nelson2019"
+      ],
+      "unlockHint": "Conclua o caso do Nino."
+    },
+    {
+      "id": "doenca_cistite_idiopatica",
+      "name": "Cistite idiopática felina",
+      "category": "doencas",
+      "summary": "Inflamação da bexiga sem causa identificável, a causa mais comum de sinais do trato urinário inferior em gatos jovens.",
+      "manifestations": [
+        "Polaciúria, estrangúria, hematúria",
+        "Urinar fora da caixa de areia",
+        "Pode evoluir para obstrução uretral em machos"
+      ],
+      "science": "Associada a estresse e fatores ambientais; a urina costuma ser estéril. O manejo ambiental multimodal, a dieta úmida e o aumento da ingestão de água reduzem recidivas.",
+      "didactic": "Fisiopatologia complexa, resumida.",
+      "professional": "Diagnóstico por exclusão, com exames definidos pelo veterinário.",
+      "refs": [
+        "nelson2019",
+        "merck"
+      ],
+      "unlockHint": "Conclua o caso do Nino."
+    },
+    {
+      "id": "manif_hipercalemia",
+      "name": "Hipercalemia",
+      "category": "manifestacoes",
+      "summary": "Concentração sérica de potássio acima do normal.",
+      "manifestations": [
+        "Bradicardia, fraqueza muscular",
+        "ECG: ondas T apiculadas, onda P achatada ou ausente, QRS alargado",
+        "Risco de arritmias e parada cardíaca"
+      ],
+      "science": "Causas incluem obstrução urinária, ruptura de bexiga, insuficiência renal aguda e hipoadrenocorticismo. O tratamento emergencial protege o coração e reduz o potássio sérico.",
+      "didactic": "Valores de referência variam entre laboratórios.",
+      "professional": "Tratamento e monitorização conduzidos pela equipe.",
+      "refs": [
+        "ettinger2017",
+        "lee2003"
+      ],
+      "unlockHint": "Conclua o caso do Nino."
+    },
+    {
+      "id": "exame_ecg",
+      "name": "Eletrocardiograma (ECG)",
+      "category": "exames",
+      "summary": "Registro da atividade elétrica do coração.",
+      "manifestations": [
+        "Avalia frequência, ritmo e condução",
+        "Detecta efeitos de distúrbios eletrolíticos, como a hipercalemia"
+      ],
+      "science": "Na hipercalemia, a sequência típica inclui ondas T apiculadas, achatamento da onda P e alargamento do QRS.",
+      "didactic": "Interpretação simplificada.",
+      "professional": "Laudo e interpretação por profissional habilitado.",
+      "refs": [
+        "ettinger2017"
+      ],
+      "unlockHint": "Conclua o caso do Nino."
+    },
+    {
+      "id": "farm_hipercalemia",
+      "name": "Tratamento emergencial da hipercalemia",
+      "category": "farmacologia",
+      "summary": "Medidas que protegem o coração e reduzem o potássio sérico.",
+      "manifestations": [
+        "Gluconato de cálcio: proteção cardíaca rápida e transitória",
+        "Insulina com glicose: desloca o potássio para o meio intracelular",
+        "Fluidoterapia e correção da causa (ex.: desobstrução)"
+      ],
+      "science": "O cálcio antagoniza os efeitos do potássio no miocárdio sem reduzir sua concentração; por isso, deve ser associado a medidas que reduzem o potássio.",
+      "didactic": "Doses e protocolos não são apresentados.",
+      "professional": "Prescrição e monitorização por ECG pela equipe veterinária.",
+      "refs": [
+        "ettinger2017",
+        "cooper2015"
+      ],
+      "unlockHint": "Conclua o caso do Nino."
+    },
+    {
+      "id": "parasita_toxocara",
+      "name": "Toxocara canis",
+      "category": "parasitas",
+      "summary": "Nematoide (ascarídeo) do intestino delgado de cães, muito comum em filhotes.",
+      "manifestations": [
+        "Abdome distendido, diarreia, vômitos, pelagem opaca",
+        "Vermes longos e brancos nas fezes ou no vômito",
+        "Ovos esféricos de casca espessa e rugosa na flutuação"
+      ],
+      "science": "Transmissão transplacentária, pelo leite e pela ingestão de ovos embrionados. Os ovos são muito resistentes no ambiente. Zoonose: em humanos, causa larva migrans visceral e ocular.",
+      "didactic": "Ciclo apresentado de forma resumida.",
+      "professional": "Escolha do anti-helmíntico e do protocolo pelo veterinário.",
+      "refs": [
+        "taylor2016",
+        "esccap2021",
+        "merck"
+      ],
+      "unlockHint": "Conclua o caso do Pingo."
+    },
+    {
+      "id": "doenca_parvovirose",
+      "name": "Parvovirose canina",
+      "category": "doencas",
+      "summary": "Doença viral grave e muito contagiosa, principalmente de filhotes não vacinados.",
+      "manifestations": [
+        "Prostração, vômitos, diarreia frequentemente hemorrágica",
+        "Desidratação, febre ou hipotermia",
+        "Leucopenia"
+      ],
+      "science": "O parvovírus canino infecta células de divisão rápida (cripta intestinal, medula óssea). É muito resistente no ambiente. A vacinação é a principal forma de prevenção.",
+      "didactic": "Simplificação do quadro clínico.",
+      "professional": "Tratamento intensivo de suporte e isolamento definidos pela equipe.",
+      "refs": [
+        "day2016",
+        "nelson2019"
+      ],
+      "unlockHint": "Conclua o caso do Pingo."
+    },
+    {
+      "id": "exame_coproparasitologico",
+      "name": "Exame coproparasitológico",
+      "category": "exames",
+      "summary": "Pesquisa de ovos, oocistos, cistos e larvas de parasitas nas fezes.",
+      "manifestations": [
+        "Flutuação: ovos de nematoides e oocistos",
+        "Sedimentação: ovos mais pesados",
+        "A sensibilidade varia conforme o parasita e a técnica"
+      ],
+      "science": "Resultado negativo não exclui parasitismo: a eliminação de ovos pode ser intermitente, e alguns parasitas são pouco detectados por flutuação.",
+      "didactic": "Técnicas resumidas.",
+      "professional": "Interpretação no contexto clínico.",
+      "refs": [
+        "taylor2016"
+      ],
+      "unlockHint": "Conclua o caso do Pingo."
+    },
+    {
+      "id": "exame_teste_rapido",
+      "name": "Testes rápidos (imunocromatográficos)",
+      "category": "exames",
+      "summary": "Testes de beira de leito que detectam antígenos ou anticorpos em minutos.",
+      "manifestations": [
+        "Exemplos: antígeno de parvovírus nas fezes, Giardia, FIV/FeLV"
+      ],
+      "science": "Úteis para decisões rápidas, mas podem ter falso-negativos e falso-positivos; o resultado deve ser interpretado com a clínica.",
+      "didactic": "Desempenho dos testes varia entre fabricantes.",
+      "professional": "Confirmação por outros métodos quando necessário.",
+      "refs": [
+        "nelson2019"
+      ],
+      "unlockHint": "Conclua o caso do Pingo."
+    }
   ]
 }

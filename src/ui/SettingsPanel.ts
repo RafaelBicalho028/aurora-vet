@@ -3,6 +3,7 @@ import { askConfirm } from './ConfirmDialog';
 import { app, saveSettings } from '../core/context';
 import { ACTION_LABELS, keyLabel, type Action } from '../core/InputManager';
 import { DEFAULT_KEYBINDS } from '../core/SaveManager';
+import { goToTitle } from '../core/flow';
 import { h, clear } from './dom';
 import { ui } from './UIManager';
 import { toggleFullscreen } from './fullscreen';
@@ -62,8 +63,7 @@ export function renderSettingsPanel(inGame: boolean): HTMLElement {
     renderBackupSection(() => {
       app.state = null;
       ui().closeAll();
-      app.game?.scene.getScenes(true).forEach((sc) => sc.scene.stop());
-      app.game?.scene.start('Title');
+      goToTitle();
     }),
     !inGame ? null : h('section', { class: 'card danger' },
       h('h3', null, 'Dados'),
@@ -75,8 +75,7 @@ export function renderSettingsPanel(inGame: boolean): HTMLElement {
             app.saver.clear();
             app.state = null;
             ui().closeAll();
-            app.game?.scene.getScenes(true).forEach((sc) => sc.scene.stop());
-            app.game?.scene.start('Title');
+            goToTitle();
           }
         },
       }, 'Apagar progresso'),

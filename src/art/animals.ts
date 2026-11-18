@@ -2,6 +2,7 @@
  * Sprites de animais (pixel art original). Cada folha tem quadros de mesma largura em linha.
  */
 import { autoOutline, createCanvas, ctx2d, drawTemplate, hashString, rng, shade, type ColorMap } from './pixel';
+import { buildPetSheet, PET_H, PET_W } from './pets';
 
 export interface AnimalSheet {
   key: string;
@@ -283,5 +284,6 @@ export function buildAllAnimals(): AnimalSheet[] {
     buildCow('cow'),
     buildSheep('sheep'),
     buildFlea('flea'),
+    { key: 'pup_pingo', canvas: buildPetSheet({ kind: 'dog', size: 'xs', bodyLen: 7, legLen: 2, ear: 'flop', snout: 1, tail: 'up', coat: 'short', pattern: 'tuxedo', base: '#6b4a3a', light: '#f2efe8' }), frameW: PET_W, frameH: PET_H, frames: 4 },
   ];
 }

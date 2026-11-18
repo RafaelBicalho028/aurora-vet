@@ -25,6 +25,40 @@ import {
 
 export const CRITICAL_CAP = 50;
 
+/**
+ * Tempo clínico estimado (minutos): pergunta = 2; sinal vital = 1; demais itens do exame = 2;
+ * exame complementar = tempo de resposta quando até 60 min (aguarda-se o resultado) ou 15 min de coleta
+ * quando o resultado demora mais (o atendimento segue enquanto isso).
+ */
+export function parseTurnaroundMinutes(s: string): number {
+  const t = s.toLowerCase().trim();
+  if (t.startsWith('imediato')) return 5;
+  const n = parseFloat((t.match(/\d+([.,]\d+)?/) ?? ['0'])[0].replace(',', '.'));
+  if (/dia/.test(t)) return n * 1440;
+  if (/\bh\b|hora/.test(t)) return n * 60;
+  if (/min/.test(t)) return n;
+  return 30;
+}
+
+export function testMinutes(turnaround: string): number {
+  const m = parseTurnaroundMinutes(turnaround);
+  return m <= 60 ? m : 15;
+}
+
+export function clinicalMinutes(c: ClinicalCase, d: PlayerDecisions): number {
+  let total = d.askedQuestions.length * 2;
+  for (const id of d.examined) total += c.physicalExam.items.find((i) => i.id === id)?.group === 'vitais' ? 1 : 2;
+  for (const id of d.requestedTests) { const t = c.tests.items.find((x) => x.id === id); if (t) total += testMinutes(t.turnaround); }
+  return total;
+}
+
+/** Penalidade por atraso em caso urgente: −1 a cada 5 min além da meta (máx. −6), aplicada à conduta. */
+export function delayPenalty(c: ClinicalCase, minutes: number): number {
+  const ct = c.clinicalTime;
+  if (!ct?.urgent || minutes <= ct.budgetMinutes) return 0;
+  return Math.min(6, Math.ceil((minutes - ct.budgetMinutes) / 5));
+}
+
 const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v));
 const round1 = (v: number) => Math.round(v * 10) / 10;
 
@@ -279,6 +313,19 @@ export function scoreCase(c: ClinicalCase, d: PlayerDecisions): ScoreReport {
   const tests = scoreTests(c, d);
   const dx = scoreDiagnosis(c, d);
   const cond = scoreConduct(c, d);
+  const minutes = clinicalMinutes(c, d);
+  const penalty = delayPenalty(c, minutes);
+  if (c.clinicalTime) {
+    const ct = c.clinicalTime;
+    if (penalty > 0) {
+      cond.score = round1(Math.max(0, cond.score - penalty));
+      cond.feedback.unshift({ kind: 'bad', text: `Atraso no atendimento de urgência: ${minutes} min até a conduta (meta: ${ct.budgetMinutes} min). −${penalty} pts.`, explanation: `${ct.delayConsequence ?? ''} Priorize o que muda a conduta imediata; o restante da investigação pode vir após a estabilização.` });
+    } else if (ct.urgent) {
+      cond.feedback.unshift({ kind: 'good', text: `Tempo de atendimento adequado para a urgência: ${minutes} min (meta: ${ct.budgetMinutes} min).` });
+    } else if (minutes > ct.budgetMinutes) {
+      anam.feedback.push({ kind: 'neutral', text: `Atendimento longo: ${minutes} min estimados (referência: ${ct.budgetMinutes} min). Em casos estáveis isso não reduz a nota, mas em emergências pode custar caro.` });
+    }
+  }
   const sections: SectionReport[] = [anam, exam, tests, dx, cond];
 
   // arredonda para baixo: 100 apenas quando não há nenhuma falha
@@ -312,6 +359,9 @@ export function scoreCase(c: ClinicalCase, d: PlayerDecisions): ScoreReport {
     mistakes,
     outcome,
     totalCost,
+    minutes,
+    budgetMinutes: c.clinicalTime?.budgetMinutes ?? null,
+    delayPenalty: penalty,
   };
 }
 

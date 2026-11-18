@@ -200,6 +200,21 @@ export class GameState {
     def.next?.forEach((n) => this.startQuest(n));
   }
 
+  /**
+   * Garante que missões adicionadas em atualizações sejam iniciadas em saves antigos:
+   * para cada missão concluída, inicia as próximas que ainda não começaram.
+   */
+  ensureQuestChain(): void {
+    let changed = true;
+    while (changed) {
+      changed = false;
+      for (const [id, qp] of Object.entries(this.data.quests)) {
+        if (qp.status !== 'completed') continue;
+        for (const n of QUEST_MAP[id]?.next ?? []) if (!this.data.quests[n]) { this.startQuest(n); changed = true; }
+      }
+    }
+  }
+
   /** Objetivos que dependem de estado (nível, contagem de revisões). */
   checkDynamicObjectives(): void {
     const q = this.data.quests['q_proxima_etapa'];

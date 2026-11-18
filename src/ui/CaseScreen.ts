@@ -9,7 +9,7 @@ import { CASES, REFERENCE_MAP, VETIDEX_MAP } from '../content';
 import { NPCS } from '../content/npcs';
 import { buildPortrait } from '../art/characters';
 import { buildAllAnimals } from '../art/animals';
-import { availableQuestions, collectedFindings, scoreCase } from '../systems/cases/scoring';
+import { availableQuestions, clinicalMinutes, collectedFindings, scoreCase } from '../systems/cases/scoring';
 import { emptyDecisions, type ClinicalCase, type ExamItem, type PlayerDecisions, type ScoreReport, type SectionId } from '../systems/cases/caseTypes';
 import { h, clear, frameCanvas } from './dom';
 import { shuffledCase } from '../systems/cases/shuffleCase';
@@ -61,6 +61,8 @@ class CaseSession {
   private steps!: HTMLElement;
   private costEl!: HTMLElement;
   private sideBtn!: HTMLButtonElement;
+  private timeEl!: HTMLElement;
+  private delayWarned = false;
   private report: ScoreReport | null = null;
 
   constructor(private c: ClinicalCase) {}
@@ -72,6 +74,7 @@ class CaseSession {
     this.side = h('aside', { class: 'case-side' });
     this.steps = h('div', { class: 'case-steps' });
     this.costEl = h('div', { class: 'case-cost' });
+    this.timeEl = h('div', { class: 'case-time', role: 'status' });
     const header = h('header', { class: 'case-header' },
       h('div', { class: 'patient' },
         h('img', { src: animalImg(p.sprite), class: 'pixel patient-img', alt: p.name }),
@@ -84,6 +87,7 @@ class CaseSession {
       h('div', { class: 'case-header-right' },
         h('span', { class: 'badge badge-edu', title: c.educationalNotice }, 'Material educacional • validação pendente'),
         h('span', { class: 'badge' }, `Dificuldade ${'★'.repeat(c.difficulty)}${'☆'.repeat(5 - c.difficulty)}`),
+        this.timeEl,
         this.costEl,
         (this.sideBtn = h('button', { class: 'btn small side-toggle', onclick: () => { this.root.classList.toggle('show-side'); this.render(); } }, '🗂 Prontuário')),
         h('button', { class: 'btn small', onclick: () => this.confirmExit() }, 'Sair'),
@@ -94,6 +98,7 @@ class CaseSession {
     this.modal = ui().open({ el: this.root, persistent: true, onAction: (a) => a !== 'menu' ? false : (this.confirmExit(), true) });
     app.audio.play('case');
     this.log.push({ who: 'sup', text: c.intro });
+    if (c.clinicalTime?.urgent) this.log.push({ who: 'sup', text: `⚠ CASO URGENTE: você tem cerca de ${c.clinicalTime.budgetMinutes} minutos clínicos até definir a conduta. Cada pergunta, exame físico e exame complementar consome tempo — priorize o que muda a conduta imediata.` });
     this.render();
   }
 
@@ -133,6 +138,16 @@ class CaseSession {
     });
     const cost = this.d.requestedTests.reduce((a, id) => a + (this.c.tests.items.find((t) => t.id === id)?.cost ?? 0), 0);
     this.costEl.textContent = `Exames: R$ ${cost}`;
+    const minutes = clinicalMinutes(this.c, this.d);
+    const ct = this.c.clinicalTime;
+    this.timeEl.textContent = ct?.urgent ? `⏱ ${minutes}/${ct.budgetMinutes} min` : `⏱ ${minutes} min`;
+    this.timeEl.title = ct?.urgent ? 'Tempo clínico estimado até a conduta. Caso urgente: passar da meta reduz a nota.' : 'Tempo clínico estimado (referência).';
+    this.timeEl.classList.toggle('over', !!ct?.urgent && minutes > ct.budgetMinutes);
+    if (ct?.urgent && minutes > ct.budgetMinutes && !this.delayWarned && this.stage !== 'result') {
+      this.delayWarned = true;
+      this.warnings.push(`O paciente está piorando! Já se passaram ${minutes} min (meta: ${ct.budgetMinutes}). Priorize o que muda a conduta imediata.`);
+      app.audio.sfx('error');
+    }
     this.renderSide();
     clear(this.main);
     switch (this.stage) {
@@ -395,7 +410,7 @@ class CaseSession {
         h('div', null,
           h('h2', null, r.outcome === 'critical' ? 'Decisão crítica identificada' : r.passed ? 'Atendimento aprovado!' : 'Atendimento abaixo da meta'),
           h('p', null, outcomeText),
-          h('p', { class: 'small' }, `+${xp} XP • Meta: ${c.passScore} pontos • Custo dos exames: R$ ${r.totalCost}${r.capped ? ` • Nota limitada a 50 por decisão crítica (nota bruta: ${r.rawTotal})` : ''}`),
+          h('p', { class: 'small' }, `+${xp} XP • Meta: ${c.passScore} pontos • Tempo clínico: ${r.minutes} min${r.budgetMinutes ? ` (${c.clinicalTime?.urgent ? 'meta' : 'referência'}: ${r.budgetMinutes} min)` : ''} • Custo dos exames: R$ ${r.totalCost}${r.capped ? ` • Nota limitada a 50 por decisão crítica (nota bruta: ${r.rawTotal})` : ''}`),
         ),
       ),
       h('div', { class: 'card' },

@@ -58,7 +58,27 @@ export const QUESTS: QuestDef[] = [
       { id: 'o_atender', text: 'Atenda a Mimi (fale com a Dona Marta) — nota ≥ 60' },
       { id: 'o_relatar', text: 'Discuta o caso com a Dra. Helena' },
     ],
-    rewards: { xp: 80, flags: ['etapa1_casos_ok'] },
+    rewards: { xp: 80 },
+    next: ['q_filhote'],
+  },
+  {
+    id: 'q_filhote', title: 'O Filhote Barrigudo', category: 'principal', giver: 'Dra. Helena', stage: 1,
+    summary: 'Pingo, um filhote de 3 meses recém-adotado, está com diarreia e barriga inchada. Investigue causas parasitárias e infecciosas — e pense na família.',
+    objectives: [
+      { id: 'o_atender', text: 'Atenda o Pingo (fale com a Sofia) — nota ≥ 60' },
+      { id: 'o_relatar', text: 'Discuta o caso com a Dra. Helena' },
+    ],
+    rewards: { xp: 80 },
+    next: ['q_emergencia'],
+  },
+  {
+    id: 'q_emergencia', title: 'Emergência Veterinária', category: 'principal', giver: 'Dra. Helena', stage: 1,
+    summary: 'Um gato chega em estado crítico. Reconheça as prioridades de triagem e estabilização, sob supervisão — e lembre-se: o tempo conta.',
+    objectives: [
+      { id: 'o_atender', text: 'Atenda o Nino (fale com o Sr. Paulo) — nota ≥ 60' },
+      { id: 'o_relatar', text: 'Discuta o caso com a Dra. Helena' },
+    ],
+    rewards: { xp: 120, flags: ['etapa1_casos_ok'] },
     next: ['q_proxima_etapa'],
   },
   {

@@ -17,10 +17,11 @@ Os casos ficam em **`src/content/cases/*.json`**, separados do código, para que
 9. **Achados** (`findings`): rótulo curto e `supports` = hipóteses que o achado sustenta.
 10. **Diagnóstico**: `hypotheses` com `plausibility` (`key` | `plausible` | `unlikely`), `correctId`, `expectedDifferentials`, `keyEvidence` (achados que justificam o diagnóstico — precisam ser obtíveis em alguma etapa), limites de diferenciais e `explanation`.
 11. **Conduta**: opções com `category` (`correct` | `acceptable` | `incorrect` | `critical`). Condutas críticas exigem `consequence` (descrição clínica realista, sem punição gráfica). Fármacos podem ter `pharmacology` (classe, mecanismo, indicações, contraindicações, princípios) — **nunca inclua doses**.
-12. **Desfechos** (`outcome.success/partial/critical`), **VetiDex** liberado (`vetidexUnlocks`) e **revisão** (`review.topics` por etapa e `review.questions` com `triggeredBy` = ids de decisões cujo erro agenda a pergunta).
-13. **Registre** o caso em `src/content/index.ts` (import + entrada em `CASES`).
-14. **Crie a missão** em `src/content/quests.ts` (com objetivo `o_atender`, que é concluído automaticamente quando o caso é aprovado) e o diálogo do tutor em `src/content/dialogues.ts` com o efeito `{ "type": "startCase", "caseId": "<id>" }`. Posicione o NPC/animal em `src/content/npcs.ts`.
-15. **Rode os testes**:
+12. **Tempo clínico** (`clinicalTime`): `budgetMinutes` (meta), `urgent` (true = passar da meta reduz a nota da conduta em até 6 pontos) e `delayConsequence` (obrigatório em urgências). Estimativa: pergunta = 2 min; sinal vital = 1; demais itens do exame = 2; exame complementar = tempo de resposta quando até 60 min, ou 15 min de coleta quando mais demorado. Os testes exigem que a solução ideal caiba na meta.
+13. **Desfechos** (`outcome.success/partial/critical`), **VetiDex** liberado (`vetidexUnlocks`) e **revisão** (`review.topics` por etapa e `review.questions` com `triggeredBy` = ids de decisões cujo erro agenda a pergunta).
+14. **Registre** o caso em `src/content/index.ts` (import + entrada em `CASES`).
+15. **Crie a missão** em `src/content/quests.ts` (com objetivo `o_atender`, que é concluído automaticamente quando o caso é aprovado) e o diálogo do tutor em `src/content/dialogues.ts` com o efeito `{ "type": "startCase", "caseId": "<id>" }`. Posicione o NPC/animal em `src/content/npcs.ts`.
+16. **Rode os testes**:
 
 ```bash
 npm run validate:content
@@ -46,6 +47,7 @@ O teste valida o esquema e também **gera automaticamente a solução ideal** a 
 | Exames (20) | 20 proporcionais aos indicados; −3 por desnecessário (máx. −9); −3 por pré-requisito de segurança violado |
 | Diagnóstico (20) | 8 diagnóstico correto (2 se outro diferencial-chave); 6 diferenciais esperados (−2 por improvável); 6 evidências-chave (−1 por evidência que não sustenta) |
 | Conduta (20) | 20 proporcionais às corretas; −5 por incorreta; crítica zera a etapa |
+| Tempo (urgências) | −1 na conduta a cada 5 min além da meta (máx. −6) |
 | Global | Decisão crítica limita a nota a 50; total arredondado para baixo (100 só sem falhas) |
 
 ## Banco de perguntas (aulas, quizzes e revisão)

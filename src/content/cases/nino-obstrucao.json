@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "id": "caso_nino_obstrucao",
+  "title": "Emergência — Nino, o gato que não consegue urinar",
+  "missionId": "q_emergencia",
+  "difficulty": 3,
+  "minStage": 1,
+  "baseXp": 320,
+  "passScore": 60,
+  "clinicalTime": {
+    "budgetMinutes": 60,
+    "urgent": true,
+    "delayConsequence": "Na obstrução uretral, a hipercalemia pode causar arritmias graves e parada cardíaca; atrasar a estabilização aumenta o risco de morte."
+  },
+  "disciplines": [
+    { "discipline": "clinica", "skill": "semiologia", "section": "anamnesis" },
+    { "discipline": "clinica", "skill": "semiologia", "section": "physicalExam" },
+    { "discipline": "clinica", "skill": "exames", "section": "tests" },
+    { "discipline": "clinica", "skill": "diferencial", "section": "diagnosis" },
+    { "discipline": "clinica", "skill": "raciocinio", "section": "all" },
+    { "discipline": "clinica", "skill": "condutas", "section": "conduct" },
+    { "discipline": "fisiologia", "skill": "renal", "section": "all" },
+    { "discipline": "fisiologia", "skill": "cardiaca", "section": "tests" },
+    { "discipline": "cirurgia", "skill": "pre_operatorio", "section": "conduct" },
+    { "discipline": "cirurgia", "skill": "monitorizacao", "section": "conduct" }
+  ],
+  "educationalNotice": "Material educacional simplificado para fins didáticos. O tempo clínico é uma estimativa do jogo. Intervalos de referência são ilustrativos. Não substitui a avaliação de um(a) médico(a)-veterinário(a) nem constitui protocolo de prescrição. Pendente de validação técnica.",
+  "validation": { "status": "pendente", "reviewer": null, "date": null, "notes": "Rascunho da versão 0.3. Revisar com docente de Emergência e Clínica de Felinos: valores laboratoriais, sequência de estabilização e condutas." },
+  "references": [
+    { "refId": "lee2003", "supports": "Hipercalemia, acidose metabólica, azotemia e hipocalcemia ionizada em gatos machos com obstrução uretral." },
+    { "refId": "cooper2015", "supports": "Estabilização antes da desobstrução, controvérsias como a cistocentese descompressiva e manejo pós-obstrutivo." },
+    { "refId": "nelson2019", "supports": "Doença do trato urinário inferior dos felinos, cistite idiopática e diagnóstico diferencial." },
+    { "refId": "ettinger2017", "supports": "Tratamento emergencial da hipercalemia e alterações eletrocardiográficas associadas." },
+    { "refId": "merck", "supports": "Obstrução uretral felina, analgesia e prevenção de recidivas." }
+  ],
+  "patient": {
+    "name": "Nino",
+    "species": "felino",
+    "speciesLabel": "Gato (Felis catus)",
+    "breed": "Sem raça definida (SRD)",
+    "sex": "Macho castrado",
+    "age": "4 anos",
+    "weightKg": 5.4,
+    "sprite": "cat_cinza",
+    "tutorName": "Sr. Paulo",
+    "tutorNpc": "paulo",
+    "presentingComplaint": "Vai à caixa de areia toda hora, faz força e não sai quase nada de xixi."
+  },
+  "intro": "Sr. Paulo chegou correndo com o Nino, um gato macho de 4 anos que faz força na caixa de areia e não consegue urinar. Ele está prostrado. Em gatos machos, esse quadro pode ser uma emergência com risco de vida. Seja objetivo(a): o tempo conta.",
+  "supervisor": {
+    "name": "Dra. Helena Duarte",
+    "npc": "helena",
+    "tips": {
+      "anamnesis": "Pergunte o essencial e rápido: desde quando, se sai urina, se as fezes estão normais e se já aconteceu antes. O resto pode esperar a estabilização.",
+      "physicalExam": "Sinais vitais, perfusão, hidratação e — principalmente — a bexiga. Uma bexiga túrgida e dolorosa muda tudo.",
+      "tests": "Em gato obstruído, o exame mais urgente responde: como está o potássio e como está o coração? Deixe exames demorados para depois.",
+      "diagnosis": "Esforço na caixa pode ser urina ou fezes. A palpação diferencia. E pense no que a obstrução faz com rins e eletrólitos.",
+      "conduct": "Ordem importa: estabilizar, tratar a hipercalemia e a dor, e só então desobstruir. Depois, monitorar a diurese e prevenir recidivas."
+    }
+  },
+  "anamnesis": {
+    "questions": [
+      { "id": "q_queixa", "category": "Queixa principal", "text": "O que está acontecendo com o Nino? Sai urina?", "answer": "Desde ontem à tarde ele entra e sai da caixa de areia, faz força, mia e sai só umas gotinhas. Hoje acho que não saiu nada.", "relevance": "essential", "findingId": "f_estranguria", "explanation": "Estrangúria com pouca ou nenhuma urina em gato macho deve ser tratada como obstrução uretral até prova em contrário." },
+      { "id": "q_inicio", "category": "Início e evolução", "text": "Quando começou? Ele vomitou ou ficou mais parado?", "answer": "Começou ontem. Hoje vomitou duas vezes e está muito parado, escondido.", "relevance": "essential", "findingId": "f_vomito_letargia", "explanation": "Vômito e prostração após horas de obstrução sugerem azotemia e distúrbios eletrolíticos." },
+      { "id": "q_fezes", "category": "Início e evolução", "text": "Ele está fazendo cocô normalmente?", "answer": "Fez cocô normal ontem de manhã, na caixa.", "relevance": "essential", "findingId": "f_fezes_normais", "explanation": "Tutores frequentemente confundem esforço para urinar com constipação. Perguntar sobre as fezes ajuda a diferenciar." },
+      { "id": "q_episodios", "category": "Início e evolução", "text": "Ele já teve algo parecido antes?", "answer": "Há uns meses ele fez xixi com sangue fora da caixa, mas passou sozinho.", "relevance": "complementary", "findingId": "f_historico", "explanation": "Episódios anteriores de hematúria e periúria sugerem doença do trato urinário inferior recorrente, como a cistite idiopática." },
+      { "id": "q_alimentacao", "category": "Histórico alimentar", "text": "O que ele come e quanta água bebe?", "answer": "Só ração seca. Bebe pouca água, num potinho ao lado da comida.", "relevance": "complementary", "findingId": "f_racao_seca", "explanation": "Dieta exclusivamente seca e baixa ingestão hídrica estão associadas à doença do trato urinário inferior dos felinos." },
+      { "id": "q_ambiente", "category": "Ambiente", "text": "Houve alguma mudança ou fonte de estresse em casa?", "answer": "Um gato do vizinho começou a aparecer na janela, e o Nino anda estressado.", "relevance": "complementary", "findingId": "f_estresse", "explanation": "O estresse é um fator importante na cistite idiopática felina, que pode levar à obstrução." },
+      { "id": "q_sofa", "category": "Outros", "text": "Ele gosta de dormir no sofá?", "answer": "Gosta... mas doutor(a), ele está tão mal!", "relevance": "irrelevant", "explanation": "Em emergência, perguntas sem relação com o quadro atrasam a estabilização." },
+      { "id": "q_brinquedo", "category": "Outros", "text": "Qual é o brinquedo preferido dele?", "answer": "A bolinha com guizo... Por favor, ajuda ele!", "relevance": "irrelevant", "explanation": "Pergunta irrelevante neste momento; cada minuto conta." }
+    ]
+  },
+  "physicalExam": {
+    "items": [
+      { "id": "e_fc", "label": "Frequência cardíaca", "group": "vitais", "result": "120 bpm", "reference": { "min": 140, "max": 220, "unit": "bpm", "note": "Gato adulto; o estresse costuma elevar a FC." }, "status": "altered", "relevance": "essential", "findingId": "f_bradicardia", "explanation": "Bradicardia em um gato com dor e estresse é sinal de alerta: pode indicar hipercalemia grave." },
+      { "id": "e_fr", "label": "Frequência respiratória", "group": "vitais", "result": "44 mpm", "reference": { "min": 20, "max": 30, "unit": "mpm" }, "status": "altered", "relevance": "essential", "explanation": "Taquipneia pode refletir dor e compensação respiratória da acidose metabólica." },
+      { "id": "e_temp", "label": "Temperatura retal", "group": "vitais", "result": "37,2 °C", "reference": { "min": 38.1, "max": 39.2, "unit": "°C" }, "status": "altered", "relevance": "essential", "findingId": "f_hipotermia", "explanation": "Hipotermia em gato obstruído está associada a maior gravidade." },
+      { "id": "e_mucosas", "label": "Mucosas", "group": "geral", "result": "Pálidas e levemente secas", "reference": "Róseas e úmidas", "status": "altered", "relevance": "essential", "explanation": "Palidez sugere hipoperfusão." },
+      { "id": "e_tpc", "label": "Tempo de preenchimento capilar", "group": "geral", "result": "2,5 s", "reference": { "min": 0, "max": 2, "unit": "s" }, "status": "altered", "relevance": "essential", "explanation": "TPC prolongado indica perfusão periférica comprometida." },
+      { "id": "e_hidratacao", "label": "Hidratação", "group": "geral", "result": "Turgor diminuído, mucosas secas — desidratação estimada em ~7%", "reference": "Turgor preservado", "status": "altered", "relevance": "essential", "explanation": "Vômitos e ausência de ingestão contribuem para a desidratação." },
+      { "id": "e_bexiga", "label": "Palpação vesical", "group": "sistemas", "result": "Bexiga muito distendida, firme, dolorosa e NÃO compressível", "reference": "Macia e compressível", "status": "altered", "relevance": "essential", "findingId": "f_bexiga_turgida", "explanation": "Bexiga túrgida e não compressível confirma clinicamente a obstrução. Palpe com delicadeza: a parede pode estar friável." },
+      { "id": "e_penis", "label": "Inspeção do pênis", "group": "especifico", "result": "Pênis congesto e arroxeado, com material arenoso na ponta; o gato lambe insistentemente a região", "reference": "Rosado, sem secreções", "status": "altered", "relevance": "essential", "findingId": "f_penis", "explanation": "Tampões uretrais (matriz proteica e cristais) são uma causa comum de obstrução em gatos machos." },
+      { "id": "e_colon", "label": "Palpação do cólon", "group": "sistemas", "result": "Cólon com pouca quantidade de fezes macias, sem fecaloma", "reference": "Sem fecaloma", "status": "normal", "relevance": "complementary", "findingId": "f_colon_normal", "explanation": "A ausência de fecaloma ajuda a afastar constipação como causa do esforço." },
+      { "id": "e_neuro", "label": "Avaliação neurológica básica", "group": "sistemas", "result": "Deprimido, mas responsivo a estímulos", "reference": "Alerta e responsivo", "status": "altered", "relevance": "complementary", "explanation": "A depressão do estado mental acompanha a azotemia e os distúrbios eletrolíticos." }
+    ]
+  },
+  "tests": {
+    "budgetHint": 260,
+    "items": [
+      { "id": "t_eletrolitos", "name": "Hemogasometria e eletrólitos (beira do leito)", "cost": 120, "turnaround": "Imediato", "category": "indicated", "result": "Hipercalemia acentuada com acidose metabólica e hipocalcemia ionizada.", "table": [
+        { "param": "Potássio (K⁺)", "value": "7,9 mEq/L", "ref": "3,5–5,5 mEq/L", "flag": "H" },
+        { "param": "pH", "value": "7,18", "ref": "7,31–7,46", "flag": "L" },
+        { "param": "Bicarbonato", "value": "13 mEq/L", "ref": "17–24 mEq/L", "flag": "L" },
+        { "param": "Sódio", "value": "150 mEq/L", "ref": "147–156 mEq/L", "flag": "" },
+        { "param": "Cálcio ionizado", "value": "1,0 mmol/L", "ref": "1,1–1,4 mmol/L", "flag": "L" }
+      ], "findingId": "f_hipercalemia", "justification": "Exame mais urgente: a hipercalemia é a principal ameaça imediata à vida e orienta a estabilização." },
+      { "id": "t_ecg", "name": "Eletrocardiograma", "cost": 80, "turnaround": "10 min", "category": "indicated", "result": "Bradicardia, ondas T apiculadas, onda P achatada e complexo QRS alargado — compatível com hipercalemia.", "findingId": "f_ecg", "justification": "Mostra o impacto cardíaco da hipercalemia e orienta a urgência do tratamento e a monitorização." },
+      { "id": "t_renal", "name": "Ureia e creatinina (beira do leito)", "cost": 60, "turnaround": "15 min", "category": "indicated", "result": "Azotemia acentuada, provavelmente pós-renal.", "table": [
+        { "param": "Creatinina", "value": "6,8 mg/dL", "ref": "0,8–2,0 mg/dL", "flag": "H" },
+        { "param": "Ureia", "value": "220 mg/dL", "ref": "30–65 mg/dL", "flag": "H" }
+      ], "findingId": "f_azotemia", "justification": "Avalia a repercussão renal da obstrução e serve de base para acompanhar a resposta ao tratamento." },
+      { "id": "t_pocus", "name": "Ultrassom rápido do abdome (POCUS)", "cost": 100, "turnaround": "15 min", "category": "acceptable", "result": "Bexiga muito distendida com sedimento; sem efusão abdominal; sem cálculos vesicais evidentes.", "justification": "Útil e rápido, mas a palpação já confirmou a distensão; consome tempo que poderia ir para a estabilização." },
+      { "id": "t_radiografia", "name": "Radiografia abdominal", "cost": 150, "turnaround": "30 min", "category": "acceptable", "result": "Bexiga distendida; sem urólitos radiopacos visíveis na uretra.", "justification": "Importante para pesquisar urólitos radiopacos, de preferência após a estabilização." },
+      { "id": "t_urinalise", "name": "Urinálise (após a desobstrução)", "cost": 50, "turnaround": "1 h", "category": "acceptable", "result": "Hematúria, proteinúria e cristais de estruvita; densidade 1,035.", "justification": "Ajuda a investigar a causa, mas não muda a conduta emergencial." },
+      { "id": "t_cultura", "name": "Urocultura", "cost": 120, "turnaround": "3 dias", "category": "acceptable", "result": "Sem crescimento bacteriano.", "justification": "Infecção urinária é incomum em gatos jovens obstruídos; a cultura pode ser indicada conforme o caso, sem atrasar a estabilização." },
+      { "id": "t_hemograma", "name": "Hemograma", "cost": 60, "turnaround": "4 h", "category": "acceptable", "result": "Leucograma de estresse; hematócrito discretamente aumentado (desidratação).", "justification": "Avaliação geral aceitável, sem impacto na conduta imediata." },
+      { "id": "t_t4", "name": "T4 total", "cost": 120, "turnaround": "24 h", "category": "unnecessary", "result": "Dentro do intervalo de referência.", "justification": "Hipertireoidismo não explica o quadro e é incomum aos 4 anos." },
+      { "id": "t_tc", "name": "Tomografia computadorizada", "cost": 1200, "turnaround": "1 dia", "category": "unnecessary", "result": "Bexiga distendida.", "justification": "Exige anestesia em paciente instável e não muda a conduta." },
+      { "id": "t_copro", "name": "Exame coproparasitológico", "cost": 30, "turnaround": "24 h", "category": "unnecessary", "result": "Negativo.", "justification": "Não tem relação com a emergência urinária." }
+    ]
+  },
+  "findings": [
+    { "id": "f_estranguria", "label": "Esforço para urinar com pouca ou nenhuma urina (estrangúria/anúria)", "supports": ["h_obstrucao", "h_cistite", "h_itu"] },
+    { "id": "f_vomito_letargia", "label": "Vômitos e prostração após horas de sinais urinários", "supports": ["h_obstrucao", "h_lra"] },
+    { "id": "f_fezes_normais", "label": "Fezes normais no dia anterior", "supports": ["h_obstrucao", "h_cistite", "h_itu"] },
+    { "id": "f_historico", "label": "Episódio anterior de hematúria e periúria", "supports": ["h_obstrucao", "h_cistite"] },
+    { "id": "f_racao_seca", "label": "Dieta exclusivamente seca e pouca ingestão de água", "supports": ["h_obstrucao", "h_cistite", "h_urolitiase"] },
+    { "id": "f_estresse", "label": "Estresse ambiental recente", "supports": ["h_obstrucao", "h_cistite"] },
+    { "id": "f_bradicardia", "label": "Bradicardia (120 bpm) em gato com dor", "supports": ["h_obstrucao", "h_lra"] },
+    { "id": "f_hipotermia", "label": "Hipotermia (37,2 °C)", "supports": ["h_obstrucao", "h_lra"] },
+    { "id": "f_bexiga_turgida", "label": "Bexiga muito distendida, dolorosa e não compressível", "supports": ["h_obstrucao"] },
+    { "id": "f_penis", "label": "Pênis congesto com material arenoso na ponta", "supports": ["h_obstrucao"] },
+    { "id": "f_colon_normal", "label": "Cólon sem fecaloma", "supports": ["h_obstrucao", "h_cistite", "h_itu"] },
+    { "id": "f_hipercalemia", "label": "Hipercalemia (7,9 mEq/L) com acidose metabólica", "supports": ["h_obstrucao", "h_lra"] },
+    { "id": "f_ecg", "label": "ECG com bradicardia e ondas T apiculadas", "supports": ["h_obstrucao", "h_lra"] },
+    { "id": "f_azotemia", "label": "Azotemia acentuada (creatinina 6,8 mg/dL)", "supports": ["h_obstrucao", "h_lra"] }
+  ],
+  "diagnosis": {
+    "correctId": "h_obstrucao",
+    "expectedDifferentials": ["h_obstrucao", "h_cistite", "h_constipacao"],
+    "keyEvidence": ["f_estranguria", "f_bexiga_turgida", "f_hipercalemia", "f_ecg", "f_azotemia"],
+    "minDifferentials": 3,
+    "maxDifferentials": 6,
+    "explanation": "Obstrução uretral com hipercalemia, acidose metabólica e azotemia pós-renal. A estrangúria com bexiga túrgida e não compressível confirma a obstrução; o potássio elevado e as alterações no ECG mostram o risco imediato à vida. A causa de base (tampão uretral associado à cistite idiopática, urólitos ou outras) é investigada após a estabilização."
+    ,
+    "hypotheses": [
+      { "id": "h_obstrucao", "name": "Obstrução uretral (com hipercalemia e azotemia pós-renal)", "plausibility": "key", "vetidexId": "doenca_obstrucao_uretral", "explanation": "Emergência comum em gatos machos, frequentemente por tampões uretrais ou urólitos." },
+      { "id": "h_cistite", "name": "Cistite idiopática felina não obstrutiva", "plausibility": "key", "vetidexId": "doenca_cistite_idiopatica", "explanation": "Causa mais comum de sinais urinários em gatos jovens; pode evoluir para obstrução. Aqui, a bexiga túrgida e não compressível indica obstrução." },
+      { "id": "h_constipacao", "name": "Constipação / obstipação", "plausibility": "key", "explanation": "Esforço na caixa de areia pode ser confundido com constipação; fezes normais e cólon sem fecaloma afastam essa hipótese." },
+      { "id": "h_itu", "name": "Infecção do trato urinário bacteriana", "plausibility": "plausible", "explanation": "Incomum em gatos jovens; mais frequente em idosos ou com doenças concomitantes." },
+      { "id": "h_urolitiase", "name": "Urolitíase", "plausibility": "plausible", "explanation": "Urólitos podem causar a obstrução; investigar com imagem após a estabilização." },
+      { "id": "h_lra", "name": "Lesão renal aguda primária", "plausibility": "plausible", "explanation": "Causa azotemia e hipercalemia, mas não bexiga distendida e dolorosa." },
+      { "id": "h_diabetes", "name": "Diabetes mellitus", "plausibility": "unlikely", "explanation": "Cursa com poliúria e polidipsia, não com incapacidade de urinar." },
+      { "id": "h_hipertireoidismo", "name": "Hipertireoidismo", "plausibility": "unlikely", "explanation": "Incomum aos 4 anos e não explica o quadro urinário." }
+    ]
+  },
+  "conduct": {
+    "explanation": "Estabilizar antes de desobstruir: acesso venoso, fluidoterapia, tratamento da hipercalemia (proteção cardíaca com gluconato de cálcio e medidas que deslocam o potássio para dentro das células), analgesia e monitorização por ECG. Em seguida, a equipe realiza a desobstrução sob sedação ou anestesia, mantém sonda uretral e monitora o débito urinário e os eletrólitos (risco de diurese pós-obstrutiva). Depois, prevenção de recidivas: dieta úmida, mais água e manejo do estresse.",
+    "options": [
+      { "id": "c_estabilizar", "text": "Estabilizar primeiro: acesso venoso, fluidoterapia e monitorização contínua por ECG, sob supervisão.", "type": "suporte", "category": "correct", "explanation": "A estabilização reduz o risco de complicações durante a desobstrução." },
+      { "id": "c_hipercalemia", "text": "Tratar a hipercalemia conforme o protocolo da equipe: gluconato de cálcio para proteger o coração e medidas que deslocam o potássio para dentro das células (ex.: insulina com glicose).", "type": "tratamento", "category": "correct", "explanation": "A hipercalemia é a principal causa de morte imediata nesses pacientes.", "pharmacology": { "drugClass": "Gluconato de cálcio; insulina regular com glicose", "mechanism": "O cálcio restaura o limiar de excitabilidade do miocárdio, antagonizando os efeitos cardíacos do potássio (não reduz o potássio sérico). A insulina desloca o potássio para o meio intracelular; a glicose previne hipoglicemia.", "indications": "Hipercalemia com alterações no ECG ou valores perigosos.", "contraindications": "Administrar o cálcio lentamente, com ECG; não misturar com bicarbonato na mesma via (precipitação). Monitorar glicemia após insulina.", "principles": "O efeito do cálcio é rápido e transitório: associar medidas que reduzem o potássio e corrigir a causa (desobstrução)." } },
+      { "id": "c_analgesia", "text": "Analgesia adequada (ex.: opioide), prescrita pela equipe.", "type": "tratamento", "category": "correct", "explanation": "A obstrução é muito dolorosa; a dor também agrava o estresse e a instabilidade.", "pharmacology": { "drugClass": "Analgésicos opioides", "mechanism": "Agonistas de receptores opioides (principalmente μ) no sistema nervoso central e periférico.", "indications": "Dor moderada a intensa.", "contraindications": "Cautela com depressão respiratória e em pacientes instáveis; ajustar escolha e dose ao paciente.", "principles": "Analgesia multimodal e reavaliação da dor com escalas validadas." } },
+      { "id": "c_desobstruir", "text": "Desobstrução uretral e sondagem pela equipe, sob sedação ou anestesia, após a estabilização.", "type": "procedimento", "category": "correct", "explanation": "Remove a causa imediata; deve ser feita após estabilizar e tratar a hipercalemia." },
+      { "id": "c_diurese", "text": "Internar e monitorar débito urinário, hidratação e eletrólitos após a desobstrução.", "type": "internacao", "category": "correct", "explanation": "A diurese pós-obstrutiva pode causar desidratação e hipocalemia; a reobstrução também é possível." },
+      { "id": "c_prevencao", "text": "Orientar prevenção de recidivas: dieta úmida, mais pontos de água e manejo do estresse (enriquecimento ambiental).", "type": "prevencao", "category": "correct", "explanation": "Aumentar a ingestão de água e reduzir o estresse diminuem as recidivas da doença do trato urinário inferior." },
+      { "id": "c_cistocentese", "text": "Discutir com a equipe uma cistocentese descompressiva antes da desobstrução.", "type": "procedimento", "category": "acceptable", "explanation": "Conduta debatida na literatura: pode aliviar a pressão e coletar urina, mas tem riscos; a decisão é da equipe." },
+      { "id": "c_casa", "text": "Dar alta com antiespasmódico e observar em casa.", "type": "observacao", "category": "critical", "explanation": "Subestima uma emergência com risco de vida.", "consequence": "Sem desobstrução, a hipercalemia e a azotemia progridem; o gato pode desenvolver arritmia fatal em poucas horas." },
+      { "id": "c_anestesia_direto", "text": "Anestesiar imediatamente para desobstruir, sem antes avaliar e tratar a hipercalemia.", "type": "procedimento", "category": "critical", "explanation": "Sedação ou anestesia em paciente com hipercalemia não tratada é muito arriscada.", "consequence": "A hipercalemia não tratada aumenta muito o risco de arritmias e parada cardíaca durante o procedimento." },
+      { "id": "c_laxante", "text": "Tratar como constipação, com laxante ou enema.", "type": "tratamento", "category": "incorrect", "explanation": "O esforço é urinário: fezes normais, cólon sem fecaloma e bexiga túrgida." },
+      { "id": "c_espremer", "text": "Comprimir a bexiga com as mãos para forçar a saída da urina.", "type": "procedimento", "category": "incorrect", "explanation": "Em bexiga obstruída e friável, a compressão pode lesionar ou romper a parede vesical." },
+      { "id": "c_antibiotico", "text": "Iniciar antibiótico de rotina.", "type": "tratamento", "category": "incorrect", "explanation": "A maioria dos casos em gatos jovens não é infecciosa; antimicrobianos só com indicação." },
+      { "id": "c_restringir_agua", "text": "Restringir a água para ele não fazer força.", "type": "suporte", "category": "incorrect", "explanation": "O paciente está desidratado; a prevenção de recidivas inclusive busca aumentar a ingestão de água." }
+    ]
+  },
+  "outcome": {
+    "success": "Estabilizado, com o potássio controlado e a dor tratada, o Nino é desobstruído pela equipe e passa dois dias internado com sonda. Ele volta para casa com dieta úmida, fontes de água e um plano de enriquecimento ambiental. Sr. Paulo aprendeu que gato que não consegue urinar é emergência.",
+    "partial": "O Nino sobreviveu graças à equipe, mas houve atrasos ou falhas na investigação e na conduta. Revise a sequência de prioridades no relatório.",
+    "critical": "Uma decisão colocou o Nino em risco imediato. A Dra. Helena interveio a tempo, mas explica que, na vida real, erros na ordem da estabilização podem ser fatais."
+  },
+  "vetidexUnlocks": ["especie_gato", "doenca_obstrucao_uretral", "doenca_cistite_idiopatica", "manif_hipercalemia", "exame_ecg", "farm_hipercalemia"],
+  "review": {
+    "topics": [
+      { "id": "rt_anam_urg", "title": "Anamnese objetiva na emergência urinária", "section": "anamnesis", "vetidexId": "doenca_obstrucao_uretral" },
+      { "id": "rt_bexiga", "title": "Exame físico: bexiga, perfusão e sinais de hipercalemia", "section": "physicalExam", "vetidexId": "manif_hipercalemia" },
+      { "id": "rt_exames_urg", "title": "Exames prioritários: eletrólitos e ECG", "section": "tests", "vetidexId": "exame_ecg" },
+      { "id": "rt_dif_urin", "title": "Diferenciais do gato com esforço na caixa de areia", "section": "diagnosis", "vetidexId": "doenca_cistite_idiopatica" },
+      { "id": "rt_estabilizar", "title": "Ordem da estabilização e manejo da hipercalemia", "section": "conduct", "vetidexId": "farm_hipercalemia" }
+    ],
+    "questions": [
+      { "id": "rq_ob_emergencia", "topic": "Emergência", "prompt": "Gato macho que faz força na caixa e não sai urina deve ser considerado:", "options": ["Emergência até prova em contrário", "Caso para observar alguns dias em casa", "Provável constipação simples", "Comportamento normal de marcação"], "correctIndex": 0, "explanation": "A obstrução uretral pode levar à morte em pouco tempo por hipercalemia e azotemia.", "triggeredBy": ["q_queixa", "h_obstrucao", "c_casa"] },
+      { "id": "rq_ob_k", "topic": "Fisiologia", "prompt": "Qual distúrbio eletrolítico é a principal ameaça imediata à vida na obstrução uretral?", "options": ["Hipercalemia", "Hiponatremia", "Hipercalcemia", "Hipocloremia"], "correctIndex": 0, "explanation": "A incapacidade de excretar potássio leva à hipercalemia, com efeitos cardíacos graves.", "triggeredBy": ["t_eletrolitos", "f_hipercalemia"] },
+      { "id": "rq_ob_ecg", "topic": "Cardiologia", "prompt": "Quais alterações de ECG são típicas da hipercalemia?", "options": ["Bradicardia, ondas T apiculadas, onda P achatada e QRS alargado", "Taquicardia sinusal com ondas T invertidas", "Prolongamento isolado do QT", "Nenhuma alteração é esperada"], "correctIndex": 0, "explanation": "Em casos graves, pode evoluir para ritmos de parada.", "triggeredBy": ["t_ecg", "f_ecg"] },
+      { "id": "rq_ob_bradi", "topic": "Semiologia", "prompt": "Um gato com dor intensa e estressado apresenta FC de 120 bpm. O que isso sugere?", "options": ["Alerta para hipercalemia", "Que o gato está calmo", "Hipertireoidismo", "Febre"], "correctIndex": 0, "explanation": "Gatos estressados costumam ter FC alta; bradicardia nesse contexto é um sinal de gravidade.", "triggeredBy": ["e_fc", "f_bradicardia"] },
+      { "id": "rq_ob_calcio", "topic": "Farmacologia", "prompt": "Qual é o papel do gluconato de cálcio na hipercalemia?", "options": ["Proteger o coração, sem reduzir o potássio sérico", "Reduzir rapidamente o potássio sérico", "Aumentar a diurese", "Tratar a dor"], "correctIndex": 0, "explanation": "O efeito é rápido e transitório; é preciso associar medidas que reduzem o potássio e desobstruir.", "triggeredBy": ["c_hipercalemia"] },
+      { "id": "rq_ob_ordem", "topic": "Emergência", "prompt": "Qual é a ordem mais segura no gato obstruído com hipercalemia?", "options": ["Estabilizar e tratar a hipercalemia, depois desobstruir sob sedação/anestesia", "Anestesiar e desobstruir imediatamente, depois avaliar o potássio", "Aguardar a urocultura antes de qualquer conduta", "Dar alta e reavaliar no dia seguinte"], "correctIndex": 0, "explanation": "Sedar ou anestesiar com hipercalemia não tratada aumenta o risco de arritmias fatais.", "triggeredBy": ["c_estabilizar", "c_anestesia_direto", "c_desobstruir"] },
+      { "id": "rq_ob_constip", "topic": "Diagnóstico diferencial", "prompt": "Como diferenciar esforço para urinar de constipação no exame clínico?", "options": ["Palpando a bexiga e o cólon e perguntando sobre as fezes", "Apenas pela idade do gato", "Pela cor da pelagem", "Medindo a temperatura"], "correctIndex": 0, "explanation": "Bexiga túrgida com cólon sem fecaloma aponta para causa urinária.", "triggeredBy": ["q_fezes", "e_colon", "h_constipacao", "c_laxante"] },
+      { "id": "rq_ob_espremer", "topic": "Segurança", "prompt": "Por que não se deve comprimir com força a bexiga de um gato obstruído?", "options": ["Risco de lesão ou ruptura da parede vesical", "Porque não adianta, mas é seguro", "Porque causa constipação", "Porque aumenta o potássio"], "correctIndex": 0, "explanation": "A parede vesical distendida e inflamada pode estar friável.", "triggeredBy": ["c_espremer", "e_bexiga"] },
+      { "id": "rq_ob_pos", "topic": "Fisiologia renal", "prompt": "Após a desobstrução, por que monitorar o débito urinário?", "options": ["Pelo risco de diurese pós-obstrutiva, desidratação e hipocalemia", "Porque o gato nunca mais urina", "Apenas para fins estatísticos", "Porque o potássio continuará sempre alto"], "correctIndex": 0, "explanation": "A recuperação renal pode causar grande perda de água e eletrólitos.", "triggeredBy": ["c_diurese"] },
+      { "id": "rq_ob_cif", "topic": "Clínica de felinos", "prompt": "Qual é a causa mais comum de sinais do trato urinário inferior em gatos jovens?", "options": ["Cistite idiopática felina", "Infecção bacteriana", "Neoplasia de bexiga", "Hipertireoidismo"], "correctIndex": 0, "explanation": "A cistite idiopática está relacionada a estresse e fatores ambientais.", "triggeredBy": ["h_cistite", "q_episodios"] },
+      { "id": "rq_ob_prev", "topic": "Prevenção", "prompt": "Quais medidas ajudam a prevenir recidivas da doença do trato urinário inferior em gatos?", "options": ["Dieta úmida, mais água disponível e redução do estresse", "Restringir a água", "Dieta exclusivamente seca", "Diminuir o número de caixas de areia"], "correctIndex": 0, "explanation": "O manejo ambiental multimodal é parte central da prevenção.", "triggeredBy": ["c_prevencao", "c_restringir_agua", "q_alimentacao", "q_ambiente"] },
+      { "id": "rq_ob_atb", "topic": "Uso racional", "prompt": "Em gato jovem obstruído, antimicrobianos de rotina:", "options": ["Não são indicados sem evidência de infecção", "São sempre obrigatórios", "Substituem a desobstrução", "Previnem a hipercalemia"], "correctIndex": 0, "explanation": "A maioria dos casos é estéril; o uso racional previne resistência.", "triggeredBy": ["c_antibiotico", "t_cultura"] },
+      { "id": "rq_ob_tempo", "topic": "Triagem", "prompt": "Na emergência, quais exames devem vir primeiro?", "options": ["Os que mudam a conduta imediata, como eletrólitos e ECG", "Os mais caros", "Todos os exames disponíveis, antes de qualquer conduta", "Os de resultado mais demorado"], "correctIndex": 0, "explanation": "Exames demorados ou que não mudam a conduta imediata podem esperar a estabilização.", "triggeredBy": ["t_tc", "t_t4", "t_copro", "t_eletrolitos"] },
+      { "id": "rq_ob_azot", "topic": "Patologia clínica", "prompt": "A azotemia de um gato obstruído é classificada principalmente como:", "options": ["Pós-renal", "Pré-renal exclusivamente", "Renal crônica", "Fisiológica"], "correctIndex": 0, "explanation": "Costuma reverter após a desobstrução, mas deve ser acompanhada.", "triggeredBy": ["t_renal", "f_azotemia", "h_lra"] }
+    ]
+  }
+}

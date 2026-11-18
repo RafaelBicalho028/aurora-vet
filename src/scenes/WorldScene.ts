@@ -133,7 +133,7 @@ export class WorldScene extends Phaser.Scene {
     petReminderShown = true;
     const names = due.slice(0, 2).map((i) => i.name.split(' (')[0].split(',')[0].toLowerCase()).join(' e ');
     const where = this.map.id === 'hospital' ? 'Fale com a Carla, na recepção, para a consulta preventiva.' : 'Leve seu pet ao Hospital Veterinário.';
-    this.time.delayedCall(900, () => bus.emit(Events.Toast, { text: `${comp.name} tem ${due.length} cuidado(s) pendente(s): ${names}${due.length > 2 ? '...' : ''}. ${where}`, kind: 'dex', icon: '🐾' }));
+    this.time.delayedCall(900, () => bus.emit(Events.Toast, { text: `${comp.name} tem ${due.length} cuidado(s) pendente(s), como ${names}. ${where}`, kind: 'dex', icon: '🐾' }));
   }
 
   /** Ajusta zoom e limites da câmera ao tamanho atual da tela. */

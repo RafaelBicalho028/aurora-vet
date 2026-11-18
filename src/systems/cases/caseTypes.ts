@@ -173,6 +173,8 @@ export interface ClinicalCase {
   };
   conduct: { options: ConductOption[]; explanation: string };
   outcome: { success: string; partial: string; critical: string };
+  /** tempo clínico estimado: em casos urgentes, passar da meta reduz a nota da conduta */
+  clinicalTime?: { budgetMinutes: number; urgent: boolean; delayConsequence?: string };
   vetidexUnlocks: string[];
   review: { topics: ReviewTopic[]; questions: ReviewQuestion[] };
 }
@@ -230,6 +232,10 @@ export interface ScoreReport {
   mistakes: string[];
   outcome: 'success' | 'partial' | 'critical';
   totalCost: number;
+  /** minutos clínicos estimados das decisões tomadas */
+  minutes: number;
+  budgetMinutes: number | null;
+  delayPenalty: number;
 }
 
 export const SECTION_LABELS: Record<SectionId, string> = {

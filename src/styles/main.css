@@ -565,3 +565,8 @@ body.touch-ui .toast-layer { padding-top: calc(140px + env(safe-area-inset-top, 
 .care-em_dia .care-status { color: var(--good); }
 .checkup-head { display: flex; gap: 12px; align-items: center; }
 .checkup-head .pet-stage { padding: 4px 10px; }
+
+.case-time { font-family: var(--font-pixel); color: var(--accent-2); font-size: 0.95rem; }
+.case-time.over { color: var(--bad); animation: blink-text 1s steps(2) infinite; }
+.case-time.over::before { content: '⚠ '; }
+@keyframes blink-text { 50% { opacity: 0.55; } }

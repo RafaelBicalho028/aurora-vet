@@ -79,6 +79,7 @@ Todas as teclas podem ser **remapeadas** em *Menu → Configurações*. Em telas
 | NPCs interativos (11): Lucas, Rafaela e Bruno (colegas), Prof. Otávio (Anatomia), Profa. Lívia (Fisiologia), Dra. Helena (hospital), Bia (técnica de laboratório), Carla (recepção), Sr. Joaquim e Dona Marta (tutores), Seu Antônio (produtor rural) | ✅ |
 | Animais visualmente diferentes com sprites e animação própria: cães (2), gatos (2), vaca, ovelhas | ✅ |
 | Atendimento completo do cão com prurido (Thor — DAPP) | ✅ |
+| Casos extras: filhote com diarreia (Pingo) e emergência urinária felina (Nino) | ✅ |
 | Segundo caso: gata com hiporexia (Mimi — lipidose hepática felina) | ✅ |
 | Caso introdutório de anatomia (esqueleto interativo + anatomia comparada) | ✅ |
 | Sistema de XP, níveis, etapas e domínio por disciplina (Iniciante → Especialista) | ✅ |
@@ -86,6 +87,15 @@ Todas as teclas podem ser **remapeadas** em *Menu → Configurações*. Em telas
 | Salvamento automático (missões, atendimentos, troca de mapa, a cada 60 s, ao ocultar/fechar a aba) e “Continuar” | ✅ |
 | Diário de missões (principais e secundárias) | ✅ |
 | Tela de desempenho educacional (histórico, médias por etapa, disciplinas, conteúdos para revisar, evolução, revisão espaçada) | ✅ |
+
+### Novidades da versão 0.3
+
+- **Dois casos clínicos novos**: *O Filhote Barrigudo* (Pingo, toxocaríase, com parvovirose como diferencial e foco em Saúde Única) e *Emergência Veterinária* (Nino, obstrução uretral felina com hipercalemia). A história principal agora tem 4 atendimentos.
+- **Tempo clínico**: cada pergunta, exame físico e exame complementar consome minutos estimados. Em casos **urgentes**, passar da meta reduz a nota da conduta (até −6) e mostra a consequência clínica; nos estáveis, o tempo aparece como referência.
+- **Pet como paciente**: carteira de saúde por espécie (vacinas, vermes, pulgas, dentes, dieta...), lembretes de pendências e **consulta preventiva** na recepção do Hospital, com alternativas incorretas e perigosas (ex.: permetrina em gatos) e uma pergunta sobre a raça. No jogo, 1 dia real = 1 mês do pet.
+- **Backup do progresso**: copiar um código de salvamento e restaurá-lo em outro aparelho ou navegador (Configurações ou tela inicial).
+- **Acessibilidade**: tamanho de texto ajustável, seleção indicada por ícone além da cor, foco visível no teclado e respeito à opção de reduzir movimento do sistema.
+- **Repositório git com CI** (GitHub Actions): verificação de tipos, testes e build a cada envio.
 
 ### Novidades da versão 0.2
 
@@ -113,12 +123,12 @@ Todas as teclas podem ser **remapeadas** em *Menu → Configurações*. Em telas
 ## 4. Funcionalidades planejadas (ainda não implementadas)
 
 - Regiões **Vila dos Animais**, **Região Rural**, **Reserva Ambiental** e **Centro Veterinário Avançado** (já aparecem no mapa como bloqueadas).
-- Missões 2, 4 e 5 do roteiro (bovino com queda na produção, investigação epidemiológica, emergência/triagem).
+- Missões 2 e 4 do roteiro (bovino com queda na produção, investigação epidemiológica).
 - Minigames de microscopia, hemograma, diagnóstico por imagem, parasitologia e farmacologia.
 - Aulas teóricas no Bloco de Salas de Aula (histologia, fisiologia) e laboratórios da Etapa 2.
 - Árvores de habilidades com desbloqueios ativos (hoje o domínio é medido e exibido, mas não libera habilidades).
 - Arte profissional, trilhas sonoras gravadas, mais expressões e animações.
-- Exportação/importação do save e painel para professores (relatórios da turma).
+- Contas com salvamento na nuvem e painel para professores (relatórios da turma).
 - Validação técnica do conteúdo por médicos-veterinários docentes.
 
 ---

@@ -12,6 +12,7 @@ import { renderSettingsPanel } from './SettingsPanel';
 import { SECTION_LABELS, SECTION_ORDER } from '../systems/cases/caseTypes';
 import { getMap, MAPS } from '../world/maps';
 import { renderGroundCanvas } from '../art/TextureFactory';
+import { goToTitle } from '../core/flow';
 import { h, clear, frameCanvas } from './dom';
 import { ui, type Modal } from './UIManager';
 import { openReview } from './ReviewSession';
@@ -47,7 +48,7 @@ export function openMenu(tab: Tab, fromEsc = false): void {
   const footer = h('div', { class: 'menu-footer' },
     h('button', { class: 'btn', onclick: () => { requireState().save(); bus.emit(Events.Toast, { text: 'Jogo salvo neste navegador.', icon: '💾' }); } }, '💾 Salvar'),
     h('button', { class: 'btn', onclick: () => toggleFullscreen() }, '⛶ Tela cheia'),
-    h('button', { class: 'btn', onclick: () => { requireState().save(); ui().closeAll(); app.game?.scene.getScenes(true).forEach((s) => s.scene.stop()); app.game?.scene.start('Title'); } }, '⏏ Título'),
+    h('button', { class: 'btn', onclick: () => { requireState().save(); ui().closeAll(); goToTitle(); } }, '⏏ Título'),
     h('button', { class: 'btn btn-primary', onclick: () => closeMenu() }, 'Voltar ao jogo (Esc)'),
   );
   const el = h('div', { class: 'overlay' }, h('div', { class: 'menu panel', role: 'dialog', 'aria-label': 'Menu' }, tabBar, body, footer));

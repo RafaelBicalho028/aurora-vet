@@ -154,6 +154,12 @@ export function validateCase(c: ClinicalCase, ctx: ValidationContext): string[] 
     }
   }
 
+  // Tempo clínico
+  if (c.clinicalTime) {
+    if (!(c.clinicalTime.budgetMinutes > 0)) err('clinicalTime.budgetMinutes deve ser positivo');
+    if (c.clinicalTime.urgent && !nonEmpty(c.clinicalTime.delayConsequence)) err('caso urgente precisa de clinicalTime.delayConsequence');
+  }
+
   // Supervisor e desfechos
   for (const s of SECTION_ORDER) if (!nonEmpty(c.supervisor?.tips?.[s])) err(`dica do supervisor ausente para ${s}`);
   for (const k of ['success', 'partial', 'critical'] as const) if (!nonEmpty(c.outcome?.[k])) err(`outcome.${k} obrigatório`);

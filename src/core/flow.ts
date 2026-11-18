@@ -9,6 +9,7 @@ export const VIEW_H = 270;
 /** Inicia a cena do mundo a partir do estado atual. */
 export function startGame(isNew: boolean): void {
   const st = requireState();
+  st.ensureQuestChain();
   const p = st.data.player;
   const g = app.game!;
   g.scene.getScenes(true).forEach((s) => { if (s.scene.key !== 'World') s.scene.stop(); });
@@ -27,3 +28,13 @@ export function startGame(isNew: boolean): void {
   }
 }
 
+
+/** Volta à tela de título com segurança (reinicia a cena se ela já estiver ativa). */
+export function goToTitle(): void {
+  const g = app.game;
+  if (!g) return;
+  g.scene.getScenes(true).forEach((sc) => { if (sc.scene.key !== 'Title') sc.scene.stop(); });
+  const title = g.scene.getScene('Title');
+  if (title && title.scene.isActive()) title.scene.restart();
+  else g.scene.start('Title');
+}

@@ -99,6 +99,10 @@ export const DIALOGUES: Record<string, DialogueDef> = {
       { when: { questActive: 'q_primeiro_paciente' }, start: 'thor_dica' },
       { when: { questActive: 'q_gato_nao_come', objectiveDone: ['q_gato_nao_come', 'o_atender'] }, start: 'relato_mimi' },
       { when: { questActive: 'q_gato_nao_come' }, start: 'mimi_dica' },
+      { when: { questActive: 'q_filhote', objectiveDone: ['q_filhote', 'o_atender'] }, start: 'relato_pingo' },
+      { when: { questActive: 'q_filhote' }, start: 'pingo_dica' },
+      { when: { questActive: 'q_emergencia', objectiveDone: ['q_emergencia', 'o_atender'] }, start: 'relato_nino' },
+      { when: { questActive: 'q_emergencia' }, start: 'nino_dica' },
       { when: { questStarted: 'q_proxima_etapa' }, start: 'final' },
       { start: 'geral' },
     ],
@@ -138,16 +142,32 @@ export const DIALOGUES: Record<string, DialogueDef> = {
       mimi_dica2: { text: 'Pense no que acontece com o metabolismo de gordura de um gato obeso que para de comer. E não deixe de avaliar a urgência — e a micção!' },
       relato_mimi: { expression: 'feliz', text: 'A lipidose hepática felina pode ser grave, e a recuperação depende do suporte nutricional precoce. Você reconheceu a urgência — isso faz diferença.', next: 'relato_mimi2' },
       relato_mimi2: {
-        text: 'Com isso você conclui seus primeiros atendimentos supervisionados. Continue revisando: a Estação de Revisão da biblioteca traz perguntas sobre os pontos em que você teve dificuldade.',
+        text: 'Continue revisando: a Estação de Revisão da biblioteca traz perguntas sobre os pontos em que você teve dificuldade.',
         effects: [{ type: 'objective', quest: 'q_gato_nao_come', objective: 'o_relatar' }],
         next: 'relato_mimi3',
       },
-      relato_mimi3: { expression: 'feliz', text: 'Quando estiver preparado(a), a Etapa 2 abrirá a Vila dos Animais e os laboratórios. Estou orgulhosa do seu progresso, {nome}!' },
+      relato_mimi3: { expression: 'preocupado', text: 'E já temos outro paciente: a Sofia trouxe o Pingo, um filhote com diarreia e a barriga inchada. Filhotes pioram rápido — vá conversar com ela.' },
+      pingo_dica: {
+        text: 'A Sofia e o Pingo estão na sala de espera. Em filhote com diarreia, pense em parasitas, mas não esqueça das doenças virais graves.',
+        choices: [{ text: 'Alguma dica?', next: 'pingo_dica2' }, { text: 'Vou lá!' }],
+      },
+      pingo_dica2: { text: 'Pergunte se ele foi vermifugado e vacinado. E lembre-se: há uma criança em casa. Parasitas de cães podem ser zoonoses.' },
+      relato_pingo: { expression: 'feliz', text: 'Toxocaríase é muito comum em filhotes — e é uma zoonose. Orientar a família faz parte do tratamento: isso é Saúde Única na prática.', effects: [{ type: 'objective', quest: 'q_filhote', objective: 'o_relatar' }], next: 'relato_pingo2' },
+      relato_pingo2: { expression: 'surpreso', text: '{nome}, emergência chegando! O Sr. Paulo trouxe o Nino, um gato que não consegue urinar. Em gatos machos isso pode matar em poucas horas. Seja rápido(a) e priorize!' },
+      nino_dica: {
+        text: 'O Nino está na sala de espera com o Sr. Paulo. É um caso URGENTE: o tempo clínico conta na nota. Priorize o que muda a conduta imediata.',
+        choices: [{ text: 'Alguma dica?', next: 'nino_dica2' }, { text: 'Estou indo!' }],
+      },
+      nino_dica2: { text: 'Bexiga, potássio e coração. E a ordem importa: estabilizar antes de desobstruir.' },
+      relato_nino: { expression: 'feliz', text: 'Excelente trabalho sob pressão! Na obstrução uretral, a hipercalemia é o que mata — por isso estabilizamos antes de desobstruir.', effects: [{ type: 'objective', quest: 'q_emergencia', objective: 'o_relatar' }], next: 'relato_nino2' },
+      relato_nino2: { expression: 'feliz', text: 'Com isso você conclui seus atendimentos da Etapa 1. Continue revisando na Estação de Revisão da biblioteca. Quando estiver preparado(a), a Etapa 2 abrirá a Vila dos Animais e os laboratórios. Estou orgulhosa de você, {nome}!' },
       final: {
         text: 'Quer refazer algum atendimento para treinar? Treinos rendem menos XP, mas fixam o conteúdo e atualizam sua revisão.',
         choices: [
           { text: 'Treinar o caso do Thor (prurido)', effects: [{ type: 'startCase', caseId: 'caso_thor_prurido' }] },
           { text: 'Treinar o caso da Mimi (hiporexia)', effects: [{ type: 'startCase', caseId: 'caso_mimi_hiporexia' }] },
+          { text: 'Treinar o caso do Pingo (diarreia)', effects: [{ type: 'startCase', caseId: 'caso_pingo_diarreia' }], when: { questDone: 'q_filhote' } },
+          { text: 'Treinar a emergência do Nino', effects: [{ type: 'startCase', caseId: 'caso_nino_obstrucao' }], when: { questDone: 'q_emergencia' } },
           { text: 'Agora não, obrigado(a).' },
         ],
       },
@@ -193,6 +213,63 @@ export const DIALOGUES: Record<string, DialogueDef> = {
       },
       aguarda: { expression: 'preocupado', text: 'Por favor, não demore...' },
       grata: { expression: 'feliz', text: 'Aprendi que gato não pode ficar dias sem comer, e que a troca de ração tem que ser aos pouquinhos. Obrigada!' },
+    },
+  },
+
+  sofia: {
+    entries: [
+      { when: { questActive: 'q_filhote', objectiveNotDone: ['q_filhote', 'o_atender'] }, start: 'atender' },
+      { start: 'grata' },
+    ],
+    nodes: {
+      atender: { expression: 'preocupado', text: 'Oi! O Pingo está com diarreia há três dias e a barriga dele está enorme... Meu filho está preocupadíssimo.', next: 'atender2' },
+      atender2: {
+        text: 'Você pode examinar ele?',
+        choices: [
+          { text: 'Vamos começar o atendimento.', effects: [{ type: 'startCase', caseId: 'caso_pingo_diarreia' }] },
+          { text: 'Um momento, já volto.', next: 'aguarda' },
+        ],
+      },
+      aguarda: { text: 'Tá bom, a gente espera aqui.' },
+      grata: { expression: 'feliz', text: 'Agora eu recolho as fezes do quintal todo dia, e meu filho lava as mãos depois de brincar com o Pingo. Ele já ganhou peso!' },
+    },
+  },
+  paulo: {
+    entries: [
+      { when: { questActive: 'q_emergencia', objectiveNotDone: ['q_emergencia', 'o_atender'] }, start: 'atender' },
+      { start: 'grato' },
+    ],
+    nodes: {
+      atender: { expression: 'surpreso', text: 'Por favor, rápido! O Nino não consegue fazer xixi desde ontem e agora está largado, quase sem reagir!', next: 'atender2' },
+      atender2: {
+        text: 'Ele vai ficar bem?',
+        choices: [
+          { text: 'Vamos atendê-lo agora mesmo!', effects: [{ type: 'startCase', caseId: 'caso_nino_obstrucao' }] },
+          { text: 'Só um instante.', next: 'aguarda' },
+        ],
+      },
+      aguarda: { expression: 'preocupado', text: 'Por favor, não demore... ele está muito mal.' },
+      grato: { expression: 'feliz', text: 'O Nino está em casa, bebendo água na fonte nova e comendo ração úmida. Nunca mais vou achar que é “só manha” quando ele fizer força na caixa!' },
+    },
+  },
+  pingo_animal: {
+    entries: [
+      { when: { questActive: 'q_filhote', objectiveNotDone: ['q_filhote', 'o_atender'] }, start: 'mal' },
+      { start: 'bem' },
+    ],
+    nodes: {
+      mal: { speaker: 'narrador', text: 'O Pingo abana o rabo, brincalhão, mas a barriga dele está bem distendida para um filhote tão magrinho.' },
+      bem: { speaker: 'narrador', text: 'O Pingo morde o cadarço do seu tênis, cheio de energia.' },
+    },
+  },
+  nino_animal: {
+    entries: [
+      { when: { questActive: 'q_emergencia', objectiveNotDone: ['q_emergencia', 'o_atender'] }, start: 'mal' },
+      { start: 'bem' },
+    ],
+    nodes: {
+      mal: { speaker: 'narrador', text: 'O Nino está deitado, apático, e mia baixinho quando você se aproxima. Ele lambe a região genital.' },
+      bem: { speaker: 'narrador', text: 'O Nino está bem mais disposto e observa tudo pela grade da caixa de transporte.' },
     },
   },
 

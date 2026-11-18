@@ -5,6 +5,10 @@ const fs = require('fs');
 const SP = process.env.SP || '.';
 const thor = JSON.parse(fs.readFileSync('src/content/cases/thor-prurido.json'));
 const mimi = JSON.parse(fs.readFileSync('src/content/cases/mimi-hiporexia.json'));
+const pingo = JSON.parse(fs.readFileSync('src/content/cases/pingo-diarreia.json'));
+const nino = JSON.parse(fs.readFileSync('src/content/cases/nino-obstrucao.json'));
+const healthSrc = fs.readFileSync('src/content/petHealth.ts', 'utf8');
+const DISTRACTOR_TEXTS = [...healthSrc.slice(healthSrc.indexOf('CARE_DISTRACTORS')).matchAll(/text: '([^']+)'/g)].map((m) => m[1]);
 const mg = JSON.parse(fs.readFileSync('src/content/minigames/anatomia-intro.json'));
 const bank = JSON.parse(fs.readFileSync('src/content/questionBank.json'));
 const BANKQ = bank.pools.flatMap((pl) => pl.questions);
@@ -209,7 +213,46 @@ if (require.main === module) (async () => {
   await warp('hospital', 15, 7, 'up');
   await press('KeyE'); await p.waitForTimeout(300);
   await talkUntilClosed();
+  log('após relato Mimi', (await state()).quests);
+
+  // Caso Pingo (Sofia em 8,8)
+  await warp('hospital', 8, 9, 'up');
+  await press('KeyE'); await p.waitForTimeout(300);
+  await talkUntilClosed(/começar/);
+  await p.waitForTimeout(600);
+  await playCase(p, pingo, 'pingo');
+  await warp('hospital', 15, 7, 'up');
+  await press('KeyE'); await p.waitForTimeout(300);
+  await talkUntilClosed();
+
+  // Emergência Nino (Sr. Paulo em 8,11)
+  await warp('hospital', 8, 12, 'up');
+  await press('KeyE'); await p.waitForTimeout(300);
+  await talkUntilClosed(/agora mesmo/);
+  await p.waitForTimeout(600);
+  await p.screenshot({ path: SP + '/c_nino_inicio.png' });
+  await playCase(p, nino, 'nino');
+  await warp('hospital', 15, 7, 'up');
+  await press('KeyE'); await p.waitForTimeout(300);
+  await talkUntilClosed();
   log('final', await state());
+
+  // Consulta preventiva do pet com a Carla (atrás do balcão em 4,4)
+  await warp('hospital', 4, 6, 'up');
+  await press('KeyE'); await p.waitForTimeout(300);
+  await talkUntilClosed(/consulta preventiva/);
+  await p.waitForTimeout(500);
+  await p.screenshot({ path: SP + '/pet_checkup1.png' });
+  await p.click('.checkup >> text=Iniciar consulta');
+  const labels = await p.locator('.checkup .check').allInnerTexts();
+  for (const [i, t] of labels.entries()) if (!DISTRACTOR_TEXTS.includes(t.trim())) await p.locator('.checkup .check input').nth(i).check();
+  await p.click('.checkup >> text=Próximo');
+  await p.locator('.checkup .btn.option', { hasText: 'Escovação frequente da pelagem longa' }).click();
+  await p.click('.checkup >> text=Ver resultado');
+  await p.waitForTimeout(300);
+  await p.screenshot({ path: SP + '/pet_checkup2.png' });
+  log('consulta do pet: nota', await p.locator('.checkup .score-num').innerText());
+  await p.click('.checkup >> text=Concluir');
 
   for (const [k, name] of [['KeyJ', 'diario'], ['KeyV', 'vetidex'], ['KeyP', 'desempenho'], ['KeyM', 'mapa'], ['KeyI', 'mochila']]) {
     await press(k); await p.waitForTimeout(400);
@@ -234,6 +277,29 @@ if (require.main === module) (async () => {
   await p.click('text=Continuar'); await p.waitForTimeout(1200);
   log('após reload', await state());
   await p.screenshot({ path: SP + '/f99_continue.png' });
+
+  // Backup: copia o código nas configurações e restaura em um navegador "novo"
+  await press('Escape'); await p.waitForTimeout(300);
+  await p.click('.menu-tab:has-text("Configurações")');
+  await p.click('text=Copiar código do meu progresso');
+  await p.waitForTimeout(300);
+  const code = await p.locator('#save-code-out').inputValue();
+  log('código de backup', code.slice(0, 16) + '…', `${Math.round(code.length / 1024)} KB`);
+  const ctx2 = await b.newContext({ viewport: { width: 1280, height: 720 } });
+  const p2 = await ctx2.newPage();
+  p2.on('pageerror', (e) => errs.push('pageerror(p2): ' + e.message));
+  await p2.goto(process.env.URL || 'http://localhost:5173/');
+  await p2.waitForTimeout(1200);
+  const hasContinue = await p2.locator('text=Continuar').count();
+  await p2.click('text=Restaurar progresso');
+  await p2.fill('#save-code-in', code);
+  await p2.click('text=Restaurar a partir do código');
+  await p2.waitForTimeout(1200);
+  await p2.screenshot({ path: SP + '/backup_restore.png' });
+  await p2.click('text=Continuar');
+  await p2.waitForTimeout(1200);
+  const restored = await p2.evaluate(() => { const s = window.__vetquest.state.data; return { name: s.player.name, xp: s.totalXp, pets: s.pets.owned.length, cases: s.caseHistory.length }; });
+  log('restaurado em navegador novo (antes não havia save:', hasContinue === 0, ')', JSON.stringify(restored));
   console.log('ERROS:', JSON.stringify(errs, null, 1));
   await b.close();
 })();

@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "id": "caso_pingo_diarreia",
+  "title": "O Filhote Barrigudo — Pingo",
+  "missionId": "q_filhote",
+  "difficulty": 2,
+  "minStage": 1,
+  "baseXp": 260,
+  "passScore": 60,
+  "clinicalTime": { "budgetMinutes": 140, "urgent": false },
+  "disciplines": [
+    { "discipline": "clinica", "skill": "semiologia", "section": "anamnesis" },
+    { "discipline": "clinica", "skill": "semiologia", "section": "physicalExam" },
+    { "discipline": "clinica", "skill": "exames", "section": "tests" },
+    { "discipline": "clinica", "skill": "diferencial", "section": "diagnosis" },
+    { "discipline": "clinica", "skill": "condutas", "section": "conduct" },
+    { "discipline": "parasitologia", "skill": "endoparasitas", "section": "all" },
+    { "discipline": "parasitologia", "skill": "diagnostico_parasitologico", "section": "tests" },
+    { "discipline": "parasitologia", "skill": "ciclos", "section": "conduct" },
+    { "discipline": "parasitologia", "skill": "zoonoses", "section": "conduct" },
+    { "discipline": "saude_publica", "skill": "saude_unica", "section": "conduct" },
+    { "discipline": "microbiologia", "skill": "virologia", "section": "diagnosis" }
+  ],
+  "educationalNotice": "Material educacional simplificado para fins didáticos. Não substitui a avaliação de um(a) médico(a)-veterinário(a) nem constitui protocolo de prescrição. Pendente de validação técnica.",
+  "validation": { "status": "pendente", "reviewer": null, "date": null, "notes": "Rascunho da versão 0.3. Revisar com docente de Parasitologia e de Clínica de Pequenos Animais." },
+  "references": [
+    { "refId": "taylor2016", "supports": "Ciclo biológico de Toxocara canis (transmissão transplacentária e transmamária, resistência dos ovos no ambiente) e diagnóstico por flutuação." },
+    { "refId": "esccap2021", "supports": "Controle de vermes em filhotes, frequência de tratamento e medidas de higiene." },
+    { "refId": "day2016", "supports": "Vacinação de filhotes e cuidados até completar o protocolo." },
+    { "refId": "nelson2019", "supports": "Abordagem do filhote com diarreia e diagnóstico diferencial, incluindo parvovirose." },
+    { "refId": "merck", "supports": "Toxocaríase como zoonose (larva migrans visceral e ocular) e cautela com lactonas macrocíclicas em cães com mutação MDR1." }
+  ],
+  "patient": {
+    "name": "Pingo",
+    "species": "canino",
+    "speciesLabel": "Cão (Canis lupus familiaris)",
+    "breed": "Sem raça definida (SRD)",
+    "sex": "Macho não castrado",
+    "age": "3 meses",
+    "weightKg": 4.2,
+    "sprite": "pup_pingo",
+    "tutorName": "Sofia",
+    "tutorNpc": "sofia",
+    "presentingComplaint": "Diarreia há três dias, às vezes vomita, e a barriga parece inchada."
+  },
+  "intro": "Sofia adotou o Pingo, um filhote de 3 meses, há duas semanas. Ele está com diarreia e uma barriga grande. Filhotes com diarreia exigem atenção: há causas simples e outras muito graves e contagiosas.",
+  "supervisor": {
+    "name": "Dra. Helena Duarte",
+    "npc": "helena",
+    "tips": {
+      "anamnesis": "Em filhote com diarreia, pergunte de onde veio, se foi vermifugado e vacinado, e como são as fezes. Detalhes como “vi algo nas fezes” valem ouro.",
+      "physicalExam": "Avalie hidratação, mucosas e o abdome. Um filhote alerta e brincalhão é diferente de um filhote prostrado e febril.",
+      "tests": "Exame de fezes é básico. E, em filhote não vacinado com diarreia, há uma doença grave e contagiosa que precisa ser descartada.",
+      "diagnosis": "Liste as causas infecciosas e parasitárias comuns em filhotes. Use o que você viu no exame de fezes.",
+      "conduct": "Trate o paciente, mas pense também no ambiente, na família — há uma criança em casa — e na prevenção."
+    }
+  },
+  "anamnesis": {
+    "questions": [
+      { "id": "q_queixa", "category": "Queixa principal", "text": "O que está acontecendo com o Pingo?", "answer": "Ele está com diarreia há três dias, às vezes vomita, e a barriga parece inchada.", "relevance": "essential", "findingId": "f_diarreia", "explanation": "Diarreia em filhote tem causas parasitárias, virais, alimentares e outras; a investigação começa pela história." },
+      { "id": "q_origem", "category": "Exposição a outros animais", "text": "De onde ele veio e há quanto tempo está com você?", "answer": "Peguei numa feira de adoção há duas semanas. Ele vivia num terreno com a mãe e outros filhotes.", "relevance": "essential", "findingId": "f_origem", "explanation": "Origem com muitos animais e ambiente contaminado aumenta o risco de parasitas e doenças infecciosas." },
+      { "id": "q_vermifugo", "category": "Vermifugação e ectoparasitas", "text": "Ele já foi vermifugado?", "answer": "Ainda não... não sabia que filhote precisava.", "relevance": "essential", "findingId": "f_sem_vermifugo", "explanation": "Filhotes podem nascer infectados por Toxocara canis (transmissão transplacentária e pelo leite) e precisam de vermifugação precoce e repetida." },
+      { "id": "q_vacina", "category": "Vacinação", "text": "Ele já tomou alguma vacina?", "answer": "Nenhuma ainda.", "relevance": "essential", "findingId": "f_sem_vacina", "explanation": "Filhote não vacinado com diarreia: a parvovirose precisa ser considerada e descartada." },
+      { "id": "q_fezes", "category": "Queixa principal", "text": "Como são as fezes? Você viu algo diferente nelas ou no vômito?", "answer": "Moles, sem sangue. Ontem ele vomitou e saiu uma “minhoca” branca, comprida, tipo espaguete!", "relevance": "essential", "findingId": "f_verme_vomito", "explanation": "Vermes adultos longos e brancos, semelhantes a espaguete, são típicos de ascarídeos como Toxocara canis." },
+      { "id": "q_apetite", "category": "Início e evolução", "text": "Ele está comendo e brincando?", "answer": "Come bem e brinca, só está mais magrinho, apesar da barriga grande.", "relevance": "complementary", "findingId": "f_ativo", "explanation": "Um filhote alerta e com apetite é menos sugestivo de parvovirose grave, mas não a exclui." },
+      { "id": "q_alimentacao", "category": "Histórico alimentar", "text": "O que ele come? Houve troca de comida?", "answer": "Ração de filhote, a mesma desde que chegou.", "relevance": "complementary", "explanation": "Trocas bruscas de dieta e indiscrição alimentar também causam diarreia." },
+      { "id": "q_familia", "category": "Ambiente", "text": "Há crianças em casa? Onde ele faz as necessidades?", "answer": "Tenho um filho de 4 anos que brinca com ele no quintal, onde o Pingo faz cocô.", "relevance": "complementary", "explanation": "Toxocara canis é zoonótico: crianças que ingerem ovos do solo contaminado podem desenvolver larva migrans visceral ou ocular." },
+      { "id": "q_outros", "category": "Exposição a outros animais", "text": "Há outros animais em casa?", "answer": "Não, só ele.", "relevance": "complementary", "explanation": "Contactantes também precisariam de avaliação e controle." },
+      { "id": "q_truque", "category": "Outros", "text": "Ele já aprendeu a sentar?", "answer": "Ainda não, haha. Mas e a diarreia?", "relevance": "irrelevant", "explanation": "Pergunta sem relação com o quadro." },
+      { "id": "q_nome", "category": "Outros", "text": "Por que o nome Pingo?", "answer": "Porque ele era o menorzinho da ninhada!", "relevance": "irrelevant", "explanation": "Simpático, mas não ajuda no raciocínio clínico." }
+    ]
+  },
+  "physicalExam": {
+    "items": [
+      { "id": "e_fc", "label": "Frequência cardíaca", "group": "vitais", "result": "140 bpm", "reference": { "min": 70, "max": 220, "unit": "bpm", "note": "Filhotes têm FC mais alta que adultos." }, "status": "normal", "relevance": "essential", "explanation": "Dentro do esperado para um filhote." },
+      { "id": "e_fr", "label": "Frequência respiratória", "group": "vitais", "result": "28 mpm", "reference": { "min": 15, "max": 40, "unit": "mpm", "note": "Filhotes têm valores mais altos." }, "status": "normal", "relevance": "essential", "explanation": "Sem alterações respiratórias." },
+      { "id": "e_temp", "label": "Temperatura retal", "group": "vitais", "result": "38,9 °C", "reference": { "min": 37.5, "max": 39.2, "unit": "°C" }, "status": "normal", "relevance": "essential", "findingId": "f_afebril", "explanation": "A ausência de febre não exclui, mas torna menos provável uma infecção viral grave em curso." },
+      { "id": "e_mucosas", "label": "Mucosas", "group": "geral", "result": "Rosa-pálidas", "reference": "Róseas e úmidas", "status": "altered", "relevance": "essential", "findingId": "f_mucosas_palidas", "explanation": "Palidez discreta pode indicar anemia, comum em filhotes com parasitismo intenso." },
+      { "id": "e_tpc", "label": "Tempo de preenchimento capilar", "group": "geral", "result": "1,8 s", "reference": { "min": 0, "max": 2, "unit": "s" }, "status": "normal", "relevance": "complementary", "explanation": "Perfusão preservada." },
+      { "id": "e_hidratacao", "label": "Hidratação", "group": "geral", "result": "Turgor discretamente diminuído — desidratação leve (~5%)", "reference": "Turgor preservado", "status": "altered", "relevance": "essential", "findingId": "f_desidratacao", "explanation": "Filhotes desidratam rapidamente com diarreia e vômitos." },
+      { "id": "e_abdome", "label": "Palpação abdominal", "group": "sistemas", "result": "Abdome distendido (“barrigudo”), indolor, com alças contendo gás; sem massas", "reference": "Indolor, sem distensão", "status": "altered", "relevance": "essential", "findingId": "f_abdome_distendido", "explanation": "Abdome distendido em filhote magro é um achado clássico de ascaridiose." },
+      { "id": "e_pelagem", "label": "Pelagem e escore corporal", "group": "geral", "result": "Pelagem opaca; corpo magro (ECC 3/9)", "reference": "Pelagem brilhante; ECC 4–5/9", "status": "altered", "relevance": "complementary", "findingId": "f_magro", "explanation": "Parasitismo intestinal compromete o ganho de peso e a qualidade da pelagem." },
+      { "id": "e_linfonodos", "label": "Linfonodos", "group": "geral", "result": "Sem alterações", "reference": "Não aumentados", "status": "normal", "relevance": "complementary", "explanation": "Sem linfadenomegalia." },
+      { "id": "e_neuro", "label": "Avaliação neurológica básica", "group": "sistemas", "result": "Alerta, brincalhão e responsivo", "reference": "Alerta", "status": "normal", "relevance": "complementary", "explanation": "Estado mental preservado." }
+    ]
+  },
+  "tests": {
+    "budgetHint": 120,
+    "items": [
+      { "id": "t_copro", "name": "Exame coproparasitológico (flutuação)", "cost": 30, "turnaround": "1 h", "category": "indicated", "result": "Numerosos ovos de Toxocara canis: esféricos, de casca espessa e superfície rugosa.", "findingId": "f_ovos", "justification": "Exame básico, barato e de alto rendimento no filhote com diarreia." },
+      { "id": "t_parvo", "name": "Teste rápido de antígeno de parvovírus nas fezes", "cost": 90, "turnaround": "15 min", "category": "indicated", "result": "Negativo.", "findingId": "f_parvo_negativo", "justification": "Filhote não vacinado com diarreia: descartar parvovirose, grave e muito contagiosa, e decidir o isolamento. Resultados falso-negativos podem ocorrer; o contexto clínico importa." },
+      { "id": "t_hemograma", "name": "Hemograma", "cost": 60, "turnaround": "4 h", "category": "acceptable", "result": "Anemia discreta e eosinofilia.", "table": [
+        { "param": "Hematócrito", "value": "30 %", "ref": "33–50 % (filhote)", "flag": "L" },
+        { "param": "Eosinófilos", "value": "1.800 /µL", "ref": "100–1.250 /µL", "flag": "H" },
+        { "param": "Leucócitos", "value": "14.000 /µL", "ref": "6.000–17.000 /µL", "flag": "" }
+      ], "justification": "Pode mostrar eosinofilia e anemia associadas ao parasitismo; útil, mas não decisivo." },
+      { "id": "t_giardia", "name": "Teste de antígeno para Giardia", "cost": 80, "turnaround": "15 min", "category": "acceptable", "result": "Negativo.", "justification": "Giardíase é diferencial frequente em filhotes; razoável, embora o achado de ovos de Toxocara já explique o quadro." },
+      { "id": "t_bioquimica", "name": "Bioquímica sérica", "cost": 90, "turnaround": "4 h", "category": "unnecessary", "result": "Discreta hipoproteinemia; demais parâmetros normais.", "justification": "Não muda a conduta em filhote estável com causa parasitária evidente." },
+      { "id": "t_radiografia", "name": "Radiografia abdominal", "cost": 150, "turnaround": "30 min", "category": "unnecessary", "result": "Alças com gás; sem corpos estranhos radiopacos.", "justification": "Sem dor abdominal ou sinais de obstrução que a justifiquem neste momento." },
+      { "id": "t_ultrassom", "name": "Ultrassonografia abdominal", "cost": 180, "turnaround": "1 h", "category": "unnecessary", "result": "Alças com conteúdo líquido; sem intussuscepção.", "justification": "Reservada para suspeita de intussuscepção ou corpo estranho, ausente aqui." },
+      { "id": "t_cultura", "name": "Cultura bacteriana de fezes", "cost": 140, "turnaround": "3 dias", "category": "unnecessary", "result": "Flora mista sem significado clínico.", "justification": "Raramente útil na diarreia do filhote e difícil de interpretar." }
+    ]
+  },
+  "findings": [
+    { "id": "f_diarreia", "label": "Diarreia há três dias com vômitos ocasionais", "supports": ["h_toxocara", "h_parvo", "h_giardia", "h_ancilostomo", "h_coccidiose", "h_indiscricao"] },
+    { "id": "f_origem", "label": "Veio de ambiente com muitos animais (terreno com a ninhada)", "supports": ["h_toxocara", "h_parvo", "h_giardia", "h_ancilostomo", "h_coccidiose"] },
+    { "id": "f_sem_vermifugo", "label": "Nunca foi vermifugado", "supports": ["h_toxocara", "h_ancilostomo"] },
+    { "id": "f_sem_vacina", "label": "Não vacinado", "supports": ["h_parvo"] },
+    { "id": "f_verme_vomito", "label": "Verme longo e branco (“espaguete”) eliminado no vômito", "supports": ["h_toxocara"] },
+    { "id": "f_ativo", "label": "Alerta, com apetite e brincando", "supports": ["h_toxocara", "h_giardia", "h_ancilostomo", "h_coccidiose", "h_indiscricao"] },
+    { "id": "f_afebril", "label": "Sem febre", "supports": ["h_toxocara", "h_giardia", "h_ancilostomo", "h_coccidiose", "h_indiscricao"] },
+    { "id": "f_mucosas_palidas", "label": "Mucosas rosa-pálidas", "supports": ["h_toxocara", "h_ancilostomo"] },
+    { "id": "f_desidratacao", "label": "Desidratação leve (~5%)", "supports": ["h_toxocara", "h_parvo", "h_giardia", "h_ancilostomo", "h_coccidiose", "h_indiscricao"] },
+    { "id": "f_abdome_distendido", "label": "Abdome distendido em filhote magro", "supports": ["h_toxocara"] },
+    { "id": "f_magro", "label": "Pelagem opaca e ECC 3/9", "supports": ["h_toxocara", "h_ancilostomo", "h_giardia"] },
+    { "id": "f_ovos", "label": "Numerosos ovos de Toxocara canis nas fezes", "supports": ["h_toxocara"] },
+    { "id": "f_parvo_negativo", "label": "Teste rápido de parvovírus negativo", "supports": ["h_toxocara", "h_giardia", "h_ancilostomo", "h_coccidiose", "h_indiscricao"] }
+  ],
+  "diagnosis": {
+    "correctId": "h_toxocara",
+    "expectedDifferentials": ["h_toxocara", "h_parvo", "h_giardia", "h_ancilostomo"],
+    "keyEvidence": ["f_verme_vomito", "f_ovos", "f_sem_vermifugo", "f_abdome_distendido"],
+    "minDifferentials": 3,
+    "maxDifferentials": 6,
+    "explanation": "Toxocaríase (ascaridiose) por Toxocara canis: filhote nunca vermifugado, de ambiente com muitos animais, com abdome distendido, verme “tipo espaguete” no vômito e numerosos ovos de Toxocara no exame de fezes. A parvovirose foi considerada e o teste rápido foi negativo. Pela transmissão transplacentária e pelo leite, filhotes são frequentemente infectados desde o nascimento.",
+    "hypotheses": [
+      { "id": "h_toxocara", "name": "Toxocaríase (ascaridiose) por Toxocara canis", "plausibility": "key", "vetidexId": "parasita_toxocara", "explanation": "Nematoide muito comum em filhotes, zoonótico." },
+      { "id": "h_parvo", "name": "Parvovirose canina", "plausibility": "key", "vetidexId": "doenca_parvovirose", "explanation": "Grave e muito contagiosa em filhotes não vacinados; costuma cursar com prostração, vômitos intensos e diarreia, muitas vezes hemorrágica. Teste negativo e quadro clínico tornam-na menos provável aqui." },
+      { "id": "h_giardia", "name": "Giardíase", "plausibility": "key", "explanation": "Protozoário comum em filhotes; causa diarreia de intestino delgado. Teste de antígeno negativo." },
+      { "id": "h_ancilostomo", "name": "Ancilostomose", "plausibility": "key", "explanation": "Nematoide hematófago que causa anemia e diarreia em filhotes; os ovos são diferentes dos de Toxocara." },
+      { "id": "h_coccidiose", "name": "Coccidiose (Cystoisospora)", "plausibility": "plausible", "explanation": "Comum em filhotes de ambientes coletivos; diagnosticada por oocistos nas fezes." },
+      { "id": "h_indiscricao", "name": "Indiscrição alimentar", "plausibility": "plausible", "explanation": "Causa comum de diarreia leve, mas não explica os vermes e os ovos." },
+      { "id": "h_corpo_estranho", "name": "Corpo estranho intestinal", "plausibility": "plausible", "explanation": "Considerar em vômitos persistentes e dor abdominal, ausentes aqui." },
+      { "id": "h_dii", "name": "Doença inflamatória intestinal crônica", "plausibility": "unlikely", "explanation": "Diagnóstico de exclusão em quadros crônicos, improvável em filhote com causa parasitária evidente." },
+      { "id": "h_ipe", "name": "Insuficiência pancreática exócrina", "plausibility": "unlikely", "explanation": "Causa diarreia crônica com perda de peso apesar de muito apetite; não se encaixa em quadro agudo com parasitas evidentes." }
+    ]
+  },
+  "conduct": {
+    "explanation": "Anti-helmíntico de uso veterinário eficaz contra ascarídeos, repetido conforme o protocolo para filhotes; suporte de hidratação e alimentação adequada; higiene do ambiente com recolhimento diário das fezes; orientação à família sobre a zoonose; início do protocolo vacinal quando indicado; e exame de fezes de controle.",
+    "options": [
+      { "id": "c_antihelmintico", "text": "Anti-helmíntico de uso veterinário eficaz contra ascarídeos, prescrito pelo veterinário e repetido conforme o protocolo para filhotes.", "type": "tratamento", "category": "correct", "explanation": "A repetição é necessária porque o tratamento não atinge todas as larvas em migração e há reinfecção pelo ambiente.", "pharmacology": { "drugClass": "Anti-helmínticos (ex.: pirantel, benzimidazóis, lactonas macrocíclicas — conforme o produto)", "mechanism": "Pirantel: agonista colinérgico que causa paralisia espástica do verme. Benzimidazóis: inibem a polimerização da tubulina do parasita. Lactonas macrocíclicas: atuam em canais de cloreto controlados por glutamato.", "indications": "Ascarídeos e outros nematoides, conforme o espectro de cada produto.", "contraindications": "Respeitar idade e peso mínimos do produto. Algumas lactonas macrocíclicas exigem cautela em cães com mutação MDR1 (ABCB1), como alguns collies.", "principles": "Escolher produto registrado para cães, com espectro adequado, e repetir conforme o protocolo." } },
+      { "id": "c_hidratacao", "text": "Suporte: reposição de hidratação conforme avaliação e alimentação de filhote em pequenas porções.", "type": "suporte", "category": "correct", "explanation": "Filhotes desidratam e podem ter hipoglicemia rapidamente." },
+      { "id": "c_higiene", "text": "Recolher as fezes diariamente e higienizar o ambiente: os ovos ficam infectantes no solo e são muito resistentes.", "type": "prevencao", "category": "correct", "explanation": "Os ovos de Toxocara podem permanecer viáveis no ambiente por longos períodos." },
+      { "id": "c_zoonose", "text": "Orientar a família sobre a zoonose: lavar as mãos, evitar que a criança brinque em áreas com fezes e cobrir caixas de areia.", "type": "prevencao", "category": "correct", "explanation": "Crianças que ingerem ovos podem desenvolver larva migrans visceral ou ocular." },
+      { "id": "c_vacinas", "text": "Iniciar o protocolo vacinal quando o veterinário considerar adequado e evitar contato com cães de vacinação desconhecida até completá-lo.", "type": "prevencao", "category": "correct", "explanation": "Protege contra parvovirose e outras doenças graves de filhotes." },
+      { "id": "c_retorno", "text": "Retorno com novo exame de fezes de controle.", "type": "observacao", "category": "correct", "explanation": "Confirma a resposta ao tratamento e orienta a continuidade do controle." },
+      { "id": "c_canil_coletivo", "text": "Internar o filhote no canil coletivo, junto de outros pacientes, antes de descartar parvovirose.", "type": "internacao", "category": "critical", "explanation": "Viola princípios de biossegurança.", "consequence": "Se fosse parvovirose, o vírus — muito resistente no ambiente — poderia se espalhar para outros filhotes internados, com risco de morte." },
+      { "id": "c_jejum", "text": "Manter jejum de 48 horas para “descansar o intestino”.", "type": "suporte", "category": "incorrect", "explanation": "Filhotes têm reservas limitadas e risco de hipoglicemia; a alimentação precoce favorece a recuperação intestinal." },
+      { "id": "c_antibiotico", "text": "Iniciar antibiótico de rotina.", "type": "tratamento", "category": "incorrect", "explanation": "A causa é parasitária; antimicrobianos sem indicação favorecem resistência." },
+      { "id": "c_caseiro", "text": "Usar vermífugo caseiro (alho, sementes de abóbora) em vez do anti-helmíntico.", "type": "tratamento", "category": "incorrect", "explanation": "Sem eficácia comprovada; o alho pode ser tóxico para cães." },
+      { "id": "c_humano", "text": "Dar o vermífugo humano que a família tem em casa, ajustando a dose “pelo peso”.", "type": "tratamento", "category": "incorrect", "explanation": "Produtos e doses devem ser os de uso veterinário, prescritos para a espécie." }
+    ]
+  },
+  "outcome": {
+    "success": "Com o anti-helmíntico repetido, hidratação e higiene do quintal, o Pingo ganha peso e a barriga desincha. Sofia passa a recolher as fezes todos os dias, e o filho aprende a lavar as mãos depois de brincar. O protocolo vacinal começa na semana seguinte.",
+    "partial": "O Pingo melhorou, mas faltaram peças importantes na investigação ou na prevenção. Revise o relatório — especialmente a Saúde Única.",
+    "critical": "Uma decisão colocou outros animais em risco. A Dra. Helena corrige o plano a tempo e explica a importância da biossegurança com filhotes."
+  },
+  "vetidexUnlocks": ["especie_cao", "parasita_toxocara", "doenca_parvovirose", "exame_coproparasitologico", "exame_teste_rapido", "prev_saude_unica"],
+  "review": {
+    "topics": [
+      { "id": "rt_anam_filhote", "title": "Anamnese do filhote: origem, vermifugação e vacinação", "section": "anamnesis", "vetidexId": "parasita_toxocara" },
+      { "id": "rt_ef_filhote", "title": "Exame físico do filhote com diarreia", "section": "physicalExam", "vetidexId": "parasita_toxocara" },
+      { "id": "rt_ex_filhote", "title": "Coproparasitológico e teste de parvovírus", "section": "tests", "vetidexId": "exame_coproparasitologico" },
+      { "id": "rt_dif_filhote", "title": "Diferenciais de diarreia em filhotes", "section": "diagnosis", "vetidexId": "doenca_parvovirose" },
+      { "id": "rt_cond_filhote", "title": "Tratamento, higiene ambiental e Saúde Única", "section": "conduct", "vetidexId": "prev_saude_unica" }
+    ],
+    "questions": [
+      { "id": "rq_tx_transmissao", "topic": "Parasitologia", "prompt": "Por que filhotes muito jovens frequentemente já têm Toxocara canis?", "options": ["Por transmissão transplacentária e pelo leite materno", "Apenas por comerem terra depois de adultos", "Por picada de pulga", "Porque o parasita é transmitido pelo ar"], "correctIndex": 0, "explanation": "Larvas da mãe são reativadas na gestação e passam aos filhotes.", "triggeredBy": ["q_vermifugo", "h_toxocara"] },
+      { "id": "rq_tx_aspecto", "topic": "Parasitologia", "prompt": "Vermes adultos longos, brancos e semelhantes a espaguete no vômito de um filhote sugerem:", "options": ["Ascarídeos (Toxocara)", "Proglotes de Dipylidium", "Giardia", "Ancylostoma"], "correctIndex": 0, "explanation": "Proglotes de Dipylidium lembram grãos de arroz; Giardia é microscópica.", "triggeredBy": ["q_fezes", "f_verme_vomito"] },
+      { "id": "rq_tx_ovos", "topic": "Diagnóstico", "prompt": "Como se apresentam os ovos de Toxocara canis na flutuação fecal?", "options": ["Esféricos, de casca espessa e superfície rugosa", "Ovais, com opérculo", "Em cápsulas com vários ovos", "Em forma de limão com tampões polares"], "correctIndex": 0, "explanation": "O aspecto da casca diferencia os ascarídeos de outros nematoides.", "triggeredBy": ["t_copro", "f_ovos"] },
+      { "id": "rq_tx_parvo", "topic": "Diagnóstico diferencial", "prompt": "Em filhote não vacinado com diarreia, por que testar parvovírus?", "options": ["Porque é grave, muito contagiosa e muda o manejo e o isolamento", "Porque é a causa mais leve de diarreia", "Porque o teste trata a doença", "Não é necessário testar"], "correctIndex": 0, "explanation": "A confirmação ou exclusão orienta o tratamento e a biossegurança.", "triggeredBy": ["t_parvo", "h_parvo", "q_vacina"] },
+      { "id": "rq_tx_isolamento", "topic": "Biossegurança", "prompt": "Antes de descartar parvovirose, onde um filhote com diarreia deve ficar no hospital?", "options": ["Em isolamento", "No canil coletivo", "Na sala de espera com outros cães", "Em qualquer lugar"], "correctIndex": 0, "explanation": "O parvovírus é muito resistente e se espalha facilmente.", "triggeredBy": ["c_canil_coletivo"] },
+      { "id": "rq_tx_repetir", "topic": "Terapêutica", "prompt": "Por que repetir o anti-helmíntico em filhotes com Toxocara?", "options": ["Porque o tratamento não atinge todas as larvas em migração e há reinfecção", "Porque o primeiro tratamento nunca funciona", "Para aumentar o apetite", "Não é necessário repetir"], "correctIndex": 0, "explanation": "Protocolos para filhotes preveem doses repetidas em intervalos definidos.", "triggeredBy": ["c_antihelmintico"] },
+      { "id": "rq_tx_zoonose", "topic": "Saúde Única", "prompt": "Como uma criança pode se infectar com Toxocara canis?", "options": ["Ingerindo ovos presentes em solo ou areia contaminados com fezes", "Sendo lambida pelo filhote recém-vermifugado", "Pelo ar", "Por picada de mosquito"], "correctIndex": 0, "explanation": "A infecção humana pode causar larva migrans visceral ou ocular.", "triggeredBy": ["c_zoonose", "q_familia"] },
+      { "id": "rq_tx_ambiente", "topic": "Prevenção", "prompt": "Qual medida ambiental é mais importante no controle de Toxocara?", "options": ["Recolher as fezes diariamente", "Lavar o filhote todos os dias", "Trocar a ração", "Manter o filhote em jejum"], "correctIndex": 0, "explanation": "Os ovos precisam de tempo no ambiente para se tornarem infectantes; recolher as fezes rapidamente interrompe o ciclo.", "triggeredBy": ["c_higiene"] },
+      { "id": "rq_tx_jejum", "topic": "Terapêutica", "prompt": "Por que evitar jejum prolongado em filhotes com diarreia?", "options": ["Risco de hipoglicemia e piora da recuperação intestinal", "Porque eles não sentem fome", "Porque o jejum causa febre", "O jejum é sempre recomendado"], "correctIndex": 0, "explanation": "A alimentação precoce em pequenas porções favorece a recuperação.", "triggeredBy": ["c_jejum", "c_hidratacao"] },
+      { "id": "rq_tx_mdr1", "topic": "Farmacologia", "prompt": "Que cuidado é necessário com algumas lactonas macrocíclicas em certas raças de cães?", "options": ["Cautela em cães com mutação MDR1 (ABCB1), como alguns collies", "Nenhum, são seguras em qualquer dose", "Só podem ser usadas em gatos", "Devem ser associadas a corticoides"], "correctIndex": 0, "explanation": "A mutação permite maior passagem do fármaco ao sistema nervoso central.", "triggeredBy": ["c_antihelmintico"] },
+      { "id": "rq_tx_caseiro", "topic": "Uso de medicamentos", "prompt": "Sobre vermífugos caseiros (alho, sementes) em cães:", "options": ["Não têm eficácia comprovada e o alho pode ser tóxico", "São tão eficazes quanto os anti-helmínticos", "São recomendados para filhotes", "Substituem a vacina"], "correctIndex": 0, "explanation": "Alimentos do gênero Allium podem causar anemia hemolítica em cães.", "triggeredBy": ["c_caseiro", "c_humano"] },
+      { "id": "rq_tx_anemia", "topic": "Patologia clínica", "prompt": "Qual achado de hemograma é comum em filhotes com parasitismo intestinal?", "options": ["Eosinofilia e anemia discreta", "Policitemia", "Trombocitose isolada", "Leucopenia grave obrigatória"], "correctIndex": 0, "explanation": "Leucopenia acentuada é mais sugestiva de parvovirose.", "triggeredBy": ["t_hemograma", "e_mucosas"] },
+      { "id": "rq_tx_vacina", "topic": "Prevenção", "prompt": "Até completar o protocolo vacinal, o filhote deve:", "options": ["Evitar contato com cães de vacinação desconhecida e locais de grande circulação de cães", "Ir a parques todos os dias", "Ficar sem nenhum contato social", "Tomar banho diário"], "correctIndex": 0, "explanation": "A socialização segura com cães saudáveis e vacinados é importante, mas com cuidado.", "triggeredBy": ["c_vacinas", "q_vacina"] },
+      { "id": "rq_tx_abdome", "topic": "Semiologia", "prompt": "Abdome distendido em filhote magro e não vermifugado sugere principalmente:", "options": ["Parasitismo intestinal intenso", "Obesidade", "Gestação", "Comportamento normal da idade"], "correctIndex": 0, "explanation": "É um sinal clássico de ascaridiose em filhotes.", "triggeredBy": ["e_abdome", "f_abdome_distendido"] }
+    ]
+  }
+}

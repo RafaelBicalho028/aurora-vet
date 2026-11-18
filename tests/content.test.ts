@@ -17,7 +17,7 @@ import type { Condition, Effect } from '../src/systems/dialogue/types';
 const ctx = {
   referenceIds: new Set(Object.keys(REFERENCE_MAP)),
   vetidexIds: new Set(VETIDEX.map((e) => e.id)),
-  textureKeys: new Set(['dog_caramelo', 'dog_campus', 'cat_laranja', 'cat_cinza', 'cow', 'sheep', 'flea']),
+  textureKeys: new Set(['dog_caramelo', 'dog_campus', 'cat_laranja', 'cat_cinza', 'cow', 'sheep', 'flea', 'pup_pingo']),
 };
 
 describe('Casos clínicos', () => {

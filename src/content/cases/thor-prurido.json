@@ -1253,5 +1253,9 @@
         ]
       }
     ]
+  },
+  "clinicalTime": {
+    "budgetMinutes": 150,
+    "urgent": false
   }
 }
