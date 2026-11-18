@@ -2,6 +2,7 @@
  * Estado central do jogo: jogador, missões, XP, VetiDex, inventário, domínio por disciplina,
  * histórico acadêmico e revisão espaçada. Independente do Phaser (pode ser testado em Node).
  */
+import { genderize } from './genderize';
 import { bus, Events } from './EventBus';
 import type { Appearance, CaseRecord, PetRecord, QuestProgress, SaveData } from './types';
 import { BREED_MAP, MAX_PETS } from '../content/pets';
@@ -49,7 +50,9 @@ export class GameState {
 
   // ------------------------------------------------------------ util
   get level(): number { return levelFromXp(this.data.totalXp); }
-  interpolate(text: string): string { return text.replace(/\{nome\}/g, this.data.player.name); }
+  interpolate(text: string): string {
+    return genderize(text.replace(/\{nome\}/g, this.data.player.name), this.data.player.appearance.sex);
+  }
 
   save(): void {
     if (this.saver?.save(this.data)) bus.emit(Events.Saved);

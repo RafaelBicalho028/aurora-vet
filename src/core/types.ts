@@ -4,8 +4,10 @@
 
 export type Direction = 'down' | 'up' | 'left' | 'right';
 
-export type HairStyle = 'curto' | 'longo' | 'coque' | 'cacheado';
-export type UniformType = 'jaleco' | 'pijama';
+export type HairStyle = 'curto' | 'longo' | 'coque' | 'cacheado' | 'raspado' | 'rabo' | 'trancas' | 'chanel';
+export type UniformType = 'jaleco' | 'pijama' | 'camiseta' | 'moletom';
+export type Sex = 'feminino' | 'masculino';
+export type PatternId = 'liso' | 'listras' | 'xadrez' | 'bolinhas' | 'coracoes' | 'patinhas' | 'cruz';
 
 export interface Appearance {
   skin: number; // índice da paleta de pele
@@ -14,6 +16,10 @@ export interface Appearance {
   uniform: UniformType;
   uniformColor: number; // índice da paleta de uniforme
   glasses: boolean;
+  /** opcional em saves antigos (sem sexo definido, os textos usam a forma neutra "o(a)") */
+  sex?: Sex;
+  pattern?: PatternId;
+  patternColor?: number;
 }
 
 export interface PlayerState {

@@ -5,8 +5,8 @@ import { askConfirm } from './ConfirmDialog';
 import { openPetChooser } from './PetChooser';
 import { app } from '../core/context';
 import { GameState, newSaveData } from '../core/GameState';
-import type { Appearance, HairStyle, UniformType } from '../core/types';
-import { buildCharacterSheet, FRAME_H, FRAME_W, HAIR_COLORS, HAIR_COLOR_NAMES, HAIR_STYLES, HAIR_STYLE_NAMES, lookFromAppearance, SKIN_TONES, UNIFORM_COLORS, UNIFORM_COLOR_NAMES } from '../art/characters';
+import type { Appearance, HairStyle, PatternId, Sex, UniformType } from '../core/types';
+import { buildCharacterSheet, FRAME_H, FRAME_W, HAIR_COLORS, HAIR_COLOR_NAMES, HAIR_STYLES, HAIR_STYLE_NAMES, lookFromAppearance, OUTFITS, OUTFIT_NAMES, PATTERNS, PATTERN_COLORS, PATTERN_COLOR_NAMES, PATTERN_NAMES, SEX_NAMES, SKIN_TONES, UNIFORM_COLORS, UNIFORM_COLOR_NAMES } from '../art/characters';
 import { levelFromXp } from '../systems/progression/xp';
 import { h, clear } from './dom';
 import { ui, type Modal } from './UIManager';
@@ -84,7 +84,7 @@ function openAbout(): void {
 
 // ------------------------------------------------------------------ Criação de personagem
 function openCreator(onDone: (s: GameState) => void): void {
-  const a: Appearance = { skin: 1, hairColor: 1, hairStyle: 'curto', uniform: 'jaleco', uniformColor: 0, glasses: false };
+  const a: Appearance = { skin: 1, hairColor: 1, hairStyle: 'curto', uniform: 'jaleco', uniformColor: 0, glasses: false, sex: 'feminino', pattern: 'liso', patternColor: 0 };
   let name = '';
   const preview = h('canvas', { class: 'pixel creator-preview', width: String(FRAME_W), height: String(FRAME_H), 'aria-label': 'Prévia do personagem' }) as HTMLCanvasElement;
   const pctx = preview.getContext('2d')!;
@@ -144,11 +144,15 @@ function openCreator(onDone: (s: GameState) => void): void {
       h('div', { class: 'creator-preview-box' }, preview, h('div', { class: 'small muted' }, 'Prévia animada')),
       h('div', { class: 'creator-fields' },
         h('div', { class: 'creator-field' }, h('div', { class: 'field-label' }, 'Nome'), nameInput, err),
+        options<Sex>('Sexo', [['feminino', SEX_NAMES.feminino], ['masculino', SEX_NAMES.masculino]], () => a.sex ?? 'feminino', (v) => { a.sex = v; }),
         swatches('Tom de pele', SKIN_TONES.map((_, i) => i), () => a.skin, (_, i) => SKIN_TONES[i], (_, i) => `Tom ${i + 1}`, (v) => { a.skin = v; }),
         swatches('Cor do cabelo', HAIR_COLORS.map((_, i) => i), () => a.hairColor, (_, i) => HAIR_COLORS[i], (_, i) => HAIR_COLOR_NAMES[i], (v) => { a.hairColor = v; }),
         options<HairStyle>('Estilo do cabelo', HAIR_STYLES.map((s) => [s, HAIR_STYLE_NAMES[s]]), () => a.hairStyle, (v) => { a.hairStyle = v; }),
-        options<UniformType>('Uniforme', [['jaleco', 'Jaleco branco'], ['pijama', 'Pijama cirúrgico']], () => a.uniform, (v) => { a.uniform = v; }),
-        swatches('Cor do uniforme', UNIFORM_COLORS.map((_, i) => i), () => a.uniformColor, (_, i) => UNIFORM_COLORS[i], (_, i) => UNIFORM_COLOR_NAMES[i], (v) => { a.uniformColor = v; }),
+        options<UniformType>('Roupa', OUTFITS.map((o) => [o, OUTFIT_NAMES[o]]), () => a.uniform, (v) => { a.uniform = v; }),
+        swatches('Cor da roupa', UNIFORM_COLORS.map((_, i) => i), () => a.uniformColor, (_, i) => UNIFORM_COLORS[i], (_, i) => UNIFORM_COLOR_NAMES[i], (v) => { a.uniformColor = v; }),
+        options<PatternId>('Estampa', PATTERNS.map((p) => [p, PATTERN_NAMES[p]]), () => a.pattern ?? 'liso', (v) => { a.pattern = v; }),
+        swatches('Cor da estampa', PATTERN_COLORS.map((_, i) => i), () => a.patternColor ?? 0, (_, i) => PATTERN_COLORS[i], (_, i) => PATTERN_COLOR_NAMES[i], (v) => { a.patternColor = v; }),
+        h('div', { class: 'small muted' }, 'No jaleco, a estampa aparece na roupa por baixo.'),
         options<'nao' | 'sim'>('Óculos', [['nao', 'Sem óculos'], ['sim', 'Com óculos']], () => (a.glasses ? 'sim' : 'nao'), (v) => { a.glasses = v === 'sim'; }),
       ),
     ),
