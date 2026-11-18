@@ -2,7 +2,8 @@
  * Integridade do conteúdo educacional: casos clínicos, minigames, VetiDex, missões e diálogos.
  */
 import { describe, expect, it } from 'vitest';
-import { CASES, MINIGAMES, QUESTION_POOLS, REFERENCE_MAP, VETIDEX, VETIDEX_MAP, VETIDEX_CATEGORIES } from '../src/content';
+import { CASES, LESSONS, MINIGAMES, QUESTION_POOLS, REFERENCE_MAP, VETIDEX, VETIDEX_MAP, VETIDEX_CATEGORIES } from '../src/content';
+import { DISCIPLINES } from '../src/content/disciplines';
 import { QUIZZES } from '../src/content/quizzes';
 import { validateCase } from '../src/systems/cases/validateCase';
 import { scoreCase } from '../src/systems/cases/scoring';
@@ -144,6 +145,7 @@ describe('VetiDex', () => {
     const scanEffects = (effs?: Effect[]) => effs?.forEach((e) => { if (e.type === 'dex') e.ids.forEach((v) => unlockable.add(v)); });
     Object.values(DIALOGUES).forEach((d) => Object.values(d.nodes).forEach((n) => { scanEffects(n.effects); n.choices?.forEach((ch) => scanEffects(ch.effects)); }));
     ANIMALS.forEach((a) => scanEffects(a.interact.effects));
+    Object.values(LESSONS).forEach((l) => scanEffects(l.onComplete));
     const missing = VETIDEX.filter((e) => !unlockable.has(e.id)).map((e) => e.id);
     expect(missing).toEqual([]);
   });
@@ -248,7 +250,53 @@ describe('Missões, diálogos e NPCs', () => {
     Object.values(CASES).forEach((c) => completable.add(`${c.missionId}.o_atender`));
     Object.values(QUIZZES).forEach((q) => q.onComplete.forEach((e) => { if (e.type === 'objective') completable.add(`${e.quest}.${e.objective}`); }));
     Object.values(MINIGAMES).forEach((m) => completable.add(`${m.missionId}.o_aula`));
+    Object.values(LESSONS).forEach((l) => l.onComplete.forEach((e) => { if (e.type === 'objective') completable.add(`${e.quest}.${e.objective}`); }));
     ['q_proxima_etapa.o_nivel', 'q_proxima_etapa.o_revisao', 'q_boas_vindas.o_lab', 'q_biosseguranca.o_hospital'].forEach((k) => completable.add(k));
     for (const q of QUESTS) for (const o of q.objectives) expect(completable.has(`${q.id}.${o.id}`), `${q.id}.${o.id}`).toBe(true);
   });
 });
+
+describe('Aulas (quadros clínicos)', () => {
+  const lessonIds = new Set(Object.keys(LESSONS));
+  it('cada aula tem professor, disciplina, quadros completos e referências do catálogo', () => {
+    expect(lessonIds.size).toBeGreaterThanOrEqual(7);
+    for (const l of Object.values(LESSONS)) {
+      expect(NPCS.some((n) => n.id === l.npc), l.id).toBe(true);
+      expect(DISCIPLINES.some((d) => d.id === l.discipline), l.id).toBe(true);
+      expect(l.cards.length, l.id).toBeGreaterThanOrEqual(3);
+      for (const c of l.cards) {
+        for (const k of ['title', 'scenario', 'explanation'] as const) expect(c[k].length, `${l.id}: ${k}`).toBeGreaterThan(20 * (k === 'title' ? 0 : 1));
+        expect(c.keyPoints.length, c.title).toBeGreaterThanOrEqual(2);
+        expect(c.think.question.length && c.think.answer.length, c.title).toBeGreaterThan(0);
+        expect(c.refs.length, c.title).toBeGreaterThan(0);
+        c.refs.forEach((r) => expect(REFERENCE_MAP[r], `${c.title}: ${r}`).toBeDefined());
+        if (c.vetidexId) expect(VETIDEX_MAP[c.vetidexId], c.title).toBeDefined();
+        // nada de doses: o jogo não prescreve
+        expect(`${c.scenario} ${c.explanation} ${c.keyPoints.join(' ')}`).not.toMatch(/\d\s?(mg\/kg|mL\/kg|UI\/kg)/i);
+      }
+      checkLessonEffects(l.onComplete, l.id);
+    }
+  });
+
+  it('todo efeito openLesson aponta para uma aula existente e cada professor oferece aula e questionário', () => {
+    const opened = new Set<string>();
+    const quizzes = new Set<string>();
+    Object.values(DIALOGUES).forEach((d) => Object.values(d.nodes).forEach((n) => [...(n.effects ?? []), ...(n.choices?.flatMap((c) => c.effects ?? []) ?? [])].forEach((e) => {
+      if (e.type === 'openLesson') { expect(lessonIds.has(e.id), e.id).toBe(true); opened.add(e.id); }
+      if (e.type === 'startQuiz') quizzes.add(e.id);
+    })));
+    for (const id of lessonIds) expect(opened.has(id), id).toBe(true);
+    for (const pool of ['microbiologia', 'parasitologia', 'farmacologia', 'patologia', 'cirurgia', 'saude_publica']) {
+      expect(quizzes.has(`quiz_${pool}`), pool).toBe(true);
+      expect(QUESTION_POOLS[pool].questions.length, pool).toBeGreaterThanOrEqual(12);
+    }
+  });
+});
+
+function checkLessonEffects(effs: Effect[], where: string): void {
+  for (const e of effs) {
+    if (e.type === 'objective') expect(QUEST_MAP[e.quest]?.objectives.some((o) => o.id === e.objective), `${where}: ${e.quest}.${e.objective}`).toBe(true);
+    if (e.type === 'dex') e.ids.forEach((v) => expect(VETIDEX_MAP[v], `${where}: ${v}`).toBeDefined());
+    if (e.type === 'mastery') expect(DISCIPLINES.find((d) => d.id === e.discipline)?.skills.some((k) => k.id === e.skill), `${where}: ${e.discipline}.${e.skill}`).toBe(true);
+  }
+}

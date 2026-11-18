@@ -115,6 +115,67 @@ export const QUESTS: QuestDef[] = [
     ],
     rewards: { xp: 30, dex: ['prev_vacinacao', 'prev_saude_unica'] },
   },
+  // ------------------------------------------------ disciplinas (um professor por prédio)
+  {
+    id: 'q_disc_fisiologia', title: 'Disciplina: Fisiologia', category: 'secundaria', giver: 'Profa. Lívia', stage: 1,
+    summary: 'No Instituto de Fisiologia (sudoeste do campus), a Profa. Lívia apresenta quadros clínicos que mostram a fisiologia em ação.',
+    objectives: [{ id: 'o_aula', text: 'Estude os quadros clínicos da aula da Profa. Lívia' }],
+    rewards: { xp: 40 },
+  },
+  {
+    id: 'q_disc_microbiologia', title: 'Disciplina: Microbiologia', category: 'secundaria', giver: 'Profa. Renata', stage: 1,
+    summary: 'Assista à aula com quadros clínicos e passe no questionário de Microbiologia, no Laboratório de Microbiologia (sudeste do campus).',
+    objectives: [
+      { id: 'o_aula', text: 'Estude os quadros clínicos da aula' },
+      { id: 'o_quiz', text: 'Passe no questionário (4 acertos)' },
+    ],
+    rewards: { xp: 60 },
+  },
+  {
+    id: 'q_disc_parasitologia', title: 'Disciplina: Parasitologia', category: 'secundaria', giver: 'Prof. Jorge', stage: 1,
+    summary: 'Assista à aula com quadros clínicos e passe no questionário de Parasitologia, no Instituto de Parasitologia (Setor dos Institutos, a oeste).',
+    objectives: [
+      { id: 'o_aula', text: 'Estude os quadros clínicos da aula' },
+      { id: 'o_quiz', text: 'Passe no questionário (4 acertos)' },
+    ],
+    rewards: { xp: 60 },
+  },
+  {
+    id: 'q_disc_farmacologia', title: 'Disciplina: Farmacologia', category: 'secundaria', giver: 'Profa. Inês', stage: 1,
+    summary: 'Assista à aula com quadros clínicos e passe no questionário de Farmacologia, no Instituto de Farmacologia (Setor dos Institutos, a oeste).',
+    objectives: [
+      { id: 'o_aula', text: 'Estude os quadros clínicos da aula' },
+      { id: 'o_quiz', text: 'Passe no questionário (4 acertos)' },
+    ],
+    rewards: { xp: 60 },
+  },
+  {
+    id: 'q_disc_patologia', title: 'Disciplina: Patologia', category: 'secundaria', giver: 'Prof. Raul', stage: 1,
+    summary: 'Assista à aula com quadros clínicos e passe no questionário de Patologia, no Instituto de Patologia (Setor dos Institutos, a oeste).',
+    objectives: [
+      { id: 'o_aula', text: 'Estude os quadros clínicos da aula' },
+      { id: 'o_quiz', text: 'Passe no questionário (4 acertos)' },
+    ],
+    rewards: { xp: 60 },
+  },
+  {
+    id: 'q_disc_cirurgia', title: 'Disciplina: Cirurgia e Anestesiologia', category: 'secundaria', giver: 'Profa. Beatriz', stage: 1,
+    summary: 'Assista à aula com quadros clínicos e passe no questionário de Cirurgia e Anestesiologia, no Instituto de Cirurgia e Anestesiologia (Setor dos Institutos, a oeste).',
+    objectives: [
+      { id: 'o_aula', text: 'Estude os quadros clínicos da aula' },
+      { id: 'o_quiz', text: 'Passe no questionário (4 acertos)' },
+    ],
+    rewards: { xp: 60 },
+  },
+  {
+    id: 'q_disc_saude_publica', title: 'Disciplina: Saúde Pública', category: 'secundaria', giver: 'Prof. Tomás', stage: 1,
+    summary: 'Assista à aula com quadros clínicos e passe no questionário de Saúde Pública, no Instituto de Saúde Pública (Setor dos Institutos, a oeste).',
+    objectives: [
+      { id: 'o_aula', text: 'Estude os quadros clínicos da aula' },
+      { id: 'o_quiz', text: 'Passe no questionário (4 acertos)' },
+    ],
+    rewards: { xp: 60 },
+  },
 ];
 
 export const QUEST_MAP: Record<string, QuestDef> = Object.fromEntries(QUESTS.map((q) => [q.id, q]));

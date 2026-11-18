@@ -107,6 +107,7 @@ export class GameState {
         case 'adoptPet': bus.emit('ui:adoptPet'); break;
         case 'petCheckup': bus.emit('ui:petCheckup'); break;
         case 'openReview': bus.emit('ui:openReview'); break;
+        case 'openLesson': bus.emit('ui:openLesson', e.id); break;
         case 'openPanel': bus.emit('ui:openPanel', e.panel); break;
         case 'save': this.save(); break;
       }

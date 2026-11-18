@@ -8,6 +8,8 @@ import anatomia from './minigames/anatomia-intro.json';
 import vetidex from './vetidex.json';
 import references from './references.json';
 import questionBank from './questionBank.json';
+import lessons from './lessons.json';
+import type { Effect } from '../systems/dialogue/types';
 import type { QuestionPool, BankQuestion } from '../systems/questions/bank';
 
 export const CASES: Record<string, ClinicalCase> = {
@@ -45,3 +47,24 @@ export const QUESTION_POOLS: Record<string, QuestionPool> = Object.fromEntries((
 export const BANK_QUESTIONS: Record<string, BankQuestion & { pool: string }> = Object.fromEntries(
   (questionBank.pools as QuestionPool[]).flatMap((p) => p.questions.map((q) => [q.id, { ...q, pool: p.id }])),
 );
+
+/** Aulas dos professores: quadros clínicos explicativos (src/content/lessons.json). */
+export interface LessonCard {
+  title: string;
+  scenario: string;
+  explanation: string;
+  keyPoints: string[];
+  think: { question: string; answer: string };
+  vetidexId?: string;
+  refs: string[];
+}
+export interface Lesson {
+  id: string;
+  discipline: string;
+  title: string;
+  npc: string;
+  intro: string;
+  cards: LessonCard[];
+  onComplete: Effect[];
+}
+export const LESSONS: Record<string, Lesson> = Object.fromEntries((lessons.lessons as Lesson[]).map((l) => [l.id, l]));

@@ -45,7 +45,7 @@ function build(): string[] {
   fill(31, 9, 1, 1, '-'); fill(29, 9, 3, 1, '-');
   fill(23, 9, 7, 1, '-');
   // saídas leste e oeste
-  set(0, 17, 'P'); set(1, 17, '='); set(0, 18, 'P'); set(1, 18, '=');
+  set(0, 17, '='); set(1, 17, '='); set(0, 18, '='); set(1, 18, '=');
   set(42, 17, '='); set(43, 17, 'P'); set(42, 18, '='); set(43, 18, 'P');
   // Árvores e arbustos decorativos
   const trees: [number, number][] = [[13, 3], [14, 6], [12, 9], [3, 9], [2, 13], [14, 13], [14, 20], [12, 23], [29, 12], [30, 14], [29, 20], [31, 23], [42, 11], [27, 30], [14, 30], [10, 30], [33, 30], [3, 30], [40, 30], [41, 14]];
@@ -58,7 +58,7 @@ function build(): string[] {
 const HOSPITAL: BuildingStyle = { roof: '#3d6fb6', wall: '#f1ece0', trim: '#2b5088', icon: 'cross', accent: '#c8373a' };
 const ANATOMIA: BuildingStyle = { roof: '#c46a3a', wall: '#efe2c8', trim: '#8a4a28', icon: 'bone', accent: '#d98f4e' };
 const BIBLIOTECA: BuildingStyle = { roof: '#6a4a9c', wall: '#ece6da', trim: '#4c3475', icon: 'book', accent: '#6a4a9c' };
-const AULAS: BuildingStyle = { roof: '#3f8a5c', wall: '#eee8d8', trim: '#2c6a44', icon: 'board', accent: '#3f9d76' };
+const AULAS: BuildingStyle = { roof: '#b8506a', wall: '#eee8d8', trim: '#8a3450', icon: 'heart', accent: '#d65a7a' };
 const LABS: BuildingStyle = { roof: '#2a8f99', wall: '#e8eef0', trim: '#1d6970', icon: 'flask', accent: '#2a8f99' };
 
 export const campus: MapDef = {
@@ -76,8 +76,8 @@ export const campus: MapDef = {
     },
     { id: 'anatomia', name: 'Laboratório de Anatomia', x: 3, y: 10, w: 8, h: 6, style: ANATOMIA, doors: [{ dx: 4, warp: { map: 'anatomia', x: 8, y: 11, facing: 'up' } }] },
     { id: 'biblioteca', name: 'Biblioteca Central', x: 33, y: 10, w: 8, h: 6, style: BIBLIOTECA, doors: [{ dx: 3, warp: { map: 'biblioteca', x: 8, y: 11, facing: 'up' } }] },
-    { id: 'aulas', name: 'Bloco de Salas de Aula', x: 3, y: 20, w: 8, h: 6, style: AULAS, doors: [{ dx: 4, locked: { message: 'Bloco de Salas de Aula — as aulas teóricas de Histologia e Fisiologia serão liberadas em uma próxima atualização.' } }] },
-    { id: 'labs', name: 'Laboratórios de Microbiologia, Parasitologia e Patologia', x: 33, y: 20, w: 8, h: 6, style: LABS, doors: [{ dx: 3, locked: { message: 'Laboratórios de Microbiologia, Parasitologia e Patologia — acesso liberado na Etapa 2 (Estudante em Formação).' } }] },
+    { id: 'aulas', name: 'Instituto de Fisiologia', x: 3, y: 20, w: 8, h: 6, style: AULAS, doors: [{ dx: 4, warp: { map: 'fisiologia', x: 7, y: 10, facing: 'up' } }] },
+    { id: 'labs', name: 'Laboratório de Microbiologia', x: 33, y: 20, w: 8, h: 6, style: LABS, doors: [{ dx: 3, warp: { map: 'microbiologia', x: 7, y: 10, facing: 'up' } }] },
   ],
   objects: [
     { type: 'fountain', x: 21, y: 15 },
@@ -94,20 +94,22 @@ export const campus: MapDef = {
     },
     {
       type: 'sign', x: 24, y: 30,
-      interact: { lines: ['Mapa do campus: Hospital ao norte • Anatomia a oeste • Biblioteca a leste • Fazenda-escola a nordeste.', 'Dica: pressione M para abrir o mapa e J para o diário de missões.'] },
+      interact: { lines: ['Mapa do campus: Hospital ao norte • Anatomia e Fisiologia a oeste • Biblioteca e Microbiologia a leste • Fazenda-escola a nordeste • Setor dos Institutos (Parasitologia, Farmacologia, Patologia, Cirurgia e Saúde Pública) pela avenida oeste.', 'Dica: pressione M para abrir o mapa e J para o diário de missões.'] },
     },
     { type: 'sign', x: 29, y: 10, interact: { lines: ['Fazenda-Escola de Aurora — setor de grandes animais.', 'Observe os animais com calma e sem invadir o piquete.'] } },
     { type: 'gate', x: 20, y: 33 },
     { type: 'gate', x: 22, y: 33 },
+    { type: 'sign', x: 2, y: 16, interact: { lines: ['← Setor dos Institutos: Parasitologia, Farmacologia, Patologia, Cirurgia e Anestesiologia, Saúde Pública.'] } },
   ],
-  warps: [],
+  warps: [
+    { fromX: 0, fromY: 17, map: 'institutos', x: 38, y: 11, facing: 'left' },
+    { fromX: 0, fromY: 18, map: 'institutos', x: 38, y: 12, facing: 'left' },
+  ],
   interactions: {
     '20,33': { lines: ['Portão Sul — estrada para a Vila dos Animais.', 'Região bloqueada: disponível na Etapa 2 (Estudante em Formação).'] },
     '21,33': { lines: ['Portão Sul — estrada para a Vila dos Animais.', 'Região bloqueada: disponível na Etapa 2 (Estudante em Formação).'] },
     '22,33': { lines: ['Portão Sul — estrada para a Vila dos Animais.', 'Região bloqueada: disponível na Etapa 2 (Estudante em Formação).'] },
     '23,33': { lines: ['Portão Sul — estrada para a Vila dos Animais.', 'Região bloqueada: disponível na Etapa 2 (Estudante em Formação).'] },
-    '0,17': { lines: ['Trilha para a Reserva Ambiental.', 'Região bloqueada: disponível na Etapa 4.'] },
-    '0,18': { lines: ['Trilha para a Reserva Ambiental.', 'Região bloqueada: disponível na Etapa 4.'] },
     '43,17': { lines: ['Estrada para a Região Rural.', 'Região bloqueada: disponível na Etapa 3 (Estagiário Clínico).'] },
     '43,18': { lines: ['Estrada para a Região Rural.', 'Região bloqueada: disponível na Etapa 3 (Estagiário Clínico).'] },
   },

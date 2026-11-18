@@ -72,11 +72,11 @@ Todas as teclas podem ser **remapeadas** em *Menu → Configurações*. Em telas
 | Requisito do MVP | Situação |
 |---|---|
 | Tela inicial funcional (Continuar, Novo jogo, Configurações, Tela cheia, Sobre) | ✅ |
-| Criação de personagem (nome, tom de pele, cor e estilo de cabelo, jaleco ou pijama cirúrgico, cor do uniforme, óculos) com prévia animada | ✅ |
+| Criação de personagem (nome, sexo, tom de pele, 8 cores e 8 estilos de cabelo, 4 roupas, 6 cores, 7 estampas com 6 cores, óculos) com prévia animada | ✅ |
 | Mapa externo explorável da universidade (44×34 tiles) com colisões, prédios, praça, lagoa, fazenda-escola e saídas bloqueadas por etapa | ✅ |
 | Clínica acessível: Hospital Veterinário Universitário (recepção, sala de espera, atendimento, laboratório de análises) | ✅ |
 | Interiores extras: Laboratório de Anatomia e Biblioteca | ✅ |
-| NPCs interativos (11): Lucas, Rafaela e Bruno (colegas), Prof. Otávio (Anatomia), Profa. Lívia (Fisiologia), Dra. Helena (hospital), Bia (técnica de laboratório), Carla (recepção), Sr. Joaquim e Dona Marta (tutores), Seu Antônio (produtor rural) | ✅ |
+| NPCs interativos (21): Lucas, Rafaela, Bruno e Nara (colegas), Prof. Otávio (Anatomia), Profa. Lívia (Fisiologia), Profa. Renata (Microbiologia), Prof. Jorge (Parasitologia), Profa. Inês (Farmacologia), Prof. Raul (Patologia), Profa. Beatriz (Cirurgia e Anestesiologia), Prof. Tomás (Saúde Pública), Dra. Helena (hospital), Bia (técnica de laboratório), Carla (recepção), Sr. Joaquim e Dona Marta (tutores), Seu Antônio (produtor rural) | ✅ |
 | Animais visualmente diferentes com sprites e animação própria: cães (2), gatos (2), vaca, ovelhas | ✅ |
 | Atendimento completo do cão com prurido (Thor — DAPP) | ✅ |
 | Casos extras: filhote com diarreia (Pingo) e emergência urinária felina (Nino) | ✅ |
@@ -87,6 +87,15 @@ Todas as teclas podem ser **remapeadas** em *Menu → Configurações*. Em telas
 | Salvamento automático (missões, atendimentos, troca de mapa, a cada 60 s, ao ocultar/fechar a aba) e “Continuar” | ✅ |
 | Diário de missões (principais e secundárias) | ✅ |
 | Tela de desempenho educacional (histórico, médias por etapa, disciplinas, conteúdos para revisar, evolução, revisão espaçada) | ✅ |
+
+### Novidades da versão 0.4
+
+- **Correção**: a tela de atendimento não volta mais ao topo ao fazer uma pergunta ou avaliar um item; ela só vai ao topo quando você muda de etapa.
+- **Personagem**: escolha de **sexo** (Feminino/Masculino), com traços no rosto e textos que concordam com o gênero ("Bem-vinda", "pronto"...); **4 roupas** (jaleco, pijama cirúrgico, camiseta e jeans, moletom), **7 estampas** (listras, xadrez, bolinhas, corações, patinhas, cruz veterinária) em 6 cores; **8 estilos de cabelo** (novos: raspado, chanel com franja, rabo de cavalo, tranças) e cores rosa e azul.
+- **Matérias por prédio**: 7 disciplinas, cada uma em seu prédio, com um professor, uma **aula de quadros clínicos explicativos** (situação clínica, explicação, pontos-chave, pergunta de reflexão e referências) e um **questionário** sorteado do banco:
+  - Campus: **Instituto de Fisiologia** (Profa. Lívia) e **Laboratório de Microbiologia** (Profa. Renata).
+  - Novo mapa **Setor dos Institutos** (pela avenida oeste): **Parasitologia** (Prof. Jorge), **Farmacologia** (Profa. Inês), **Patologia** (Prof. Raul), **Cirurgia e Anestesiologia** (Profa. Beatriz) e **Saúde Pública** (Prof. Tomás).
+  - 21 quadros clínicos, 78 perguntas novas (13 por matéria), 21 entradas novas na VetiDex, 2 disciplinas novas no painel de desempenho (Farmacologia e Patologia) e 12 referências novas verificáveis.
 
 ### Novidades da versão 0.3
 
@@ -125,7 +134,7 @@ Todas as teclas podem ser **remapeadas** em *Menu → Configurações*. Em telas
 - Regiões **Vila dos Animais**, **Região Rural**, **Reserva Ambiental** e **Centro Veterinário Avançado** (já aparecem no mapa como bloqueadas).
 - Missões 2 e 4 do roteiro (bovino com queda na produção, investigação epidemiológica).
 - Minigames de microscopia, hemograma, diagnóstico por imagem, parasitologia e farmacologia.
-- Aulas teóricas no Bloco de Salas de Aula (histologia, fisiologia) e laboratórios da Etapa 2.
+- Aulas de Histologia, Imunologia, Nutrição e Diagnóstico por Imagem; práticas interativas (microscópio, necrópsia virtual) dentro dos institutos.
 - Árvores de habilidades com desbloqueios ativos (hoje o domínio é medido e exibido, mas não libera habilidades).
 - Arte profissional, trilhas sonoras gravadas, mais expressões e animações.
 - Contas com salvamento na nuvem e painel para professores (relatórios da turma).
@@ -163,6 +172,7 @@ vetquest/
 │   │   ├── minigames/*.json    # atividade de anatomia
 │   │   ├── vetidex.json        # enciclopédia
 │   │   ├── questionBank.json   # banco de perguntas sorteadas
+│   │   ├── lessons.json        # aulas dos professores (quadros clínicos explicativos)
 │   │   ├── quizzes.ts          # quizzes conduzidos por personagens
 │   │   ├── pets.ts             # raças/espécies adotáveis e fichas
 │   │   ├── references.json     # catálogo central de referências

@@ -21,6 +21,7 @@ import { openQuiz } from './ui/QuizSession';
 import { openPetChooser } from './ui/PetChooser';
 import { openPetCheckup } from './ui/PetCheckup';
 import { openReview } from './ui/ReviewSession';
+import { openLesson } from './ui/LessonViewer';
 import { openMenu } from './ui/MenuScreen';
 import { CASES, REFERENCE_MAP, VETIDEX } from './content';
 import { validateCase } from './systems/cases/validateCase';
@@ -44,6 +45,7 @@ function boot(): void {
   bus.on('ui:adoptPet', () => openPetChooser());
   bus.on('ui:petCheckup', () => openPetCheckup());
   bus.on('ui:openReview', () => openReview());
+  bus.on('ui:openLesson', (id: string) => openLesson(id));
   bus.on('ui:openPanel', (p: 'performance' | 'vetidex' | 'journal' | 'map' | 'inventory') => {
     const map = { performance: 'desempenho', vetidex: 'vetidex', journal: 'diario', map: 'mapa', inventory: 'mochila' } as const;
     openMenu(map[p]);

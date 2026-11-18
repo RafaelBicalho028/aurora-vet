@@ -365,7 +365,7 @@ export interface BuildingStyle {
   roof: string;
   wall: string;
   trim: string;
-  icon: 'cross' | 'bone' | 'book' | 'flask' | 'board' | 'paw' | 'barn';
+  icon: 'cross' | 'bone' | 'book' | 'flask' | 'board' | 'paw' | 'barn' | 'heart' | 'bug' | 'pill' | 'microscope' | 'scalpel' | 'globe';
   accent: string;
 }
 
@@ -379,6 +379,12 @@ function drawIcon(ctx: CanvasRenderingContext2D, x: number, y: number, icon: Bui
     case 'board': px(ctx, x + 1, y + 2, w, 6, 4); px(ctx, x + 3, y + 6, w, 2, 2); break;
     case 'paw': px(ctx, x + 2, y + 4, w, 4, 3); px(ctx, x + 1, y + 2, w, 1, 2); px(ctx, x + 3, y + 1, w, 1, 2); px(ctx, x + 5, y + 1, w, 1, 2); px(ctx, x + 7, y + 2, w, 1, 2); break;
     case 'barn': px(ctx, x + 1, y + 3, w, 6, 4); px(ctx, x + 2, y + 2, w, 4, 1); px(ctx, x + 3, y + 1, w, 2, 1); break;
+    case 'heart': px(ctx, x + 1, y + 2, w, 2, 2); px(ctx, x + 5, y + 2, w, 2, 2); px(ctx, x + 1, y + 3, w, 6, 2); px(ctx, x + 2, y + 5, w, 4, 1); px(ctx, x + 3, y + 6, w, 2, 1); break;
+    case 'bug': px(ctx, x + 3, y + 1, w, 2, 1); px(ctx, x + 2, y + 2, w, 4, 5); px(ctx, x + 1, y + 3, w, 1, 1); px(ctx, x + 6, y + 3, w, 1, 1); px(ctx, x + 1, y + 5, w, 1, 1); px(ctx, x + 6, y + 5, w, 1, 1); px(ctx, x + 4, y + 2, color, 1, 5); break;
+    case 'pill': px(ctx, x + 1, y + 3, w, 6, 3); px(ctx, x + 2, y + 2, w, 4, 1); px(ctx, x + 2, y + 6, w, 4, 1); px(ctx, x + 4, y + 2, color, 1, 5); break;
+    case 'microscope': px(ctx, x + 3, y + 1, w, 2, 3); px(ctx, x + 2, y + 4, w, 3, 1); px(ctx, x + 5, y + 3, w, 1, 3); px(ctx, x + 1, y + 6, w, 6, 1); break;
+    case 'scalpel': px(ctx, x + 1, y + 6, w, 3, 1); px(ctx, x + 3, y + 5, w, 2, 1); px(ctx, x + 4, y + 3, w, 2, 2); px(ctx, x + 5, y + 1, w, 2, 2); break;
+    case 'globe': px(ctx, x + 2, y + 1, w, 4, 6); px(ctx, x + 1, y + 2, w, 6, 4); px(ctx, x + 2, y + 3, color, 2, 2); px(ctx, x + 5, y + 2, color, 1, 2); break;
   }
 }
 

@@ -51,7 +51,7 @@ export function showTitle(cb: TitleCallbacks): Modal {
       h('div', { class: 'logo-sub' }, 'Jornada Veterinária'),
     ),
     menu,
-    h('div', { class: 'title-foot' }, 'RPG educacional para estudantes de Medicina Veterinária • Conteúdo educacional pendente de validação técnica • v0.1 (MVP)'),
+    h('div', { class: 'title-foot' }, 'RPG educacional para estudantes de Medicina Veterinária • Conteúdo educacional pendente de validação técnica • v0.4'),
   );
   const modal = ui().open({ el: container, persistent: true, onAction: () => false });
   container.addEventListener('pointerdown', () => { app.audio.unlock(); app.audio.play('title'); }, { once: true });

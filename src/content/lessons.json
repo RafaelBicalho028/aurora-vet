@@ -1,0 +1,384 @@
+{
+  "_comment": "Aulas dos professores: quadros clínicos explicativos. Cada quadro traz uma situação, a explicação, pontos-chave, uma pergunta de reflexão e as referências. Sem doses ou prescrições. Conteúdo educacional pendente de validação técnica.",
+  "lessons": [
+    {
+      "id": "aula_fisiologia",
+      "discipline": "fisiologia",
+      "title": "Fisiologia aplicada à clínica",
+      "npc": "livia",
+      "intro": "Fisiologia é a base do raciocínio clínico: quem entende como o corpo compensa entende o que os sinais clínicos estão dizendo.",
+      "cards": [
+        {
+          "title": "Choque hipovolêmico: o corpo compensando",
+          "scenario": "Bolt, cão de 5 anos, foi atropelado há 40 minutos. Chega com mucosas pálidas, tempo de preenchimento capilar de 3 segundos, frequência cardíaca de 180 bpm, pulso femoral fraco e extremidades frias.",
+          "explanation": "A perda de volume reduz o retorno venoso e o débito cardíaco. Barorreceptores detectam a queda da pressão e ativam o sistema simpático: o coração acelera e os vasos periféricos se contraem (por isso mucosas pálidas, TPC prolongado e extremidades frias). O sistema renina-angiotensina-aldosterona e o hormônio antidiurético retêm sódio e água. No início, a pressão arterial pode estar normal à custa da perfusão periférica — é o choque compensado.",
+          "keyPoints": [
+            "Taquicardia é um sinal precoce de choque no cão.",
+            "Gatos em choque podem ter bradicardia e hipotermia em vez de taquicardia.",
+            "Pressão arterial normal não exclui choque: avalie também pulso, mucosas, TPC e estado mental."
+          ],
+          "think": { "question": "Por que a pressão arterial do Bolt pode estar normal mesmo com perda de sangue?", "answer": "Porque a vasoconstrição e a taquicardia mantêm a pressão por algum tempo, sacrificando a perfusão da pele, das mucosas e das extremidades." },
+          "vetidexId": "fisio_choque",
+          "refs": ["klein2020", "ettinger2017"]
+        },
+        {
+          "title": "Termorregulação e golpe de calor",
+          "scenario": "Mel, buldogue-francês, voltou de um passeio ao meio-dia no verão. Está ofegante, com salivação intensa, língua arroxeada e temperatura retal de 41,5 °C.",
+          "explanation": "Cães dissipam calor principalmente pela evaporação na via respiratória (ofego), além de condução e convecção; as glândulas sudoríparas dos coxins contribuem pouco. Em braquicefálicos, a via aérea estreita torna o ofego menos eficiente e aumenta o esforço respiratório, que gera ainda mais calor. Na febre, pirógenos elevam o ponto de ajuste do hipotálamo; no golpe de calor, o ponto de ajuste é normal, mas a dissipação falha.",
+          "keyPoints": [
+            "Golpe de calor é emergência: resfriamento ativo e controlado, sob orientação veterinária.",
+            "Antitérmicos não corrigem o golpe de calor, porque o ponto de ajuste não está elevado.",
+            "Prevenção: evitar exercício nas horas quentes, garantir sombra e água — com atenção especial aos braquicefálicos."
+          ],
+          "think": { "question": "Por que um antitérmico não resolve a hipertermia da Mel?", "answer": "Antitérmicos agem baixando um ponto de ajuste elevado por pirógenos (febre). No golpe de calor o ponto de ajuste está normal; o problema é a falha em perder calor." },
+          "vetidexId": "fisio_termorregulacao",
+          "refs": ["klein2020", "ettinger2017"]
+        },
+        {
+          "title": "Limiar renal da glicose",
+          "scenario": "Frajola, gato de 9 anos, chegou muito estressado: glicemia de 280 mg/dL, mas sem glicose na urina. Tom, outro gato, tem glicemia alta em várias medições, glicosúria, urina muito e bebe muita água.",
+          "explanation": "A glicose é filtrada livremente no glomérulo e reabsorvida no túbulo proximal por transportadores com capacidade máxima. Quando a carga filtrada ultrapassa essa capacidade (o limiar renal — mais alto no gato do que no cão), sobra glicose na urina. Essa glicose puxa água por osmose: diurese osmótica, poliúria e polidipsia compensatória. Gatos podem ter hiperglicemia acentuada e transitória por estresse.",
+          "keyPoints": [
+            "Uma única glicemia alta em gato estressado não confirma diabetes.",
+            "Hiperglicemia persistente com glicosúria é o padrão esperado no diabetes mellitus.",
+            "A frutosamina reflete a glicemia média das semanas anteriores e ajuda a separar estresse de hiperglicemia persistente."
+          ],
+          "think": { "question": "Por que o Frajola não tinha glicose na urina?", "answer": "A hiperglicemia de estresse foi transitória: não durou o suficiente (nem ficou alta o bastante por tempo suficiente) para a urina já presente na bexiga conter glicose acima do limiar." },
+          "vetidexId": "fisio_limiar_renal",
+          "refs": ["klein2020", "nelson2019"]
+        }
+      ],
+      "onComplete": [
+        { "type": "dex", "ids": ["fisio_choque", "fisio_termorregulacao", "fisio_limiar_renal"] },
+        { "type": "mastery", "discipline": "fisiologia", "skill": "homeostase", "xp": 25 },
+        { "type": "mastery", "discipline": "fisiologia", "skill": "renal", "xp": 15 },
+        { "type": "objective", "quest": "q_disc_fisiologia", "objective": "o_aula" }
+      ]
+    },
+    {
+      "id": "aula_microbiologia",
+      "discipline": "microbiologia",
+      "title": "Microbiologia na rotina clínica",
+      "npc": "renata",
+      "intro": "Bactérias não leem livros, mas deixam pistas: forma, coloração, onde vivem e como resistem. Vamos aprender a ler essas pistas.",
+      "cards": [
+        {
+          "title": "Coloração de Gram: a primeira pista",
+          "scenario": "Uma cadela com otite crônica: a citologia do ouvido mostra muitos bastonetes Gram-negativos. A cultura isola Pseudomonas aeruginosa.",
+          "explanation": "A coloração de Gram separa as bactérias pela parede celular. As Gram-positivas têm parede espessa de peptidoglicano, que retém o cristal violeta (ficam roxas). As Gram-negativas têm parede fina e uma membrana externa com lipopolissacarídeo; perdem o corante no álcool e ficam rosadas com a safranina. A membrana externa dificulta a entrada de vários antimicrobianos — Pseudomonas, por exemplo, tem resistência intrínseca a muitos deles.",
+          "keyPoints": [
+            "Forma (cocos ou bastonetes) + Gram orientam o raciocínio enquanto a cultura não sai.",
+            "Staphylococcus pseudintermedius (cocos Gram-positivos) é comum na pele e nos ouvidos de cães.",
+            "O Gram não substitui cultura e teste de sensibilidade."
+          ],
+          "think": { "question": "Por que a membrana externa das Gram-negativas importa no tratamento?", "answer": "Ela funciona como barreira à entrada de vários antimicrobianos, contribuindo para resistência intrínseca." },
+          "vetidexId": "micro_gram",
+          "refs": ["quinn2011"]
+        },
+        {
+          "title": "Antibiograma e resistência",
+          "scenario": "Um cão com infecção urinária recorrente já recebeu três antimicrobianos diferentes por conta do tutor, sem orientação. A cultura isola Escherichia coli resistente a vários grupos de fármacos.",
+          "explanation": "Cultura e teste de sensibilidade (antibiograma por disco-difusão ou concentração inibitória mínima, CIM) orientam a escolha do antimicrobiano. A CIM é a menor concentração que inibe o crescimento visível in vitro; a interpretação (sensível, intermediário, resistente) usa pontos de corte específicos. O uso inadequado seleciona bactérias resistentes, e genes de resistência podem passar entre bactérias por plasmídeos — inclusive entre animais e pessoas.",
+          "keyPoints": [
+            "Colete a amostra (urina por cistocentese, por exemplo) antes de iniciar o antimicrobiano.",
+            "Siga a prescrição do médico-veterinário: tempo e intervalo corretos.",
+            "Resistência antimicrobiana é um problema de Saúde Única."
+          ],
+          "think": { "question": "Por que coletar a urina antes de iniciar o antimicrobiano?", "answer": "Porque o fármaco pode inibir o crescimento na cultura e gerar resultado falso-negativo ou alterar o perfil isolado." },
+          "vetidexId": "micro_resistencia",
+          "refs": ["quinn2011", "riviere2018"]
+        },
+        {
+          "title": "Esterilizar não é desinfetar",
+          "scenario": "No centro cirúrgico, um estudante pergunta se pode \"passar álcool\" nas pinças cirúrgicas em vez de mandá-las à autoclave.",
+          "explanation": "Limpeza remove a matéria orgânica e vem sempre antes. Desinfecção elimina a maioria dos microrganismos, mas não necessariamente os esporos bacterianos. Esterilização elimina todas as formas de vida microbiana, inclusive esporos — por exemplo, vapor sob pressão em autoclave. Pela classificação de Spaulding: artigos críticos (que penetram tecidos estéreis, como instrumentais cirúrgicos) exigem esterilização; semicríticos (contato com mucosas) exigem ao menos desinfecção de alto nível; não críticos (pele íntegra, como o estetoscópio) exigem limpeza e desinfecção.",
+          "keyPoints": [
+            "Matéria orgânica protege microrganismos e inativa desinfetantes: limpe primeiro.",
+            "Álcool não elimina esporos e não esteriliza instrumentais.",
+            "Respeite tempo de contato e diluição indicados pelo fabricante do desinfetante."
+          ],
+          "think": { "question": "Por que o álcool não serve para as pinças cirúrgicas?", "answer": "Pinças são artigos críticos e precisam de esterilização; o álcool é desinfetante e não elimina esporos." },
+          "vetidexId": "prev_esterilizacao",
+          "refs": ["quinn2011", "fossum2019"]
+        }
+      ],
+      "onComplete": [
+        { "type": "dex", "ids": ["micro_gram", "micro_resistencia", "prev_esterilizacao"] },
+        { "type": "mastery", "discipline": "microbiologia", "skill": "bacteriologia", "xp": 25 },
+        { "type": "mastery", "discipline": "microbiologia", "skill": "metodos_lab", "xp": 15 },
+        { "type": "objective", "quest": "q_disc_microbiologia", "objective": "o_aula" }
+      ]
+    },
+    {
+      "id": "aula_parasitologia",
+      "discipline": "parasitologia",
+      "title": "Parasitas que mudam o quadro clínico",
+      "npc": "jorge",
+      "intro": "Conhecer o ciclo do parasita é saber onde quebrá-lo. Hoje temos um nematódeo, um vetor e um protozoário.",
+      "cards": [
+        {
+          "title": "Haemonchus e o método FAMACHA",
+          "scenario": "Após semanas de chuva, várias ovelhas do rebanho estão fracas, com mucosas pálidas e edema embaixo da mandíbula (\"papeira\"), mas quase sem diarreia.",
+          "explanation": "Haemonchus contortus é um nematódeo hematófago do abomaso. Causa anemia e perda de proteína (o edema submandibular reflete hipoproteinemia) e pode matar sem diarreia evidente. O diagnóstico usa contagem de ovos por grama de fezes (OPG) e coprocultura. O método FAMACHA compara a cor da conjuntiva com um cartão de 5 graus para identificar os animais anêmicos e tratar apenas esses (tratamento seletivo), o que preserva parasitas não expostos ao fármaco (refúgio) e retarda a resistência anti-helmíntica.",
+          "keyPoints": [
+            "FAMACHA só vale para parasitas hematófagos como o Haemonchus.",
+            "Tratar todo o rebanho com frequência acelera a resistência aos anti-helmínticos.",
+            "Combine FAMACHA com OPG, manejo de pastagem e avaliação de eficácia."
+          ],
+          "think": { "question": "Por que não tratar todas as ovelhas de uma vez?", "answer": "Porque isso seleciona parasitas resistentes; deixar parte da população sem exposição (refúgio) dilui os genes de resistência." },
+          "vetidexId": "parasita_haemonchus",
+          "refs": ["vanwyk2002", "taylor2016"]
+        },
+        {
+          "title": "Erliquiose e o carrapato-marrom",
+          "scenario": "Duque, cão de 6 anos, está apático, com febre, sangramento nasal e pontos vermelhos na gengiva. Tem histórico de carrapatos. O hemograma mostra trombocitopenia.",
+          "explanation": "Ehrlichia canis é uma bactéria intracelular obrigatória que infecta monócitos e é transmitida pelo carrapato Rhipicephalus sanguineus. A doença tem fase aguda, subclínica e crônica; trombocitopenia é um achado frequente. As mórulas no esfregaço sanguíneo confirmam, mas raramente são vistas; sorologia e PCR complementam o diagnóstico, interpretados com o quadro clínico.",
+          "keyPoints": [
+            "Esfregaço negativo não exclui erliquiose.",
+            "O controle de carrapatos deve incluir o animal e o ambiente.",
+            "O carrapato-marrom completa o ciclo dentro de casas e canis."
+          ],
+          "think": { "question": "Por que não descartar a doença se o esfregaço do Duque não mostrar mórulas?", "answer": "Porque a pesquisa de mórulas tem baixa sensibilidade; sorologia e PCR, junto com a clínica, são necessárias." },
+          "vetidexId": "doenca_erliquiose",
+          "refs": ["harrus2011", "taylor2016"]
+        },
+        {
+          "title": "Giardia: o cisto que resiste",
+          "scenario": "Num canil, filhotes têm diarreia pastosa intermitente, com muco e aspecto gorduroso, mas continuam ativos e comendo. Um exame de fezes veio negativo.",
+          "explanation": "Giardia duodenalis é um protozoário flagelado. Os trofozoítos aderem ao epitélio do intestino delgado e prejudicam a absorção. Os cistos são eliminados de forma intermitente, já saem infectantes e resistem no ambiente. Por isso, um único exame negativo não descarta: recomendam-se amostras seriadas (centrífugo-flutuação em sulfato de zinco) ou testes de antígeno.",
+          "keyPoints": [
+            "Colete amostras em dias diferentes para aumentar a sensibilidade.",
+            "Higiene do ambiente e banho (cistos no pelame) evitam reinfecção.",
+            "O potencial zoonótico depende do genótipo (assembleia) envolvido."
+          ],
+          "think": { "question": "Por que o exame de fezes negativo não encerra a investigação?", "answer": "A eliminação de cistos é intermitente; amostras seriadas ou teste de antígeno aumentam a chance de detecção." },
+          "vetidexId": "parasita_giardia",
+          "refs": ["taylor2016", "esccap2021"]
+        }
+      ],
+      "onComplete": [
+        { "type": "dex", "ids": ["parasita_haemonchus", "doenca_erliquiose", "parasita_giardia"] },
+        { "type": "mastery", "discipline": "parasitologia", "skill": "endoparasitas", "xp": 20 },
+        { "type": "mastery", "discipline": "parasitologia", "skill": "diagnostico_parasitologico", "xp": 20 },
+        { "type": "objective", "quest": "q_disc_parasitologia", "objective": "o_aula" }
+      ]
+    },
+    {
+      "id": "aula_farmacologia",
+      "discipline": "farmacologia",
+      "title": "Farmacologia com segurança",
+      "npc": "ines",
+      "intro": "Todo fármaco é um equilíbrio entre efeito e risco. Entender o mecanismo é o que permite usar com segurança — as doses ficam com o médico-veterinário e a bula.",
+      "cards": [
+        {
+          "title": "Anti-inflamatórios e o rim",
+          "scenario": "Lola, cadela idosa, estava desidratada por vômitos quando o tutor lhe deu um anti-inflamatório de uso humano. Dois dias depois: anorexia, mais vômitos e azotemia.",
+          "explanation": "Os anti-inflamatórios não esteroidais (AINEs) inibem as ciclo-oxigenases (COX-1 e COX-2) e reduzem as prostaglandinas. No rim, as prostaglandinas mantêm o fluxo sanguíneo quando a perfusão cai (desidratação, hipotensão, anestesia, doença renal). Sem elas, pode ocorrer lesão renal aguda. No estômago, a inibição da COX-1 reduz a proteção da mucosa e favorece úlceras.",
+          "keyPoints": [
+            "Nunca use medicamentos humanos em animais sem orientação veterinária (ibuprofeno e naproxeno são tóxicos para cães; paracetamol é muito tóxico para gatos).",
+            "Desidratação e hipotensão aumentam o risco renal dos AINEs.",
+            "Não associe AINEs a corticoides: o risco de úlcera gastrintestinal aumenta."
+          ],
+          "think": { "question": "Por que a desidratação da Lola aumentou o risco?", "answer": "Com a perfusão renal reduzida, o rim depende das prostaglandinas para manter o fluxo sanguíneo — justamente o que o AINE bloqueia." },
+          "vetidexId": "farm_aines",
+          "refs": ["riviere2018", "merck"]
+        },
+        {
+          "title": "Tempo-dependente × concentração-dependente",
+          "scenario": "O tutor pergunta por que um antimicrobiano precisa ser dado em horários rigorosos, enquanto outro é dado uma vez ao dia.",
+          "explanation": "A farmacodinâmica dos antimicrobianos define o esquema. Nos beta-lactâmicos (penicilinas, cefalosporinas), o efeito depende do tempo em que a concentração permanece acima da CIM: intervalos regulares são essenciais. Aminoglicosídeos e fluoroquinolonas são concentração-dependentes (picos altos em relação à CIM) e têm efeito pós-antibiótico, o que permite intervalos maiores — nos aminoglicosídeos, isso também ajuda a reduzir a nefrotoxicidade.",
+          "keyPoints": [
+            "Atrasar ou pular doses de um fármaco tempo-dependente reduz a eficácia.",
+            "O esquema certo vem da combinação farmacocinética + farmacodinâmica.",
+            "Explique ao tutor o porquê do horário: adesão faz parte do tratamento."
+          ],
+          "think": { "question": "O que acontece se o tutor atrasar várias doses de um beta-lactâmico?", "answer": "A concentração fica abaixo da CIM por mais tempo, as bactérias voltam a crescer e aumenta o risco de falha e de seleção de resistência." },
+          "vetidexId": "farm_pkpd",
+          "refs": ["riviere2018"]
+        },
+        {
+          "title": "Ivermectina e a mutação MDR1",
+          "scenario": "Um cão da raça collie lambeu um produto à base de ivermectina de uso em bovinos. Horas depois apresenta ataxia, tremores, pupilas dilatadas, aparente cegueira e depressão.",
+          "explanation": "A glicoproteína-P (gene ABCB1, antes chamado MDR1) bombeia vários fármacos para fora do sistema nervoso central na barreira hematoencefálica. Collies, pastores-australianos, pastores-de-shetland e outras raças de pastoreio podem ter uma deleção nesse gene que torna a proteína não funcional. A ivermectina então se acumula no cérebro e causa neurotoxicidade. Outros fármacos também são afetados, como a loperamida e alguns quimioterápicos.",
+          "keyPoints": [
+            "Existe teste genético para a mutação.",
+            "Produtos para grandes animais são concentrados: risco de intoxicação para qualquer cão.",
+            "Pergunte a raça e o histórico antes de usar fármacos substratos da glicoproteína-P."
+          ],
+          "think": { "question": "Por que a loperamida também é perigosa para esses cães?", "answer": "Porque também é substrato da glicoproteína-P; sem a bomba funcional, alcança o sistema nervoso central e causa depressão neurológica." },
+          "vetidexId": "farm_mdr1",
+          "refs": ["mealey2001", "riviere2018"]
+        }
+      ],
+      "onComplete": [
+        { "type": "dex", "ids": ["farm_aines", "farm_pkpd", "farm_mdr1"] },
+        { "type": "mastery", "discipline": "farmacologia", "skill": "farmacodinamica", "xp": 20 },
+        { "type": "mastery", "discipline": "farmacologia", "skill": "toxicologia", "xp": 20 },
+        { "type": "objective", "quest": "q_disc_farmacologia", "objective": "o_aula" }
+      ]
+    },
+    {
+      "id": "aula_patologia",
+      "discipline": "patologia",
+      "title": "Patologia: lendo as lesões",
+      "npc": "raul",
+      "intro": "A patologia explica o que aconteceu nos tecidos. Hoje: inflamação, segurança na necrópsia e tumores.",
+      "cards": [
+        {
+          "title": "Os sinais cardinais da inflamação",
+          "scenario": "Um cavalo com uma ferida na canela apresenta a região quente, avermelhada, inchada e dolorida, e evita apoiar o membro.",
+          "explanation": "Rubor e calor vêm da vasodilatação (hiperemia). O tumor (inchaço) é edema causado pelo aumento da permeabilidade vascular, que deixa sair líquido rico em proteínas (exsudato). A dor vem de mediadores como prostaglandinas e bradicinina, que sensibilizam terminações nervosas. A perda de função completa os cinco sinais. Na inflamação aguda predominam neutrófilos; na crônica, macrófagos, linfócitos e plasmócitos, com fibrose.",
+          "keyPoints": [
+            "Rubor, calor, tumor, dor e perda de função.",
+            "Exsudato (inflamação) é rico em proteínas e células; transudato tem poucas.",
+            "A inflamação é uma resposta protetora, mas pode causar dano quando exagerada ou persistente."
+          ],
+          "think": { "question": "Por que a ferida do cavalo incha?", "answer": "Mediadores inflamatórios aumentam a permeabilidade vascular e o líquido rico em proteínas sai para o tecido (edema inflamatório)." },
+          "vetidexId": "pato_inflamacao",
+          "refs": ["zachary2017"]
+        },
+        {
+          "title": "Necrópsia com segurança: quando NÃO abrir",
+          "scenario": "Um bovino é encontrado morto de repente no pasto. Sai sangue escuro, que não coagula, pelas narinas e pelo ânus, e a carcaça incha rapidamente.",
+          "explanation": "Morte súbita com sangramento pelos orifícios naturais e sangue que não coagula levanta suspeita de carbúnculo hemático (antraz, Bacillus anthracis). A carcaça suspeita NÃO deve ser aberta: em contato com o ar, a bactéria forma esporos que sobrevivem no solo por décadas. A amostra (sangue de vaso periférico) é colhida com EPI, o serviço veterinário oficial é notificado e o destino da carcaça segue a orientação oficial.",
+          "keyPoints": [
+            "Antraz é zoonose de notificação obrigatória.",
+            "Em qualquer necrópsia: EPI, exame sistemático, registro e fotos.",
+            "Fragmentos para histopatologia vão em formol a 10%, com volume de fixador bem maior que o da amostra."
+          ],
+          "think": { "question": "Por que abrir a carcaça seria um erro grave?", "answer": "Porque expõe o Bacillus anthracis ao oxigênio, permitindo a esporulação e a contaminação duradoura do ambiente, além do risco para as pessoas." },
+          "vetidexId": "doenca_antraz",
+          "refs": ["who_anthrax2008", "zachary2017"]
+        },
+        {
+          "title": "Benigno ou maligno?",
+          "scenario": "Nina tem um nódulo subcutâneo macio, móvel, que cresce devagar há anos. Kira tem um nódulo na mama que dobrou de tamanho em um mês, aderido e ulcerado.",
+          "explanation": "Neoplasias benignas costumam crescer devagar, de forma expansiva e delimitada, com células bem diferenciadas, e não dão metástase. As malignas tendem a crescer rápido, infiltrar tecidos vizinhos, ter células atípicas (anaplasia, muitas mitoses) e podem se espalhar por via linfática ou sanguínea. A citologia é uma triagem útil, mas a confirmação e a graduação vêm da histopatologia.",
+          "keyPoints": [
+            "Sinais clínicos sugerem, mas só o exame histopatológico confirma o comportamento do tumor.",
+            "Investigar metástases (estadiamento) faz parte da avaliação de tumores malignos.",
+            "Tumores mamários são frequentes em cadelas não castradas; a castração precoce reduz o risco."
+          ],
+          "think": { "question": "Por que não basta o aspecto clínico para dizer que o nódulo da Nina é benigno?", "answer": "Porque comportamento clínico é só um indício; a histopatologia avalia arquitetura, diferenciação celular e invasão, que definem o diagnóstico." },
+          "vetidexId": "pato_neoplasia",
+          "refs": ["zachary2017"]
+        }
+      ],
+      "onComplete": [
+        { "type": "dex", "ids": ["pato_inflamacao", "doenca_antraz", "pato_neoplasia"] },
+        { "type": "mastery", "discipline": "patologia", "skill": "geral", "xp": 25 },
+        { "type": "mastery", "discipline": "patologia", "skill": "necropsia", "xp": 15 },
+        { "type": "objective", "quest": "q_disc_patologia", "objective": "o_aula" }
+      ]
+    },
+    {
+      "id": "aula_cirurgia",
+      "discipline": "cirurgia",
+      "title": "Cirurgia e anestesia seguras",
+      "npc": "beatriz",
+      "intro": "Uma cirurgia segura começa muito antes da incisão: avaliação do paciente, monitorização e técnica asséptica.",
+      "cards": [
+        {
+          "title": "Classificação ASA: avaliar antes de anestesiar",
+          "scenario": "Três pacientes na agenda: um gato jovem e saudável para castração; uma cadela de 10 anos com doença cardíaca controlada; um cão com piometra, desidratado e febril.",
+          "explanation": "A classificação de estado físico da ASA orienta o risco anestésico: I — saudável; II — doença sistêmica leve; III — doença sistêmica grave; IV — doença grave que é ameaça constante à vida; V — moribundo, sem expectativa de sobreviver sem o procedimento. O sufixo \"E\" indica emergência. Quanto maior a classe, mais exames pré-anestésicos, estabilização e monitorização são necessários.",
+          "keyPoints": [
+            "Gato saudável: ASA I. Cadela cardiopata controlada: II a III, conforme a avaliação.",
+            "Cão com piometra e sinais sistêmicos: III ou IV, com \"E\" se for emergência.",
+            "Estabilizar (fluidos, correção de distúrbios) antes da anestesia reduz o risco quando possível."
+          ],
+          "think": { "question": "Qual dos três pacientes precisa de estabilização antes da cirurgia?", "answer": "O cão com piometra, desidratado e febril: corrigir hidratação e alterações sistêmicas reduz o risco anestésico." },
+          "vetidexId": "cir_asa",
+          "refs": ["grimm2015"]
+        },
+        {
+          "title": "Monitorização anestésica",
+          "scenario": "Durante uma castração, a respiração do paciente fica superficial. O oxímetro marca SpO2 de 88% e a capnografia mostra ETCO2 de 60 mmHg.",
+          "explanation": "A monitorização inclui frequência e ritmo cardíacos (ECG), pressão arterial, oxigenação (SpO2), ventilação (ETCO2, o CO2 no fim da expiração), temperatura e profundidade anestésica (reflexos, posição do globo ocular, tônus da mandíbula). ETCO2 elevado indica hipoventilação (hipercapnia); SpO2 baixa indica hipoxemia. A equipe verifica via aérea e circuito, ajusta a profundidade anestésica e ventila o paciente, conforme decisão do anestesista.",
+          "keyPoints": [
+            "ETCO2 de referência em torno de 35–45 mmHg; SpO2 desejável ≥ 95%.",
+            "Hipotermia é comum na anestesia: monitore e aqueça.",
+            "Registre os parâmetros em intervalos regulares (ficha anestésica)."
+          ],
+          "think": { "question": "O que o ETCO2 de 60 mmHg indica?", "answer": "Hipoventilação: o paciente está eliminando pouco CO2, que se acumula no sangue (hipercapnia)." },
+          "vetidexId": "cir_monitorizacao",
+          "refs": ["grimm2015"]
+        },
+        {
+          "title": "Assepsia: a cadeia que não pode quebrar",
+          "scenario": "Um estudante paramentado coça o nariz com a luva estéril e depois encosta o avental na lateral da mesa não estéril.",
+          "explanation": "Assepsia é o conjunto de medidas que impedem a contaminação do campo cirúrgico. Antissepsia é aplicada em tecidos vivos (pele do paciente, mãos da equipe); desinfecção, em objetos. Só o que é estéril toca o que é estéril. No avental, são consideradas estéreis a frente, do peito à cintura, e as mangas; as mãos ficam acima da cintura e à frente do corpo. Qualquer quebra da técnica exige troca da luva ou do avental.",
+          "keyPoints": [
+            "Preparo do paciente: tricotomia ampla e antissepsia do centro para a periferia.",
+            "Equipe: degermação das mãos, paramentação e postura correta.",
+            "Contaminou? Avise e troque — esconder a falha aumenta o risco de infecção do sítio cirúrgico."
+          ],
+          "think": { "question": "O que o estudante deve fazer?", "answer": "Avisar a equipe e trocar as luvas e o avental antes de voltar ao campo, pois ambos foram contaminados." },
+          "vetidexId": "prev_assepsia",
+          "refs": ["fossum2019"]
+        }
+      ],
+      "onComplete": [
+        { "type": "dex", "ids": ["cir_asa", "cir_monitorizacao", "prev_assepsia"] },
+        { "type": "mastery", "discipline": "cirurgia", "skill": "pre_operatorio", "xp": 15 },
+        { "type": "mastery", "discipline": "cirurgia", "skill": "monitorizacao", "xp": 15 },
+        { "type": "mastery", "discipline": "cirurgia", "skill": "assepsia", "xp": 15 },
+        { "type": "objective", "quest": "q_disc_cirurgia", "objective": "o_aula" }
+      ]
+    },
+    {
+      "id": "aula_saude_publica",
+      "discipline": "saude_publica",
+      "title": "Saúde Pública e Saúde Única",
+      "npc": "tomas",
+      "intro": "O médico-veterinário protege animais, pessoas e ambiente ao mesmo tempo. Três situações do dia a dia mostram como.",
+      "cards": [
+        {
+          "title": "Raiva: o morcego caído",
+          "scenario": "Uma criança encontrou um morcego caído no quintal durante o dia, e o cachorro da família brincou com ele.",
+          "explanation": "A raiva é causada por um lyssavirus, afeta todos os mamíferos e é praticamente sempre fatal depois que surgem os sinais. Transmite-se pela saliva (mordedura, arranhadura ou lambedura de mucosas e pele ferida). No Brasil, morcegos — inclusive não hematófagos — são importantes na transmissão. Morcego caído ou ativo de dia tem comportamento anormal.",
+          "keyPoints": [
+            "Não toque no morcego sem proteção: isole-o (balde ou caixa) e chame o serviço de zoonoses.",
+            "Pessoa exposta: lavar o ferimento com água e sabão e procurar a unidade de saúde para avaliar a profilaxia.",
+            "O cão deve ser avaliado (situação vacinal e conduta definida pelo serviço oficial)."
+          ],
+          "think": { "question": "Por que lavar o ferimento com água e sabão é tão importante?", "answer": "Porque remove e inativa grande parte do vírus no local, reduzindo o risco — é a primeira medida da profilaxia pós-exposição." },
+          "vetidexId": "doenca_raiva",
+          "refs": ["who_rabies2018", "guia_vigilancia2021"]
+        },
+        {
+          "title": "Leptospirose depois da enchente",
+          "scenario": "Após uma enchente no bairro, um cão chega com vômitos, mucosas amareladas e pouca urina. O tutor conta que limpou a casa sem botas nem luvas.",
+          "explanation": "Leptospira spp. é eliminada na urina de roedores (principalmente ratazanas) e de outros animais infectados. Penetra por pele lesionada ou mucosas em contato com água ou lama contaminadas. No cão, pode causar lesão renal e hepática agudas; em pessoas, também pode ser grave. A enchente espalha a urina contaminada pelo ambiente.",
+          "keyPoints": [
+            "Use luvas e EPI ao manipular o paciente e a urina; mantenha-o em isolamento.",
+            "Oriente o tutor a procurar o serviço de saúde se tiver febre ou dores musculares — a leptospirose humana é de notificação compulsória.",
+            "Prevenção: controle de roedores, vacinação dos cães e proteção em limpezas pós-enchente."
+          ],
+          "think": { "question": "Por que usar luvas para manipular a urina desse cão?", "answer": "Porque o cão infectado pode eliminar leptospiras na urina, que penetram por pele lesionada e mucosas — risco zoonótico para a equipe." },
+          "vetidexId": "doenca_leptospirose",
+          "refs": ["guia_vigilancia2021", "ettinger2017"]
+        },
+        {
+          "title": "Inspeção: do curral à mesa",
+          "scenario": "Numa feira, vendem queijo de leite cru sem rótulo e carne sem carimbo de inspeção. Um produtor diz que \"vaca com brucelose dá leite bom igual\".",
+          "explanation": "Produtos de origem animal devem passar por inspeção sanitária: federal (SIF), estadual (SIE) ou municipal (SIM), conforme o comércio. O carimbo indica que houve inspeção antes e depois do abate, regulamentada pelo RIISPOA (Decreto 9.013/2017). A brucelose bovina (Brucella abortus) causa aborto no terço final da gestação e é zoonose transmitida por leite cru, derivados não pasteurizados e material de aborto. O PNCEBT prevê vacinação obrigatória das bezerras e testes no rebanho.",
+          "keyPoints": [
+            "Pasteurização elimina Brucella e outros patógenos do leite.",
+            "Carne e derivados sem inspeção podem transmitir doenças (por exemplo, cisticercose, tuberculose).",
+            "Brucelose e tuberculose bovinas têm programa oficial de controle (PNCEBT)."
+          ],
+          "think": { "question": "O que responder ao produtor?", "answer": "Que a vaca com brucelose pode eliminar Brucella no leite; consumir leite cru ou queijo não pasteurizado dessa vaca pode transmitir a doença às pessoas." },
+          "vetidexId": "doenca_brucelose",
+          "refs": ["riispoa2017", "pncebt2006"]
+        }
+      ],
+      "onComplete": [
+        { "type": "dex", "ids": ["doenca_raiva", "doenca_leptospirose", "doenca_brucelose"] },
+        { "type": "mastery", "discipline": "saude_publica", "skill": "zoonoses", "xp": 25 },
+        { "type": "mastery", "discipline": "saude_publica", "skill": "inspecao", "xp": 15 },
+        { "type": "objective", "quest": "q_disc_saude_publica", "objective": "o_aula" }
+      ]
+    }
+  ]
+}

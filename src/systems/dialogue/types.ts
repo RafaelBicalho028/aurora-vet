@@ -33,6 +33,7 @@ export type Effect =
   | { type: 'adoptPet' }
   | { type: 'petCheckup' }
   | { type: 'openReview' }
+  | { type: 'openLesson'; id: string }
   | { type: 'openPanel'; panel: 'performance' | 'vetidex' | 'journal' | 'map' | 'inventory' }
   | { type: 'save' };
 

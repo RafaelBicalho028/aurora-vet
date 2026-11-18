@@ -9,7 +9,7 @@ import type { DialogueChoice, Effect } from '../systems/dialogue/types';
 import { h, pixelImg } from './dom';
 import { ui, type Modal } from './UIManager';
 
-const UI_EFFECTS = new Set(['startCase', 'startMinigame', 'startQuiz', 'adoptPet', 'petCheckup', 'openReview', 'openPanel']);
+const UI_EFFECTS = new Set(['startCase', 'startMinigame', 'startQuiz', 'adoptPet', 'petCheckup', 'openReview', 'openLesson', 'openPanel']);
 
 function speakerInfo(speaker: string | undefined, fallbackNpc?: string): { name: string; look: CharacterLook | null } {
   const id = speaker ?? fallbackNpc;

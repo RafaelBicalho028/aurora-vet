@@ -52,9 +52,24 @@ O teste valida o esquema e também **gera automaticamente a solução ideal** a 
 
 ## Banco de perguntas (aulas, quizzes e revisão)
 
-Perguntas avulsas ficam em `src/content/questionBank.json`, agrupadas em *pools* (`anatomia_comparada`, `sinais_vitais`, `biosseguranca`). Cada pergunta tem `id` único, `prompt`, `options` (3+), `correctIndex`, `explanation`, `refs` (ids do catálogo) e, opcionalmente, `vetidexId`.
+Perguntas avulsas ficam em `src/content/questionBank.json`, agrupadas em *pools* (`anatomia_comparada`, `sinais_vitais`, `biosseguranca`, `microbiologia`, `parasitologia`, `farmacologia`, `patologia`, `cirurgia`, `saude_publica`). Cada pergunta tem `id` único, `prompt`, `options` (3+), `correctIndex`, `explanation`, `refs` (ids do catálogo) e, opcionalmente, `vetidexId`.
 
 - Para ampliar um pool, basta acrescentar perguntas: o sorteio passa a usá-las automaticamente.
 - Os testes exigem pools com pelo menos 12 perguntas e com o dobro do máximo usado por sessão, para garantir variedade ao repetir.
 - Quizzes de personagens são configurados em `src/content/quizzes.ts` (pool, acertos exigidos, máximo de perguntas, efeitos ao concluir).
 - Estruturas do esqueleto interativo ficam em `src/content/minigames/anatomia-intro.json` (`hotspots.structures`, com coordenadas no esquema de 400×240); o teste impede círculos sobrepostos.
+
+## Aulas dos professores (quadros clínicos)
+
+As aulas ficam em **`src/content/lessons.json`**. Cada aula tem `id`, `discipline` (id de `src/content/disciplines.ts`), `title`, `npc` (professor), `intro`, `cards` e `onComplete` (efeitos aplicados uma única vez ao concluir: VetiDex, domínio e o objetivo `o_aula` da missão `q_disc_<matéria>`).
+
+Cada quadro (`cards[]`) tem:
+
+- `title` e `scenario`: a situação clínica, em linguagem de atendimento;
+- `explanation`: o porquê (fisiopatologia, mecanismo, conduta geral) — **sem doses nem prescrições**;
+- `keyPoints`: 2 ou mais pontos-chave;
+- `think`: pergunta de reflexão com a resposta, revelada pelo jogador;
+- `refs`: ids do catálogo de referências; `vetidexId` opcional.
+
+Para criar uma matéria nova: escreva a aula, crie um *pool* com pelo menos 12 perguntas, um quiz em `quizzes.ts` (`quiz_<matéria>`), a missão `q_disc_<matéria>` em `quests.ts` (objetivos `o_aula` e `o_quiz`), o professor em `npcs.ts` com o diálogo gerado por `professor({...})` em `dialogues.ts` e uma sala com `classroom({...})` em `src/world/maps/institutos.ts`. Os testes verificam referências, VetiDex, efeitos, ausência de doses e que todo professor oferece aula e questionário.
+

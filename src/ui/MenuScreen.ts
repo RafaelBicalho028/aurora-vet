@@ -173,19 +173,21 @@ let groundCache: Record<string, string> = {};
 function renderMap(): HTMLElement {
   const st = requireState();
   const regions = [
-    { name: 'Universidade de Aurora', stage: 1, desc: 'Hospital Veterinário, Laboratório de Anatomia, Biblioteca, fazenda-escola.', open: true },
+    { name: 'Universidade de Aurora', stage: 1, desc: 'Hospital Veterinário, Anatomia, Fisiologia, Microbiologia, Biblioteca, fazenda-escola e o Setor dos Institutos (Parasitologia, Farmacologia, Patologia, Cirurgia e Anestesiologia, Saúde Pública).', open: true },
     { name: 'Vila dos Animais', stage: 2, desc: 'Residências com tutores, pet shops, praças, centro de adoção e clínica de pequenos animais.', open: false },
     { name: 'Região Rural', stage: 3, desc: 'Fazendas de bovinos, ovinos, equinos e propriedades leiteiras.', open: false },
     { name: 'Reserva Ambiental', stage: 4, desc: 'Animais silvestres, centro de reabilitação e missões de conservação.', open: false },
     { name: 'Centro Veterinário Avançado', stage: 4, desc: 'Internação, diagnóstico por imagem, centro cirúrgico, UTI e análises clínicas.', open: false },
   ];
   const mapId = st.data.player.mapId;
-  const showMap = MAPS[mapId].kind === 'outdoor' ? mapId : 'campus';
+  // dentro de um prédio, mostra o mapa externo onde fica a porta desse prédio
+  const showMap = MAPS[mapId].kind === 'outdoor' ? mapId
+    : Object.values(MAPS).find((om) => om.kind === 'outdoor' && om.buildings.some((b) => b.doors.some((d) => d.warp?.map === mapId)))?.id ?? 'campus';
   const m = getMap(showMap);
   if (!groundCache[showMap]) groundCache[showMap] = renderGroundCanvas(m).toDataURL();
   const scale = Math.max(4, Math.min(9, Math.floor((Math.min(window.innerWidth, 1000) - 340) / m.width))); // px por tile
   const wrap = h('div', { class: 'minimap', style: `width:${m.width * scale}px;height:${m.height * scale}px` },
-    h('img', { src: groundCache[showMap], class: 'pixel', style: `width:${m.width * scale}px;height:${m.height * scale}px`, alt: 'Mapa do campus' }));
+    h('img', { src: groundCache[showMap], class: 'pixel', style: `width:${m.width * scale}px;height:${m.height * scale}px`, alt: `Mapa: ${m.name}` }));
   for (const b of m.buildings) {
     wrap.appendChild(h('div', { class: 'mm-building', style: `left:${b.x * scale}px;top:${b.y * scale}px;width:${b.w * scale}px;height:${b.h * scale}px;background:${b.style.roof}` }, h('span', null, b.name)));
   }

@@ -436,6 +436,21 @@ table.lab tr.flag td { color: #ffd38a; }
 .quiz-head { display: flex; gap: 12px; align-items: center; }
 .quiz-portrait { width: 64px; height: 72px; background: #2a2440; border: 2px solid #110d1a; border-radius: 8px; flex: 0 0 auto; }
 .quiz-head h2 { margin: 0; }
+.btn-small { padding: 4px 10px; font-size: 0.85rem; min-height: 0; }
+.lesson { position: relative; }
+.lesson .quiz-head { align-items: flex-start; }
+.lesson-close { margin-left: auto; }
+.lesson-dots { display: flex; align-items: center; gap: 4px; color: var(--accent, #f2cc5a); }
+.lesson-body { margin-top: 8px; }
+.lesson-intro { font-size: 1.05rem; }
+.lesson-title { margin: 6px 0 8px; }
+.lesson-label { font-weight: 700; margin: 10px 0 4px; color: #f2cc5a; }
+.lesson-case { background: rgba(124, 199, 240, 0.08); border: 1px solid var(--line); border-left: 4px solid #7cc7f0; border-radius: 8px; padding: 4px 12px; }
+.lesson-points { margin: 4px 0; padding-left: 20px; }
+.lesson-points li { margin: 3px 0; }
+.lesson-think { background: rgba(142, 224, 168, 0.08); border: 1px dashed #8ee0a8; border-radius: 8px; padding: 4px 12px 10px; margin: 10px 0; }
+.lesson-answer { margin-top: 6px; padding: 8px 10px; background: rgba(0, 0, 0, 0.2); border-radius: 6px; }
+.lesson-refs { margin-top: 10px; }
 .quiz-progress { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
 .pip { color: var(--muted); font-size: 1.1rem; }
 .pip.on { color: var(--gold); }

@@ -47,10 +47,10 @@ const SP = process.env.SP || '.';
       if (await p.$('.dialogue')) { await p.screenshot({ path: `${SP}/side_${id}.png` }); await talk(); break; }
     }
   }
-  // Profa. Lívia (12,7): fica em (12,8) olhando para cima
-  await warp('campus', 12, 8, 'up');
+  // Profa. Lívia, no Instituto de Fisiologia (8,3): fica em (8,4) olhando para cima
+  await warp('fisiologia', 8, 4, 'up');
   await p.keyboard.press('KeyE'); await p.waitForTimeout(300);
-  await talk(/Claro/);
+  await talk(/sinais vitais/);
   await p.waitForTimeout(400);
   console.log('quiz Lívia ok?', await answerBankQuiz(p));
   // Júlia (26,15): fica em (25,15) olhando para a direita e adota um gato siamês

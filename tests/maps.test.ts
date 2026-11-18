@@ -96,9 +96,25 @@ describe('Ninguém fica preso / tudo é alcançável', () => {
     const hosp = m.buildings.find((b) => b.id === 'hospital')!;
     expect(isDoorLocked(hosp.doors[0], () => true)).toBe(true);
     expect(isDoorLocked(hosp.doors[0], () => false)).toBe(false);
-    const aulas = m.buildings.find((b) => b.id === 'aulas')!;
-    expect(isDoorLocked(aulas.doors[0], () => false)).toBe(true);
-    expect(aulas.doors[0].locked!.message.length).toBeGreaterThan(10);
+    expect(hosp.doors[0].locked!.message.length).toBeGreaterThan(10);
+  });
+
+  it('todos os prédios de disciplinas estão abertos e levam a uma sala com professor', () => {
+    const buildings = [...MAPS.campus.buildings.filter((b) => b.id === 'aulas' || b.id === 'labs'), ...MAPS.institutos.buildings];
+    expect(buildings.length).toBe(7);
+    for (const b of buildings) {
+      const door = b.doors[0];
+      expect(isDoorLocked(door, () => false), b.id).toBe(false);
+      expect(door.warp, b.id).toBeDefined();
+      const room = door.warp!.map;
+      expect(NPCS.some((n) => n.map === room && /^Prof/.test(n.name)), `${b.id}: professor em ${room}`).toBe(true);
+    }
+  });
+
+  it('o Setor dos Institutos é alcançável a partir do campus pela avenida oeste', () => {
+    const r = reachable('campus', [MAPS.campus.spawn.x, MAPS.campus.spawn.y], { unlockAll: false });
+    const col = buildCollision(MAPS.campus, () => true);
+    expect([...r].some((k) => col.warps.get(k)?.map === 'institutos')).toBe(true);
   });
 
   for (const n of NPCS) {

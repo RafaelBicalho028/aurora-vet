@@ -17,7 +17,7 @@ const casual = (skin: number, hair: number, style: CharacterLook['hairStyle'], s
 
 export const NPCS: NpcDef[] = [
   { id: 'lucas', name: 'Lucas', role: 'Colega de graduação', look: coat(3, 0, 'cacheado', 1), map: 'campus', x: 22, y: 24, facing: 'down', wander: 0, dialogue: 'lucas' },
-  { id: 'livia', name: 'Profa. Lívia Campos', role: 'Professora de Fisiologia', look: coat(0, 4, 'coque', 3), map: 'campus', x: 12, y: 7, facing: 'down', dialogue: 'livia' },
+  { id: 'livia', name: 'Profa. Lívia Campos', role: 'Professora de Fisiologia', look: coat(0, 4, 'coque', 3), map: 'fisiologia', x: 8, y: 3, facing: 'down', dialogue: 'livia' },
   { id: 'antonio', name: 'Seu Antônio', role: 'Produtor rural e técnico da fazenda-escola', look: casual(2, 0, 'curto', '#7a8a4a', '#4a4038', { hat: '#d8b25a' }), map: 'campus', x: 31, y: 10, facing: 'up', dialogue: 'antonio' },
   { id: 'rafa', name: 'Rafaela', role: 'Colega de graduação', look: coat(4, 0, 'longo', 0), map: 'campus', x: 27, y: 22, facing: 'left', wander: 2, dialogue: 'rafa' },
   { id: 'otavio', name: 'Prof. Otávio Ramos', role: 'Professor de Anatomia Veterinária', look: coat(2, 5, 'curto', 2, { glasses: true, beard: true }), map: 'anatomia', x: 8, y: 3, facing: 'down', dialogue: 'otavio' },
@@ -29,6 +29,13 @@ export const NPCS: NpcDef[] = [
   { id: 'sofia', name: 'Sofia', role: 'Tutora do Pingo', look: casual(3, 0, 'longo', '#e8c13c', '#3a4258'), map: 'hospital', x: 8, y: 8, facing: 'down', dialogue: 'sofia', visibleWhen: { questStarted: 'q_filhote' } },
   { id: 'paulo', name: 'Sr. Paulo', role: 'Tutor do Nino', look: casual(4, 5, 'curto', '#3d6fb6', '#38405a', { glasses: true }), map: 'hospital', x: 8, y: 11, facing: 'down', dialogue: 'paulo', visibleWhen: { questStarted: 'q_emergencia' } },
   { id: 'julia', name: 'Júlia', role: 'Voluntária do projeto de adoção responsável', look: casual(3, 4, 'cacheado', '#e8843a', '#3a4258'), map: 'campus', x: 26, y: 15, facing: 'left', dialogue: 'julia' },
+  { id: 'renata', name: 'Profa. Renata Okabe', role: 'Professora de Microbiologia', look: coat(1, 0, 'chanel', 5, { glasses: true, sex: 'feminino' }), map: 'microbiologia', x: 8, y: 3, facing: 'down', dialogue: 'renata' },
+  { id: 'jorge', name: 'Prof. Jorge Bastos', role: 'Professor de Parasitologia', look: coat(3, 1, 'raspado', 4, { beard: true, sex: 'masculino' }), map: 'parasitologia', x: 8, y: 3, facing: 'down', dialogue: 'jorge' },
+  { id: 'ines', name: 'Profa. Inês Moura', role: 'Professora de Farmacologia', look: coat(2, 1, 'rabo', 2, { sex: 'feminino' }), map: 'farmacologia', x: 8, y: 3, facing: 'down', dialogue: 'ines' },
+  { id: 'raul', name: 'Prof. Raul Siqueira', role: 'Professor de Patologia', look: coat(0, 5, 'curto', 1, { glasses: true, sex: 'masculino' }), map: 'patologia', x: 8, y: 3, facing: 'down', dialogue: 'raul' },
+  { id: 'beatriz', name: 'Profa. Beatriz Leal', role: 'Professora de Cirurgia e Anestesiologia', look: scrubs(4, 0, 'trancas', '#3f8a5c', { sex: 'feminino' }), map: 'cirurgia', x: 8, y: 3, facing: 'down', dialogue: 'beatriz' },
+  { id: 'tomas', name: 'Prof. Tomás Araújo', role: 'Professor de Saúde Pública Veterinária', look: coat(4, 0, 'curto', 0, { beard: true, sex: 'masculino' }), map: 'saude_publica', x: 8, y: 3, facing: 'down', dialogue: 'tomas' },
+  { id: 'nara', name: 'Nara', role: 'Colega de graduação (monitora dos institutos)', look: casual(1, 6, 'rabo', '#3d6fb6', '#3a5a8a', { sex: 'feminino', pattern: 'patinhas', patternColor: '#f4f0e6' }), map: 'institutos', x: 30, y: 13, facing: 'left', wander: 2, dialogue: 'nara' },
   { id: 'bruno', name: 'Bruno', role: 'Colega de graduação', look: coat(1, 3, 'curto', 4), map: 'biblioteca', x: 5, y: 7, facing: 'down', dialogue: 'bruno' },
 ];
 

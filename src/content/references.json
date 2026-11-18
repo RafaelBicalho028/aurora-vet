@@ -151,6 +151,66 @@
       "id": "cooper2015",
       "type": "artigo",
       "citation": "COOPER, E. S. Controversies in the management of feline urethral obstruction. Journal of Veterinary Emergency and Critical Care, v. 25, n. 1, p. 130-137, 2015."
+    },
+    {
+      "id": "quinn2011",
+      "type": "livro",
+      "citation": "QUINN, P. J. et al. Veterinary Microbiology and Microbial Disease. 2. ed. Chichester: Wiley-Blackwell, 2011."
+    },
+    {
+      "id": "riviere2018",
+      "type": "livro",
+      "citation": "RIVIERE, J. E.; PAPICH, M. G. (ed.). Veterinary Pharmacology and Therapeutics. 10. ed. Hoboken: Wiley-Blackwell, 2018."
+    },
+    {
+      "id": "zachary2017",
+      "type": "livro",
+      "citation": "ZACHARY, J. F. (ed.). Pathologic Basis of Veterinary Disease. 6. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "fossum2019",
+      "type": "livro",
+      "citation": "FOSSUM, T. W. (ed.). Small Animal Surgery. 5. ed. Philadelphia: Elsevier, 2019."
+    },
+    {
+      "id": "grimm2015",
+      "type": "livro",
+      "citation": "GRIMM, K. A. et al. (ed.). Veterinary Anesthesia and Analgesia: The Fifth Edition of Lumb and Jones. Ames: Wiley-Blackwell, 2015."
+    },
+    {
+      "id": "mealey2001",
+      "type": "artigo",
+      "citation": "MEALEY, K. L. et al. Ivermectin sensitivity in collies is associated with a deletion mutation of the mdr1 gene. Pharmacogenetics, v. 11, n. 8, p. 727-733, 2001."
+    },
+    {
+      "id": "vanwyk2002",
+      "type": "artigo",
+      "citation": "VAN WYK, J. A.; BATH, G. F. The FAMACHA system for managing haemonchosis in sheep and goats by clinically identifying individual animals for treatment. Veterinary Research, v. 33, n. 5, p. 509-529, 2002."
+    },
+    {
+      "id": "harrus2011",
+      "type": "artigo",
+      "citation": "HARRUS, S.; WANER, T. Diagnosis of canine monocytotropic ehrlichiosis (Ehrlichia canis): an overview. The Veterinary Journal, v. 187, n. 3, p. 292-296, 2011."
+    },
+    {
+      "id": "who_anthrax2008",
+      "type": "documento",
+      "citation": "WORLD HEALTH ORGANIZATION. Anthrax in humans and animals. 4. ed. Geneva: WHO, 2008."
+    },
+    {
+      "id": "guia_vigilancia2021",
+      "type": "documento",
+      "citation": "BRASIL. Ministério da Saúde. Guia de Vigilância em Saúde. 5. ed. Brasília: Ministério da Saúde, 2021."
+    },
+    {
+      "id": "riispoa2017",
+      "type": "legislacao",
+      "citation": "BRASIL. Decreto nº 9.013, de 29 de março de 2017. Regulamenta a inspeção industrial e sanitária de produtos de origem animal (RIISPOA). Diário Oficial da União, Brasília, 2017."
+    },
+    {
+      "id": "pncebt2006",
+      "type": "documento",
+      "citation": "BRASIL. Ministério da Agricultura, Pecuária e Abastecimento. Programa Nacional de Controle e Erradicação da Brucelose e da Tuberculose Animal (PNCEBT): Manual Técnico. Brasília: MAPA/SDA/DSA, 2006."
     }
   ]
 }

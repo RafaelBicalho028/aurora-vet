@@ -7,37 +7,500 @@
       "discipline": "anatomia",
       "skill": "comparada",
       "questions": [
-        { "id": "ac_cervicais", "prompt": "Quantas vértebras cervicais possuem cães, gatos, bovinos e equinos?", "options": ["7", "5", "13", "Varia muito entre essas espécies"], "correctIndex": 0, "explanation": "Os mamíferos domésticos têm 7 vértebras cervicais, mesmo com pescoços de comprimentos muito diferentes.", "refs": ["dyce2010"], "vetidexId": "anat_coluna_vertebral" },
-        { "id": "ac_rumen", "prompt": "Qual compartimento do estômago do bovino adulto tem a maior capacidade?", "options": ["Rúmen", "Abomaso", "Omaso", "Retículo"], "correctIndex": 0, "explanation": "No adulto, o rúmen é o maior compartimento, onde ocorre a fermentação microbiana. No bezerro lactente, o abomaso predomina.", "refs": ["dyce2010"], "vetidexId": "anat_estomago_ruminante" },
-        { "id": "ac_vesicula", "prompt": "Qual destas espécies NÃO possui vesícula biliar?", "options": ["Equino", "Cão", "Gato", "Bovino"], "correctIndex": 0, "explanation": "O equino não possui vesícula biliar; a bile flui continuamente para o duodeno.", "refs": ["dyce2010"], "vetidexId": "anat_figado_vesicula" },
-        { "id": "ac_dentes_cao", "prompt": "Quantos dentes permanentes possui o cão adulto?", "options": ["42", "30", "32", "44"], "correctIndex": 0, "explanation": "Fórmula do cão: I3/3 C1/1 P4/4 M2/3 = 42.", "refs": ["dyce2010"], "vetidexId": "anat_formula_dentaria" },
-        { "id": "ac_dentes_gato", "prompt": "Quantos dentes permanentes possui o gato adulto?", "options": ["30", "42", "26", "36"], "correctIndex": 0, "explanation": "Fórmula do gato: I3/3 C1/1 P3/2 M1/1 = 30. O gato tem 26 dentes decíduos.", "refs": ["dyce2010"], "vetidexId": "anat_formula_dentaria" },
-        { "id": "ac_dentes_suino", "prompt": "Qual espécie doméstica tem dentição permanente completa, com 44 dentes?", "options": ["Suíno", "Cão", "Bovino", "Gato"], "correctIndex": 0, "explanation": "O suíno mantém a fórmula dentária completa dos mamíferos placentários: I3/3 C1/1 P4/4 M3/3 = 44.", "refs": ["dyce2010"], "vetidexId": "anat_formula_dentaria" },
-        { "id": "ac_pulvino", "prompt": "Bovinos não possuem incisivos superiores. O que existe em seu lugar?", "options": ["Pulvino (coxim) dentário", "Caninos superiores", "Um diastema sem nenhuma estrutura", "Dentes decíduos que nunca caem"], "correctIndex": 0, "explanation": "O pulvino dentário é uma placa queratinizada contra a qual os incisivos inferiores pressionam a forragem.", "refs": ["dyce2010"], "vetidexId": "anat_formula_dentaria" },
-        { "id": "ac_clavicula", "prompt": "Como é a clavícula no cão?", "options": ["Rudimentar, frequentemente um pequeno osso não articulado", "Bem desenvolvida e articulada ao esterno", "Fundida à escápula", "Igual à humana"], "correctIndex": 0, "explanation": "No cão a clavícula é rudimentar (quando presente). No equino, é ausente.", "refs": ["dyce2010"], "vetidexId": "anat_esqueleto_cao" },
-        { "id": "ac_sinsarcose", "prompt": "Como o membro torácico do cão se une ao tronco?", "options": ["Por músculos (sinsarcose), sem articulação óssea", "Pela articulação esternoclavicular", "Por uma sindesmose com as costelas", "Pela fusão da escápula às vértebras torácicas"], "correctIndex": 0, "explanation": "Nos animais domésticos, a união do membro torácico ao tronco é muscular, o que permite maior amplitude e absorção de impacto.", "refs": ["dyce2010"], "vetidexId": "anat_esqueleto_cao" },
-        { "id": "ac_toracicas_cao", "prompt": "Quantas vértebras torácicas o cão possui normalmente?", "options": ["13", "7", "18", "20"], "correctIndex": 0, "explanation": "O cão tem 13 vértebras torácicas e, portanto, 13 pares de costelas.", "refs": ["dyce2010"], "vetidexId": "anat_coluna_vertebral" },
-        { "id": "ac_toracicas_equino", "prompt": "Quantas vértebras torácicas o equino possui geralmente?", "options": ["18", "13", "7", "24"], "correctIndex": 0, "explanation": "O equino tem geralmente 18 vértebras torácicas e 6 lombares, com variações individuais.", "refs": ["dyce2010"], "vetidexId": "anat_coluna_vertebral" },
-        { "id": "ac_lombares", "prompt": "Quantas vértebras lombares tem, normalmente, o cão? E o bovino?", "options": ["Cão 7; bovino 6", "Cão 6; bovino 7", "Ambos 5", "Cão 13; bovino 13"], "correctIndex": 0, "explanation": "Fórmula do cão: C7 T13 L7 S3. O bovino tem 13 torácicas e 6 lombares.", "refs": ["dyce2010"], "vetidexId": "anat_coluna_vertebral" },
-        { "id": "ac_sacro_cao", "prompt": "O sacro do cão é formado por quantas vértebras fundidas?", "options": ["3", "1", "5", "7"], "correctIndex": 0, "explanation": "No cão, três vértebras sacrais se fundem para formar o sacro.", "refs": ["dyce2010"], "vetidexId": "anat_coluna_vertebral" },
-        { "id": "ac_abomaso", "prompt": "Qual compartimento corresponde ao estômago glandular (\"verdadeiro\") dos ruminantes?", "options": ["Abomaso", "Rúmen", "Retículo", "Omaso"], "correctIndex": 0, "explanation": "Rúmen, retículo e omaso são pré-estômagos aglandulares; o abomaso secreta suco gástrico.", "refs": ["dyce2010"], "vetidexId": "anat_estomago_ruminante" },
-        { "id": "ac_omaso", "prompt": "Qual compartimento do estômago dos ruminantes possui numerosas lâminas (\"folhas\") em sua mucosa?", "options": ["Omaso", "Retículo", "Abomaso", "Rúmen"], "correctIndex": 0, "explanation": "As lâminas do omaso aumentam a superfície de absorção de água e outros componentes da digesta.", "refs": ["dyce2010"], "vetidexId": "anat_estomago_ruminante" },
-        { "id": "ac_reticulo", "prompt": "Qual compartimento tem mucosa em forma de \"favo de mel\" e é onde costumam se alojar corpos estranhos metálicos ingeridos por bovinos?", "options": ["Retículo", "Omaso", "Abomaso", "Ceco"], "correctIndex": 0, "explanation": "Corpos estranhos pesados se acumulam no retículo e podem perfurá-lo (reticuloperitonite traumática).", "refs": ["dyce2010", "merck"], "vetidexId": "anat_estomago_ruminante" },
-        { "id": "ac_equino_fermentacao", "prompt": "Onde ocorre a principal fermentação microbiana da fibra no equino?", "options": ["No ceco e no cólon", "No rúmen", "No estômago", "No duodeno"], "correctIndex": 0, "explanation": "O equino é um herbívoro monogástrico com fermentação no intestino grosso.", "refs": ["dyce2010"], "vetidexId": "especie_equino" },
-        { "id": "ac_cao_estomago", "prompt": "Como se classifica o estômago do cão?", "options": ["Simples (monocavitário) e glandular", "Com quatro compartimentos", "Com dois compartimentos aglandulares", "Ausente"], "correctIndex": 0, "explanation": "Cães e gatos são monogástricos, com estômago simples.", "refs": ["dyce2010"], "vetidexId": "especie_cao" },
-        { "id": "ac_equino_dedo", "prompt": "Sobre qual dedo o equino apoia cada membro?", "options": ["Terceiro dedo", "Primeiro dedo", "Terceiro e quarto dedos", "Cinco dedos"], "correctIndex": 0, "explanation": "O equino é monodáctilo: apoia-se no terceiro dedo, protegido pelo casco.", "refs": ["dyce2010"], "vetidexId": "especie_equino" },
-        { "id": "ac_bovino_dedos", "prompt": "Quais dedos são os principais de apoio no bovino?", "options": ["Terceiro e quarto dedos", "Apenas o terceiro dedo", "Primeiro e segundo dedos", "Segundo e quinto dedos"], "correctIndex": 0, "explanation": "Ruminantes apoiam-se no terceiro e no quarto dedos; o segundo e o quinto formam as unhas acessórias.", "refs": ["dyce2010"], "vetidexId": "especie_bovino" },
-        { "id": "ac_ergo", "prompt": "O ergô (\"dedo de lobo\") do membro torácico do cão corresponde a qual dedo?", "options": ["Primeiro dedo", "Quinto dedo", "Terceiro dedo", "Um osso sesamoide"], "correctIndex": 0, "explanation": "O ergô é o primeiro dedo, que não toca o solo.", "refs": ["dyce2010"], "vetidexId": "anat_esqueleto_cao" },
-        { "id": "ac_patela", "prompt": "A patela é classificada como:", "options": ["Osso sesamoide no tendão do quadríceps femoral", "Osso longo do membro pélvico", "Parte da tíbia", "Osso do tarso"], "correctIndex": 0, "explanation": "A patela é o maior osso sesamoide do corpo e desliza no sulco troclear do fêmur.", "refs": ["dyce2010"], "vetidexId": "anat_esqueleto_cao" },
-        { "id": "ac_olecrano", "prompt": "O olécrano, que forma a ponta do cotovelo, pertence a qual osso?", "options": ["Ulna", "Rádio", "Úmero", "Escápula"], "correctIndex": 0, "explanation": "O olécrano é a tuberosidade proximal da ulna, onde se insere o tríceps braquial.", "refs": ["dyce2010"], "vetidexId": "anat_esqueleto_cao" },
-        { "id": "ac_coxal", "prompt": "Quais ossos se fundem para formar o osso do quadril (coxal)?", "options": ["Íleo, ísquio e púbis", "Sacro, íleo e fêmur", "Ísquio, patela e púbis", "Íleo e vértebras caudais"], "correctIndex": 0, "explanation": "Íleo, ísquio e púbis se fundem e contribuem para formar o acetábulo.", "refs": ["dyce2010"], "vetidexId": "anat_esqueleto_cao" },
-        { "id": "ac_calcaneo", "prompt": "O tendão calcâneo comum insere-se principalmente em qual estrutura?", "options": ["Tuberosidade do calcâneo", "Patela", "Cabeça do fêmur", "Olécrano"], "correctIndex": 0, "explanation": "A tuberosidade do calcâneo forma a \"ponta do jarrete\".", "refs": ["dyce2010"], "vetidexId": "anat_esqueleto_cao" },
-        { "id": "ac_aves_sacos", "prompt": "Nas aves, quais estruturas, além dos pulmões, participam da ventilação?", "options": ["Sacos aéreos", "Diafragma muscular desenvolvido", "Brônquios cartilaginosos móveis", "Alvéolos pulmonares expansíveis"], "correctIndex": 0, "explanation": "As aves não têm diafragma como o dos mamíferos; os sacos aéreos funcionam como foles.", "refs": ["dyce2010"] },
-        { "id": "ac_aves_moela", "prompt": "Nas aves, a moela corresponde a:", "options": ["Estômago muscular (ventrículo)", "Papo (inglúvio)", "Estômago glandular (proventrículo)", "Ceco"], "correctIndex": 0, "explanation": "O proventrículo é glandular; a moela (ventrículo) tritura o alimento.", "refs": ["dyce2010"] },
-        { "id": "ac_coelho_incisivos", "prompt": "Qual característica dentária distingue os coelhos (lagomorfos) dos roedores?", "options": ["Um segundo par de pequenos incisivos superiores atrás dos principais", "Ausência de incisivos", "Caninos bem desenvolvidos", "Dentes que não crescem continuamente"], "correctIndex": 0, "explanation": "Coelhos têm dois pares de incisivos superiores; todos os seus dentes crescem continuamente.", "refs": ["quesenberry2012"] },
-        { "id": "ac_coracao", "prompt": "Quantas câmaras tem o coração de mamíferos e aves?", "options": ["4", "3", "2", "5"], "correctIndex": 0, "explanation": "Mamíferos e aves têm dois átrios e dois ventrículos, separando a circulação pulmonar da sistêmica.", "refs": ["dyce2010"] },
-        { "id": "ac_equino_vomito", "prompt": "Por que o vômito é raro em equinos?", "options": ["Pelo forte tônus do esfíncter da cárdia e pela anatomia da junção gastroesofágica", "Porque não possuem estômago", "Porque o estômago é muito grande", "Porque o esôfago é curto"], "correctIndex": 0, "explanation": "Essa particularidade explica por que distensões gástricas graves em equinos podem levar à ruptura do estômago.", "refs": ["dyce2010", "merck"], "vetidexId": "especie_equino" },
-        { "id": "ac_cervical_atlas", "prompt": "Como se chamam a primeira e a segunda vértebras cervicais?", "options": ["Atlas e áxis", "Áxis e atlas", "Sacro e cóccix", "Atlas e esterno"], "correctIndex": 0, "explanation": "O atlas (C1) articula-se com o crânio; o áxis (C2) tem o dente que permite a rotação da cabeça.", "refs": ["dyce2010"], "vetidexId": "anat_coluna_vertebral" }
+        {
+          "id": "ac_cervicais",
+          "prompt": "Quantas vértebras cervicais possuem cães, gatos, bovinos e equinos?",
+          "options": [
+            "7",
+            "5",
+            "13",
+            "Varia muito entre essas espécies"
+          ],
+          "correctIndex": 0,
+          "explanation": "Os mamíferos domésticos têm 7 vértebras cervicais, mesmo com pescoços de comprimentos muito diferentes.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "anat_coluna_vertebral"
+        },
+        {
+          "id": "ac_rumen",
+          "prompt": "Qual compartimento do estômago do bovino adulto tem a maior capacidade?",
+          "options": [
+            "Rúmen",
+            "Abomaso",
+            "Omaso",
+            "Retículo"
+          ],
+          "correctIndex": 0,
+          "explanation": "No adulto, o rúmen é o maior compartimento, onde ocorre a fermentação microbiana. No bezerro lactente, o abomaso predomina.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "anat_estomago_ruminante"
+        },
+        {
+          "id": "ac_vesicula",
+          "prompt": "Qual destas espécies NÃO possui vesícula biliar?",
+          "options": [
+            "Equino",
+            "Cão",
+            "Gato",
+            "Bovino"
+          ],
+          "correctIndex": 0,
+          "explanation": "O equino não possui vesícula biliar; a bile flui continuamente para o duodeno.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "anat_figado_vesicula"
+        },
+        {
+          "id": "ac_dentes_cao",
+          "prompt": "Quantos dentes permanentes possui o cão adulto?",
+          "options": [
+            "42",
+            "30",
+            "32",
+            "44"
+          ],
+          "correctIndex": 0,
+          "explanation": "Fórmula do cão: I3/3 C1/1 P4/4 M2/3 = 42.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "anat_formula_dentaria"
+        },
+        {
+          "id": "ac_dentes_gato",
+          "prompt": "Quantos dentes permanentes possui o gato adulto?",
+          "options": [
+            "30",
+            "42",
+            "26",
+            "36"
+          ],
+          "correctIndex": 0,
+          "explanation": "Fórmula do gato: I3/3 C1/1 P3/2 M1/1 = 30. O gato tem 26 dentes decíduos.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "anat_formula_dentaria"
+        },
+        {
+          "id": "ac_dentes_suino",
+          "prompt": "Qual espécie doméstica tem dentição permanente completa, com 44 dentes?",
+          "options": [
+            "Suíno",
+            "Cão",
+            "Bovino",
+            "Gato"
+          ],
+          "correctIndex": 0,
+          "explanation": "O suíno mantém a fórmula dentária completa dos mamíferos placentários: I3/3 C1/1 P4/4 M3/3 = 44.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "anat_formula_dentaria"
+        },
+        {
+          "id": "ac_pulvino",
+          "prompt": "Bovinos não possuem incisivos superiores. O que existe em seu lugar?",
+          "options": [
+            "Pulvino (coxim) dentário",
+            "Caninos superiores",
+            "Um diastema sem nenhuma estrutura",
+            "Dentes decíduos que nunca caem"
+          ],
+          "correctIndex": 0,
+          "explanation": "O pulvino dentário é uma placa queratinizada contra a qual os incisivos inferiores pressionam a forragem.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "anat_formula_dentaria"
+        },
+        {
+          "id": "ac_clavicula",
+          "prompt": "Como é a clavícula no cão?",
+          "options": [
+            "Rudimentar, frequentemente um pequeno osso não articulado",
+            "Bem desenvolvida e articulada ao esterno",
+            "Fundida à escápula",
+            "Igual à humana"
+          ],
+          "correctIndex": 0,
+          "explanation": "No cão a clavícula é rudimentar (quando presente). No equino, é ausente.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "anat_esqueleto_cao"
+        },
+        {
+          "id": "ac_sinsarcose",
+          "prompt": "Como o membro torácico do cão se une ao tronco?",
+          "options": [
+            "Por músculos (sinsarcose), sem articulação óssea",
+            "Pela articulação esternoclavicular",
+            "Por uma sindesmose com as costelas",
+            "Pela fusão da escápula às vértebras torácicas"
+          ],
+          "correctIndex": 0,
+          "explanation": "Nos animais domésticos, a união do membro torácico ao tronco é muscular, o que permite maior amplitude e absorção de impacto.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "anat_esqueleto_cao"
+        },
+        {
+          "id": "ac_toracicas_cao",
+          "prompt": "Quantas vértebras torácicas o cão possui normalmente?",
+          "options": [
+            "13",
+            "7",
+            "18",
+            "20"
+          ],
+          "correctIndex": 0,
+          "explanation": "O cão tem 13 vértebras torácicas e, portanto, 13 pares de costelas.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "anat_coluna_vertebral"
+        },
+        {
+          "id": "ac_toracicas_equino",
+          "prompt": "Quantas vértebras torácicas o equino possui geralmente?",
+          "options": [
+            "18",
+            "13",
+            "7",
+            "24"
+          ],
+          "correctIndex": 0,
+          "explanation": "O equino tem geralmente 18 vértebras torácicas e 6 lombares, com variações individuais.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "anat_coluna_vertebral"
+        },
+        {
+          "id": "ac_lombares",
+          "prompt": "Quantas vértebras lombares tem, normalmente, o cão? E o bovino?",
+          "options": [
+            "Cão 7; bovino 6",
+            "Cão 6; bovino 7",
+            "Ambos 5",
+            "Cão 13; bovino 13"
+          ],
+          "correctIndex": 0,
+          "explanation": "Fórmula do cão: C7 T13 L7 S3. O bovino tem 13 torácicas e 6 lombares.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "anat_coluna_vertebral"
+        },
+        {
+          "id": "ac_sacro_cao",
+          "prompt": "O sacro do cão é formado por quantas vértebras fundidas?",
+          "options": [
+            "3",
+            "1",
+            "5",
+            "7"
+          ],
+          "correctIndex": 0,
+          "explanation": "No cão, três vértebras sacrais se fundem para formar o sacro.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "anat_coluna_vertebral"
+        },
+        {
+          "id": "ac_abomaso",
+          "prompt": "Qual compartimento corresponde ao estômago glandular (\"verdadeiro\") dos ruminantes?",
+          "options": [
+            "Abomaso",
+            "Rúmen",
+            "Retículo",
+            "Omaso"
+          ],
+          "correctIndex": 0,
+          "explanation": "Rúmen, retículo e omaso são pré-estômagos aglandulares; o abomaso secreta suco gástrico.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "anat_estomago_ruminante"
+        },
+        {
+          "id": "ac_omaso",
+          "prompt": "Qual compartimento do estômago dos ruminantes possui numerosas lâminas (\"folhas\") em sua mucosa?",
+          "options": [
+            "Omaso",
+            "Retículo",
+            "Abomaso",
+            "Rúmen"
+          ],
+          "correctIndex": 0,
+          "explanation": "As lâminas do omaso aumentam a superfície de absorção de água e outros componentes da digesta.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "anat_estomago_ruminante"
+        },
+        {
+          "id": "ac_reticulo",
+          "prompt": "Qual compartimento tem mucosa em forma de \"favo de mel\" e é onde costumam se alojar corpos estranhos metálicos ingeridos por bovinos?",
+          "options": [
+            "Retículo",
+            "Omaso",
+            "Abomaso",
+            "Ceco"
+          ],
+          "correctIndex": 0,
+          "explanation": "Corpos estranhos pesados se acumulam no retículo e podem perfurá-lo (reticuloperitonite traumática).",
+          "refs": [
+            "dyce2010",
+            "merck"
+          ],
+          "vetidexId": "anat_estomago_ruminante"
+        },
+        {
+          "id": "ac_equino_fermentacao",
+          "prompt": "Onde ocorre a principal fermentação microbiana da fibra no equino?",
+          "options": [
+            "No ceco e no cólon",
+            "No rúmen",
+            "No estômago",
+            "No duodeno"
+          ],
+          "correctIndex": 0,
+          "explanation": "O equino é um herbívoro monogástrico com fermentação no intestino grosso.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "especie_equino"
+        },
+        {
+          "id": "ac_cao_estomago",
+          "prompt": "Como se classifica o estômago do cão?",
+          "options": [
+            "Simples (monocavitário) e glandular",
+            "Com quatro compartimentos",
+            "Com dois compartimentos aglandulares",
+            "Ausente"
+          ],
+          "correctIndex": 0,
+          "explanation": "Cães e gatos são monogástricos, com estômago simples.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "especie_cao"
+        },
+        {
+          "id": "ac_equino_dedo",
+          "prompt": "Sobre qual dedo o equino apoia cada membro?",
+          "options": [
+            "Terceiro dedo",
+            "Primeiro dedo",
+            "Terceiro e quarto dedos",
+            "Cinco dedos"
+          ],
+          "correctIndex": 0,
+          "explanation": "O equino é monodáctilo: apoia-se no terceiro dedo, protegido pelo casco.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "especie_equino"
+        },
+        {
+          "id": "ac_bovino_dedos",
+          "prompt": "Quais dedos são os principais de apoio no bovino?",
+          "options": [
+            "Terceiro e quarto dedos",
+            "Apenas o terceiro dedo",
+            "Primeiro e segundo dedos",
+            "Segundo e quinto dedos"
+          ],
+          "correctIndex": 0,
+          "explanation": "Ruminantes apoiam-se no terceiro e no quarto dedos; o segundo e o quinto formam as unhas acessórias.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "especie_bovino"
+        },
+        {
+          "id": "ac_ergo",
+          "prompt": "O ergô (\"dedo de lobo\") do membro torácico do cão corresponde a qual dedo?",
+          "options": [
+            "Primeiro dedo",
+            "Quinto dedo",
+            "Terceiro dedo",
+            "Um osso sesamoide"
+          ],
+          "correctIndex": 0,
+          "explanation": "O ergô é o primeiro dedo, que não toca o solo.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "anat_esqueleto_cao"
+        },
+        {
+          "id": "ac_patela",
+          "prompt": "A patela é classificada como:",
+          "options": [
+            "Osso sesamoide no tendão do quadríceps femoral",
+            "Osso longo do membro pélvico",
+            "Parte da tíbia",
+            "Osso do tarso"
+          ],
+          "correctIndex": 0,
+          "explanation": "A patela é o maior osso sesamoide do corpo e desliza no sulco troclear do fêmur.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "anat_esqueleto_cao"
+        },
+        {
+          "id": "ac_olecrano",
+          "prompt": "O olécrano, que forma a ponta do cotovelo, pertence a qual osso?",
+          "options": [
+            "Ulna",
+            "Rádio",
+            "Úmero",
+            "Escápula"
+          ],
+          "correctIndex": 0,
+          "explanation": "O olécrano é a tuberosidade proximal da ulna, onde se insere o tríceps braquial.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "anat_esqueleto_cao"
+        },
+        {
+          "id": "ac_coxal",
+          "prompt": "Quais ossos se fundem para formar o osso do quadril (coxal)?",
+          "options": [
+            "Íleo, ísquio e púbis",
+            "Sacro, íleo e fêmur",
+            "Ísquio, patela e púbis",
+            "Íleo e vértebras caudais"
+          ],
+          "correctIndex": 0,
+          "explanation": "Íleo, ísquio e púbis se fundem e contribuem para formar o acetábulo.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "anat_esqueleto_cao"
+        },
+        {
+          "id": "ac_calcaneo",
+          "prompt": "O tendão calcâneo comum insere-se principalmente em qual estrutura?",
+          "options": [
+            "Tuberosidade do calcâneo",
+            "Patela",
+            "Cabeça do fêmur",
+            "Olécrano"
+          ],
+          "correctIndex": 0,
+          "explanation": "A tuberosidade do calcâneo forma a \"ponta do jarrete\".",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "anat_esqueleto_cao"
+        },
+        {
+          "id": "ac_aves_sacos",
+          "prompt": "Nas aves, quais estruturas, além dos pulmões, participam da ventilação?",
+          "options": [
+            "Sacos aéreos",
+            "Diafragma muscular desenvolvido",
+            "Brônquios cartilaginosos móveis",
+            "Alvéolos pulmonares expansíveis"
+          ],
+          "correctIndex": 0,
+          "explanation": "As aves não têm diafragma como o dos mamíferos; os sacos aéreos funcionam como foles.",
+          "refs": [
+            "dyce2010"
+          ]
+        },
+        {
+          "id": "ac_aves_moela",
+          "prompt": "Nas aves, a moela corresponde a:",
+          "options": [
+            "Estômago muscular (ventrículo)",
+            "Papo (inglúvio)",
+            "Estômago glandular (proventrículo)",
+            "Ceco"
+          ],
+          "correctIndex": 0,
+          "explanation": "O proventrículo é glandular; a moela (ventrículo) tritura o alimento.",
+          "refs": [
+            "dyce2010"
+          ]
+        },
+        {
+          "id": "ac_coelho_incisivos",
+          "prompt": "Qual característica dentária distingue os coelhos (lagomorfos) dos roedores?",
+          "options": [
+            "Um segundo par de pequenos incisivos superiores atrás dos principais",
+            "Ausência de incisivos",
+            "Caninos bem desenvolvidos",
+            "Dentes que não crescem continuamente"
+          ],
+          "correctIndex": 0,
+          "explanation": "Coelhos têm dois pares de incisivos superiores; todos os seus dentes crescem continuamente.",
+          "refs": [
+            "quesenberry2012"
+          ]
+        },
+        {
+          "id": "ac_coracao",
+          "prompt": "Quantas câmaras tem o coração de mamíferos e aves?",
+          "options": [
+            "4",
+            "3",
+            "2",
+            "5"
+          ],
+          "correctIndex": 0,
+          "explanation": "Mamíferos e aves têm dois átrios e dois ventrículos, separando a circulação pulmonar da sistêmica.",
+          "refs": [
+            "dyce2010"
+          ]
+        },
+        {
+          "id": "ac_equino_vomito",
+          "prompt": "Por que o vômito é raro em equinos?",
+          "options": [
+            "Pelo forte tônus do esfíncter da cárdia e pela anatomia da junção gastroesofágica",
+            "Porque não possuem estômago",
+            "Porque o estômago é muito grande",
+            "Porque o esôfago é curto"
+          ],
+          "correctIndex": 0,
+          "explanation": "Essa particularidade explica por que distensões gástricas graves em equinos podem levar à ruptura do estômago.",
+          "refs": [
+            "dyce2010",
+            "merck"
+          ],
+          "vetidexId": "especie_equino"
+        },
+        {
+          "id": "ac_cervical_atlas",
+          "prompt": "Como se chamam a primeira e a segunda vértebras cervicais?",
+          "options": [
+            "Atlas e áxis",
+            "Áxis e atlas",
+            "Sacro e cóccix",
+            "Atlas e esterno"
+          ],
+          "correctIndex": 0,
+          "explanation": "O atlas (C1) articula-se com o crânio; o áxis (C2) tem o dente que permite a rotação da cabeça.",
+          "refs": [
+            "dyce2010"
+          ],
+          "vetidexId": "anat_coluna_vertebral"
+        }
       ]
     },
     {
@@ -46,22 +509,266 @@
       "discipline": "fisiologia",
       "skill": "homeostase",
       "questions": [
-        { "id": "sv_fc_cao", "prompt": "Qual faixa de frequência cardíaca em repouso é mais usada como referência didática para cães adultos?", "options": ["Cerca de 60 a 160 bpm", "Cerca de 160 a 240 bpm", "Cerca de 20 a 40 bpm", "Cerca de 240 a 300 bpm"], "correctIndex": 0, "explanation": "A frequência varia com porte e estresse; cães grandes tendem a ter FC mais baixa.", "refs": ["klein2020", "merck"], "vetidexId": "fisio_parametros_vitais" },
-        { "id": "sv_fc_gato", "prompt": "Qual faixa de frequência cardíaca é usada como referência para gatos adultos?", "options": ["Cerca de 140 a 220 bpm", "Cerca de 60 a 100 bpm", "Cerca de 30 a 60 bpm", "Cerca de 260 a 320 bpm"], "correctIndex": 0, "explanation": "O estresse do consultório pode elevar a FC de gatos.", "refs": ["klein2020", "merck"], "vetidexId": "fisio_parametros_vitais" },
-        { "id": "sv_temp_gato", "prompt": "Qual é a temperatura retal de referência aproximada para gatos?", "options": ["38,1 a 39,2 °C", "35 a 36 °C", "40 a 41 °C", "36,5 a 37,0 °C"], "correctIndex": 0, "explanation": "35–36 °C indicaria hipotermia; 40–41 °C, hipertermia ou febre.", "refs": ["klein2020", "merck"], "vetidexId": "fisio_parametros_vitais" },
-        { "id": "sv_temp_cao", "prompt": "Qual é a temperatura retal de referência aproximada para cães?", "options": ["37,5 a 39,2 °C", "35,0 a 36,5 °C", "39,8 a 41,0 °C", "36,0 a 37,0 °C"], "correctIndex": 0, "explanation": "Valores variam um pouco entre referências; o contexto (exercício, estresse, ambiente) importa.", "refs": ["klein2020", "merck"], "vetidexId": "fisio_parametros_vitais" },
-        { "id": "sv_fr_cao", "prompt": "Qual faixa de frequência respiratória é usada como referência para cães em repouso?", "options": ["Cerca de 10 a 30 mpm", "Cerca de 60 a 90 mpm", "Cerca de 2 a 5 mpm", "Cerca de 100 a 140 mpm"], "correctIndex": 0, "explanation": "Ofego por calor ou excitação eleva bastante a frequência respiratória.", "refs": ["klein2020", "feitosa2014"], "vetidexId": "fisio_parametros_vitais" },
-        { "id": "sv_tpc", "prompt": "Qual é o tempo de preenchimento capilar considerado normal?", "options": ["Menos de 2 segundos", "Entre 4 e 6 segundos", "Exatamente 10 segundos", "Mais de 5 segundos"], "correctIndex": 0, "explanation": "TPC prolongado sugere má perfusão periférica, como em choque ou desidratação grave.", "refs": ["feitosa2014"], "vetidexId": "fisio_tpc_hidratacao" },
-        { "id": "sv_mucosa_palida", "prompt": "Mucosas pálidas sugerem principalmente:", "options": ["Anemia ou hipoperfusão", "Hiperbilirrubinemia", "Hipóxia grave com cianose", "Hidratação normal"], "correctIndex": 0, "explanation": "Mucosas amareladas indicam icterícia; azuladas, cianose.", "refs": ["feitosa2014"], "vetidexId": "fisio_tpc_hidratacao" },
-        { "id": "sv_mucosa_cianotica", "prompt": "Mucosas azuladas (cianóticas) indicam:", "options": ["Oxigenação inadequada da hemoglobina (hipoxemia)", "Excesso de bilirrubina", "Desidratação leve", "Situação normal após exercício"], "correctIndex": 0, "explanation": "A cianose é um sinal de alerta que exige avaliação imediata da respiração e da circulação.", "refs": ["feitosa2014"], "vetidexId": "fisio_tpc_hidratacao" },
-        { "id": "sv_pulso", "prompt": "Em cães e gatos, onde se avalia rotineiramente o pulso arterial?", "options": ["Artéria femoral, na face medial da coxa", "Veia jugular", "Artéria carótida, no tórax", "Veia cefálica"], "correctIndex": 0, "explanation": "O pulso femoral é palpado simultaneamente à auscultação para detectar déficits de pulso.", "refs": ["feitosa2014"], "vetidexId": "fisio_parametros_vitais" },
-        { "id": "sv_ofego", "prompt": "Qual é o principal mecanismo de perda evaporativa de calor no cão?", "options": ["Ofego (respiração rápida e superficial)", "Sudorese em toda a pele", "Vasoconstrição periférica", "Tremores musculares"], "correctIndex": 0, "explanation": "Cães têm poucas glândulas sudoríparas écrinas (principalmente nos coxins) e dependem do ofego.", "refs": ["klein2020"], "vetidexId": "fisio_parametros_vitais" },
-        { "id": "sv_porte_fc", "prompt": "Como o porte costuma influenciar a frequência cardíaca de cães em repouso?", "options": ["Cães maiores tendem a ter FC mais baixa", "Cães maiores tendem a ter FC mais alta", "O porte não tem relação com a FC", "Apenas a idade influencia a FC"], "correctIndex": 0, "explanation": "Animais menores têm maior taxa metabólica por unidade de massa e FC mais alta.", "refs": ["klein2020"], "vetidexId": "fisio_parametros_vitais" },
-        { "id": "sv_desidratacao", "prompt": "A partir de qual déficit aproximado a desidratação costuma ser detectável no exame clínico?", "options": ["Cerca de 5%", "Cerca de 1%", "Apenas acima de 20%", "Nunca é detectável clinicamente"], "correctIndex": 0, "explanation": "Déficits menores que cerca de 5% geralmente não produzem sinais clínicos evidentes.", "refs": ["feitosa2014"], "vetidexId": "fisio_tpc_hidratacao" },
-        { "id": "sv_glicemia_estresse", "prompt": "Em gatos, o estresse da contenção pode causar:", "options": ["Hiperglicemia transitória", "Hipoglicemia grave", "Bradicardia persistente", "Hipotermia profunda"], "correctIndex": 0, "explanation": "A hiperglicemia de estresse em gatos deve ser diferenciada do diabetes mellitus.", "refs": ["klein2020", "thrall2012"] },
-        { "id": "sv_homeostase", "prompt": "Homeostase é:", "options": ["A manutenção de condições internas relativamente constantes", "Um tipo de hormônio", "A ausência de qualquer variação fisiológica", "Uma doença metabólica"], "correctIndex": 0, "explanation": "Mecanismos de retroalimentação mantêm temperatura, pH, glicemia e outros parâmetros dentro de faixas.", "refs": ["klein2020"] },
-        { "id": "sv_adh", "prompt": "O hormônio antidiurético (ADH) atua principalmente:", "options": ["Aumentando a reabsorção de água nos ductos coletores renais", "Aumentando a filtração glomerular", "Reduzindo a reabsorção de sódio no túbulo proximal", "Estimulando a micção"], "correctIndex": 0, "explanation": "O ADH insere aquaporinas nos ductos coletores e concentra a urina.", "refs": ["klein2020"] },
-        { "id": "sv_rumen_ausculta", "prompt": "Em bovinos, onde se ausculta e palpa a motilidade ruminal?", "options": ["Na fossa paralombar esquerda", "Na fossa paralombar direita", "No espaço intercostal direito", "Na região cervical"], "correctIndex": 0, "explanation": "O rúmen ocupa a maior parte do lado esquerdo da cavidade abdominal.", "refs": ["feitosa2014", "dyce2010"], "vetidexId": "especie_bovino" }
+        {
+          "id": "sv_fc_cao",
+          "prompt": "Qual faixa de frequência cardíaca em repouso é mais usada como referência didática para cães adultos?",
+          "options": [
+            "Cerca de 60 a 160 bpm",
+            "Cerca de 160 a 240 bpm",
+            "Cerca de 20 a 40 bpm",
+            "Cerca de 240 a 300 bpm"
+          ],
+          "correctIndex": 0,
+          "explanation": "A frequência varia com porte e estresse; cães grandes tendem a ter FC mais baixa.",
+          "refs": [
+            "klein2020",
+            "merck"
+          ],
+          "vetidexId": "fisio_parametros_vitais"
+        },
+        {
+          "id": "sv_fc_gato",
+          "prompt": "Qual faixa de frequência cardíaca é usada como referência para gatos adultos?",
+          "options": [
+            "Cerca de 140 a 220 bpm",
+            "Cerca de 60 a 100 bpm",
+            "Cerca de 30 a 60 bpm",
+            "Cerca de 260 a 320 bpm"
+          ],
+          "correctIndex": 0,
+          "explanation": "O estresse do consultório pode elevar a FC de gatos.",
+          "refs": [
+            "klein2020",
+            "merck"
+          ],
+          "vetidexId": "fisio_parametros_vitais"
+        },
+        {
+          "id": "sv_temp_gato",
+          "prompt": "Qual é a temperatura retal de referência aproximada para gatos?",
+          "options": [
+            "38,1 a 39,2 °C",
+            "35 a 36 °C",
+            "40 a 41 °C",
+            "36,5 a 37,0 °C"
+          ],
+          "correctIndex": 0,
+          "explanation": "35–36 °C indicaria hipotermia; 40–41 °C, hipertermia ou febre.",
+          "refs": [
+            "klein2020",
+            "merck"
+          ],
+          "vetidexId": "fisio_parametros_vitais"
+        },
+        {
+          "id": "sv_temp_cao",
+          "prompt": "Qual é a temperatura retal de referência aproximada para cães?",
+          "options": [
+            "37,5 a 39,2 °C",
+            "35,0 a 36,5 °C",
+            "39,8 a 41,0 °C",
+            "36,0 a 37,0 °C"
+          ],
+          "correctIndex": 0,
+          "explanation": "Valores variam um pouco entre referências; o contexto (exercício, estresse, ambiente) importa.",
+          "refs": [
+            "klein2020",
+            "merck"
+          ],
+          "vetidexId": "fisio_parametros_vitais"
+        },
+        {
+          "id": "sv_fr_cao",
+          "prompt": "Qual faixa de frequência respiratória é usada como referência para cães em repouso?",
+          "options": [
+            "Cerca de 10 a 30 mpm",
+            "Cerca de 60 a 90 mpm",
+            "Cerca de 2 a 5 mpm",
+            "Cerca de 100 a 140 mpm"
+          ],
+          "correctIndex": 0,
+          "explanation": "Ofego por calor ou excitação eleva bastante a frequência respiratória.",
+          "refs": [
+            "klein2020",
+            "feitosa2014"
+          ],
+          "vetidexId": "fisio_parametros_vitais"
+        },
+        {
+          "id": "sv_tpc",
+          "prompt": "Qual é o tempo de preenchimento capilar considerado normal?",
+          "options": [
+            "Menos de 2 segundos",
+            "Entre 4 e 6 segundos",
+            "Exatamente 10 segundos",
+            "Mais de 5 segundos"
+          ],
+          "correctIndex": 0,
+          "explanation": "TPC prolongado sugere má perfusão periférica, como em choque ou desidratação grave.",
+          "refs": [
+            "feitosa2014"
+          ],
+          "vetidexId": "fisio_tpc_hidratacao"
+        },
+        {
+          "id": "sv_mucosa_palida",
+          "prompt": "Mucosas pálidas sugerem principalmente:",
+          "options": [
+            "Anemia ou hipoperfusão",
+            "Hiperbilirrubinemia",
+            "Hipóxia grave com cianose",
+            "Hidratação normal"
+          ],
+          "correctIndex": 0,
+          "explanation": "Mucosas amareladas indicam icterícia; azuladas, cianose.",
+          "refs": [
+            "feitosa2014"
+          ],
+          "vetidexId": "fisio_tpc_hidratacao"
+        },
+        {
+          "id": "sv_mucosa_cianotica",
+          "prompt": "Mucosas azuladas (cianóticas) indicam:",
+          "options": [
+            "Oxigenação inadequada da hemoglobina (hipoxemia)",
+            "Excesso de bilirrubina",
+            "Desidratação leve",
+            "Situação normal após exercício"
+          ],
+          "correctIndex": 0,
+          "explanation": "A cianose é um sinal de alerta que exige avaliação imediata da respiração e da circulação.",
+          "refs": [
+            "feitosa2014"
+          ],
+          "vetidexId": "fisio_tpc_hidratacao"
+        },
+        {
+          "id": "sv_pulso",
+          "prompt": "Em cães e gatos, onde se avalia rotineiramente o pulso arterial?",
+          "options": [
+            "Artéria femoral, na face medial da coxa",
+            "Veia jugular",
+            "Artéria carótida, no tórax",
+            "Veia cefálica"
+          ],
+          "correctIndex": 0,
+          "explanation": "O pulso femoral é palpado simultaneamente à auscultação para detectar déficits de pulso.",
+          "refs": [
+            "feitosa2014"
+          ],
+          "vetidexId": "fisio_parametros_vitais"
+        },
+        {
+          "id": "sv_ofego",
+          "prompt": "Qual é o principal mecanismo de perda evaporativa de calor no cão?",
+          "options": [
+            "Ofego (respiração rápida e superficial)",
+            "Sudorese em toda a pele",
+            "Vasoconstrição periférica",
+            "Tremores musculares"
+          ],
+          "correctIndex": 0,
+          "explanation": "Cães têm poucas glândulas sudoríparas écrinas (principalmente nos coxins) e dependem do ofego.",
+          "refs": [
+            "klein2020"
+          ],
+          "vetidexId": "fisio_parametros_vitais"
+        },
+        {
+          "id": "sv_porte_fc",
+          "prompt": "Como o porte costuma influenciar a frequência cardíaca de cães em repouso?",
+          "options": [
+            "Cães maiores tendem a ter FC mais baixa",
+            "Cães maiores tendem a ter FC mais alta",
+            "O porte não tem relação com a FC",
+            "Apenas a idade influencia a FC"
+          ],
+          "correctIndex": 0,
+          "explanation": "Animais menores têm maior taxa metabólica por unidade de massa e FC mais alta.",
+          "refs": [
+            "klein2020"
+          ],
+          "vetidexId": "fisio_parametros_vitais"
+        },
+        {
+          "id": "sv_desidratacao",
+          "prompt": "A partir de qual déficit aproximado a desidratação costuma ser detectável no exame clínico?",
+          "options": [
+            "Cerca de 5%",
+            "Cerca de 1%",
+            "Apenas acima de 20%",
+            "Nunca é detectável clinicamente"
+          ],
+          "correctIndex": 0,
+          "explanation": "Déficits menores que cerca de 5% geralmente não produzem sinais clínicos evidentes.",
+          "refs": [
+            "feitosa2014"
+          ],
+          "vetidexId": "fisio_tpc_hidratacao"
+        },
+        {
+          "id": "sv_glicemia_estresse",
+          "prompt": "Em gatos, o estresse da contenção pode causar:",
+          "options": [
+            "Hiperglicemia transitória",
+            "Hipoglicemia grave",
+            "Bradicardia persistente",
+            "Hipotermia profunda"
+          ],
+          "correctIndex": 0,
+          "explanation": "A hiperglicemia de estresse em gatos deve ser diferenciada do diabetes mellitus.",
+          "refs": [
+            "klein2020",
+            "thrall2012"
+          ]
+        },
+        {
+          "id": "sv_homeostase",
+          "prompt": "Homeostase é:",
+          "options": [
+            "A manutenção de condições internas relativamente constantes",
+            "Um tipo de hormônio",
+            "A ausência de qualquer variação fisiológica",
+            "Uma doença metabólica"
+          ],
+          "correctIndex": 0,
+          "explanation": "Mecanismos de retroalimentação mantêm temperatura, pH, glicemia e outros parâmetros dentro de faixas.",
+          "refs": [
+            "klein2020"
+          ]
+        },
+        {
+          "id": "sv_adh",
+          "prompt": "O hormônio antidiurético (ADH) atua principalmente:",
+          "options": [
+            "Aumentando a reabsorção de água nos ductos coletores renais",
+            "Aumentando a filtração glomerular",
+            "Reduzindo a reabsorção de sódio no túbulo proximal",
+            "Estimulando a micção"
+          ],
+          "correctIndex": 0,
+          "explanation": "O ADH insere aquaporinas nos ductos coletores e concentra a urina.",
+          "refs": [
+            "klein2020"
+          ]
+        },
+        {
+          "id": "sv_rumen_ausculta",
+          "prompt": "Em bovinos, onde se ausculta e palpa a motilidade ruminal?",
+          "options": [
+            "Na fossa paralombar esquerda",
+            "Na fossa paralombar direita",
+            "No espaço intercostal direito",
+            "Na região cervical"
+          ],
+          "correctIndex": 0,
+          "explanation": "O rúmen ocupa a maior parte do lado esquerdo da cavidade abdominal.",
+          "refs": [
+            "feitosa2014",
+            "dyce2010"
+          ],
+          "vetidexId": "especie_bovino"
+        }
       ]
     },
     {
@@ -70,21 +777,1547 @@
       "discipline": "microbiologia",
       "skill": "biosseguranca",
       "questions": [
-        { "id": "bs_maos", "prompt": "Quando devemos higienizar as mãos no atendimento?", "options": ["Antes e depois de cada paciente, e após contato com material biológico", "Só quando estiverem visivelmente sujas", "Só no fim do expediente", "Apenas quando usamos luvas"], "correctIndex": 0, "explanation": "As mãos transportam microrganismos entre pacientes mesmo sem sujeira visível.", "refs": ["who2009"], "vetidexId": "prev_biosseguranca" },
-        { "id": "bs_luvas_pele", "prompt": "Um cão chega com lesões de pele de causa desconhecida. Como examiná-lo?", "options": ["Com luvas de procedimento e higienizando as mãos depois", "Sem luvas, para sentir melhor a pele", "Não tocar no animal", "Com luvas estéreis cirúrgicas e máscara N95 obrigatórias"], "correctIndex": 0, "explanation": "Dermatopatias como escabiose e dermatofitose são zoonoses; luvas de procedimento são o EPI adequado.", "refs": ["who2009", "miller2013"], "vetidexId": "prev_biosseguranca" },
-        { "id": "bs_agulha", "prompt": "Onde descartar uma agulha usada?", "options": ["No coletor rígido de perfurocortantes, sem reencapar", "No lixo comum, depois de recolocar a tampa", "No saco de lixo infectante comum", "Na pia, após lavar"], "correctIndex": 0, "explanation": "Reencapar agulhas é uma causa frequente de acidentes.", "refs": ["nr32", "anvisa_rdc222"], "vetidexId": "prev_biosseguranca" },
-        { "id": "bs_alcool", "prompt": "As mãos estão visivelmente sujas de matéria orgânica. Qual a conduta?", "options": ["Lavar com água e sabão", "Usar apenas álcool em gel", "Calçar luvas por cima", "Secar com papel e seguir"], "correctIndex": 0, "explanation": "A preparação alcoólica é preferida quando as mãos não estão visivelmente sujas; com sujidade visível, lava-se com água e sabão.", "refs": ["who2009"], "vetidexId": "prev_biosseguranca" },
-        { "id": "bs_ordem_epi", "prompt": "Ao retirar os EPIs após um atendimento, qual item costuma ser removido primeiro?", "options": ["As luvas, por serem os itens mais contaminados", "A máscara", "Os óculos de proteção", "A touca"], "correctIndex": 0, "explanation": "A sequência de retirada busca evitar a autocontaminação; as mãos são higienizadas ao final.", "refs": ["cdc_epi"], "vetidexId": "prev_biosseguranca" },
-        { "id": "bs_perfuro_acidente", "prompt": "Você se feriu com uma agulha usada. Qual a primeira conduta?", "options": ["Lavar o local com água e sabão, sem espremer, e comunicar imediatamente o responsável", "Espremer o local para sair sangue e continuar", "Aplicar álcool e não contar a ninguém", "Esperar o fim do plantão para avaliar"], "correctIndex": 0, "explanation": "Acidentes devem ser notificados para avaliação de risco e conduta adequada.", "refs": ["nr32"], "vetidexId": "prev_biosseguranca" },
-        { "id": "bs_jaleco", "prompt": "Sobre o uso do jaleco:", "options": ["Não deve ser usado fora do ambiente de trabalho, como em refeitórios", "Pode ser usado em qualquer lugar", "Deve ser lavado apenas uma vez por semestre", "Substitui as luvas"], "correctIndex": 0, "explanation": "A NR 32 veda deixar o local de trabalho com os equipamentos de proteção individual.", "refs": ["nr32"], "vetidexId": "prev_biosseguranca" },
-        { "id": "bs_geladeira", "prompt": "A geladeira do laboratório guarda amostras biológicas. Você pode guardar seu lanche nela?", "options": ["Não; alimentos não devem ser armazenados junto de amostras", "Sim, se estiver em pote fechado", "Sim, na porta", "Sim, se a amostra for de animal saudável"], "correctIndex": 0, "explanation": "Locais de armazenamento de material biológico não podem ser usados para alimentos.", "refs": ["nr32"], "vetidexId": "prev_biosseguranca" },
-        { "id": "bs_residuo", "prompt": "Gazes com sangue de um paciente devem ser descartadas como:", "options": ["Resíduo infectante, em saco branco leitoso identificado", "Lixo reciclável", "Lixo comum", "Resíduo perfurocortante"], "correctIndex": 0, "explanation": "Resíduos com risco biológico pertencem ao grupo A e seguem a segregação definida pela vigilância sanitária.", "refs": ["anvisa_rdc222"], "vetidexId": "prev_biosseguranca" },
-        { "id": "bs_superficie", "prompt": "O que fazer com a mesa de atendimento entre um paciente e outro?", "options": ["Limpar e desinfetar a superfície", "Nada, se o paciente anterior parecia saudável", "Apenas forrar com papel por cima", "Limpar só no fim do dia"], "correctIndex": 0, "explanation": "A limpeza e desinfecção entre pacientes reduz a transmissão de agentes infecciosos.", "refs": ["who2009", "nr32"], "vetidexId": "prev_biosseguranca" },
-        { "id": "bs_raiva_pre", "prompt": "Para estudantes e profissionais com risco frequente de exposição ao vírus da raiva, recomenda-se:", "options": ["Profilaxia pré-exposição com vacina antirrábica", "Nenhuma medida", "Uso de antibiótico preventivo", "Apenas evitar gatos"], "correctIndex": 0, "explanation": "A profilaxia pré-exposição é recomendada para grupos de risco ocupacional, como veterinários e estudantes.", "refs": ["who_rabies2018"], "vetidexId": "prev_saude_unica" },
-        { "id": "bs_raiva_neuro", "prompt": "Um animal com alterações neurológicas agudas e histórico de mordedura por morcego chega ao hospital. Qual a atitude adequada do estudante?", "options": ["Não manipular sem orientação e EPI, e avisar imediatamente o veterinário responsável", "Examinar a boca sem luvas", "Liberar o animal para casa", "Ignorar o histórico"], "correctIndex": 0, "explanation": "A suspeita de raiva exige manejo cuidadoso, notificação e avaliação das pessoas expostas.", "refs": ["who_rabies2018", "merck"], "vetidexId": "prev_saude_unica" },
-        { "id": "bs_lepto", "prompt": "Ao manipular a urina de um cão com suspeita de leptospirose, deve-se:", "options": ["Usar luvas e evitar respingos em mucosas", "Manipular normalmente, pois não é zoonose", "Apenas lavar as mãos depois, sem luvas", "Usar só máscara"], "correctIndex": 0, "explanation": "A leptospirose é uma zoonose transmitida principalmente pelo contato com urina de animais infectados.", "refs": ["merck"], "vetidexId": "prev_saude_unica" },
-        { "id": "bs_toxo", "prompt": "Uma colega gestante precisa limpar caixas de areia de gatos internados. Qual orientação é adequada?", "options": ["Se possível, outra pessoa faz a tarefa; se não, usar luvas, trocar a areia diariamente e lavar as mãos", "Pode limpar sem cuidados", "Basta usar máscara", "Deixar a areia trocar uma vez por semana"], "correctIndex": 0, "explanation": "Oocistos de Toxoplasma gondii eliminados nas fezes precisam de pelo menos um dia para se tornarem infectantes; a troca diária reduz o risco.", "refs": ["merck"], "vetidexId": "prev_saude_unica" },
-        { "id": "bs_dermatofito", "prompt": "Um gato com lesões circulares e alopecia pode ter dermatofitose. Isso importa para a equipe porque:", "options": ["É uma zoonose transmissível por contato", "Só afeta gatos", "Só é transmitida pela água", "Não é infecciosa"], "correctIndex": 0, "explanation": "Dermatófitos como Microsporum canis são transmitidos por contato com o animal ou com pelos e esporos no ambiente.", "refs": ["miller2013"], "vetidexId": "prev_saude_unica" }
+        {
+          "id": "bs_maos",
+          "prompt": "Quando devemos higienizar as mãos no atendimento?",
+          "options": [
+            "Antes e depois de cada paciente, e após contato com material biológico",
+            "Só quando estiverem visivelmente sujas",
+            "Só no fim do expediente",
+            "Apenas quando usamos luvas"
+          ],
+          "correctIndex": 0,
+          "explanation": "As mãos transportam microrganismos entre pacientes mesmo sem sujeira visível.",
+          "refs": [
+            "who2009"
+          ],
+          "vetidexId": "prev_biosseguranca"
+        },
+        {
+          "id": "bs_luvas_pele",
+          "prompt": "Um cão chega com lesões de pele de causa desconhecida. Como examiná-lo?",
+          "options": [
+            "Com luvas de procedimento e higienizando as mãos depois",
+            "Sem luvas, para sentir melhor a pele",
+            "Não tocar no animal",
+            "Com luvas estéreis cirúrgicas e máscara N95 obrigatórias"
+          ],
+          "correctIndex": 0,
+          "explanation": "Dermatopatias como escabiose e dermatofitose são zoonoses; luvas de procedimento são o EPI adequado.",
+          "refs": [
+            "who2009",
+            "miller2013"
+          ],
+          "vetidexId": "prev_biosseguranca"
+        },
+        {
+          "id": "bs_agulha",
+          "prompt": "Onde descartar uma agulha usada?",
+          "options": [
+            "No coletor rígido de perfurocortantes, sem reencapar",
+            "No lixo comum, depois de recolocar a tampa",
+            "No saco de lixo infectante comum",
+            "Na pia, após lavar"
+          ],
+          "correctIndex": 0,
+          "explanation": "Reencapar agulhas é uma causa frequente de acidentes.",
+          "refs": [
+            "nr32",
+            "anvisa_rdc222"
+          ],
+          "vetidexId": "prev_biosseguranca"
+        },
+        {
+          "id": "bs_alcool",
+          "prompt": "As mãos estão visivelmente sujas de matéria orgânica. Qual a conduta?",
+          "options": [
+            "Lavar com água e sabão",
+            "Usar apenas álcool em gel",
+            "Calçar luvas por cima",
+            "Secar com papel e seguir"
+          ],
+          "correctIndex": 0,
+          "explanation": "A preparação alcoólica é preferida quando as mãos não estão visivelmente sujas; com sujidade visível, lava-se com água e sabão.",
+          "refs": [
+            "who2009"
+          ],
+          "vetidexId": "prev_biosseguranca"
+        },
+        {
+          "id": "bs_ordem_epi",
+          "prompt": "Ao retirar os EPIs após um atendimento, qual item costuma ser removido primeiro?",
+          "options": [
+            "As luvas, por serem os itens mais contaminados",
+            "A máscara",
+            "Os óculos de proteção",
+            "A touca"
+          ],
+          "correctIndex": 0,
+          "explanation": "A sequência de retirada busca evitar a autocontaminação; as mãos são higienizadas ao final.",
+          "refs": [
+            "cdc_epi"
+          ],
+          "vetidexId": "prev_biosseguranca"
+        },
+        {
+          "id": "bs_perfuro_acidente",
+          "prompt": "Você se feriu com uma agulha usada. Qual a primeira conduta?",
+          "options": [
+            "Lavar o local com água e sabão, sem espremer, e comunicar imediatamente o responsável",
+            "Espremer o local para sair sangue e continuar",
+            "Aplicar álcool e não contar a ninguém",
+            "Esperar o fim do plantão para avaliar"
+          ],
+          "correctIndex": 0,
+          "explanation": "Acidentes devem ser notificados para avaliação de risco e conduta adequada.",
+          "refs": [
+            "nr32"
+          ],
+          "vetidexId": "prev_biosseguranca"
+        },
+        {
+          "id": "bs_jaleco",
+          "prompt": "Sobre o uso do jaleco:",
+          "options": [
+            "Não deve ser usado fora do ambiente de trabalho, como em refeitórios",
+            "Pode ser usado em qualquer lugar",
+            "Deve ser lavado apenas uma vez por semestre",
+            "Substitui as luvas"
+          ],
+          "correctIndex": 0,
+          "explanation": "A NR 32 veda deixar o local de trabalho com os equipamentos de proteção individual.",
+          "refs": [
+            "nr32"
+          ],
+          "vetidexId": "prev_biosseguranca"
+        },
+        {
+          "id": "bs_geladeira",
+          "prompt": "A geladeira do laboratório guarda amostras biológicas. Você pode guardar seu lanche nela?",
+          "options": [
+            "Não; alimentos não devem ser armazenados junto de amostras",
+            "Sim, se estiver em pote fechado",
+            "Sim, na porta",
+            "Sim, se a amostra for de animal saudável"
+          ],
+          "correctIndex": 0,
+          "explanation": "Locais de armazenamento de material biológico não podem ser usados para alimentos.",
+          "refs": [
+            "nr32"
+          ],
+          "vetidexId": "prev_biosseguranca"
+        },
+        {
+          "id": "bs_residuo",
+          "prompt": "Gazes com sangue de um paciente devem ser descartadas como:",
+          "options": [
+            "Resíduo infectante, em saco branco leitoso identificado",
+            "Lixo reciclável",
+            "Lixo comum",
+            "Resíduo perfurocortante"
+          ],
+          "correctIndex": 0,
+          "explanation": "Resíduos com risco biológico pertencem ao grupo A e seguem a segregação definida pela vigilância sanitária.",
+          "refs": [
+            "anvisa_rdc222"
+          ],
+          "vetidexId": "prev_biosseguranca"
+        },
+        {
+          "id": "bs_superficie",
+          "prompt": "O que fazer com a mesa de atendimento entre um paciente e outro?",
+          "options": [
+            "Limpar e desinfetar a superfície",
+            "Nada, se o paciente anterior parecia saudável",
+            "Apenas forrar com papel por cima",
+            "Limpar só no fim do dia"
+          ],
+          "correctIndex": 0,
+          "explanation": "A limpeza e desinfecção entre pacientes reduz a transmissão de agentes infecciosos.",
+          "refs": [
+            "who2009",
+            "nr32"
+          ],
+          "vetidexId": "prev_biosseguranca"
+        },
+        {
+          "id": "bs_raiva_pre",
+          "prompt": "Para estudantes e profissionais com risco frequente de exposição ao vírus da raiva, recomenda-se:",
+          "options": [
+            "Profilaxia pré-exposição com vacina antirrábica",
+            "Nenhuma medida",
+            "Uso de antibiótico preventivo",
+            "Apenas evitar gatos"
+          ],
+          "correctIndex": 0,
+          "explanation": "A profilaxia pré-exposição é recomendada para grupos de risco ocupacional, como veterinários e estudantes.",
+          "refs": [
+            "who_rabies2018"
+          ],
+          "vetidexId": "prev_saude_unica"
+        },
+        {
+          "id": "bs_raiva_neuro",
+          "prompt": "Um animal com alterações neurológicas agudas e histórico de mordedura por morcego chega ao hospital. Qual a atitude adequada do estudante?",
+          "options": [
+            "Não manipular sem orientação e EPI, e avisar imediatamente o veterinário responsável",
+            "Examinar a boca sem luvas",
+            "Liberar o animal para casa",
+            "Ignorar o histórico"
+          ],
+          "correctIndex": 0,
+          "explanation": "A suspeita de raiva exige manejo cuidadoso, notificação e avaliação das pessoas expostas.",
+          "refs": [
+            "who_rabies2018",
+            "merck"
+          ],
+          "vetidexId": "prev_saude_unica"
+        },
+        {
+          "id": "bs_lepto",
+          "prompt": "Ao manipular a urina de um cão com suspeita de leptospirose, deve-se:",
+          "options": [
+            "Usar luvas e evitar respingos em mucosas",
+            "Manipular normalmente, pois não é zoonose",
+            "Apenas lavar as mãos depois, sem luvas",
+            "Usar só máscara"
+          ],
+          "correctIndex": 0,
+          "explanation": "A leptospirose é uma zoonose transmitida principalmente pelo contato com urina de animais infectados.",
+          "refs": [
+            "merck"
+          ],
+          "vetidexId": "prev_saude_unica"
+        },
+        {
+          "id": "bs_toxo",
+          "prompt": "Uma colega gestante precisa limpar caixas de areia de gatos internados. Qual orientação é adequada?",
+          "options": [
+            "Se possível, outra pessoa faz a tarefa; se não, usar luvas, trocar a areia diariamente e lavar as mãos",
+            "Pode limpar sem cuidados",
+            "Basta usar máscara",
+            "Deixar a areia trocar uma vez por semana"
+          ],
+          "correctIndex": 0,
+          "explanation": "Oocistos de Toxoplasma gondii eliminados nas fezes precisam de pelo menos um dia para se tornarem infectantes; a troca diária reduz o risco.",
+          "refs": [
+            "merck"
+          ],
+          "vetidexId": "prev_saude_unica"
+        },
+        {
+          "id": "bs_dermatofito",
+          "prompt": "Um gato com lesões circulares e alopecia pode ter dermatofitose. Isso importa para a equipe porque:",
+          "options": [
+            "É uma zoonose transmissível por contato",
+            "Só afeta gatos",
+            "Só é transmitida pela água",
+            "Não é infecciosa"
+          ],
+          "correctIndex": 0,
+          "explanation": "Dermatófitos como Microsporum canis são transmitidos por contato com o animal ou com pelos e esporos no ambiente.",
+          "refs": [
+            "miller2013"
+          ],
+          "vetidexId": "prev_saude_unica"
+        }
+      ]
+    },
+    {
+      "id": "microbiologia",
+      "title": "Microbiologia veterinária",
+      "discipline": "microbiologia",
+      "skill": "bacteriologia",
+      "questions": [
+        {
+          "id": "mi_gram_pos",
+          "prompt": "Por que as bactérias Gram-positivas ficam roxas na coloração de Gram?",
+          "options": [
+            "Têm parede espessa de peptidoglicano que retém o cristal violeta",
+            "Têm membrana externa com lipopolissacarídeo",
+            "Não têm parede celular",
+            "Absorvem a safranina com mais intensidade"
+          ],
+          "correctIndex": 0,
+          "explanation": "A parede espessa de peptidoglicano retém o complexo cristal violeta-iodo mesmo após o álcool.",
+          "refs": [
+            "quinn2011"
+          ],
+          "vetidexId": "micro_gram"
+        },
+        {
+          "id": "mi_gram_neg",
+          "prompt": "Qual estrutura é característica das bactérias Gram-negativas?",
+          "options": [
+            "Membrana externa com lipopolissacarídeo (LPS)",
+            "Parede espessa de peptidoglicano",
+            "Ácidos micólicos abundantes",
+            "Ausência total de peptidoglicano"
+          ],
+          "correctIndex": 0,
+          "explanation": "Gram-negativas têm parede fina de peptidoglicano e uma membrana externa com LPS, que também atua como endotoxina.",
+          "refs": [
+            "quinn2011"
+          ],
+          "vetidexId": "micro_gram"
+        },
+        {
+          "id": "mi_staph",
+          "prompt": "Qual bactéria é frequentemente isolada de piodermites e otites em cães?",
+          "options": [
+            "Staphylococcus pseudintermedius",
+            "Clostridium tetani",
+            "Mycobacterium bovis",
+            "Brucella abortus"
+          ],
+          "correctIndex": 0,
+          "explanation": "S. pseudintermedius é um coco Gram-positivo da microbiota canina e causa comum de piodermite e otite.",
+          "refs": [
+            "quinn2011",
+            "miller2013"
+          ]
+        },
+        {
+          "id": "mi_cim",
+          "prompt": "O que significa CIM (concentração inibitória mínima)?",
+          "options": [
+            "A menor concentração do antimicrobiano que inibe o crescimento visível in vitro",
+            "A dose máxima que o paciente tolera",
+            "A concentração que mata 100% das bactérias no paciente",
+            "O tempo até o efeito do fármaco"
+          ],
+          "correctIndex": 0,
+          "explanation": "A CIM é medida em laboratório; sua interpretação usa pontos de corte específicos para espécie e local da infecção.",
+          "refs": [
+            "quinn2011",
+            "riviere2018"
+          ],
+          "vetidexId": "micro_resistencia"
+        },
+        {
+          "id": "mi_coleta_antes",
+          "prompt": "Quando coletar amostra para cultura bacteriana?",
+          "options": [
+            "Antes de iniciar o antimicrobiano, sempre que possível",
+            "Depois de 3 dias de antimicrobiano",
+            "Só se o tratamento falhar duas vezes",
+            "O momento da coleta não interfere no resultado"
+          ],
+          "correctIndex": 0,
+          "explanation": "O antimicrobiano pode inibir o crescimento na cultura e gerar falso-negativo.",
+          "refs": [
+            "quinn2011"
+          ],
+          "vetidexId": "micro_resistencia"
+        },
+        {
+          "id": "mi_plasmideo",
+          "prompt": "Como genes de resistência antimicrobiana podem passar de uma bactéria para outra?",
+          "options": [
+            "Por plasmídeos, em transferência horizontal",
+            "Apenas por mutação na própria bactéria",
+            "Pela coloração de Gram",
+            "Somente entre bactérias da mesma espécie e nunca entre animais e pessoas"
+          ],
+          "correctIndex": 0,
+          "explanation": "Plasmídeos e outros elementos móveis permitem a transferência horizontal, inclusive entre bactérias de animais e de pessoas — tema de Saúde Única.",
+          "refs": [
+            "quinn2011"
+          ],
+          "vetidexId": "micro_resistencia"
+        },
+        {
+          "id": "mi_esteril",
+          "prompt": "Qual processo elimina todas as formas microbianas, inclusive esporos bacterianos?",
+          "options": [
+            "Esterilização",
+            "Desinfecção de nível baixo",
+            "Limpeza com água e sabão",
+            "Antissepsia da pele"
+          ],
+          "correctIndex": 0,
+          "explanation": "A esterilização (como vapor sob pressão em autoclave) elimina inclusive esporos.",
+          "refs": [
+            "quinn2011",
+            "fossum2019"
+          ],
+          "vetidexId": "prev_esterilizacao"
+        },
+        {
+          "id": "mi_spaulding",
+          "prompt": "Pela classificação de Spaulding, instrumentais cirúrgicos que penetram tecidos estéreis são artigos:",
+          "options": [
+            "Críticos — exigem esterilização",
+            "Semicríticos — basta desinfecção de nível intermediário",
+            "Não críticos — basta limpeza",
+            "Descartáveis obrigatoriamente"
+          ],
+          "correctIndex": 0,
+          "explanation": "Artigos críticos entram em contato com tecidos estéreis e precisam ser esterilizados.",
+          "refs": [
+            "quinn2011"
+          ],
+          "vetidexId": "prev_esterilizacao"
+        },
+        {
+          "id": "mi_materia_organica",
+          "prompt": "Por que limpar antes de desinfetar?",
+          "options": [
+            "A matéria orgânica protege microrganismos e inativa desinfetantes",
+            "Porque a limpeza esteriliza",
+            "Para economizar desinfetante, apenas",
+            "Não é necessário limpar antes"
+          ],
+          "correctIndex": 0,
+          "explanation": "Sangue, pus e fezes reduzem a ação dos desinfetantes; a limpeza é o primeiro passo.",
+          "refs": [
+            "quinn2011"
+          ],
+          "vetidexId": "prev_esterilizacao"
+        },
+        {
+          "id": "mi_esporo",
+          "prompt": "Qual gênero bacteriano forma esporos resistentes no ambiente?",
+          "options": [
+            "Clostridium",
+            "Pasteurella",
+            "Escherichia",
+            "Staphylococcus"
+          ],
+          "correctIndex": 0,
+          "explanation": "Clostridium e Bacillus formam endósporos muito resistentes ao calor, à dessecação e a desinfetantes.",
+          "refs": [
+            "quinn2011"
+          ]
+        },
+        {
+          "id": "mi_dermatofito",
+          "prompt": "Qual exame complementar ajuda a investigar dermatofitose em gatos?",
+          "options": [
+            "Cultura fúngica do pelo (e lâmpada de Wood como triagem)",
+            "Coloração de Gram do sangue",
+            "Urinálise",
+            "Teste de Coombs"
+          ],
+          "correctIndex": 0,
+          "explanation": "A cultura fúngica identifica o dermatófito; a lâmpada de Wood é uma triagem (só algumas cepas de Microsporum canis fluorescem).",
+          "refs": [
+            "quinn2011",
+            "miller2013"
+          ]
+        },
+        {
+          "id": "mi_virus_envelope",
+          "prompt": "Em geral, vírus com envelope lipídico são, em relação aos vírus não envelopados:",
+          "options": [
+            "Menos resistentes no ambiente e a desinfetantes",
+            "Mais resistentes a tudo",
+            "Imunes ao álcool",
+            "Iguais em resistência"
+          ],
+          "correctIndex": 0,
+          "explanation": "O envelope é sensível a solventes e detergentes. Vírus não envelopados, como o parvovírus, resistem mais no ambiente.",
+          "refs": [
+            "quinn2011"
+          ]
+        },
+        {
+          "id": "mi_parvo_ambiente",
+          "prompt": "Por que o parvovírus canino exige atenção especial na desinfecção do hospital?",
+          "options": [
+            "É não envelopado e muito resistente no ambiente",
+            "Morre em segundos ao ar livre",
+            "Só é transmitido pelo ar",
+            "É sensível a qualquer sabão"
+          ],
+          "correctIndex": 0,
+          "explanation": "O parvovírus não tem envelope e resiste por longos períodos; exige desinfetantes eficazes e protocolos de isolamento.",
+          "refs": [
+            "quinn2011",
+            "day2016"
+          ],
+          "vetidexId": "doenca_parvovirose"
+        }
+      ]
+    },
+    {
+      "id": "parasitologia",
+      "title": "Parasitologia veterinária",
+      "discipline": "parasitologia",
+      "skill": "endoparasitas",
+      "questions": [
+        {
+          "id": "pa_haemonchus_local",
+          "prompt": "Onde vive o Haemonchus contortus adulto em ovinos?",
+          "options": [
+            "No abomaso",
+            "No rúmen",
+            "No intestino grosso",
+            "Nos pulmões"
+          ],
+          "correctIndex": 0,
+          "explanation": "É um nematódeo hematófago do abomaso.",
+          "refs": [
+            "taylor2016"
+          ],
+          "vetidexId": "parasita_haemonchus"
+        },
+        {
+          "id": "pa_haemonchus_sinal",
+          "prompt": "Qual sinal é típico da hemoncose em ovinos?",
+          "options": [
+            "Anemia com edema submandibular",
+            "Diarreia profusa sempre presente",
+            "Tosse crônica",
+            "Prurido intenso"
+          ],
+          "correctIndex": 0,
+          "explanation": "A perda de sangue causa anemia e hipoproteinemia (edema submandibular); a diarreia é pouco frequente.",
+          "refs": [
+            "taylor2016"
+          ],
+          "vetidexId": "parasita_haemonchus"
+        },
+        {
+          "id": "pa_famacha",
+          "prompt": "O método FAMACHA avalia:",
+          "options": [
+            "A coloração da conjuntiva para estimar anemia",
+            "A contagem de ovos nas fezes",
+            "O peso do animal",
+            "A temperatura retal"
+          ],
+          "correctIndex": 0,
+          "explanation": "Compara a cor da conjuntiva com um cartão de 5 graus para identificar animais anêmicos.",
+          "refs": [
+            "vanwyk2002"
+          ],
+          "vetidexId": "parasita_haemonchus"
+        },
+        {
+          "id": "pa_refugio",
+          "prompt": "Por que o tratamento seletivo (só dos anêmicos) ajuda contra a resistência anti-helmíntica?",
+          "options": [
+            "Mantém parasitas não expostos ao fármaco (refúgio), diluindo genes de resistência",
+            "Porque os fármacos funcionam melhor em menos animais",
+            "Porque elimina todos os parasitas do pasto",
+            "Não ajuda; é só para economizar"
+          ],
+          "correctIndex": 0,
+          "explanation": "Parasitas em refúgio não sofrem seleção e mantêm genes de suscetibilidade na população.",
+          "refs": [
+            "vanwyk2002",
+            "taylor2016"
+          ],
+          "vetidexId": "parasita_haemonchus"
+        },
+        {
+          "id": "pa_opg",
+          "prompt": "O que é o exame de OPG?",
+          "options": [
+            "Contagem de ovos por grama de fezes",
+            "Observação de pulgas no pelame",
+            "Pesquisa de hemoparasitas no sangue",
+            "Cultura de fungos"
+          ],
+          "correctIndex": 0,
+          "explanation": "O OPG (por exemplo, técnica de McMaster) estima a carga de nematódeos e ajuda a avaliar a eficácia do tratamento.",
+          "refs": [
+            "taylor2016"
+          ],
+          "vetidexId": "exame_coproparasitologico"
+        },
+        {
+          "id": "pa_erliquia_vetor",
+          "prompt": "Qual carrapato transmite Ehrlichia canis ao cão?",
+          "options": [
+            "Rhipicephalus sanguineus (carrapato-marrom-do-cão)",
+            "Ctenocephalides felis",
+            "Sarcoptes scabiei",
+            "Demodex canis"
+          ],
+          "correctIndex": 0,
+          "explanation": "O carrapato-marrom completa o ciclo em ambientes domésticos e transmite E. canis.",
+          "refs": [
+            "harrus2011",
+            "taylor2016"
+          ],
+          "vetidexId": "doenca_erliquiose"
+        },
+        {
+          "id": "pa_erliquia_plaquetas",
+          "prompt": "Qual alteração de hemograma é frequente na erliquiose canina?",
+          "options": [
+            "Trombocitopenia",
+            "Policitemia",
+            "Eosinofilia acentuada",
+            "Trombocitose"
+          ],
+          "correctIndex": 0,
+          "explanation": "A trombocitopenia é um dos achados mais comuns e explica sangramentos como epistaxe e petéquias.",
+          "refs": [
+            "harrus2011"
+          ],
+          "vetidexId": "doenca_erliquiose"
+        },
+        {
+          "id": "pa_morula",
+          "prompt": "Um esfregaço sanguíneo sem mórulas de Ehrlichia:",
+          "options": [
+            "Não exclui a doença, pois a pesquisa tem baixa sensibilidade",
+            "Exclui a erliquiose",
+            "Confirma outra doença",
+            "Indica cura"
+          ],
+          "correctIndex": 0,
+          "explanation": "Mórulas raramente são vistas; sorologia e PCR complementam o diagnóstico.",
+          "refs": [
+            "harrus2011"
+          ],
+          "vetidexId": "doenca_erliquiose"
+        },
+        {
+          "id": "pa_giardia_cisto",
+          "prompt": "Por que se recomendam amostras de fezes seriadas para Giardia?",
+          "options": [
+            "Porque os cistos são eliminados de forma intermitente",
+            "Porque o parasita só aparece à noite",
+            "Porque o primeiro exame sempre dá falso-positivo",
+            "Não há motivo; uma amostra basta"
+          ],
+          "correctIndex": 0,
+          "explanation": "A eliminação intermitente reduz a sensibilidade de uma única amostra.",
+          "refs": [
+            "taylor2016",
+            "esccap2021"
+          ],
+          "vetidexId": "parasita_giardia"
+        },
+        {
+          "id": "pa_giardia_tecnica",
+          "prompt": "Qual técnica é indicada para pesquisar cistos de Giardia?",
+          "options": [
+            "Centrífugo-flutuação em sulfato de zinco",
+            "Raspado de pele profundo",
+            "Esfregaço de sangue",
+            "Lâmpada de Wood"
+          ],
+          "correctIndex": 0,
+          "explanation": "A flutuação em sulfato de zinco concentra cistos; testes de antígeno também podem ser usados.",
+          "refs": [
+            "taylor2016"
+          ],
+          "vetidexId": "parasita_giardia"
+        },
+        {
+          "id": "pa_dipylidium",
+          "prompt": "Como o cão se infecta com Dipylidium caninum?",
+          "options": [
+            "Ingerindo pulgas infectadas com o cisticercoide",
+            "Pela picada do mosquito",
+            "Pela pele, em contato com o solo",
+            "Pelo leite materno"
+          ],
+          "correctIndex": 0,
+          "explanation": "A pulga é hospedeira intermediária; controlar pulgas previne o Dipylidium.",
+          "refs": [
+            "taylor2016"
+          ],
+          "vetidexId": "parasita_dipylidium"
+        },
+        {
+          "id": "pa_toxocara",
+          "prompt": "Como filhotes de cão se infectam com Toxocara canis logo ao nascer?",
+          "options": [
+            "Pela via transplacentária e pelo leite",
+            "Somente por pulgas",
+            "Apenas por carrapatos",
+            "Pela picada de flebotomíneos"
+          ],
+          "correctIndex": 0,
+          "explanation": "A transmissão transplacentária e transmamária explica a infecção precoce; daí a vermifugação dos filhotes desde cedo.",
+          "refs": [
+            "taylor2016",
+            "esccap2021"
+          ],
+          "vetidexId": "parasita_toxocara"
+        },
+        {
+          "id": "pa_ciclo_direto",
+          "prompt": "Um parasita de ciclo direto é aquele que:",
+          "options": [
+            "Não precisa de hospedeiro intermediário",
+            "Precisa de dois hospedeiros intermediários",
+            "Só vive em vetores",
+            "Não se reproduz"
+          ],
+          "correctIndex": 0,
+          "explanation": "No ciclo direto, as formas infectantes passam do ambiente (ou de outro animal) ao hospedeiro definitivo sem hospedeiro intermediário.",
+          "refs": [
+            "taylor2016"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "farmacologia",
+      "title": "Farmacologia veterinária",
+      "discipline": "farmacologia",
+      "skill": "farmacodinamica",
+      "questions": [
+        {
+          "id": "fa_aine_mecanismo",
+          "prompt": "Qual é o principal mecanismo dos anti-inflamatórios não esteroidais (AINEs)?",
+          "options": [
+            "Inibição das ciclo-oxigenases (COX), reduzindo prostaglandinas",
+            "Bloqueio de receptores de histamina",
+            "Ativação de receptores opioides",
+            "Inibição da síntese de proteínas bacterianas"
+          ],
+          "correctIndex": 0,
+          "explanation": "Os AINEs inibem COX-1 e/ou COX-2 e reduzem a síntese de prostaglandinas.",
+          "refs": [
+            "riviere2018"
+          ],
+          "vetidexId": "farm_aines"
+        },
+        {
+          "id": "fa_aine_rim",
+          "prompt": "Em qual situação o risco renal dos AINEs é maior?",
+          "options": [
+            "Paciente desidratado ou hipotenso",
+            "Paciente bem hidratado e saudável",
+            "Paciente em jejum de 2 horas",
+            "Paciente vacinado recentemente"
+          ],
+          "correctIndex": 0,
+          "explanation": "Com perfusão renal reduzida, as prostaglandinas mantêm o fluxo sanguíneo renal; inibi-las pode causar lesão renal.",
+          "refs": [
+            "riviere2018"
+          ],
+          "vetidexId": "farm_aines"
+        },
+        {
+          "id": "fa_aine_cortico",
+          "prompt": "Por que não associar AINEs a corticoides?",
+          "options": [
+            "Aumenta muito o risco de úlcera gastrintestinal",
+            "Os dois se anulam",
+            "Causa hipoglicemia imediata",
+            "Não há problema na associação"
+          ],
+          "correctIndex": 0,
+          "explanation": "Ambos reduzem mecanismos de proteção da mucosa; juntos aumentam o risco de úlceras e perfurações.",
+          "refs": [
+            "riviere2018"
+          ],
+          "vetidexId": "farm_aines"
+        },
+        {
+          "id": "fa_paracetamol",
+          "prompt": "Por que o paracetamol é especialmente perigoso para gatos?",
+          "options": [
+            "Gatos têm baixa capacidade de glicuronidação, acumulando metabólitos tóxicos",
+            "Gatos não absorvem medicamentos orais",
+            "Porque é um antibiótico",
+            "Não é perigoso para gatos"
+          ],
+          "correctIndex": 0,
+          "explanation": "A deficiência de glicuronidação leva à formação de metabólitos que causam metemoglobinemia e lesão hepática.",
+          "refs": [
+            "riviere2018"
+          ],
+          "vetidexId": "farm_toxicidade_felina"
+        },
+        {
+          "id": "fa_tempo_dep",
+          "prompt": "Para um antimicrobiano tempo-dependente (como os beta-lactâmicos), o que mais importa?",
+          "options": [
+            "O tempo em que a concentração permanece acima da CIM",
+            "O pico máximo de concentração",
+            "Dar a dose total de uma só vez",
+            "Tomar com o estômago cheio"
+          ],
+          "correctIndex": 0,
+          "explanation": "A eficácia depende do tempo acima da CIM; intervalos regulares são essenciais.",
+          "refs": [
+            "riviere2018"
+          ],
+          "vetidexId": "farm_pkpd"
+        },
+        {
+          "id": "fa_conc_dep",
+          "prompt": "Qual grupo é considerado concentração-dependente?",
+          "options": [
+            "Aminoglicosídeos",
+            "Penicilinas",
+            "Cefalosporinas",
+            "Todos os antimicrobianos"
+          ],
+          "correctIndex": 0,
+          "explanation": "Aminoglicosídeos e fluoroquinolonas dependem da relação entre o pico e a CIM e têm efeito pós-antibiótico.",
+          "refs": [
+            "riviere2018"
+          ],
+          "vetidexId": "farm_pkpd"
+        },
+        {
+          "id": "fa_meia_vida",
+          "prompt": "O que é a meia-vida de eliminação de um fármaco?",
+          "options": [
+            "O tempo para a concentração plasmática cair pela metade",
+            "Metade do tempo de efeito",
+            "A metade da dose recomendada",
+            "O tempo para o fármaco começar a agir"
+          ],
+          "correctIndex": 0,
+          "explanation": "A meia-vida ajuda a definir intervalos de administração e o tempo para atingir o estado de equilíbrio.",
+          "refs": [
+            "riviere2018"
+          ],
+          "vetidexId": "farm_pkpd"
+        },
+        {
+          "id": "fa_biodisp",
+          "prompt": "Biodisponibilidade é:",
+          "options": [
+            "A fração do fármaco administrado que chega inalterada à circulação sistêmica",
+            "A velocidade de absorção pela pele",
+            "A dose necessária para efeito máximo",
+            "O tempo de prateleira do medicamento"
+          ],
+          "correctIndex": 0,
+          "explanation": "Por via intravenosa é 100%; por outras vias depende de absorção e metabolismo de primeira passagem.",
+          "refs": [
+            "riviere2018"
+          ]
+        },
+        {
+          "id": "fa_mdr1",
+          "prompt": "O que a mutação do gene MDR1 (ABCB1) causa em cães como collies?",
+          "options": [
+            "Glicoproteína-P não funcional na barreira hematoencefálica",
+            "Resistência total à ivermectina",
+            "Alergia a todos os fármacos",
+            "Aumento da excreção renal"
+          ],
+          "correctIndex": 0,
+          "explanation": "Sem glicoproteína-P funcional, fármacos como a ivermectina se acumulam no sistema nervoso central.",
+          "refs": [
+            "mealey2001"
+          ],
+          "vetidexId": "farm_mdr1"
+        },
+        {
+          "id": "fa_mdr1_racas",
+          "prompt": "Qual grupo de raças tem maior frequência da mutação MDR1?",
+          "options": [
+            "Raças de pastoreio, como collie e pastor-australiano",
+            "Braquicefálicos, como buldogue",
+            "Raças nórdicas, como husky",
+            "Terriers, como yorkshire"
+          ],
+          "correctIndex": 0,
+          "explanation": "Collies, pastores-australianos, pastores-de-shetland e outras raças de pastoreio são as mais afetadas.",
+          "refs": [
+            "mealey2001",
+            "riviere2018"
+          ],
+          "vetidexId": "farm_mdr1"
+        },
+        {
+          "id": "fa_permetrina",
+          "prompt": "Por que produtos à base de permetrina para cães não devem ser usados em gatos?",
+          "options": [
+            "Gatos são muito sensíveis à permetrina, com risco de tremores e convulsões",
+            "Porque não mata pulgas em gatos",
+            "Porque gatos não têm pulgas",
+            "Não há restrição"
+          ],
+          "correctIndex": 0,
+          "explanation": "A permetrina é uma causa clássica de intoxicação em gatos; use apenas produtos indicados para a espécie.",
+          "refs": [
+            "riviere2018",
+            "merck"
+          ],
+          "vetidexId": "farm_toxicidade_felina"
+        },
+        {
+          "id": "fa_carencia",
+          "prompt": "O que é período de carência em animais de produção?",
+          "options": [
+            "Tempo entre a última administração e o abate ou uso do leite/ovos, para evitar resíduos",
+            "Tempo de espera para o fármaco fazer efeito",
+            "Período sem alimentação antes da cirurgia",
+            "Prazo de validade do medicamento"
+          ],
+          "correctIndex": 0,
+          "explanation": "Respeitar a carência evita resíduos de medicamentos em alimentos — tema de saúde pública.",
+          "refs": [
+            "riviere2018"
+          ]
+        },
+        {
+          "id": "fa_opioide",
+          "prompt": "Qual é o principal uso dos opioides em medicina veterinária?",
+          "options": [
+            "Analgesia",
+            "Tratamento de infecções bacterianas",
+            "Controle de pulgas",
+            "Reposição de eletrólitos"
+          ],
+          "correctIndex": 0,
+          "explanation": "Opioides atuam em receptores do sistema nervoso e são fundamentais no controle da dor, sempre sob prescrição e controle legal.",
+          "refs": [
+            "riviere2018",
+            "grimm2015"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "patologia",
+      "title": "Patologia veterinária",
+      "discipline": "patologia",
+      "skill": "geral",
+      "questions": [
+        {
+          "id": "pt_cardinais",
+          "prompt": "Quais são os sinais cardinais da inflamação?",
+          "options": [
+            "Rubor, calor, tumor, dor e perda de função",
+            "Febre, tosse, vômito e diarreia",
+            "Palidez, frio e atrofia",
+            "Prurido, alopecia e crostas"
+          ],
+          "correctIndex": 0,
+          "explanation": "Celso descreveu quatro sinais e Virchow acrescentou a perda de função.",
+          "refs": [
+            "zachary2017"
+          ],
+          "vetidexId": "pato_inflamacao"
+        },
+        {
+          "id": "pt_edema",
+          "prompt": "Por que ocorre edema na inflamação aguda?",
+          "options": [
+            "Aumento da permeabilidade vascular, com saída de líquido rico em proteínas",
+            "Diminuição da pressão arterial",
+            "Excesso de glóbulos vermelhos",
+            "Falta de água no organismo"
+          ],
+          "correctIndex": 0,
+          "explanation": "Mediadores inflamatórios abrem as junções endoteliais e o exsudato sai para o tecido.",
+          "refs": [
+            "zachary2017"
+          ],
+          "vetidexId": "pato_inflamacao"
+        },
+        {
+          "id": "pt_neutrofilo",
+          "prompt": "Qual célula predomina na inflamação aguda?",
+          "options": [
+            "Neutrófilo",
+            "Plasmócito",
+            "Fibroblasto",
+            "Eosinófilo, sempre"
+          ],
+          "correctIndex": 0,
+          "explanation": "Neutrófilos chegam primeiro; macrófagos, linfócitos e plasmócitos caracterizam a inflamação crônica.",
+          "refs": [
+            "zachary2017"
+          ],
+          "vetidexId": "pato_inflamacao"
+        },
+        {
+          "id": "pt_exsudato",
+          "prompt": "Qual a diferença entre exsudato e transudato?",
+          "options": [
+            "Exsudato é rico em proteínas e células; transudato tem poucas",
+            "São sinônimos",
+            "Transudato é sempre purulento",
+            "Exsudato só ocorre em cadáveres"
+          ],
+          "correctIndex": 0,
+          "explanation": "O exsudato indica inflamação (permeabilidade aumentada); o transudato resulta de alterações de pressão hidrostática ou oncótica.",
+          "refs": [
+            "zachary2017"
+          ],
+          "vetidexId": "pato_inflamacao"
+        },
+        {
+          "id": "pt_antraz_abrir",
+          "prompt": "Diante de suspeita de carbúnculo hemático (antraz) em um bovino morto, o correto é:",
+          "options": [
+            "Não abrir a carcaça e notificar o serviço veterinário oficial",
+            "Fazer a necrópsia completa imediatamente",
+            "Enterrar sem avisar ninguém",
+            "Aproveitar a carne após cozinhar bem"
+          ],
+          "correctIndex": 0,
+          "explanation": "Abrir a carcaça permite a esporulação do Bacillus anthracis, que contamina o solo por décadas.",
+          "refs": [
+            "who_anthrax2008"
+          ],
+          "vetidexId": "doenca_antraz"
+        },
+        {
+          "id": "pt_antraz_sinais",
+          "prompt": "Qual achado levanta suspeita de antraz em ruminantes?",
+          "options": [
+            "Morte súbita com sangue escuro, que não coagula, saindo pelos orifícios naturais",
+            "Diarreia crônica com emagrecimento lento",
+            "Tosse por meses",
+            "Claudicação leve"
+          ],
+          "correctIndex": 0,
+          "explanation": "Morte súbita e sangramento pelos orifícios sem coagulação são sinais de alerta.",
+          "refs": [
+            "who_anthrax2008",
+            "zachary2017"
+          ],
+          "vetidexId": "doenca_antraz"
+        },
+        {
+          "id": "pt_formol",
+          "prompt": "Como fixar fragmentos de tecido para histopatologia?",
+          "options": [
+            "Em formol a 10%, com volume de fixador bem maior que o da amostra",
+            "Congelando a amostra no freezer",
+            "Em água da torneira",
+            "Em álcool 70% com o fragmento inteiro do órgão"
+          ],
+          "correctIndex": 0,
+          "explanation": "Formol a 10% tamponado, em proporção de cerca de 10 partes de fixador para 1 de tecido, com fragmentos finos.",
+          "refs": [
+            "zachary2017"
+          ]
+        },
+        {
+          "id": "pt_benigno",
+          "prompt": "Qual característica é típica de neoplasia benigna?",
+          "options": [
+            "Crescimento lento e expansivo, sem metástase",
+            "Infiltração de tecidos vizinhos",
+            "Muitas mitoses atípicas",
+            "Metástase para linfonodos"
+          ],
+          "correctIndex": 0,
+          "explanation": "Neoplasias benignas são bem diferenciadas e delimitadas e não dão metástase.",
+          "refs": [
+            "zachary2017"
+          ],
+          "vetidexId": "pato_neoplasia"
+        },
+        {
+          "id": "pt_maligno",
+          "prompt": "Qual característica sugere neoplasia maligna?",
+          "options": [
+            "Crescimento rápido, infiltrativo, com anaplasia",
+            "Cápsula bem definida e crescimento lento",
+            "Células idênticas ao tecido normal",
+            "Ausência de mitoses"
+          ],
+          "correctIndex": 0,
+          "explanation": "Malignidade envolve invasão, atipia celular e potencial metastático.",
+          "refs": [
+            "zachary2017"
+          ],
+          "vetidexId": "pato_neoplasia"
+        },
+        {
+          "id": "pt_histo",
+          "prompt": "Qual exame confirma o tipo e o comportamento de um tumor?",
+          "options": [
+            "Histopatologia",
+            "Hemograma",
+            "Urinálise",
+            "Glicemia"
+          ],
+          "correctIndex": 0,
+          "explanation": "A citologia é uma boa triagem; a histopatologia avalia arquitetura e invasão e define o diagnóstico.",
+          "refs": [
+            "zachary2017"
+          ],
+          "vetidexId": "pato_neoplasia"
+        },
+        {
+          "id": "pt_necrose",
+          "prompt": "Necrose é:",
+          "options": [
+            "Morte celular em tecido vivo, geralmente com inflamação associada",
+            "Divisão celular acelerada",
+            "Aumento do tamanho das células",
+            "Morte celular programada sem inflamação"
+          ],
+          "correctIndex": 0,
+          "explanation": "A apoptose é programada e geralmente não inflamatória; a necrose costuma desencadear inflamação.",
+          "refs": [
+            "zachary2017"
+          ]
+        },
+        {
+          "id": "pt_hipertrofia",
+          "prompt": "Hipertrofia é o aumento:",
+          "options": [
+            "Do tamanho das células",
+            "Do número de células",
+            "Da quantidade de tecido conjuntivo sem células",
+            "Da temperatura do tecido"
+          ],
+          "correctIndex": 0,
+          "explanation": "Hiperplasia é o aumento do número de células; hipertrofia, do tamanho (por exemplo, o miocárdio na sobrecarga).",
+          "refs": [
+            "zachary2017"
+          ]
+        },
+        {
+          "id": "pt_ictericia",
+          "prompt": "A coloração amarelada dos tecidos na necrópsia (icterícia) se deve ao acúmulo de:",
+          "options": [
+            "Bilirrubina",
+            "Hemoglobina oxidada apenas na pele",
+            "Gordura",
+            "Cálcio"
+          ],
+          "correctIndex": 0,
+          "explanation": "Bilirrubina acumulada por hemólise, doença hepática ou obstrução biliar.",
+          "refs": [
+            "zachary2017"
+          ],
+          "vetidexId": "manif_ictericia"
+        }
+      ]
+    },
+    {
+      "id": "cirurgia",
+      "title": "Cirurgia e Anestesiologia",
+      "discipline": "cirurgia",
+      "skill": "pre_operatorio",
+      "questions": [
+        {
+          "id": "ci_asa1",
+          "prompt": "Um gato jovem e saudável, para castração eletiva, é classificado como:",
+          "options": [
+            "ASA I",
+            "ASA III",
+            "ASA IV",
+            "ASA V"
+          ],
+          "correctIndex": 0,
+          "explanation": "ASA I é o paciente saudável, sem doença sistêmica.",
+          "refs": [
+            "grimm2015"
+          ],
+          "vetidexId": "cir_asa"
+        },
+        {
+          "id": "ci_asa_e",
+          "prompt": "O que o sufixo \"E\" na classificação ASA indica?",
+          "options": [
+            "Procedimento de emergência",
+            "Paciente idoso",
+            "Uso de anestesia epidural",
+            "Exames completos"
+          ],
+          "correctIndex": 0,
+          "explanation": "O \"E\" marca procedimentos de emergência, que aumentam o risco.",
+          "refs": [
+            "grimm2015"
+          ],
+          "vetidexId": "cir_asa"
+        },
+        {
+          "id": "ci_asa_uso",
+          "prompt": "Para que serve a classificação ASA?",
+          "options": [
+            "Estimar o risco anestésico conforme o estado físico do paciente",
+            "Definir o preço da cirurgia",
+            "Escolher o fio de sutura",
+            "Classificar a raça do animal"
+          ],
+          "correctIndex": 0,
+          "explanation": "Ela orienta exames pré-anestésicos, estabilização e nível de monitorização.",
+          "refs": [
+            "grimm2015"
+          ],
+          "vetidexId": "cir_asa"
+        },
+        {
+          "id": "ci_etco2",
+          "prompt": "O que o ETCO2 (capnografia) avalia principalmente?",
+          "options": [
+            "A ventilação",
+            "A temperatura",
+            "A glicemia",
+            "A profundidade do jejum"
+          ],
+          "correctIndex": 0,
+          "explanation": "O CO2 no fim da expiração reflete a ventilação; valor alto indica hipoventilação.",
+          "refs": [
+            "grimm2015"
+          ],
+          "vetidexId": "cir_monitorizacao"
+        },
+        {
+          "id": "ci_etco2_alto",
+          "prompt": "ETCO2 de 60 mmHg durante a anestesia sugere:",
+          "options": [
+            "Hipoventilação (hipercapnia)",
+            "Hiperventilação",
+            "Hipotermia",
+            "Normalidade"
+          ],
+          "correctIndex": 0,
+          "explanation": "Valores de referência ficam em torno de 35–45 mmHg; acima disso, o CO2 está acumulando.",
+          "refs": [
+            "grimm2015"
+          ],
+          "vetidexId": "cir_monitorizacao"
+        },
+        {
+          "id": "ci_spo2",
+          "prompt": "O oxímetro de pulso (SpO2) estima:",
+          "options": [
+            "A saturação de oxigênio da hemoglobina",
+            "A pressão arterial",
+            "O CO2 expirado",
+            "O débito urinário"
+          ],
+          "correctIndex": 0,
+          "explanation": "SpO2 baixa (por exemplo, abaixo de 90%) indica hipoxemia e exige ação imediata.",
+          "refs": [
+            "grimm2015"
+          ],
+          "vetidexId": "cir_monitorizacao"
+        },
+        {
+          "id": "ci_hipotermia",
+          "prompt": "Por que monitorar a temperatura durante a anestesia?",
+          "options": [
+            "Hipotermia é comum e prolonga a recuperação, entre outros efeitos",
+            "Porque a anestesia sempre causa febre",
+            "Apenas por exigência burocrática",
+            "Não é necessário monitorar"
+          ],
+          "correctIndex": 0,
+          "explanation": "Anestésicos deprimem a termorregulação e a cavidade aberta perde calor; aqueça o paciente.",
+          "refs": [
+            "grimm2015"
+          ],
+          "vetidexId": "cir_monitorizacao"
+        },
+        {
+          "id": "ci_jejum",
+          "prompt": "Qual é o objetivo do jejum alimentar pré-anestésico em cães e gatos?",
+          "options": [
+            "Reduzir o risco de vômito e aspiração",
+            "Emagrecer o paciente",
+            "Aumentar a glicemia",
+            "Acelerar o efeito do anestésico"
+          ],
+          "correctIndex": 0,
+          "explanation": "O tempo de jejum é definido pelo médico-veterinário conforme espécie, idade e condição (filhotes e alguns pacientes precisam de jejum mais curto).",
+          "refs": [
+            "grimm2015"
+          ]
+        },
+        {
+          "id": "ci_avental",
+          "prompt": "Quais áreas do avental cirúrgico são consideradas estéreis?",
+          "options": [
+            "A frente, do peito à cintura, e as mangas",
+            "As costas inteiras",
+            "Toda a peça, inclusive abaixo da cintura",
+            "Apenas o colarinho"
+          ],
+          "correctIndex": 0,
+          "explanation": "Abaixo da cintura e as costas não são consideradas estéreis.",
+          "refs": [
+            "fossum2019"
+          ],
+          "vetidexId": "prev_assepsia"
+        },
+        {
+          "id": "ci_contaminou",
+          "prompt": "A luva estéril encostou em uma superfície não estéril. O que fazer?",
+          "options": [
+            "Avisar e trocar a luva antes de continuar",
+            "Passar álcool na luva e seguir",
+            "Continuar, se ninguém viu",
+            "Lavar a luva com soro"
+          ],
+          "correctIndex": 0,
+          "explanation": "Qualquer quebra de técnica exige troca; honestidade protege o paciente.",
+          "refs": [
+            "fossum2019"
+          ],
+          "vetidexId": "prev_assepsia"
+        },
+        {
+          "id": "ci_antissepsia",
+          "prompt": "Como se faz a antissepsia da pele do paciente?",
+          "options": [
+            "Do centro (local da incisão) para a periferia, sem voltar ao centro",
+            "Da periferia para o centro",
+            "Em movimentos de vai e vem sobre toda a área",
+            "Basta molhar com água"
+          ],
+          "correctIndex": 0,
+          "explanation": "Movimentos do centro para a periferia evitam levar microrganismos para o local da incisão.",
+          "refs": [
+            "fossum2019"
+          ],
+          "vetidexId": "prev_assepsia"
+        },
+        {
+          "id": "ci_antissepsia_def",
+          "prompt": "Antissepsia se refere à redução de microrganismos em:",
+          "options": [
+            "Tecidos vivos, como a pele",
+            "Instrumentais metálicos",
+            "Pisos e bancadas",
+            "Roupas cirúrgicas apenas"
+          ],
+          "correctIndex": 0,
+          "explanation": "Em objetos e superfícies fala-se em desinfecção; em tecidos vivos, antissepsia.",
+          "refs": [
+            "fossum2019"
+          ],
+          "vetidexId": "prev_assepsia"
+        },
+        {
+          "id": "ci_sitio",
+          "prompt": "Qual medida reduz o risco de infecção do sítio cirúrgico?",
+          "options": [
+            "Técnica asséptica rigorosa e manipulação delicada dos tecidos",
+            "Cirurgias o mais longas possível",
+            "Tricotomia feita dias antes, de forma irregular",
+            "Abrir a porta da sala com frequência"
+          ],
+          "correctIndex": 0,
+          "explanation": "Assepsia, tempo cirúrgico menor e técnica atraumática reduzem infecções.",
+          "refs": [
+            "fossum2019"
+          ],
+          "vetidexId": "prev_assepsia"
+        }
+      ]
+    },
+    {
+      "id": "saude_publica",
+      "title": "Saúde Pública Veterinária",
+      "discipline": "saude_publica",
+      "skill": "zoonoses",
+      "questions": [
+        {
+          "id": "sp_raiva_transmissao",
+          "prompt": "Como a raiva é transmitida?",
+          "options": [
+            "Pela saliva do animal infectado (mordedura, arranhadura, lambedura de mucosas)",
+            "Pela água de bebedouros",
+            "Por picada de pulga",
+            "Pelo ar, em qualquer ambiente"
+          ],
+          "correctIndex": 0,
+          "explanation": "O vírus está na saliva; a exposição ocorre por mordedura, arranhadura ou lambedura de mucosas e pele lesionada.",
+          "refs": [
+            "who_rabies2018",
+            "guia_vigilancia2021"
+          ],
+          "vetidexId": "doenca_raiva"
+        },
+        {
+          "id": "sp_raiva_morcego",
+          "prompt": "Uma pessoa encontra um morcego caído no chão durante o dia. O que fazer?",
+          "options": [
+            "Não tocar sem proteção, isolar o animal e chamar o serviço de zoonoses",
+            "Pegar com a mão e soltar na mata",
+            "Jogar fora no lixo",
+            "Levar para casa para cuidar"
+          ],
+          "correctIndex": 0,
+          "explanation": "Morcego caído ou ativo de dia tem comportamento anormal e pode estar com raiva.",
+          "refs": [
+            "guia_vigilancia2021"
+          ],
+          "vetidexId": "doenca_raiva"
+        },
+        {
+          "id": "sp_raiva_lavar",
+          "prompt": "Qual é a primeira medida após uma mordedura de animal?",
+          "options": [
+            "Lavar o ferimento com água e sabão em abundância e procurar atendimento",
+            "Cobrir com pomada e esperar",
+            "Aplicar gelo e ignorar",
+            "Fazer um curativo apertado e não lavar"
+          ],
+          "correctIndex": 0,
+          "explanation": "A lavagem reduz muito a carga viral no local; depois, a unidade de saúde avalia a profilaxia.",
+          "refs": [
+            "who_rabies2018"
+          ],
+          "vetidexId": "doenca_raiva"
+        },
+        {
+          "id": "sp_lepto_reservatorio",
+          "prompt": "Qual é o principal reservatório urbano da leptospirose?",
+          "options": [
+            "Roedores, especialmente ratazanas",
+            "Gatos domésticos",
+            "Pombos",
+            "Mosquitos"
+          ],
+          "correctIndex": 0,
+          "explanation": "Os roedores eliminam leptospiras na urina por longos períodos.",
+          "refs": [
+            "guia_vigilancia2021"
+          ],
+          "vetidexId": "doenca_leptospirose"
+        },
+        {
+          "id": "sp_lepto_via",
+          "prompt": "Como a Leptospira costuma entrar no organismo?",
+          "options": [
+            "Pela pele lesionada ou mucosas em contato com água ou lama contaminadas",
+            "Por picada de carrapato",
+            "Somente por mordedura",
+            "Pela inalação de poeira seca"
+          ],
+          "correctIndex": 0,
+          "explanation": "Enchentes aumentam a exposição; botas e luvas protegem.",
+          "refs": [
+            "guia_vigilancia2021"
+          ],
+          "vetidexId": "doenca_leptospirose"
+        },
+        {
+          "id": "sp_lepto_epi",
+          "prompt": "Ao atender um cão com suspeita de leptospirose, a equipe deve:",
+          "options": [
+            "Usar luvas e EPI ao manipular o paciente e a urina",
+            "Dispensar EPI, pois não é zoonose",
+            "Manter o cão na sala de espera com outros animais",
+            "Lavar o canil com a mangueira sem proteção"
+          ],
+          "correctIndex": 0,
+          "explanation": "A urina pode conter leptospiras; isolamento e EPI protegem a equipe e outros pacientes.",
+          "refs": [
+            "guia_vigilancia2021",
+            "ettinger2017"
+          ],
+          "vetidexId": "doenca_leptospirose"
+        },
+        {
+          "id": "sp_sif",
+          "prompt": "O que significa o carimbo do SIF em um produto de origem animal?",
+          "options": [
+            "Que passou pelo Serviço de Inspeção Federal",
+            "Que é orgânico",
+            "Que é importado",
+            "Que não tem conservantes"
+          ],
+          "correctIndex": 0,
+          "explanation": "SIF (federal), SIE (estadual) e SIM (municipal) indicam inspeção sanitária oficial.",
+          "refs": [
+            "riispoa2017"
+          ],
+          "vetidexId": "doenca_brucelose"
+        },
+        {
+          "id": "sp_riispoa",
+          "prompt": "Qual norma regulamenta a inspeção industrial e sanitária de produtos de origem animal no Brasil?",
+          "options": [
+            "O RIISPOA (Decreto nº 9.013/2017)",
+            "O Código de Defesa do Consumidor, apenas",
+            "A NR 32",
+            "A RDC 222/2018"
+          ],
+          "correctIndex": 0,
+          "explanation": "O RIISPOA define regras da inspeção federal de produtos de origem animal.",
+          "refs": [
+            "riispoa2017"
+          ]
+        },
+        {
+          "id": "sp_brucelose_sinal",
+          "prompt": "Qual sinal é típico da brucelose em vacas?",
+          "options": [
+            "Aborto no terço final da gestação",
+            "Tosse crônica",
+            "Lesões de pele com prurido",
+            "Cegueira súbita"
+          ],
+          "correctIndex": 0,
+          "explanation": "A Brucella abortus tem tropismo pelo útero gestante e pela placenta.",
+          "refs": [
+            "pncebt2006"
+          ],
+          "vetidexId": "doenca_brucelose"
+        },
+        {
+          "id": "sp_brucelose_leite",
+          "prompt": "Como a brucelose é transmitida às pessoas com mais frequência?",
+          "options": [
+            "Consumo de leite cru e derivados não pasteurizados e contato com material de aborto",
+            "Picada de mosquito",
+            "Água tratada",
+            "Carne bem cozida"
+          ],
+          "correctIndex": 0,
+          "explanation": "Pasteurizar o leite e usar EPI no manejo de abortos previnem a infecção.",
+          "refs": [
+            "pncebt2006"
+          ],
+          "vetidexId": "doenca_brucelose"
+        },
+        {
+          "id": "sp_pncebt_vacina",
+          "prompt": "No PNCEBT, qual vacinação contra brucelose é obrigatória?",
+          "options": [
+            "A de bezerras (fêmeas bovinas e bubalinas) de 3 a 8 meses",
+            "A de todos os touros adultos",
+            "A de cães que vivem em fazendas",
+            "Nenhuma vacinação é obrigatória"
+          ],
+          "correctIndex": 0,
+          "explanation": "A vacinação das bezerras nessa faixa etária é a base do programa; machos não são vacinados.",
+          "refs": [
+            "pncebt2006"
+          ],
+          "vetidexId": "doenca_brucelose"
+        },
+        {
+          "id": "sp_notificacao",
+          "prompt": "O que é doença de notificação compulsória?",
+          "options": [
+            "Doença cuja ocorrência deve ser comunicada às autoridades de saúde",
+            "Doença que só ocorre em animais",
+            "Doença que não tem tratamento",
+            "Doença transmitida apenas por alimentos"
+          ],
+          "correctIndex": 0,
+          "explanation": "A notificação permite vigilância e ações de controle; raiva, leptospirose e brucelose humana estão entre elas.",
+          "refs": [
+            "guia_vigilancia2021"
+          ]
+        },
+        {
+          "id": "sp_saude_unica",
+          "prompt": "O conceito de Saúde Única afirma que:",
+          "options": [
+            "A saúde humana, animal e ambiental estão interligadas",
+            "Só a saúde humana importa",
+            "Cada área deve trabalhar isolada",
+            "Animais domésticos não afetam a saúde pública"
+          ],
+          "correctIndex": 0,
+          "explanation": "Zoonoses, resistência antimicrobiana e segurança dos alimentos exigem ação conjunta.",
+          "refs": [
+            "who2009"
+          ],
+          "vetidexId": "prev_saude_unica"
+        }
       ]
     }
   ]

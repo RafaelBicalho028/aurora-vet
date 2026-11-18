@@ -4,6 +4,41 @@
  */
 import type { DialogueDef } from '../systems/dialogue/types';
 
+/** Diálogo padrão de professor de disciplina: aula com quadros clínicos, questionário e informações. */
+function professor(c: { sid: string; name: string; area: string; hello: string; about: string; tip: string }): DialogueDef {
+  const quest = `q_disc_${c.sid}`;
+  return {
+    entries: [
+      { when: { questNotStarted: quest }, start: 'intro' },
+      { when: { questDone: quest }, start: 'concluido' },
+      { start: 'menu' },
+    ],
+    nodes: {
+      intro: { expression: 'feliz', text: c.hello, effects: [{ type: 'startQuest', quest }], next: 'menu' },
+      menu: {
+        text: `O que vamos fazer hoje, {nome}? Recomendo estudar os quadros clínicos antes do questionário de ${c.area}.`,
+        choices: [
+          { text: '📖 Ver os quadros clínicos da aula', effects: [{ type: 'startQuest', quest }, { type: 'openLesson', id: `aula_${c.sid}` }] },
+          { text: '📝 Fazer o questionário', effects: [{ type: 'startQuest', quest }, { type: 'startQuiz', id: `quiz_${c.sid}` }] },
+          { text: `O que estuda ${c.area}?`, next: 'sobre' },
+          { text: 'Até logo!' },
+        ],
+      },
+      sobre: { text: c.about, next: 'dica' },
+      dica: { expression: 'feliz', text: `Uma dica: ${c.tip}` },
+      concluido: {
+        expression: 'feliz',
+        text: `Parabéns pela aprovação em ${c.area}, {nome}! Pode rever a aula ou treinar mais quando quiser — as perguntas mudam a cada vez.`,
+        choices: [
+          { text: '📖 Rever os quadros clínicos', effects: [{ type: 'openLesson', id: `aula_${c.sid}` }] },
+          { text: '📝 Treinar o questionário', effects: [{ type: 'startQuiz', id: `quiz_${c.sid}` }] },
+          { text: 'Até logo!' },
+        ],
+      },
+    },
+  };
+}
+
 export const DIALOGUES: Record<string, DialogueDef> = {
   // ---------------------------------------------------------------- LUCAS
   lucas: {
@@ -312,26 +347,65 @@ export const DIALOGUES: Record<string, DialogueDef> = {
   livia: {
     entries: [
       { when: { questNotStarted: 'q_sinais_vitais' }, start: 'intro' },
-      { when: { questActive: 'q_sinais_vitais' }, start: 'retoma' },
-      { start: 'pos' },
+      { start: 'menu' },
     ],
     nodes: {
-      intro: { expression: 'feliz', text: 'Olá! Sou a Profa. Lívia Campos, de Fisiologia. Daqui da lagoa eu observo os patos e penso em termorregulação.', next: 'intro2' },
-      intro2: {
-        text: 'Quer testar seus conhecimentos sobre sinais vitais?',
+      intro: { expression: 'feliz', text: 'Olá! Sou a Profa. Lívia Campos, de Fisiologia. Bem-vindo(a) ao Instituto de Fisiologia! Aqui a gente estuda como o corpo funciona — e como ele compensa quando algo dá errado.', effects: [{ type: 'startQuest', quest: 'q_sinais_vitais' }, { type: 'startQuest', quest: 'q_disc_fisiologia' }], next: 'menu' },
+      menu: {
+        text: 'O que vamos estudar hoje, {nome}?',
         choices: [
-          { text: 'Claro!', effects: [{ type: 'startQuest', quest: 'q_sinais_vitais' }, { type: 'startQuiz', id: 'quiz_sinais_vitais' }] },
-          { text: 'Agora não.', next: 'depois' },
+          { text: '📖 Ver os quadros clínicos da aula', effects: [{ type: 'startQuest', quest: 'q_disc_fisiologia' }, { type: 'openLesson', id: 'aula_fisiologia' }] },
+          { text: '📝 Questionário de sinais vitais', effects: [{ type: 'startQuest', quest: 'q_sinais_vitais' }, { type: 'startQuiz', id: 'quiz_sinais_vitais' }] },
+          { text: 'Uma dica de fisiologia', next: 'dica' },
+          { text: 'Até logo!' },
         ],
       },
-      depois: { text: 'Tudo bem! Estarei por aqui.' },
-      retoma: {
-        text: 'Vamos às perguntas sobre sinais vitais? Elas mudam a cada tentativa.',
-        choices: [{ text: 'Vamos!', effects: [{ type: 'startQuiz', id: 'quiz_sinais_vitais' }] }, { text: 'Depois.', next: 'depois' }],
-      },
-      pos: { text: 'O estresse do ambiente clínico pode elevar a frequência cardíaca e a temperatura, especialmente em gatos. Interprete sempre no contexto!' },
+      dica: { text: 'O estresse do ambiente clínico pode elevar a frequência cardíaca e a temperatura, especialmente em gatos. Interprete sempre os parâmetros no contexto!' },
     },
   },
+
+  nara: {
+    entries: [{ start: 'oi' }],
+    nodes: {
+      oi: { expression: 'feliz', text: 'Oi, {nome}! Sou a Nara, monitora dos institutos. Cada prédio daqui tem um professor com aula de quadros clínicos e um questionário.', next: 'oi2' },
+      oi2: {
+        text: 'Quer uma dica de por onde começar?',
+        choices: [
+          { text: 'Quero!', next: 'dica' },
+          { text: 'Onde ficam Fisiologia e Microbiologia?', next: 'onde' },
+          { text: 'Valeu, Nara!' },
+        ],
+      },
+      dica: { text: 'Estude os quadros clínicos antes do questionário: as perguntas mudam a cada tentativa, então decorar não adianta — entender, sim. E tudo o que você aprende vai para a VetiDex e para o painel de desempenho.' },
+      onde: { text: 'Ficam no campus central: o Instituto de Fisiologia, da Profa. Lívia, no sudoeste, e o Laboratório de Microbiologia, da Profa. Renata, no sudeste. Siga a avenida para o leste.' },
+    },
+  },
+
+  // ---------------------------------------------------------------- PROFESSORES DOS INSTITUTOS
+  renata: professor({ sid: 'microbiologia', name: 'Profa. Renata Okabe', area: 'Microbiologia',
+    hello: 'Olá! Sou a Profa. Renata Okabe, de Microbiologia. Aqui no laboratório a regra é simples: jaleco fechado, cabelo preso e mãos higienizadas.',
+    about: 'A Microbiologia estuda bactérias, vírus e fungos: como causam doença, como identificá-los no laboratório e como controlá-los. Ela sustenta a biossegurança, o uso racional de antimicrobianos e a Saúde Única.',
+    tip: 'Antes de pedir uma cultura, pense na coleta: amostra certa, no momento certo, antes do antimicrobiano e sem contaminação.' }),
+  jorge: professor({ sid: 'parasitologia', name: 'Prof. Jorge Bastos', area: 'Parasitologia',
+    hello: 'Bom dia! Prof. Jorge Bastos, Parasitologia. Pulgas, carrapatos, vermes e protozoários: cada um tem um ciclo, e todo ciclo tem um ponto fraco.',
+    about: 'A Parasitologia estuda parasitas, seus ciclos biológicos, vetores e o diagnóstico. Ela orienta o controle no animal, no ambiente e no rebanho — e evita a resistência aos antiparasitários.',
+    tip: 'Exame de fezes negativo não é sinônimo de ausência de parasitas: alguns eliminam ovos ou cistos de forma intermitente.' }),
+  ines: professor({ sid: 'farmacologia', name: 'Profa. Inês Moura', area: 'Farmacologia',
+    hello: 'Olá! Profa. Inês Moura, de Farmacologia. Aqui a gente aprende como os fármacos agem — e por que nenhum remédio é inofensivo.',
+    about: 'A Farmacologia estuda o caminho do fármaco no organismo (farmacocinética) e o que ele faz (farmacodinâmica). Doses e prescrições são responsabilidade do médico-veterinário; o seu papel aqui é entender mecanismos, indicações e riscos.',
+    tip: 'Gato não é cão pequeno: várias diferenças de metabolismo tornam alguns fármacos comuns perigosos para felinos.' }),
+  raul: professor({ sid: 'patologia', name: 'Prof. Raul Siqueira', area: 'Patologia',
+    hello: 'Prof. Raul Siqueira, Patologia. Os tecidos contam a história da doença — basta saber ler.',
+    about: 'A Patologia estuda as alterações dos tecidos e órgãos: inflamação, degenerações, distúrbios circulatórios e neoplasias. Necrópsia e histopatologia confirmam diagnósticos e protegem rebanhos e pessoas.',
+    tip: 'Segurança primeiro: diante de morte súbita em ruminantes com sangramento pelos orifícios, NÃO abra a carcaça.' }),
+  beatriz: professor({ sid: 'cirurgia', name: 'Profa. Beatriz Leal', area: 'Cirurgia e Anestesiologia',
+    hello: 'Oi! Sou a Profa. Beatriz Leal, de Cirurgia e Anestesiologia. Uma boa cirurgia começa muito antes do bisturi.',
+    about: 'Cirurgia e Anestesiologia envolvem avaliação pré-operatória, técnica asséptica, anestesia, monitorização e cuidados pós-operatórios. Estudantes participam sempre sob supervisão.',
+    tip: 'Na sala cirúrgica, honestidade salva vidas: se contaminou a luva, avise e troque.' }),
+  tomas: professor({ sid: 'saude_publica', name: 'Prof. Tomás Araújo', area: 'Saúde Pública',
+    hello: 'Olá! Prof. Tomás Araújo, Saúde Pública Veterinária. O médico-veterinário cuida de animais, de pessoas e do ambiente — tudo ao mesmo tempo.',
+    about: 'A Saúde Pública Veterinária trata de zoonoses, vigilância epidemiológica, inspeção de alimentos de origem animal e Saúde Única. É uma área em que o médico-veterinário protege a população inteira.',
+    tip: 'Mordedura de animal? Primeiro, água e sabão em abundância; depois, unidade de saúde para avaliar a profilaxia da raiva.' }),
 
   // ---------------------------------------------------------------- FAZENDA-ESCOLA
   antonio: {

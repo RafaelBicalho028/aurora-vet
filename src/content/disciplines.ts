@@ -55,6 +55,25 @@ export const DISCIPLINES: Discipline[] = [
     ],
   },
   {
+    id: 'farmacologia', name: 'Farmacologia', color: '#e06a9a', icon: '💊',
+    skills: [
+      { id: 'farmacocinetica', name: 'Farmacocinética' },
+      { id: 'farmacodinamica', name: 'Farmacodinâmica' },
+      { id: 'antimicrobianos', name: 'Antimicrobianos' },
+      { id: 'analgesia', name: 'Analgesia e anti-inflamatórios' },
+      { id: 'toxicologia', name: 'Toxicologia' },
+    ],
+  },
+  {
+    id: 'patologia', name: 'Patologia Veterinária', color: '#9a5a4a', icon: '🔬',
+    skills: [
+      { id: 'geral', name: 'Patologia geral' },
+      { id: 'necropsia', name: 'Necropsia' },
+      { id: 'oncologia', name: 'Oncologia' },
+      { id: 'histopatologia', name: 'Histopatologia' },
+    ],
+  },
+  {
     id: 'clinica', name: 'Clínica Médica', color: '#3f8fd1', icon: '🩺',
     skills: [
       { id: 'semiologia', name: 'Semiologia' },

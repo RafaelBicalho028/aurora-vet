@@ -40,6 +40,10 @@
     {
       "id": "prevencao",
       "name": "Medidas preventivas"
+    },
+    {
+      "id": "procedimentos",
+      "name": "Cirurgia e anestesia"
     }
   ],
   "entries": [
@@ -1029,6 +1033,403 @@
         "nelson2019"
       ],
       "unlockHint": "Conclua o caso do Pingo."
+    },
+    {
+      "id": "fisio_choque",
+      "name": "Choque hipovolêmico (fisiopatologia)",
+      "category": "fisiologia",
+      "summary": "Perfusão tecidual inadequada por perda de volume circulante, com mecanismos compensatórios neuro-hormonais.",
+      "manifestations": [
+        "Taquicardia (cão); bradicardia e hipotermia podem ocorrer no gato",
+        "Mucosas pálidas e TPC prolongado",
+        "Pulso fraco e extremidades frias",
+        "Alteração do estado mental"
+      ],
+      "science": "Barorreceptores ativam o simpático (taquicardia, vasoconstrição); SRAA e ADH retêm sódio e água. No choque compensado a pressão pode estar normal.",
+      "didactic": "Pressão normal não exclui choque: avalie perfusão periférica.",
+      "professional": "Reconhecer o choque precocemente orienta a estabilização pela equipe veterinária.",
+      "refs": [
+        "klein2020",
+        "ettinger2017"
+      ],
+      "unlockHint": "Assista à aula da Profa. Lívia no Instituto de Fisiologia."
+    },
+    {
+      "id": "fisio_termorregulacao",
+      "name": "Termorregulação e golpe de calor",
+      "category": "fisiologia",
+      "summary": "Equilíbrio entre produção e perda de calor; no golpe de calor, a dissipação falha sem elevação do ponto de ajuste hipotalâmico.",
+      "manifestations": [
+        "Ofego intenso e salivação",
+        "Temperatura retal muito elevada",
+        "Mucosas congestas ou cianóticas",
+        "Fraqueza, colapso"
+      ],
+      "science": "Cães perdem calor principalmente por evaporação respiratória. Na febre, pirógenos elevam o ponto de ajuste; no golpe de calor, não.",
+      "didactic": "Braquicefálicos têm maior risco pela via aérea estreita.",
+      "professional": "Golpe de calor é emergência; prevenção inclui evitar exercício nas horas quentes.",
+      "refs": [
+        "klein2020",
+        "ettinger2017"
+      ],
+      "unlockHint": "Assista à aula da Profa. Lívia no Instituto de Fisiologia."
+    },
+    {
+      "id": "fisio_limiar_renal",
+      "name": "Limiar renal da glicose",
+      "category": "fisiologia",
+      "summary": "Concentração plasmática acima da qual a reabsorção tubular de glicose é ultrapassada e surge glicosúria.",
+      "manifestations": [
+        "Glicosúria quando a glicemia supera o limiar",
+        "Poliúria por diurese osmótica",
+        "Polidipsia compensatória"
+      ],
+      "science": "A glicose é reabsorvida no túbulo proximal por transportadores de capacidade máxima. O limiar é mais alto no gato do que no cão.",
+      "didactic": "Gatos podem ter hiperglicemia de estresse acentuada e transitória.",
+      "professional": "A frutosamina ajuda a diferenciar estresse de hiperglicemia persistente.",
+      "refs": [
+        "klein2020",
+        "nelson2019"
+      ],
+      "unlockHint": "Assista à aula da Profa. Lívia no Instituto de Fisiologia."
+    },
+    {
+      "id": "micro_gram",
+      "name": "Coloração de Gram",
+      "category": "exames",
+      "summary": "Coloração diferencial que separa bactérias pela estrutura da parede celular.",
+      "manifestations": [
+        "Gram-positivas: roxas (parede espessa de peptidoglicano)",
+        "Gram-negativas: rosadas (membrana externa com LPS)"
+      ],
+      "science": "Cristal violeta, iodo, descoloração com álcool e contracoloração com safranina.",
+      "didactic": "Forma + Gram orientam o raciocínio inicial, mas não substituem a cultura.",
+      "professional": "Útil em citologias e no laboratório de microbiologia.",
+      "refs": [
+        "quinn2011"
+      ],
+      "unlockHint": "Assista à aula da Profa. Renata no Laboratório de Microbiologia."
+    },
+    {
+      "id": "micro_resistencia",
+      "name": "Resistência antimicrobiana",
+      "category": "microrganismos",
+      "summary": "Capacidade de bactérias sobreviverem a antimicrobianos que antes as inibiam.",
+      "manifestations": [
+        "Falha de tratamento",
+        "Infecções recorrentes",
+        "Isolados multirresistentes na cultura"
+      ],
+      "science": "Seleção por uso inadequado; genes transferidos por plasmídeos e outros elementos móveis.",
+      "didactic": "É um problema de Saúde Única: afeta animais, pessoas e ambiente.",
+      "professional": "Uso racional, cultura e antibiograma, e adesão à prescrição.",
+      "refs": [
+        "quinn2011",
+        "riviere2018"
+      ],
+      "unlockHint": "Assista à aula da Profa. Renata no Laboratório de Microbiologia."
+    },
+    {
+      "id": "prev_esterilizacao",
+      "name": "Limpeza, desinfecção e esterilização",
+      "category": "prevencao",
+      "summary": "Níveis de redução microbiana em artigos e superfícies, escolhidos conforme o risco (classificação de Spaulding).",
+      "manifestations": [
+        "Críticos: esterilização",
+        "Semicríticos: desinfecção de alto nível",
+        "Não críticos: limpeza e desinfecção"
+      ],
+      "science": "Esterilização elimina inclusive esporos; desinfecção não necessariamente. Matéria orgânica inativa desinfetantes.",
+      "didactic": "Sempre limpar antes de desinfetar ou esterilizar.",
+      "professional": "Base da biossegurança no hospital e no centro cirúrgico.",
+      "refs": [
+        "quinn2011",
+        "fossum2019"
+      ],
+      "unlockHint": "Assista à aula da Profa. Renata no Laboratório de Microbiologia."
+    },
+    {
+      "id": "parasita_haemonchus",
+      "name": "Haemonchus contortus",
+      "category": "parasitas",
+      "summary": "Nematódeo hematófago do abomaso de pequenos ruminantes.",
+      "manifestations": [
+        "Anemia (mucosas pálidas)",
+        "Edema submandibular",
+        "Fraqueza e morte, muitas vezes sem diarreia"
+      ],
+      "science": "Diagnóstico por OPG e coprocultura; FAMACHA identifica animais anêmicos para tratamento seletivo.",
+      "didactic": "O tratamento seletivo preserva o refúgio e retarda a resistência anti-helmíntica.",
+      "professional": "Problema de grande impacto econômico na ovinocaprinocultura.",
+      "refs": [
+        "vanwyk2002",
+        "taylor2016"
+      ],
+      "unlockHint": "Assista à aula do Prof. Jorge no Instituto de Parasitologia."
+    },
+    {
+      "id": "doenca_erliquiose",
+      "name": "Erliquiose monocítica canina",
+      "category": "doencas",
+      "summary": "Doença causada por Ehrlichia canis, bactéria intracelular transmitida pelo carrapato-marrom.",
+      "manifestations": [
+        "Febre, apatia, anorexia",
+        "Sangramentos (epistaxe, petéquias)",
+        "Trombocitopenia"
+      ],
+      "science": "Fases aguda, subclínica e crônica. Mórulas raramente vistas; sorologia e PCR auxiliam.",
+      "didactic": "Esfregaço negativo não exclui a doença.",
+      "professional": "Controle de carrapatos no animal e no ambiente é essencial.",
+      "refs": [
+        "harrus2011",
+        "taylor2016"
+      ],
+      "unlockHint": "Assista à aula do Prof. Jorge no Instituto de Parasitologia."
+    },
+    {
+      "id": "parasita_giardia",
+      "name": "Giardia duodenalis",
+      "category": "parasitas",
+      "summary": "Protozoário flagelado do intestino delgado de cães, gatos e outras espécies.",
+      "manifestations": [
+        "Diarreia pastosa intermitente, com muco e gordura",
+        "Perda de peso em casos crônicos",
+        "Muitos animais sem sinais"
+      ],
+      "science": "Cistos eliminados de forma intermitente e já infectantes; resistentes no ambiente.",
+      "didactic": "Use amostras seriadas ou teste de antígeno.",
+      "professional": "Higiene ambiental e banho evitam reinfecção; potencial zoonótico depende do genótipo.",
+      "refs": [
+        "taylor2016",
+        "esccap2021"
+      ],
+      "unlockHint": "Assista à aula do Prof. Jorge no Instituto de Parasitologia."
+    },
+    {
+      "id": "farm_aines",
+      "name": "Anti-inflamatórios não esteroidais (AINEs)",
+      "category": "farmacologia",
+      "summary": "Fármacos que inibem as ciclo-oxigenases e reduzem prostaglandinas.",
+      "manifestations": [
+        "Classe: AINE",
+        "Mecanismo: inibição de COX-1/COX-2",
+        "Indicações: dor e inflamação, sob prescrição",
+        "Riscos: lesão renal, úlcera gastrintestinal"
+      ],
+      "science": "Prostaglandinas mantêm o fluxo renal em hipoperfusão e protegem a mucosa gástrica.",
+      "didactic": "Não associar a corticoides; cuidado em desidratados e nefropatas.",
+      "professional": "Medicamentos humanos podem ser tóxicos para cães e gatos.",
+      "refs": [
+        "riviere2018",
+        "merck"
+      ],
+      "unlockHint": "Assista à aula da Profa. Inês no Instituto de Farmacologia."
+    },
+    {
+      "id": "farm_pkpd",
+      "name": "Farmacocinética e farmacodinâmica de antimicrobianos",
+      "category": "farmacologia",
+      "summary": "Relação entre concentração do fármaco no organismo e seu efeito sobre o microrganismo.",
+      "manifestations": [
+        "Tempo-dependentes: beta-lactâmicos",
+        "Concentração-dependentes: aminoglicosídeos, fluoroquinolonas",
+        "Efeito pós-antibiótico"
+      ],
+      "science": "T>CIM para tempo-dependentes; pico/CIM e AUC/CIM para concentração-dependentes.",
+      "didactic": "O horário das doses importa para a eficácia.",
+      "professional": "Explique ao tutor o porquê do esquema para melhorar a adesão.",
+      "refs": [
+        "riviere2018"
+      ],
+      "unlockHint": "Assista à aula da Profa. Inês no Instituto de Farmacologia."
+    },
+    {
+      "id": "farm_mdr1",
+      "name": "Mutação MDR1 (ABCB1) e glicoproteína-P",
+      "category": "farmacologia",
+      "summary": "Deleção no gene ABCB1 que torna a glicoproteína-P não funcional, sobretudo em raças de pastoreio.",
+      "manifestations": [
+        "Sensibilidade a ivermectina e outras lactonas macrocíclicas",
+        "Sinais neurológicos: ataxia, tremores, midríase, depressão"
+      ],
+      "science": "A glicoproteína-P bombeia fármacos para fora do sistema nervoso central; sem ela, substratos se acumulam no cérebro.",
+      "didactic": "Existe teste genético para a mutação.",
+      "professional": "Pergunte a raça e o histórico antes de usar substratos da glicoproteína-P.",
+      "refs": [
+        "mealey2001",
+        "riviere2018"
+      ],
+      "unlockHint": "Assista à aula da Profa. Inês no Instituto de Farmacologia."
+    },
+    {
+      "id": "pato_inflamacao",
+      "name": "Inflamação",
+      "category": "manifestacoes",
+      "summary": "Resposta vascular e celular a agressões, que busca eliminar o agente e reparar o tecido.",
+      "manifestations": [
+        "Rubor e calor",
+        "Tumor (edema)",
+        "Dor",
+        "Perda de função"
+      ],
+      "science": "Vasodilatação e aumento da permeabilidade vascular; neutrófilos na fase aguda; macrófagos e linfócitos na crônica.",
+      "didactic": "Exsudato é rico em proteínas e células; transudato, não.",
+      "professional": "Entender a inflamação explica sinais clínicos e o uso de anti-inflamatórios.",
+      "refs": [
+        "zachary2017"
+      ],
+      "unlockHint": "Assista à aula do Prof. Raul no Instituto de Patologia."
+    },
+    {
+      "id": "doenca_antraz",
+      "name": "Carbúnculo hemático (antraz)",
+      "category": "doencas",
+      "summary": "Doença aguda causada por Bacillus anthracis, que forma esporos muito resistentes no solo.",
+      "manifestations": [
+        "Morte súbita em ruminantes",
+        "Sangue escuro, que não coagula, pelos orifícios naturais",
+        "Rápido inchaço da carcaça"
+      ],
+      "science": "Em contato com o ar, a bactéria esporula; os esporos persistem por décadas.",
+      "didactic": "Carcaça suspeita não deve ser aberta.",
+      "professional": "Zoonose de notificação obrigatória; seguir orientação do serviço veterinário oficial.",
+      "refs": [
+        "who_anthrax2008",
+        "zachary2017"
+      ],
+      "unlockHint": "Assista à aula do Prof. Raul no Instituto de Patologia."
+    },
+    {
+      "id": "pato_neoplasia",
+      "name": "Neoplasias benignas e malignas",
+      "category": "doencas",
+      "summary": "Proliferação celular autônoma; o comportamento (benigno ou maligno) define prognóstico e conduta.",
+      "manifestations": [
+        "Benigna: crescimento lento, expansivo, sem metástase",
+        "Maligna: crescimento rápido, infiltrativo, metástase possível"
+      ],
+      "science": "Malignidade envolve anaplasia, atipia, mitoses e invasão. Histopatologia confirma e gradua.",
+      "didactic": "Citologia é triagem; estadiamento investiga metástases.",
+      "professional": "Castração precoce reduz o risco de tumores mamários em cadelas.",
+      "refs": [
+        "zachary2017"
+      ],
+      "unlockHint": "Assista à aula do Prof. Raul no Instituto de Patologia."
+    },
+    {
+      "id": "cir_asa",
+      "name": "Classificação ASA de estado físico",
+      "category": "procedimentos",
+      "summary": "Escala de I a V (mais \"E\" para emergência) que orienta o risco anestésico.",
+      "manifestations": [
+        "I: saudável",
+        "II: doença sistêmica leve",
+        "III: doença sistêmica grave",
+        "IV: ameaça constante à vida",
+        "V: moribundo"
+      ],
+      "science": "Quanto maior a classe, maior a necessidade de exames, estabilização e monitorização.",
+      "didactic": "A classe é definida pelo anestesista após avaliação clínica.",
+      "professional": "Estabilizar o paciente antes da anestesia, quando possível, reduz riscos.",
+      "refs": [
+        "grimm2015"
+      ],
+      "unlockHint": "Assista à aula da Profa. Beatriz no Instituto de Cirurgia e Anestesiologia."
+    },
+    {
+      "id": "cir_monitorizacao",
+      "name": "Monitorização anestésica",
+      "category": "procedimentos",
+      "summary": "Acompanhamento contínuo das funções vitais durante a anestesia.",
+      "manifestations": [
+        "ECG e frequência cardíaca",
+        "Pressão arterial",
+        "SpO2 (oxigenação)",
+        "ETCO2 (ventilação)",
+        "Temperatura e profundidade anestésica"
+      ],
+      "science": "ETCO2 alto indica hipoventilação; SpO2 baixa, hipoxemia; hipotermia é comum.",
+      "didactic": "Registre os parâmetros em intervalos regulares na ficha anestésica.",
+      "professional": "Detectar alterações cedo permite corrigir antes de complicações graves.",
+      "refs": [
+        "grimm2015"
+      ],
+      "unlockHint": "Assista à aula da Profa. Beatriz no Instituto de Cirurgia e Anestesiologia."
+    },
+    {
+      "id": "prev_assepsia",
+      "name": "Assepsia e antissepsia cirúrgica",
+      "category": "prevencao",
+      "summary": "Medidas que impedem a contaminação do campo cirúrgico.",
+      "manifestations": [
+        "Preparo do paciente: tricotomia e antissepsia",
+        "Equipe: degermação, paramentação e postura",
+        "Campo e instrumentais estéreis"
+      ],
+      "science": "Só o estéril toca o estéril; antissepsia em tecidos vivos, desinfecção em objetos.",
+      "didactic": "Quebra de técnica exige troca de luvas ou avental.",
+      "professional": "Reduz infecções do sítio cirúrgico.",
+      "refs": [
+        "fossum2019"
+      ],
+      "unlockHint": "Assista à aula da Profa. Beatriz no Instituto de Cirurgia e Anestesiologia."
+    },
+    {
+      "id": "doenca_raiva",
+      "name": "Raiva",
+      "category": "doencas",
+      "summary": "Encefalite viral (lyssavirus) que afeta mamíferos e é praticamente sempre fatal após os sinais clínicos.",
+      "manifestations": [
+        "Mudança de comportamento",
+        "Paralisia, dificuldade de deglutir",
+        "Agressividade ou apatia"
+      ],
+      "science": "Transmissão pela saliva; morcegos são importantes reservatórios no Brasil.",
+      "didactic": "Exposição humana: lavar com água e sabão e procurar a unidade de saúde.",
+      "professional": "Doença de notificação compulsória; vacinação de cães e gatos é essencial.",
+      "refs": [
+        "who_rabies2018",
+        "guia_vigilancia2021"
+      ],
+      "unlockHint": "Assista à aula do Prof. Tomás no Instituto de Saúde Pública."
+    },
+    {
+      "id": "doenca_leptospirose",
+      "name": "Leptospirose",
+      "category": "doencas",
+      "summary": "Zoonose bacteriana (Leptospira spp.) transmitida principalmente pela urina de roedores.",
+      "manifestations": [
+        "Vômitos, febre, apatia",
+        "Icterícia",
+        "Oligúria ou poliúria (lesão renal)"
+      ],
+      "science": "Penetra por pele lesionada e mucosas; enchentes aumentam a exposição.",
+      "didactic": "Use EPI ao manipular pacientes suspeitos e sua urina.",
+      "professional": "Controle de roedores, vacinação e proteção nas limpezas pós-enchente.",
+      "refs": [
+        "guia_vigilancia2021",
+        "ettinger2017"
+      ],
+      "unlockHint": "Assista à aula do Prof. Tomás no Instituto de Saúde Pública."
+    },
+    {
+      "id": "doenca_brucelose",
+      "name": "Brucelose bovina",
+      "category": "doencas",
+      "summary": "Zoonose causada por Brucella abortus, com impacto reprodutivo e econômico.",
+      "manifestations": [
+        "Aborto no terço final da gestação",
+        "Retenção de placenta",
+        "Infertilidade"
+      ],
+      "science": "Transmissão às pessoas por leite cru, derivados não pasteurizados e material de aborto.",
+      "didactic": "O PNCEBT prevê vacinação obrigatória de bezerras de 3 a 8 meses e testes no rebanho.",
+      "professional": "Inspeção (SIF/SIE/SIM) e pasteurização protegem o consumidor.",
+      "refs": [
+        "pncebt2006",
+        "riispoa2017"
+      ],
+      "unlockHint": "Assista à aula do Prof. Tomás no Instituto de Saúde Pública."
     }
   ]
 }
