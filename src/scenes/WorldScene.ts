@@ -30,6 +30,7 @@ const MAP_ENTER_OBJECTIVES: Record<string, [string, string][]> = {
   hospital: [['q_biosseguranca', 'o_hospital']],
 };
 
+let petReminderShown = false;
 const WALK_MS = 190;
 const RUN_MS = 115;
 
@@ -112,12 +113,27 @@ export class WorldScene extends Phaser.Scene {
     app.audio.play(this.map.music);
 
     for (const [q, o] of MAP_ENTER_OBJECTIVES[this.map.id] ?? []) st.completeObjective(q, o);
+    this.remindPetCare();
 
     this.offs.push(bus.on(Events.WorldRefresh, () => this.refreshActors()));
     this.offs.push(bus.on('pets:changed', () => this.spawnPet()));
     this.offs.push(bus.on(Events.QuestUpdated, () => this.refreshActors()));
     this.events.once('shutdown', () => this.cleanup());
     st.save();
+  }
+
+  /** Lembrete de cuidados pendentes do pet (no início da sessão e ao entrar no hospital). */
+  private remindPetCare(): void {
+    const st = requireState();
+    const comp = st.companion();
+    if (!comp) return;
+    const due = st.petDue(comp.id);
+    if (!due.length) return;
+    if (petReminderShown && this.map.id !== 'hospital') return;
+    petReminderShown = true;
+    const names = due.slice(0, 2).map((i) => i.name.split(' (')[0].split(',')[0].toLowerCase()).join(' e ');
+    const where = this.map.id === 'hospital' ? 'Fale com a Carla, na recepção, para a consulta preventiva.' : 'Leve seu pet ao Hospital Veterinário.';
+    this.time.delayedCall(900, () => bus.emit(Events.Toast, { text: `${comp.name} tem ${due.length} cuidado(s) pendente(s): ${names}${due.length > 2 ? '...' : ''}. ${where}`, kind: 'dex', icon: '🐾' }));
   }
 
   /** Ajusta zoom e limites da câmera ao tamanho atual da tela. */
@@ -192,6 +208,8 @@ export class WorldScene extends Phaser.Scene {
 
   /** Cria (ou remove) o pet que acompanha o jogador, atrás dele quando possível. */
   private spawnPet(): void {
+    const want = requireState().data.pets.companion;
+    if (this.pet && this.pet.petId === want) return; // mesmo companheiro: mantém a posição
     this.pet?.destroy();
     this.pet = null;
     const comp = requireState().companion();

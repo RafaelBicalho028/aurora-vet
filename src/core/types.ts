@@ -73,6 +73,8 @@ export interface PetRecord {
   name: string;
   adoptedAt: number;
   affection: number;
+  /** carteira de saúde: id do cuidado -> momento em que foi feito */
+  health?: Record<string, number>;
 }
 
 export interface SaveData {

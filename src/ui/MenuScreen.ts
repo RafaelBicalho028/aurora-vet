@@ -20,6 +20,7 @@ import { renderObject } from '../art/objects';
 import { toggleFullscreen } from './fullscreen';
 import { BREED_MAP, MAX_PETS } from '../content/pets';
 import { breedCard, openPetChooser, petThumb } from './PetChooser';
+import { healthCard, openPetCheckup } from './PetCheckup';
 import { bus, Events } from '../core/EventBus';
 
 export type Tab = 'mochila' | 'pets' | 'mapa' | 'vetidex' | 'diario' | 'desempenho' | 'config';
@@ -133,6 +134,12 @@ function renderPets(): HTMLElement {
     const b = BREED_MAP[p.breed];
     const isComp = st.data.pets.companion === p.id;
     const facts = h('div', { class: 'pet-card-facts', hidden: true }, breedCard(b));
+    const due = st.petDue(p.id);
+    const inHospital = st.data.player.mapId === 'hospital';
+    const health = h('div', { class: 'pet-card-facts', hidden: true }, healthCard(p),
+      inHospital
+        ? h('button', { class: 'btn small btn-primary', onclick: () => openPetCheckup(p.id) }, '🩺 Fazer consulta preventiva agora')
+        : h('p', { class: 'small muted' }, 'Leve seu pet ao Hospital Veterinário e fale com a Carla, na recepção, para a consulta preventiva.'));
     list.appendChild(h('div', { class: 'pet-card' + (isComp ? ' active' : '') },
       h('img', { src: petThumb(p.breed), class: 'pixel pet-card-img', alt: b.name }),
       h('div', { class: 'pet-card-body' },
@@ -144,7 +151,9 @@ function renderPets(): HTMLElement {
             ? h('button', { class: 'btn small', onclick: () => { st.setCompanion(null); rerender(); } }, 'Deixar em casa')
             : h('button', { class: 'btn small btn-primary', onclick: () => { st.setCompanion(p.id); rerender(); } }, 'Levar para passear'),
           h('button', { class: 'btn small', onclick: () => { facts.hidden = !facts.hidden; } }, 'Ficha da raça'),
+          h('button', { class: 'btn small', onclick: () => { health.hidden = !health.hidden; } }, due.length ? `🩺 Saúde (${due.length} pendente${due.length > 1 ? 's' : ''})` : '🩺 Saúde (em dia)'),
         ),
+        health,
         facts,
       ),
     ));

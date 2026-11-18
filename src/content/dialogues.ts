@@ -205,6 +205,7 @@ export const DIALOGUES: Record<string, DialogueDef> = {
         text: 'Bem-vindo(a) ao Hospital Veterinário Universitário! A Dra. Helena fica na área de atendimento, à direita.',
         choices: [
           { text: 'O que é o Centro Veterinário Avançado?', next: 'centro' },
+          { text: 'Quero agendar a consulta preventiva do meu pet.', when: { hasPet: true }, effects: [{ type: 'petCheckup' }] },
           { text: 'Como funciona a vivência dos estudantes?', next: 'vivencia' },
           { text: 'Obrigado(a)!' },
         ],

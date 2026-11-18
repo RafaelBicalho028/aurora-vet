@@ -14,6 +14,7 @@ export interface Condition {
   casePassed?: string;
   caseNotPassed?: string;
   hasItem?: string;
+  hasPet?: boolean;
   all?: Condition[];
   any?: Condition[];
 }
@@ -30,6 +31,7 @@ export type Effect =
   | { type: 'startMinigame'; id: string }
   | { type: 'startQuiz'; id: string }
   | { type: 'adoptPet' }
+  | { type: 'petCheckup' }
   | { type: 'openReview' }
   | { type: 'openPanel'; panel: 'performance' | 'vetidex' | 'journal' | 'map' | 'inventory' }
   | { type: 'save' };

@@ -80,3 +80,55 @@ describe('Adoção e companhia', () => {
     expect(m.questionStats).toEqual({});
   });
 });
+
+describe('Saúde do pet (consulta preventiva)', async () => {
+  const { careItemsFor, careStatus, distractorsFor, dueItems, scoreCheckup } = await import('../src/systems/pets/health');
+  const { CARE_ITEMS, CARE_DISTRACTORS, PET_MONTH_MS } = await import('../src/content/petHealth');
+  const T0 = 1_000_000_000;
+
+  it('toda espécie de pet tem cuidados e pelo menos uma alternativa incorreta', () => {
+    for (const kind of ['dog', 'cat', 'rabbit', 'guineapig', 'hamster', 'cockatiel'] as const) {
+      expect(careItemsFor(kind).length, kind).toBeGreaterThanOrEqual(3);
+      expect(distractorsFor(kind).length, kind).toBeGreaterThanOrEqual(1);
+    }
+    for (const x of [...CARE_ITEMS, ...CARE_DISTRACTORS]) {
+      expect(x.why.length, x.id).toBeGreaterThan(20);
+      for (const r of x.refs) expect(REFERENCE_MAP[r], `${x.id}: ${r}`).toBeDefined();
+    }
+  });
+
+  it('pendências: nunca feito, vencido, vence logo e em dia', () => {
+    const vac = CARE_ITEMS.find((i) => i.id === 'vacinas_cao')!;
+    expect(careStatus(vac, {}, T0).status).toBe('pendente');
+    expect(careStatus(vac, { vacinas_cao: T0 }, T0 + 2 * PET_MONTH_MS).status).toBe('em_dia');
+    expect(careStatus(vac, { vacinas_cao: T0 }, T0 + 11.5 * PET_MONTH_MS).status).toBe('vence_logo');
+    expect(careStatus(vac, { vacinas_cao: T0 }, T0 + 12 * PET_MONTH_MS).status).toBe('pendente');
+    const cast = CARE_ITEMS.find((i) => i.id === 'castracao')!;
+    expect(careStatus(cast, { castracao: T0 }, T0 + 1000 * PET_MONTH_MS).status).toBe('em_dia');
+  });
+
+  it('pontuação: tudo certo = 100; esquecer cuidados reduz; escolha perigosa zera', () => {
+    const all = dueItems('cat', {}, T0).map((i) => i.id);
+    expect(scoreCheckup('cat', {}, all, true, T0).score).toBe(100);
+    expect(scoreCheckup('cat', {}, all.slice(0, Math.ceil(all.length / 2)), true, T0).score).toBeLessThan(80);
+    expect(scoreCheckup('cat', {}, [...all, 'x_areia'], true, T0).score).toBe(85);
+    const crit = scoreCheckup('cat', {}, [...all, 'x_permetrina'], true, T0);
+    expect(crit.score).toBe(0);
+    expect(crit.passed).toBe(false);
+  });
+
+  it('a consulta registra os cuidados, dá XP só com pendências e não registra nada após escolha crítica', () => {
+    const st = mk();
+    const pet = st.adoptPet('gato_persa', 'Nuvem', T0)!;
+    const due = st.petDue(pet.id, T0).map((i) => i.id);
+    const bad = st.completeCheckup(pet.id, [...due, 'x_permetrina'], true, T0);
+    expect(bad.xp).toBe(0);
+    expect(st.petDue(pet.id, T0).length).toBe(due.length);
+    const ok = st.completeCheckup(pet.id, due, true, T0);
+    expect(ok.xp).toBeGreaterThan(0);
+    expect(st.petDue(pet.id, T0 + PET_MONTH_MS / 2)).toEqual([]);
+    // um mês do pet depois, o controle de pulgas volta a ficar pendente
+    expect(st.petDue(pet.id, T0 + PET_MONTH_MS).map((i) => i.id)).toContain('ectoparasitas');
+    expect(st.completeCheckup(pet.id, due, true, T0 + 10).xp).toBe(0);
+  });
+});

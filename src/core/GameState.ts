@@ -5,6 +5,8 @@
 import { bus, Events } from './EventBus';
 import type { Appearance, CaseRecord, PetRecord, QuestProgress, SaveData } from './types';
 import { BREED_MAP, MAX_PETS } from '../content/pets';
+import { dueItems, scoreCheckup, type CheckupResult } from '../systems/pets/health';
+import type { CareItem } from '../content/petHealth';
 import { SaveManager, SAVE_VERSION } from './SaveManager';
 import { QUEST_MAP, ITEMS } from '../content/quests';
 import type { Condition, Effect } from '../systems/dialogue/types';
@@ -74,6 +76,7 @@ export class GameState {
     if (c.casePassed && !this.hasPassedCase(c.casePassed)) return false;
     if (c.caseNotPassed && this.hasPassedCase(c.caseNotPassed)) return false;
     if (c.hasItem && !this.data.inventory[c.hasItem]) return false;
+    if (c.hasPet !== undefined && (this.data.pets.owned.length > 0) !== c.hasPet) return false;
     if (c.all && !c.all.every((x) => this.check(x))) return false;
     if (c.any && !c.any.some((x) => this.check(x))) return false;
     return true;
@@ -99,6 +102,7 @@ export class GameState {
         case 'startMinigame': bus.emit('ui:startMinigame', e.id); break;
         case 'startQuiz': bus.emit('ui:startQuiz', e.id); break;
         case 'adoptPet': bus.emit('ui:adoptPet'); break;
+        case 'petCheckup': bus.emit('ui:petCheckup'); break;
         case 'openReview': bus.emit('ui:openReview'); break;
         case 'openPanel': bus.emit('ui:openPanel', e.panel); break;
         case 'save': this.save(); break;
@@ -241,6 +245,35 @@ export class GameState {
 
   companion(): PetRecord | null {
     return this.data.pets.owned.find((p) => p.id === this.data.pets.companion) ?? null;
+  }
+
+  /** Pendências de saúde do pet (cuidados vencidos ou nunca feitos). */
+  petDue(id: string, now = Date.now()): CareItem[] {
+    const p = this.data.pets.owned.find((x) => x.id === id);
+    const b = p && BREED_MAP[p.breed];
+    return p && b ? dueItems(b.look.kind, p.health, now) : [];
+  }
+
+  /** Registra a consulta preventiva: marca cuidados feitos, concede XP e domínio quando há pendências. */
+  completeCheckup(id: string, chosen: string[], breedCorrect: boolean, now = Date.now()): CheckupResult & { xp: number } {
+    const p = this.data.pets.owned.find((x) => x.id === id)!;
+    const kind = BREED_MAP[p.breed].look.kind;
+    const r = scoreCheckup(kind, p.health, chosen, breedCorrect, now);
+    let xp = 0;
+    if (r.critical.length === 0) {
+      p.health = { ...(p.health ?? {}) };
+      for (const item of r.done) p.health[item] = now;
+      if (r.done.length) {
+        xp = Math.round((20 + 5 * r.done.length) * (r.score / 100));
+        this.addMastery('clinica', 'condutas', Math.round(10 * r.score / 100));
+        this.addMastery('saude_publica', 'saude_unica', Math.round(8 * r.score / 100));
+        this.addXp(xp, `Consulta preventiva: ${p.name}`);
+      }
+      if (r.passed) { p.affection = Math.min(10, p.affection + 2); }
+    }
+    bus.emit('pets:changed');
+    this.save();
+    return { ...r, xp };
   }
 
   petAffection(id: string): number {

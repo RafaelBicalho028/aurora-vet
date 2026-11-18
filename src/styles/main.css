@@ -552,3 +552,16 @@ body.touch-ui .toast-layer { padding-top: calc(140px + env(safe-area-inset-top, 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
+
+/* Carteira de saúde do pet */
+.care-list { list-style: none; padding: 0; margin: 6px 0; display: flex; flex-direction: column; gap: 4px; }
+.care { display: flex; gap: 8px; align-items: baseline; padding: 6px 8px; border-radius: 6px; background: #221d33; border-left: 4px solid var(--line); font-size: 0.9rem; }
+.care-status { flex: 0 0 auto; font-weight: 700; font-size: 0.8rem; white-space: nowrap; }
+.care-pendente { border-left-color: var(--warn); }
+.care-pendente .care-status { color: var(--warn); }
+.care-vence_logo { border-left-color: var(--accent-2); }
+.care-vence_logo .care-status { color: var(--accent-2); }
+.care-em_dia { border-left-color: var(--good); }
+.care-em_dia .care-status { color: var(--good); }
+.checkup-head { display: flex; gap: 12px; align-items: center; }
+.checkup-head .pet-stage { padding: 4px 10px; }

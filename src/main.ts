@@ -19,6 +19,7 @@ import { openCase } from './ui/CaseScreen';
 import { openMinigame } from './ui/AnatomyGame';
 import { openQuiz } from './ui/QuizSession';
 import { openPetChooser } from './ui/PetChooser';
+import { openPetCheckup } from './ui/PetCheckup';
 import { openReview } from './ui/ReviewSession';
 import { openMenu } from './ui/MenuScreen';
 import { CASES, REFERENCE_MAP, VETIDEX } from './content';
@@ -41,6 +42,7 @@ function boot(): void {
   bus.on('ui:startMinigame', (id: string) => openMinigame(id));
   bus.on('ui:startQuiz', (id: string) => openQuiz(id));
   bus.on('ui:adoptPet', () => openPetChooser());
+  bus.on('ui:petCheckup', () => openPetCheckup());
   bus.on('ui:openReview', () => openReview());
   bus.on('ui:openPanel', (p: 'performance' | 'vetidex' | 'journal' | 'map' | 'inventory') => {
     const map = { performance: 'desempenho', vetidex: 'vetidex', journal: 'diario', map: 'mapa', inventory: 'mochila' } as const;

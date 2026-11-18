@@ -135,6 +135,12 @@
       "id": "nicholas2010",
       "type": "livro",
       "citation": "NICHOLAS, F. W. Introduction to Veterinary Genetics. 3. ed. Chichester: Wiley-Blackwell, 2010."
+    },
+    {
+      "id": "esccap2021",
+      "type": "diretriz",
+      "citation": "ESCCAP — European Scientific Counsel Companion Animal Parasites. Guideline 01: Worm Control in Dogs and Cats. 6. ed. Malvern: ESCCAP, 2021.",
+      "url": "https://www.esccap.org"
     }
   ]
 }
