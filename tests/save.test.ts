@@ -1,6 +1,6 @@
 /** Testes de salvamento e carregamento (LocalStorage abstraído). */
 import { describe, expect, it } from 'vitest';
-import { MemoryStorage, SaveManager, SAVE_KEY, SETTINGS_KEY, isValidSave, migrate, defaultSettings } from '../src/core/SaveManager';
+import { MemoryStorage, SaveManager, SAVE_KEY, SETTINGS_KEY, isValidSave, migrate, defaultSettings, exportSaveCode as exportSaveCodeSync } from '../src/core/SaveManager';
 import { GameState, newSaveData } from '../src/core/GameState';
 import type { Appearance } from '../src/core/types';
 
@@ -88,5 +88,40 @@ describe('SaveManager', () => {
     st.completeObjective('q_boas_vindas', 'o_lucas');
     const loaded = sm.load()!;
     expect(loaded.quests['q_boas_vindas'].objectives['o_lucas']).toBe(true);
+  });
+});
+
+describe('Código de salvamento (backup)', () => {
+  it('exporta e importa o progresso completo, com acentos e emojis', async () => {
+    const { exportSaveCode, importSaveCode } = await import('../src/core/SaveManager');
+    const d = newSaveData('Conceição 🐾', look);
+    d.totalXp = 777;
+    d.pets.owned.push({ id: 'p1', species: 'cao', breed: 'cao_pug', name: 'Pão de Queijo', adoptedAt: 1, affection: 3 });
+    const code = exportSaveCode(d);
+    expect(code.startsWith('VQ1-')).toBe(true);
+    const r = importSaveCode(`  ${code.slice(0, 40)}\n${code.slice(40)}  `); // tolera quebras de linha e espaços
+    expect(r.ok).toBe(true);
+    if (r.ok) {
+      expect(r.data.player.name).toBe('Conceição 🐾');
+      expect(r.data.totalXp).toBe(777);
+      expect(r.data.pets.owned[0].name).toBe('Pão de Queijo');
+    }
+  });
+  it('rejeita textos aleatórios, códigos cortados ou adulterados', async () => {
+    const { exportSaveCode, importSaveCode } = await import('../src/core/SaveManager');
+    const code = exportSaveCode(newSaveData('Ana', look));
+    expect(importSaveCode('olá').ok).toBe(false);
+    expect(importSaveCode(code.slice(0, code.length - 10)).ok).toBe(false);
+    const tampered = code.slice(0, -6) + (code.slice(-6, -5) === 'A' ? 'B' : 'A') + code.slice(-5);
+    expect(importSaveCode(tampered).ok).toBe(false);
+  });
+  it('restaurar grava no armazenamento e passa a ser o save carregado', () => {
+    const sm = new SaveManager(new MemoryStorage());
+    sm.save(newSaveData('Antigo', look));
+    const other = newSaveData('Novo', look);
+    other.totalXp = 50;
+    const r = sm.importCode(exportSaveCodeSync(other));
+    expect(r.ok).toBe(true);
+    expect(sm.load()!.player.name).toBe('Novo');
   });
 });

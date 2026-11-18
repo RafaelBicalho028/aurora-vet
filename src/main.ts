@@ -7,7 +7,7 @@ import '@fontsource/pixelify-sans/latin-700.css';
 import '@fontsource/nunito/latin-400.css';
 import '@fontsource/nunito/latin-700.css';
 import './styles/main.css';
-import { app } from './core/context';
+import { app, applyTextSize } from './core/context';
 import { bus } from './core/EventBus';
 import { BootScene } from './scenes/BootScene';
 import { TitleScene } from './scenes/TitleScene';
@@ -34,6 +34,7 @@ function boot(): void {
     }
   }
 
+  applyTextSize();
   ui();
   initToasts();
   bus.on('ui:startCase', (id: string) => openCase(id));

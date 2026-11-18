@@ -6,6 +6,7 @@ import { DEFAULT_KEYBINDS } from '../core/SaveManager';
 import { h, clear } from './dom';
 import { ui } from './UIManager';
 import { toggleFullscreen } from './fullscreen';
+import { renderBackupSection } from './BackupPanel';
 
 // ------------------------------------------------------------------ Configurações
 export function renderSettingsPanel(inGame: boolean): HTMLElement {
@@ -48,6 +49,7 @@ export function renderSettingsPanel(inGame: boolean): HTMLElement {
       h('h3', null, 'Áudio e texto'),
       slider('Música', s.musicVolume, (v) => { s.musicVolume = v; }),
       slider('Efeitos sonoros', s.sfxVolume, (v) => { s.sfxVolume = v; }),
+      select('Tamanho do texto', s.textSize, [['normal', 'Normal'], ['grande', 'Grande'], ['muito_grande', 'Muito grande']], (v) => { s.textSize = v; }),
       select('Velocidade do texto', s.textSpeed, [['lenta', 'Lenta'], ['normal', 'Normal'], ['rapida', 'Rápida']], (v) => { s.textSpeed = v; }),
       select('Controles de toque', s.showTouchControls, [['auto', 'Automático'], ['sempre', 'Sempre'], ['nunca', 'Nunca']], (v) => { s.showTouchControls = v; document.querySelectorAll('.touch').forEach((t) => ((t as HTMLElement).style.display = v === 'sempre' || (v === 'auto' && matchMedia('(pointer: coarse)').matches) ? '' : 'none')); }),
       h('button', { class: 'btn', onclick: () => toggleFullscreen() }, '⛶ Alternar tela cheia (F11)'),
@@ -57,6 +59,12 @@ export function renderSettingsPanel(inGame: boolean): HTMLElement {
       binds,
       h('button', { class: 'btn small', onclick: () => { s.keybinds = JSON.parse(JSON.stringify(DEFAULT_KEYBINDS)); saveSettings(); renderBinds(); } }, 'Restaurar padrão'),
     ),
+    renderBackupSection(() => {
+      app.state = null;
+      ui().closeAll();
+      app.game?.scene.getScenes(true).forEach((sc) => sc.scene.stop());
+      app.game?.scene.start('Title');
+    }),
     !inGame ? null : h('section', { class: 'card danger' },
       h('h3', null, 'Dados'),
       h('p', { class: 'muted small' }, 'O progresso é salvo automaticamente neste navegador (LocalStorage).'),

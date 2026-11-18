@@ -229,8 +229,8 @@ class CaseSession {
           }, 'Avaliar'),
           showRef ? h('div', { class: 'exam-ref small muted' }, `Referência: ${ref}`) : done && ref && !hasGuide ? h('div', { class: 'exam-ref small muted' }, 'Referência numérica: consulte o VetiDex (Parâmetros vitais) ou obtenha o guia de bolso com a Profa. Lívia.') : null,
           done ? h('div', { class: 'interp' },
-            h('button', { class: 'chip' + (interp === 'normal' ? ' active ok' : ''), onclick: () => { this.d.interpretations[it.id] = 'normal'; this.render(); } }, 'Normal'),
-            h('button', { class: 'chip' + (interp === 'altered' ? ' active bad' : ''), onclick: () => { this.d.interpretations[it.id] = 'altered'; this.render(); } }, 'Alterado'),
+            h('button', { class: 'chip' + (interp === 'normal' ? ' active ok' : ''), 'aria-pressed': String(interp === 'normal'), 'aria-label': `${it.label}: normal`, onclick: () => { this.d.interpretations[it.id] = 'normal'; this.render(); } }, '● Normal'),
+            h('button', { class: 'chip' + (interp === 'altered' ? ' active bad' : ''), 'aria-pressed': String(interp === 'altered'), 'aria-label': `${it.label}: alterado`, onclick: () => { this.d.interpretations[it.id] = 'altered'; this.render(); } }, '▲ Alterado'),
           ) : null,
         );
         return card;

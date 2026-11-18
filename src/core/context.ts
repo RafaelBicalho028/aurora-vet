@@ -31,10 +31,17 @@ export const app: AppContext = {
 };
 app.audio.setVolumes(settings.musicVolume, settings.sfxVolume);
 
+/** Aplica o tamanho de texto escolhido (acessibilidade). */
+export function applyTextSize(): void {
+  const pct = { normal: '100%', grande: '115%', muito_grande: '130%' }[app.settings.textSize] ?? '100%';
+  document.documentElement.style.fontSize = pct;
+}
+
 export function saveSettings(): void {
   app.saver.saveSettings(app.settings);
   app.input.setBinds(app.settings.keybinds);
   app.audio.setVolumes(app.settings.musicVolume, app.settings.sfxVolume);
+  applyTextSize();
 }
 
 export function requireState(): GameState {

@@ -58,6 +58,7 @@ export function defaultSettings(): Settings {
     textSpeed: 'normal',
     keybinds: JSON.parse(JSON.stringify(DEFAULT_KEYBINDS)),
     showTouchControls: 'auto',
+    textSize: 'normal',
   };
 }
 
@@ -92,6 +93,55 @@ export function migrate(raw: any): SaveData {
   if (!d.vetidex.seen) d.vetidex.seen = [];
   d.version = SAVE_VERSION;
   return d as SaveData;
+}
+
+// ------------------------------------------------------------ código de salvamento (backup)
+const CODE_PREFIX = 'VQ1-';
+
+function fnv(s: string): string {
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return (h >>> 0).toString(36).padStart(7, '0');
+}
+
+function toBase64(text: string): string {
+  const bytes = new TextEncoder().encode(text);
+  let bin = '';
+  for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+  return btoa(bin);
+}
+
+function fromBase64(b64: string): string {
+  const bin = atob(b64);
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+
+/** Gera um código de texto com todo o progresso (para copiar e guardar ou levar a outro aparelho). */
+export function exportSaveCode(data: SaveData): string {
+  const json = JSON.stringify(data);
+  return `${CODE_PREFIX}${fnv(json)}-${toBase64(json)}`;
+}
+
+export type ImportResult = { ok: true; data: SaveData } | { ok: false; error: string };
+
+/** Lê um código de salvamento, verificando integridade, estrutura e versão. */
+export function importSaveCode(code: string): ImportResult {
+  const clean = code.replace(/\s+/g, '');
+  if (!clean.startsWith(CODE_PREFIX)) return { ok: false, error: 'Este texto não é um código de salvamento do VetQuest.' };
+  const rest = clean.slice(CODE_PREFIX.length);
+  const dash = rest.indexOf('-');
+  if (dash < 0) return { ok: false, error: 'Código incompleto. Copie o código inteiro, do início ao fim.' };
+  const sum = rest.slice(0, dash);
+  let json: string;
+  try { json = fromBase64(rest.slice(dash + 1)); } catch { return { ok: false, error: 'Código corrompido ou incompleto. Copie o código inteiro novamente.' }; }
+  if (fnv(json) !== sum) return { ok: false, error: 'O código foi alterado ou cortado (falha na verificação). Copie o código inteiro novamente.' };
+  let parsed: unknown;
+  try { parsed = JSON.parse(json); } catch { return { ok: false, error: 'Código corrompido.' }; }
+  if (!isValidSave(parsed)) return { ok: false, error: 'O código não contém um progresso válido.' };
+  if (parsed.version > SAVE_VERSION) return { ok: false, error: 'Este código foi gerado por uma versão mais nova do jogo.' };
+  return { ok: true, data: migrate(parsed) };
 }
 
 export class SaveManager {
@@ -138,6 +188,13 @@ export class SaveManager {
 
   exportString(): string | null {
     return this.storage.getItem(SAVE_KEY);
+  }
+
+  /** Substitui o progresso salvo pelo conteúdo de um código de salvamento. */
+  importCode(code: string): ImportResult {
+    const r = importSaveCode(code);
+    if (r.ok && !this.save(r.data)) return { ok: false, error: 'Não foi possível gravar neste navegador (armazenamento bloqueado ou cheio).' };
+    return r;
   }
 
   loadSettings(): Settings {

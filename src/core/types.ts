@@ -101,4 +101,5 @@ export interface Settings {
   textSpeed: 'lenta' | 'normal' | 'rapida';
   keybinds: Record<string, string[]>;
   showTouchControls: 'auto' | 'sempre' | 'nunca';
+  textSize: 'normal' | 'grande' | 'muito_grande';
 }

@@ -39,7 +39,7 @@ export function showTitle(cb: TitleCallbacks): Modal {
         openCreator(cb.onNewGame);
       },
     }, '✚ Novo jogo'));
-    menu.appendChild(h('button', { class: 'btn', onclick: () => { app.audio.unlock(); openSettings(); } }, '⚙ Configurações'));
+    menu.appendChild(h('button', { class: 'btn', onclick: () => { app.audio.unlock(); openSettings(); } }, save ? '⚙ Configurações e backup' : '⚙ Configurações / ⇪ Restaurar progresso'));
     menu.appendChild(h('button', { class: 'btn', onclick: () => { app.audio.unlock(); toggleFullscreen(); } }, '⛶ Tela cheia'));
     menu.appendChild(h('button', { class: 'btn', onclick: () => { app.audio.unlock(); openAbout(); } }, 'ℹ Sobre o VetQuest'));
   };

@@ -24,7 +24,7 @@ html, body { margin: 0; height: 100%; color-scheme: dark; background: var(--bg);
 #app { position: fixed; inset: 0; }
 #game { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: #0f0c17; }
 #game canvas { image-rendering: pixelated; image-rendering: crisp-edges; }
-#ui { position: absolute; inset: 0; pointer-events: none; font-size: 15px; }
+#ui { position: absolute; inset: 0; pointer-events: none; font-size: 0.9375rem; }
 .layer { position: absolute; inset: 0; pointer-events: none; }
 .layer > * { pointer-events: auto; }
 .pixel { image-rendering: pixelated; image-rendering: crisp-edges; }
@@ -538,4 +538,17 @@ body.touch-ui .toast-layer { padding-top: calc(140px + env(safe-area-inset-top, 
   body.touch-ui .hud-hint { bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
   body.touch-ui .toast-layer { padding-top: 60px; }
   .case-side { max-height: 60vh; }
+}
+
+/* ================= Acessibilidade ================= */
+/* seleção indicada por ícone, não só por cor */
+.chip.active::before { content: '✓ '; font-weight: 700; }
+.pet-cell.active::before, .dex-item.active::before { content: '▶'; color: var(--gold); position: absolute; left: 6px; top: 6px; font-size: 0.8rem; }
+.pet-cell, .dex-item { position: relative; }
+.radio.active::after, .check.active::after { content: '✓'; margin-left: auto; color: var(--gold); font-weight: 700; }
+.conduct.active { box-shadow: inset 4px 0 0 var(--gold); }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.code-box { width: 100%; font-family: ui-monospace, monospace; font-size: 0.8rem; color: var(--text); background: #15111f; border: 2px solid var(--line); border-radius: 6px; padding: 6px 8px; margin: 6px 0; resize: vertical; word-break: break-all; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
