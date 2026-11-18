@@ -60,9 +60,12 @@ export function openMenu(tab: Tab, fromEsc = false): void {
         onclick: () => switchTab(t.id),
       }, h('span', { class: 'tab-icon' }, t.icon), h('span', { class: 'tab-label' }, t.label), t.key ? h('kbd', null, t.key) : null));
     }
+    const sameTab = body.dataset.tab === currentTab;
+    const top = sameTab ? body.scrollTop : 0;
     clear(body);
     body.appendChild(renderTab(currentTab));
-    body.scrollTop = 0;
+    body.dataset.tab = currentTab;
+    body.scrollTop = top;
     (tabBar.querySelector('.menu-tab.active') as HTMLElement | null)?.focus({ preventScroll: true });
   };
   (el as any)._render = render;

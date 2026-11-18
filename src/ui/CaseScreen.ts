@@ -63,6 +63,7 @@ class CaseSession {
   private sideBtn!: HTMLButtonElement;
   private timeEl!: HTMLElement;
   private delayWarned = false;
+  private renderedStage: Stage | null = null;
   private report: ScoreReport | null = null;
 
   constructor(private c: ClinicalCase) {}
@@ -119,11 +120,26 @@ class CaseSession {
     this.stage = s;
     this.reached.add(s);
     app.audio.sfx('page');
-    this.render();
-    this.main.scrollTop = 0;
+    this.render(true);
   }
 
-  private render(): void {
+  /**
+   * Redesenha a tela. Dentro da mesma etapa, preserva a rolagem do conteúdo, do prontuário
+   * e do chat (cada clique redesenha a tela, e antes isso fazia a página voltar ao topo).
+   */
+  private render(resetScroll = false): void {
+    const keep = !resetScroll && this.renderedStage === this.stage;
+    const mainTop = keep ? this.main.scrollTop : 0;
+    const sideTop = keep ? this.side.scrollTop : 0;
+    const focusKey = keep ? (document.activeElement as HTMLElement | null)?.dataset?.fk : undefined;
+    this.renderStage();
+    this.renderedStage = this.stage;
+    this.main.scrollTop = mainTop;
+    this.side.scrollTop = sideTop;
+    if (focusKey) (this.root.querySelector(`[data-fk="${CSS.escape(focusKey)}"]`) as HTMLElement | null)?.focus({ preventScroll: true });
+  }
+
+  private renderStage(): void {
     // etapas
     clear(this.steps);
     const nFound = collectedFindings(this.c, this.d).length;
@@ -190,7 +206,7 @@ class CaseSession {
       qBox.appendChild(h('div', { class: 'q-group' }, h('div', { class: 'q-cat' }, cat), ...qs.map((q) => {
         const asked = this.d.askedQuestions.includes(q.id);
         const isNew = !!q.requires?.length && !asked;
-        const b = h('button', { class: 'btn q-btn' + (asked ? ' asked' : '') + (isNew ? ' new' : ''), disabled: asked }, (asked ? '✔ ' : isNew ? '✦ ' : '') + q.text);
+        const b = h('button', { class: 'btn q-btn' + (asked ? ' asked' : '') + (isNew ? ' new' : ''), disabled: asked, 'data-fk': `q-${q.id}` }, (asked ? '✔ ' : isNew ? '✦ ' : '') + q.text);
         b.addEventListener('click', () => {
           this.d.askedQuestions.push(q.id);
           this.log.push({ who: 'player', text: q.text }, { who: 'tutor', text: q.answer });
@@ -240,12 +256,12 @@ class CaseSession {
         const card = h('div', { class: 'exam-item card' + (done ? ' done' : '') },
           h('div', { class: 'exam-label' }, it.label),
           done ? h('div', { class: 'exam-result' }, it.result) : h('button', {
-            class: 'btn small', onclick: () => { this.d.examined.push(it.id); app.audio.sfx('select'); this.render(); },
+            class: 'btn small', 'data-fk': `e-${it.id}`, onclick: () => { this.d.examined.push(it.id); app.audio.sfx('select'); this.render(); },
           }, 'Avaliar'),
           showRef ? h('div', { class: 'exam-ref small muted' }, `Referência: ${ref}`) : done && ref && !hasGuide ? h('div', { class: 'exam-ref small muted' }, 'Referência numérica: consulte o VetiDex (Parâmetros vitais) ou obtenha o guia de bolso com a Profa. Lívia.') : null,
           done ? h('div', { class: 'interp' },
-            h('button', { class: 'chip' + (interp === 'normal' ? ' active ok' : ''), 'aria-pressed': String(interp === 'normal'), 'aria-label': `${it.label}: normal`, onclick: () => { this.d.interpretations[it.id] = 'normal'; this.render(); } }, '● Normal'),
-            h('button', { class: 'chip' + (interp === 'altered' ? ' active bad' : ''), 'aria-pressed': String(interp === 'altered'), 'aria-label': `${it.label}: alterado`, onclick: () => { this.d.interpretations[it.id] = 'altered'; this.render(); } }, '▲ Alterado'),
+            h('button', { class: 'chip' + (interp === 'normal' ? ' active ok' : ''), 'data-fk': `n-${it.id}`, 'aria-pressed': String(interp === 'normal'), 'aria-label': `${it.label}: normal`, onclick: () => { this.d.interpretations[it.id] = 'normal'; this.render(); } }, '● Normal'),
+            h('button', { class: 'chip' + (interp === 'altered' ? ' active bad' : ''), 'data-fk': `a-${it.id}`, 'aria-pressed': String(interp === 'altered'), 'aria-label': `${it.label}: alterado`, onclick: () => { this.d.interpretations[it.id] = 'altered'; this.render(); } }, '▲ Alterado'),
           ) : null,
         );
         return card;
