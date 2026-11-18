@@ -69,8 +69,8 @@ export const institutos: MapDef = {
     { fromX: 39, fromY: 12, map: 'campus', x: 1, y: 18, facing: 'right' },
   ],
   interactions: {
-    '0,11': { lines: ['Trilha para a Reserva Ambiental.', 'Região bloqueada: disponível na Etapa 4.'] },
-    '0,12': { lines: ['Trilha para a Reserva Ambiental.', 'Região bloqueada: disponível na Etapa 4.'] },
+    '0,11': { lines: ['Trilha para a Reserva Ambiental.', 'Região em desenvolvimento: chega em uma próxima versão (Etapa 4).'] },
+    '0,12': { lines: ['Trilha para a Reserva Ambiental.', 'Região em desenvolvimento: chega em uma próxima versão (Etapa 4).'] },
   },
   spawn: { x: 37, y: 12, facing: 'left' },
 };

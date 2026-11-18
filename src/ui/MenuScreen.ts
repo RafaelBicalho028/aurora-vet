@@ -174,10 +174,10 @@ function renderMap(): HTMLElement {
   const st = requireState();
   const regions = [
     { name: 'Universidade de Aurora', stage: 1, desc: 'Hospital Veterinário, Anatomia, Fisiologia, Microbiologia, Biblioteca, fazenda-escola e o Setor dos Institutos (Parasitologia, Farmacologia, Patologia, Cirurgia e Anestesiologia, Saúde Pública).', open: true },
-    { name: 'Vila dos Animais', stage: 2, desc: 'Residências com tutores, pet shops, praças, centro de adoção e clínica de pequenos animais.', open: false },
-    { name: 'Região Rural', stage: 3, desc: 'Fazendas de bovinos, ovinos, equinos e propriedades leiteiras.', open: false },
-    { name: 'Reserva Ambiental', stage: 4, desc: 'Animais silvestres, centro de reabilitação e missões de conservação.', open: false },
-    { name: 'Centro Veterinário Avançado', stage: 4, desc: 'Internação, diagnóstico por imagem, centro cirúrgico, UTI e análises clínicas.', open: false },
+    { name: 'Vila dos Animais', stage: 2, desc: 'Clínica Veterinária da Vila, Pet Shop Patas & Cia., Centro de Adoção, praça e residências. Acesso pelo Portão Sul do campus.', open: st.check({ flag: 'etapa2_liberada' }) },
+    { name: 'Região Rural', stage: 3, desc: 'Fazendas de bovinos, ovinos, equinos e propriedades leiteiras.', open: false, soon: true },
+    { name: 'Reserva Ambiental', stage: 4, desc: 'Animais silvestres, centro de reabilitação e missões de conservação.', open: false, soon: true },
+    { name: 'Centro Veterinário Avançado', stage: 4, desc: 'Internação, diagnóstico por imagem, centro cirúrgico, UTI e análises clínicas.', open: false, soon: true },
   ];
   const mapId = st.data.player.mapId;
   // dentro de um prédio, mostra o mapa externo onde fica a porta desse prédio
@@ -205,7 +205,7 @@ function renderMap(): HTMLElement {
       h('div', { class: 'regions' }, h('h3', null, 'Regiões'), ...regions.map((r) => h('div', { class: 'region' + (r.open ? '' : ' locked') },
         h('div', { class: 'region-title' }, (r.open ? '🟢 ' : '🔒 ') + r.name),
         h('div', { class: 'region-desc' }, r.desc),
-        !r.open ? h('div', { class: 'region-req' }, `Requer Etapa ${r.stage}: ${STAGES[r.stage - 1].title}`) : null,
+        !r.open ? h('div', { class: 'region-req' }, ('soon' in r && r.soon) ? `🛠 Em desenvolvimento — chega em uma próxima versão (Etapa ${r.stage}: ${STAGES[r.stage - 1].title})` : `Requer concluir a missão “Rumo à Etapa 2” (Etapa ${r.stage}: ${STAGES[r.stage - 1].title})`) : null,
       ))),
     ),
   );

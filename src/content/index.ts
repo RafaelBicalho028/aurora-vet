@@ -4,6 +4,8 @@ import thor from './cases/thor-prurido.json';
 import mimi from './cases/mimi-hiporexia.json';
 import pingo from './cases/pingo-diarreia.json';
 import nino from './cases/nino-obstrucao.json';
+import bidu from './cases/bidu-erliquiose.json';
+import luna from './cases/luna-permetrina.json';
 import anatomia from './minigames/anatomia-intro.json';
 import vetidex from './vetidex.json';
 import references from './references.json';
@@ -17,6 +19,8 @@ export const CASES: Record<string, ClinicalCase> = {
   [mimi.id]: mimi as unknown as ClinicalCase,
   [pingo.id]: pingo as unknown as ClinicalCase,
   [nino.id]: nino as unknown as ClinicalCase,
+  [bidu.id]: bidu as unknown as ClinicalCase,
+  [luna.id]: luna as unknown as ClinicalCase,
 };
 
 export type AnatomyMinigame = typeof anatomia;

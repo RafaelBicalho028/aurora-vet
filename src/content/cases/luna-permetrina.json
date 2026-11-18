@@ -1,0 +1,1059 @@
+{
+  "schemaVersion": 1,
+  "id": "caso_luna_permetrina",
+  "title": "A Gata que Tremia — Luna e o antipulgas errado",
+  "missionId": "q_vila_luna",
+  "difficulty": 3,
+  "minStage": 2,
+  "baseXp": 300,
+  "passScore": 60,
+  "disciplines": [
+    {
+      "discipline": "clinica",
+      "skill": "semiologia",
+      "section": "anamnesis"
+    },
+    {
+      "discipline": "clinica",
+      "skill": "semiologia",
+      "section": "physicalExam"
+    },
+    {
+      "discipline": "clinica",
+      "skill": "exames",
+      "section": "tests"
+    },
+    {
+      "discipline": "clinica",
+      "skill": "diferencial",
+      "section": "diagnosis"
+    },
+    {
+      "discipline": "clinica",
+      "skill": "raciocinio",
+      "section": "all"
+    },
+    {
+      "discipline": "clinica",
+      "skill": "condutas",
+      "section": "conduct"
+    },
+    {
+      "discipline": "farmacologia",
+      "skill": "toxicologia",
+      "section": "all"
+    },
+    {
+      "discipline": "farmacologia",
+      "skill": "farmacodinamica",
+      "section": "conduct"
+    },
+    {
+      "discipline": "parasitologia",
+      "skill": "ectoparasitas",
+      "section": "conduct"
+    }
+  ],
+  "educationalNotice": "Material educacional simplificado para fins didáticos. Não substitui a avaliação de um(a) médico(a)-veterinário(a) nem constitui protocolo de prescrição. Pendente de validação técnica.",
+  "validation": {
+    "status": "pendente",
+    "reviewer": null,
+    "date": null,
+    "notes": "Rascunho da Etapa 2. Revisar protocolo de descontaminação, opções de controle de tremores e terapia com emulsão lipídica com docente de Clínica Médica / Toxicologia."
+  },
+  "references": [
+    {
+      "refId": "boland2010",
+      "supports": "Sinais clínicos, tratamento e prognóstico da intoxicação por permetrina em gatos."
+    },
+    {
+      "refId": "riviere2018",
+      "supports": "Mecanismo dos piretroides, sensibilidade felina e farmacologia de relaxantes musculares e anticonvulsivantes."
+    },
+    {
+      "refId": "merck",
+      "supports": "Diferenças entre intoxicação por piretroides e por organofosforados; descontaminação dérmica."
+    },
+    {
+      "refId": "ettinger2017",
+      "supports": "Abordagem do paciente com tremores e convulsões; diagnósticos diferenciais metabólicos."
+    },
+    {
+      "refId": "feitosa2014",
+      "supports": "Roteiro de anamnese e exame físico geral."
+    }
+  ],
+  "patient": {
+    "name": "Luna",
+    "species": "felino",
+    "speciesLabel": "Gato (Felis catus)",
+    "breed": "Siamês",
+    "sex": "Fêmea castrada",
+    "age": "2 anos",
+    "weightKg": 3.8,
+    "sprite": "cat_luna",
+    "tutorName": "Gabriel",
+    "tutorNpc": "gabriel",
+    "presentingComplaint": "Começou a tremer e babar algumas horas depois de receber um antipulgas."
+  },
+  "intro": "Gabriel entrou correndo na Clínica Veterinária da Vila com a Luna nos braços: ela treme sem parar e baba muito. O Dr. Marcos pede que você conduza o atendimento com agilidade — é uma urgência. Use luvas: pode haver resíduo de produto químico no pelo.",
+  "supervisor": {
+    "name": "Dr. Marcos Vieira",
+    "npc": "marcos",
+    "tips": {
+      "anamnesis": "Em um animal com tremores, a pergunta de ouro é: o que ele recebeu, comeu ou teve contato nas últimas horas? Depois, detalhe o produto e para qual espécie ele é indicado.",
+      "physicalExam": "Avalie temperatura, frequência cardíaca, pupilas e o tipo de movimento. Tremores com consciência preservada são diferentes de convulsões.",
+      "tests": "Na urgência, exames rápidos que mudam a conduta vêm primeiro: glicemia e eletrólitos afastam causas metabólicas tratáveis.",
+      "diagnosis": "Compare os sinais: midríase e taquicardia combinam mais com piretroides; miose, bradicardia e muita secreção, com organofosforados.",
+      "conduct": "Primeiro estabilize e controle os tremores; depois descontamine. E lembre: gato não é cão pequeno."
+    }
+  },
+  "anamnesis": {
+    "questions": [
+      {
+        "id": "q_queixa",
+        "category": "Queixa principal",
+        "text": "O que está acontecendo com a Luna?",
+        "answer": "Ela começou a tremer inteira, principalmente a cabeça e as orelhas, e está babando muito. Parece assustada.",
+        "relevance": "essential",
+        "findingId": "f_tremores",
+        "explanation": "Tremores e hipersalivação de início agudo em um gato jovem e saudável sugerem intoxicação até que se prove o contrário."
+      },
+      {
+        "id": "q_exposicao",
+        "category": "Exposição a tóxicos",
+        "text": "Ela recebeu algum remédio ou antipulgas recentemente?",
+        "answer": "Sim! Hoje cedo eu coloquei um antipulgas na nuca dela.",
+        "relevance": "essential",
+        "findingId": "f_antipulgas_recente",
+        "explanation": "A história de exposição é a chave do diagnóstico em toxicologia."
+      },
+      {
+        "id": "q_produto",
+        "category": "Exposição a tóxicos",
+        "text": "Qual era o produto? Para qual espécie ele é indicado?",
+        "answer": "Era uma pipeta de cachorro, de 10 a 25 kg... o rótulo fala em permetrina. Usei a pipeta inteira nela, achei que era igual.",
+        "relevance": "essential",
+        "requires": [
+          "q_exposicao"
+        ],
+        "findingId": "f_permetrina",
+        "explanation": "Produtos com permetrina para cães são uma das causas mais comuns de intoxicação em gatos, que metabolizam mal esse piretroide."
+      },
+      {
+        "id": "q_tempo",
+        "category": "Evolução",
+        "text": "Quanto tempo depois da aplicação começaram os sinais?",
+        "answer": "Umas três horas depois. E foi piorando.",
+        "relevance": "essential",
+        "requires": [
+          "q_exposicao"
+        ],
+        "findingId": "f_inicio_horas",
+        "explanation": "O início em horas após a aplicação reforça a relação causal com o produto."
+      },
+      {
+        "id": "q_convulsao",
+        "category": "Evolução",
+        "text": "Ela teve convulsão ou perdeu a consciência?",
+        "answer": "Há meia hora ela ficou dura e se debatendo por alguns segundos. Depois voltou a tremer.",
+        "relevance": "essential",
+        "findingId": "f_convulsao",
+        "explanation": "Convulsões indicam maior gravidade e exigem controle imediato."
+      },
+      {
+        "id": "q_banho",
+        "category": "Exposição a tóxicos",
+        "text": "O produto ainda está no pelo? Ela tomou banho?",
+        "answer": "Não dei banho. O pelo da nuca está melado ainda.",
+        "relevance": "essential",
+        "requires": [
+          "q_exposicao"
+        ],
+        "findingId": "f_produto_no_pelo",
+        "explanation": "Produto remanescente continua sendo absorvido: a descontaminação é parte essencial do tratamento."
+      },
+      {
+        "id": "q_outros",
+        "category": "Contactantes",
+        "text": "Há outros animais em casa? Eles receberam o mesmo produto?",
+        "answer": "Tem o Rex, meu cachorro. Coloquei nele também e ele está ótimo.",
+        "relevance": "complementary",
+        "findingId": "f_cao_bem",
+        "explanation": "Cães toleram a permetrina; gatos não. Também é importante manter o gato separado do cão tratado até o produto secar."
+      },
+      {
+        "id": "q_vomito",
+        "category": "Sinais associados",
+        "text": "Ela vomitou ou teve diarreia?",
+        "answer": "Não vomitou. Só baba muito.",
+        "relevance": "complementary",
+        "explanation": "Diarreia e vômitos intensos com muita secreção fariam pensar mais em organofosforados ou carbamatos."
+      },
+      {
+        "id": "q_historico",
+        "category": "Histórico",
+        "text": "Ela tem alguma doença ou já teve algo parecido?",
+        "answer": "Nunca teve nada. É vacinada e castrada.",
+        "relevance": "complementary",
+        "explanation": "A ausência de episódios anteriores torna menos provável uma epilepsia preexistente."
+      },
+      {
+        "id": "q_castracao",
+        "category": "Histórico",
+        "text": "Em que mês ela foi castrada?",
+        "answer": "Foi em março do ano passado.",
+        "relevance": "irrelevant",
+        "explanation": "A data exata da castração não ajuda a resolver uma urgência neurológica aguda."
+      },
+      {
+        "id": "q_brinquedo",
+        "category": "Comportamento",
+        "text": "Ela gosta de brincar com o quê?",
+        "answer": "Com bolinhas de papel!",
+        "relevance": "irrelevant",
+        "explanation": "Irrelevante para a urgência. Em casos urgentes, cada pergunta consome tempo."
+      },
+      {
+        "id": "q_racao",
+        "category": "Alimentação",
+        "text": "Qual ração ela come?",
+        "answer": "Uma ração de gatos castrados.",
+        "relevance": "irrelevant",
+        "explanation": "A dieta não explica tremores agudos após a aplicação de um produto."
+      }
+    ]
+  },
+  "physicalExam": {
+    "items": [
+      {
+        "id": "e_temp",
+        "label": "Temperatura retal",
+        "group": "vitais",
+        "result": "40,3 °C",
+        "reference": {
+          "min": 38.1,
+          "max": 39.2,
+          "unit": "°C"
+        },
+        "status": "altered",
+        "relevance": "essential",
+        "findingId": "f_hipertermia",
+        "explanation": "A atividade muscular intensa dos tremores gera calor e causa hipertermia."
+      },
+      {
+        "id": "e_fc",
+        "label": "Frequência cardíaca",
+        "group": "vitais",
+        "result": "240 bpm",
+        "reference": {
+          "min": 140,
+          "max": 220,
+          "unit": "bpm",
+          "note": "O estresse eleva a FC em gatos."
+        },
+        "status": "altered",
+        "relevance": "essential",
+        "findingId": "f_taquicardia",
+        "explanation": "Taquicardia é esperada na intoxicação por piretroides; organofosforados costumam causar bradicardia."
+      },
+      {
+        "id": "e_fr",
+        "label": "Frequência respiratória",
+        "group": "vitais",
+        "result": "52 mpm",
+        "reference": {
+          "min": 20,
+          "max": 30,
+          "unit": "mpm"
+        },
+        "status": "altered",
+        "relevance": "complementary",
+        "explanation": "Taquipneia por hipertermia, estresse e atividade muscular."
+      },
+      {
+        "id": "e_neuro",
+        "label": "Avaliação neurológica",
+        "group": "especifico",
+        "result": "Tremores generalizados e fasciculações, sobretudo na face e nas orelhas; hiperestesia ao toque; consciente entre os episódios",
+        "reference": "Sem movimentos involuntários; resposta normal ao ambiente",
+        "status": "altered",
+        "relevance": "essential",
+        "findingId": "f_tremores_exame",
+        "explanation": "Tremores com fasciculações faciais e hiperestesia são o quadro típico da intoxicação por permetrina em gatos."
+      },
+      {
+        "id": "e_pupilas",
+        "label": "Pupilas",
+        "group": "especifico",
+        "result": "Midríase bilateral",
+        "reference": "Pupilas proporcionais à luz ambiente",
+        "status": "altered",
+        "relevance": "complementary",
+        "findingId": "f_midriase",
+        "explanation": "Midríase é frequente na intoxicação por piretroides; organofosforados tendem a causar miose."
+      },
+      {
+        "id": "e_pelame",
+        "label": "Pele e pelame",
+        "group": "sistemas",
+        "result": "Pelo oleoso, com cheiro de produto, na região da nuca",
+        "reference": "Pelame limpo, sem resíduos",
+        "status": "altered",
+        "relevance": "essential",
+        "findingId": "f_residuo",
+        "explanation": "Confirma a aplicação recente e a necessidade de descontaminação."
+      },
+      {
+        "id": "e_mucosas",
+        "label": "Mucosas",
+        "group": "geral",
+        "result": "Róseas e úmidas, com hipersalivação",
+        "reference": "Róseas e úmidas",
+        "status": "normal",
+        "relevance": "complementary",
+        "explanation": "A coloração está normal; a salivação faz parte do quadro tóxico."
+      },
+      {
+        "id": "e_tpc",
+        "label": "Tempo de preenchimento capilar",
+        "group": "geral",
+        "result": "1,5 s",
+        "reference": {
+          "min": 0,
+          "max": 2,
+          "unit": "s"
+        },
+        "status": "normal",
+        "relevance": "complementary",
+        "explanation": "Perfusão preservada."
+      },
+      {
+        "id": "e_hidratacao",
+        "label": "Hidratação",
+        "group": "geral",
+        "result": "Hidratada",
+        "reference": "Turgor normal",
+        "status": "normal",
+        "relevance": "complementary",
+        "explanation": "Sem desidratação no momento."
+      }
+    ]
+  },
+  "tests": {
+    "budgetHint": 200,
+    "items": [
+      {
+        "id": "t_glicemia",
+        "name": "Glicemia (beira do leito)",
+        "cost": 20,
+        "turnaround": "Imediato",
+        "category": "indicated",
+        "result": "Glicemia dentro da referência.",
+        "table": [
+          {
+            "param": "Glicose",
+            "value": "118 mg/dL",
+            "ref": "70–150 mg/dL",
+            "flag": ""
+          }
+        ],
+        "findingId": "f_glicemia_normal",
+        "justification": "Hipoglicemia causa tremores e convulsões e é tratável: deve ser descartada rapidamente."
+      },
+      {
+        "id": "t_eletrolitos",
+        "name": "Eletrólitos e cálcio ionizado (beira do leito)",
+        "cost": 90,
+        "turnaround": "10 min",
+        "category": "indicated",
+        "result": "Cálcio ionizado, potássio e sódio dentro da referência.",
+        "table": [
+          {
+            "param": "Cálcio ionizado",
+            "value": "1,25 mmol/L",
+            "ref": "1,1–1,4 mmol/L",
+            "flag": ""
+          },
+          {
+            "param": "Potássio",
+            "value": "4,1 mEq/L",
+            "ref": "3,5–5,5 mEq/L",
+            "flag": ""
+          },
+          {
+            "param": "Sódio",
+            "value": "152 mEq/L",
+            "ref": "147–156 mEq/L",
+            "flag": ""
+          }
+        ],
+        "findingId": "f_eletrolitos_normais",
+        "justification": "Hipocalcemia também causa tremores; o exame rápido ajuda a afastar causas metabólicas."
+      },
+      {
+        "id": "t_bioquimica",
+        "name": "Bioquímica sérica (CK, função renal e hepática)",
+        "cost": 110,
+        "turnaround": "40 min",
+        "category": "acceptable",
+        "result": "Creatinoquinase (CK) aumentada; função renal e hepática normais.",
+        "table": [
+          {
+            "param": "CK",
+            "value": "2.400 U/L",
+            "ref": "50–450 U/L",
+            "flag": "H"
+          },
+          {
+            "param": "Creatinina",
+            "value": "1,4 mg/dL",
+            "ref": "0,8–2,0 mg/dL",
+            "flag": ""
+          },
+          {
+            "param": "ALT",
+            "value": "60 U/L",
+            "ref": "10–100 U/L",
+            "flag": ""
+          }
+        ],
+        "findingId": "f_ck_alta",
+        "justification": "Avalia lesão muscular causada pelos tremores e o estado geral do paciente."
+      },
+      {
+        "id": "t_hemograma",
+        "name": "Hemograma",
+        "cost": 60,
+        "turnaround": "30 min",
+        "category": "acceptable",
+        "result": "Leucocitose leve com linfocitose, compatível com estresse.",
+        "justification": "Útil como avaliação geral, mas não muda a conduta imediata."
+      },
+      {
+        "id": "t_toxicologico",
+        "name": "Pesquisa toxicológica de permetrina em laboratório externo",
+        "cost": 400,
+        "turnaround": "7 dias",
+        "category": "unnecessary",
+        "result": "Resíduos de permetrina detectados no pelo.",
+        "justification": "O diagnóstico é clínico e baseado na história; o resultado demora e não muda o tratamento."
+      },
+      {
+        "id": "t_radiografia",
+        "name": "Radiografia de crânio",
+        "cost": 180,
+        "turnaround": "20 min",
+        "category": "unnecessary",
+        "result": "Sem alterações.",
+        "justification": "Não há histórico de trauma; o exame não ajuda nesta urgência."
+      },
+      {
+        "id": "t_tomografia",
+        "name": "Tomografia de crânio",
+        "cost": 900,
+        "turnaround": "2 h",
+        "category": "unnecessary",
+        "result": "Sem alterações estruturais.",
+        "justification": "Exame caro e que exige anestesia; desnecessário quando a história de exposição explica o quadro."
+      }
+    ]
+  },
+  "findings": [
+    {
+      "id": "f_tremores",
+      "label": "Tremores e hipersalivação de início agudo",
+      "supports": [
+        "h_permetrina",
+        "h_organofosforado",
+        "h_hipoglicemia",
+        "h_hipocalcemia",
+        "h_epilepsia"
+      ]
+    },
+    {
+      "id": "f_antipulgas_recente",
+      "label": "Antipulgas aplicado horas antes",
+      "supports": [
+        "h_permetrina",
+        "h_organofosforado"
+      ]
+    },
+    {
+      "id": "f_permetrina",
+      "label": "Pipeta de cão com permetrina aplicada na gata (dose inteira)",
+      "supports": [
+        "h_permetrina"
+      ]
+    },
+    {
+      "id": "f_inicio_horas",
+      "label": "Sinais começaram cerca de 3 horas após a aplicação",
+      "supports": [
+        "h_permetrina",
+        "h_organofosforado"
+      ]
+    },
+    {
+      "id": "f_convulsao",
+      "label": "Episódio convulsivo há meia hora",
+      "supports": [
+        "h_permetrina",
+        "h_organofosforado",
+        "h_hipoglicemia",
+        "h_hipocalcemia",
+        "h_epilepsia"
+      ]
+    },
+    {
+      "id": "f_produto_no_pelo",
+      "label": "Produto ainda no pelo (sem banho)",
+      "supports": [
+        "h_permetrina",
+        "h_organofosforado"
+      ]
+    },
+    {
+      "id": "f_cao_bem",
+      "label": "Cão da casa, tratado com o mesmo produto, sem sinais",
+      "supports": [
+        "h_permetrina"
+      ]
+    },
+    {
+      "id": "f_hipertermia",
+      "label": "Hipertermia (40,3 °C)",
+      "supports": [
+        "h_permetrina",
+        "h_organofosforado",
+        "h_epilepsia"
+      ]
+    },
+    {
+      "id": "f_taquicardia",
+      "label": "Taquicardia (240 bpm)",
+      "supports": [
+        "h_permetrina",
+        "h_hipoglicemia"
+      ]
+    },
+    {
+      "id": "f_tremores_exame",
+      "label": "Tremores generalizados com fasciculações faciais e hiperestesia",
+      "supports": [
+        "h_permetrina",
+        "h_organofosforado",
+        "h_hipocalcemia"
+      ]
+    },
+    {
+      "id": "f_midriase",
+      "label": "Midríase bilateral",
+      "supports": [
+        "h_permetrina"
+      ]
+    },
+    {
+      "id": "f_residuo",
+      "label": "Resíduo oleoso do produto na nuca",
+      "supports": [
+        "h_permetrina",
+        "h_organofosforado"
+      ]
+    },
+    {
+      "id": "f_glicemia_normal",
+      "label": "Glicemia normal",
+      "supports": [
+        "h_permetrina",
+        "h_organofosforado",
+        "h_hipocalcemia",
+        "h_epilepsia"
+      ]
+    },
+    {
+      "id": "f_eletrolitos_normais",
+      "label": "Cálcio ionizado e eletrólitos normais",
+      "supports": [
+        "h_permetrina",
+        "h_organofosforado",
+        "h_hipoglicemia",
+        "h_epilepsia"
+      ]
+    },
+    {
+      "id": "f_ck_alta",
+      "label": "CK aumentada (lesão muscular)",
+      "supports": [
+        "h_permetrina",
+        "h_organofosforado",
+        "h_epilepsia"
+      ]
+    }
+  ],
+  "diagnosis": {
+    "correctId": "h_permetrina",
+    "expectedDifferentials": [
+      "h_permetrina",
+      "h_organofosforado",
+      "h_epilepsia"
+    ],
+    "keyEvidence": [
+      "f_permetrina",
+      "f_tremores_exame",
+      "f_residuo",
+      "f_glicemia_normal"
+    ],
+    "minDifferentials": 3,
+    "maxDifferentials": 6,
+    "explanation": "Intoxicação por permetrina: aplicação de produto para cães (com permetrina) em gata, com tremores, fasciculações faciais, hiperestesia, hipersalivação, midríase, taquicardia e hipertermia horas depois. Glicemia e cálcio normais afastam causas metabólicas. Gatos têm baixa capacidade de glicuronidação, o que prolonga a ação do piretroide nos canais de sódio dos neurônios.",
+    "hypotheses": [
+      {
+        "id": "h_permetrina",
+        "name": "Intoxicação por permetrina (piretroide)",
+        "plausibility": "key",
+        "vetidexId": "doenca_intox_permetrina",
+        "explanation": "Causa clássica de tremores em gatos expostos a produtos antipulgas para cães."
+      },
+      {
+        "id": "h_organofosforado",
+        "name": "Intoxicação por organofosforado ou carbamato",
+        "plausibility": "key",
+        "explanation": "Inseticidas anticolinesterásicos causam salivação, tremores e convulsões, mas também miose, bradicardia, diarreia e muita secreção brônquica."
+      },
+      {
+        "id": "h_epilepsia",
+        "name": "Epilepsia / crise convulsiva de outra causa",
+        "plausibility": "key",
+        "explanation": "Deve ser considerada em convulsões, mas a relação com o produto e os tremores contínuos com consciência preservada favorecem a intoxicação."
+      },
+      {
+        "id": "h_hipoglicemia",
+        "name": "Hipoglicemia",
+        "plausibility": "plausible",
+        "explanation": "Causa tremores e convulsões; a glicemia normal afasta essa hipótese."
+      },
+      {
+        "id": "h_hipocalcemia",
+        "name": "Hipocalcemia",
+        "plausibility": "plausible",
+        "explanation": "Causa tremores e tetania (por exemplo, no pós-parto); o cálcio ionizado normal afasta essa hipótese."
+      },
+      {
+        "id": "h_raiva",
+        "name": "Raiva",
+        "plausibility": "unlikely",
+        "explanation": "Sempre lembrar em animais com sinais neurológicos, mas a gata é vacinada, vive dentro de casa e o quadro começou logo após o produto."
+      },
+      {
+        "id": "h_trauma",
+        "name": "Traumatismo craniano",
+        "plausibility": "unlikely",
+        "explanation": "Não há história nem sinais de trauma."
+      }
+    ]
+  },
+  "conduct": {
+    "explanation": "Estabilizar primeiro: controlar tremores e convulsões com os fármacos escolhidos pela equipe, manter as vias aéreas e monitorar a temperatura. Em seguida, descontaminar com banho usando detergente neutro e água morna, secando bem para evitar hipotermia. Suporte com fluidoterapia e monitorização até a resolução dos sinais. Orientar o tutor a usar apenas produtos indicados para gatos.",
+    "options": [
+      {
+        "id": "c_estabilizar",
+        "text": "Estabilizar primeiro: controlar tremores e convulsões conforme a equipe, garantir vias aéreas e monitorar continuamente.",
+        "type": "suporte",
+        "category": "correct",
+        "explanation": "Tremores intensos causam hipertermia e lesão muscular; controlá-los é a prioridade."
+      },
+      {
+        "id": "c_relaxante",
+        "text": "Usar relaxante muscular de ação central (metocarbamol) e, se houver convulsões, anticonvulsivante, conforme prescrição do Dr. Marcos.",
+        "type": "tratamento",
+        "category": "correct",
+        "explanation": "Reduz tremores e fasciculações; anticonvulsivantes controlam crises quando presentes.",
+        "pharmacology": {
+          "drugClass": "Relaxante muscular de ação central (metocarbamol); anticonvulsivantes (como benzodiazepínicos), quando necessários",
+          "mechanism": "O metocarbamol deprime reflexos polissinápticos na medula espinhal, reduzindo espasmos e tremores; os benzodiazepínicos potencializam a ação inibitória do GABA no sistema nervoso central.",
+          "indications": "Tremores e convulsões em intoxicações como a por permetrina, sob prescrição.",
+          "contraindications": "Cautela em pacientes com depressão grave do sistema nervoso central; a formulação injetável do metocarbamol exige cautela em doença renal.",
+          "principles": "Escolha, via e repetição definidas pelo médico-veterinário, com monitorização da consciência e da respiração."
+        }
+      },
+      {
+        "id": "c_banho",
+        "text": "Depois de controlar os tremores, dar banho com detergente neutro e água morna, secar bem e manter a gata aquecida.",
+        "type": "procedimento",
+        "category": "correct",
+        "explanation": "Remove o produto oleoso que continua sendo absorvido. Água morna e secagem evitam a hipotermia após o banho."
+      },
+      {
+        "id": "c_temperatura",
+        "text": "Monitorar a temperatura: resfriar se a hipertermia persistir e aquecer se houver hipotermia depois do banho.",
+        "type": "suporte",
+        "category": "correct",
+        "explanation": "A temperatura muda rapidamente: sobe com os tremores e pode cair após o banho e com a sedação."
+      },
+      {
+        "id": "c_orientar",
+        "text": "Orientar o Gabriel: usar só produtos indicados para gatos e manter a Luna separada do Rex até o produto do cão secar.",
+        "type": "prevencao",
+        "category": "correct",
+        "explanation": "A prevenção é simples e evita novos casos; o contato com o cão recém-tratado também pode intoxicar o gato."
+      },
+      {
+        "id": "c_fluido",
+        "text": "Fluidoterapia intravenosa de suporte.",
+        "type": "suporte",
+        "category": "acceptable",
+        "explanation": "Ajuda na hidratação e na eliminação, especialmente com CK elevada e hipertermia."
+      },
+      {
+        "id": "c_lipidica",
+        "text": "Considerar emulsão lipídica intravenosa, conforme protocolo da equipe (evidências ainda limitadas).",
+        "type": "tratamento",
+        "category": "acceptable",
+        "explanation": "Tem sido usada em intoxicações por substâncias lipossolúveis, como a permetrina; é um adjuvante, não substitui o controle dos tremores e a descontaminação."
+      },
+      {
+        "id": "c_atropina",
+        "text": "Administrar atropina como em intoxicação por organofosforado.",
+        "type": "tratamento",
+        "category": "incorrect",
+        "explanation": "A atropina é antídoto para sinais muscarínicos de anticolinesterásicos; aqui há midríase e taquicardia, e ela pioraria a taquicardia."
+      },
+      {
+        "id": "c_casa",
+        "text": "Liberar para casa para observação, pois 'é só um antipulgas comum'.",
+        "type": "observacao",
+        "category": "critical",
+        "explanation": "A intoxicação por permetrina em gatos pode ser fatal sem tratamento.",
+        "consequence": "Os tremores progrediriam para convulsões prolongadas, hipertermia grave e lesão muscular, com risco de morte. O Dr. Marcos manteve a Luna internada."
+      },
+      {
+        "id": "c_paracetamol",
+        "text": "Dar paracetamol para baixar a febre.",
+        "type": "tratamento",
+        "category": "critical",
+        "explanation": "Paracetamol é extremamente tóxico para gatos, e a hipertermia vem dos tremores, não de febre.",
+        "consequence": "Gatos não metabolizam bem o paracetamol: ele causa metemoglobinemia e lesão hepática, podendo ser fatal. O Dr. Marcos impediu a administração."
+      },
+      {
+        "id": "c_vomito",
+        "text": "Induzir o vômito com água oxigenada.",
+        "type": "tratamento",
+        "category": "critical",
+        "explanation": "A exposição foi pela pele, não por ingestão; induzir vômito em gata com tremores é perigoso.",
+        "consequence": "Risco de aspiração do vômito para os pulmões e de lesão grave da mucosa gástrica pela água oxigenada, sem nenhum benefício. O Dr. Marcos interrompeu a conduta."
+      }
+    ]
+  },
+  "outcome": {
+    "success": "Com os tremores controlados, o banho e o suporte, a Luna para de tremer ao longo do dia e recebe alta no dia seguinte. Gabriel guardou a pipeta do Rex longe do alcance e comprou um antipulgas indicado para gatos.",
+    "partial": "A Luna se recuperou com a ajuda da equipe, mas houve atrasos ou falhas importantes no atendimento. Revise o relatório para entender as prioridades.",
+    "critical": "Uma decisão colocou a Luna em risco de morte. O Dr. Marcos interveio a tempo e explica que, em toxicologia felina, alguns erros não têm volta."
+  },
+  "clinicalTime": {
+    "budgetMinutes": 75,
+    "urgent": true,
+    "delayConsequence": "Tremores prolongados elevam a temperatura e lesionam os músculos; cada atraso aumenta o risco de convulsões, hipertermia grave e morte."
+  },
+  "vetidexUnlocks": [
+    "especie_gato",
+    "doenca_intox_permetrina",
+    "farm_toxicidade_felina",
+    "farm_relaxantes_musculares"
+  ],
+  "review": {
+    "topics": [
+      {
+        "id": "rt_luna_anam",
+        "title": "Anamnese toxicológica: produto, espécie e tempo",
+        "section": "anamnesis",
+        "vetidexId": "doenca_intox_permetrina"
+      },
+      {
+        "id": "rt_luna_exame",
+        "title": "Tremores × convulsões; pupilas e frequência cardíaca",
+        "section": "physicalExam",
+        "vetidexId": "doenca_intox_permetrina"
+      },
+      {
+        "id": "rt_luna_exames",
+        "title": "Exames rápidos na urgência neurológica",
+        "section": "tests",
+        "vetidexId": "exame_bioquimica"
+      },
+      {
+        "id": "rt_luna_dif",
+        "title": "Piretroides × organofosforados",
+        "section": "diagnosis",
+        "vetidexId": "farm_toxicidade_felina"
+      },
+      {
+        "id": "rt_luna_conduta",
+        "title": "Estabilizar, descontaminar e prevenir",
+        "section": "conduct",
+        "vetidexId": "farm_relaxantes_musculares"
+      }
+    ],
+    "questions": [
+      {
+        "id": "rq_luna_gato",
+        "topic": "Toxicologia",
+        "prompt": "Por que gatos são tão sensíveis à permetrina?",
+        "options": [
+          "Têm baixa capacidade de glicuronidação e eliminam o piretroide devagar",
+          "Porque absorvem menos pela pele",
+          "Porque a permetrina é um antibiótico",
+          "Não são mais sensíveis que cães"
+        ],
+        "correctIndex": 0,
+        "explanation": "A deficiência na glicuronidação prolonga a ação da permetrina nos canais de sódio dos neurônios.",
+        "triggeredBy": [
+          "q_produto",
+          "h_permetrina",
+          "c_casa"
+        ]
+      },
+      {
+        "id": "rq_luna_op",
+        "topic": "Diagnóstico",
+        "prompt": "Qual achado favorece intoxicação por organofosforado em vez de piretroide?",
+        "options": [
+          "Miose com bradicardia e muita secreção",
+          "Midríase com taquicardia",
+          "Pelo oleoso na nuca",
+          "Tremores faciais"
+        ],
+        "correctIndex": 0,
+        "explanation": "Os anticolinesterásicos causam sinais muscarínicos (miose, bradicardia, salivação, diarreia, broncorreia).",
+        "triggeredBy": [
+          "h_organofosforado",
+          "c_atropina",
+          "e_pupilas"
+        ]
+      },
+      {
+        "id": "rq_luna_ordem",
+        "topic": "Conduta",
+        "prompt": "Qual a ordem correta no atendimento da Luna?",
+        "options": [
+          "Estabilizar e controlar tremores, depois dar banho para descontaminar",
+          "Dar banho frio imediatamente, antes de qualquer outra medida",
+          "Esperar o resultado toxicológico para começar",
+          "Induzir vômito e liberar"
+        ],
+        "correctIndex": 0,
+        "explanation": "Manipular e dar banho em um gato com tremores intensos pode piorar o quadro; primeiro estabilize.",
+        "triggeredBy": [
+          "c_estabilizar",
+          "c_banho",
+          "c_vomito"
+        ]
+      },
+      {
+        "id": "rq_luna_banho",
+        "topic": "Conduta",
+        "prompt": "Como deve ser o banho de descontaminação?",
+        "options": [
+          "Com detergente neutro e água morna, secando bem e mantendo o gato aquecido",
+          "Com água gelada, para baixar a temperatura",
+          "Com álcool, para dissolver o produto",
+          "Com outro antipulgas"
+        ],
+        "correctIndex": 0,
+        "explanation": "O detergente remove o produto oleoso; água morna e secagem evitam hipotermia.",
+        "triggeredBy": [
+          "c_banho",
+          "c_temperatura",
+          "q_banho"
+        ]
+      },
+      {
+        "id": "rq_luna_paracetamol",
+        "topic": "Farmacologia",
+        "prompt": "Por que o paracetamol não pode ser usado em gatos?",
+        "options": [
+          "Causa metemoglobinemia e lesão hepática por deficiência de glicuronidação",
+          "Porque não baixa a febre em gatos",
+          "Porque é um anticonvulsivante",
+          "Porque só existe em comprimidos grandes"
+        ],
+        "correctIndex": 0,
+        "explanation": "Mesmo doses pequenas podem ser fatais para gatos.",
+        "triggeredBy": [
+          "c_paracetamol"
+        ]
+      },
+      {
+        "id": "rq_luna_glicemia",
+        "topic": "Exames",
+        "prompt": "Por que medir a glicemia logo no início em um gato com tremores?",
+        "options": [
+          "Porque a hipoglicemia causa tremores e convulsões e é tratável rapidamente",
+          "Porque confirma a intoxicação por permetrina",
+          "Porque é o exame mais caro",
+          "Não há motivo"
+        ],
+        "correctIndex": 0,
+        "explanation": "Causas metabólicas tratáveis devem ser afastadas cedo.",
+        "triggeredBy": [
+          "t_glicemia",
+          "t_eletrolitos",
+          "h_hipoglicemia"
+        ]
+      },
+      {
+        "id": "rq_luna_prevencao",
+        "topic": "Prevenção",
+        "prompt": "Qual orientação evita novos casos como o da Luna?",
+        "options": [
+          "Usar só produtos com indicação para gatos e separar o gato do cão recém-tratado",
+          "Usar metade da pipeta de cão no gato",
+          "Dar banho no gato toda semana com antipulgas de cão",
+          "Trocar o antipulgas por paracetamol"
+        ],
+        "correctIndex": 0,
+        "explanation": "Ler o rótulo e respeitar a espécie indicada é a principal prevenção.",
+        "triggeredBy": [
+          "c_orientar",
+          "q_outros"
+        ]
+      },
+      {
+        "id": "rq_luna_tempo",
+        "topic": "Urgência",
+        "prompt": "Em uma urgência toxicológica, pedir tomografia e pesquisa toxicológica antes de tratar:",
+        "options": [
+          "Atrasa o tratamento sem mudar a conduta",
+          "É obrigatório",
+          "Substitui a estabilização",
+          "Acelera a recuperação"
+        ],
+        "correctIndex": 0,
+        "explanation": "A história de exposição e o exame clínico bastam para iniciar o tratamento.",
+        "triggeredBy": [
+          "t_toxicologico",
+          "t_tomografia"
+        ]
+      },
+      {
+        "id": "rq_luna_mecanismo",
+        "topic": "Farmacologia",
+        "prompt": "Qual é o mecanismo de ação tóxica da permetrina?",
+        "options": [
+          "Prolonga a abertura dos canais de sódio dos neurônios",
+          "Inibe a acetilcolinesterase",
+          "Bloqueia receptores de histamina",
+          "Inibe a síntese de proteínas bacterianas"
+        ],
+        "correctIndex": 0,
+        "explanation": "A despolarização prolongada causa hiperexcitabilidade: tremores, fasciculações e convulsões.",
+        "triggeredBy": [
+          "h_permetrina",
+          "h_organofosforado"
+        ]
+      },
+      {
+        "id": "rq_luna_hipertermia",
+        "topic": "Fisiologia",
+        "prompt": "Por que a Luna está com 40,3 °C?",
+        "options": [
+          "A atividade muscular dos tremores produz calor",
+          "Porque tem uma infecção bacteriana",
+          "Porque a permetrina é um pirógeno",
+          "Porque o ambiente da clínica é quente"
+        ],
+        "correctIndex": 0,
+        "explanation": "É hipertermia por atividade muscular, não febre; por isso antitérmicos não resolvem.",
+        "triggeredBy": [
+          "e_temp",
+          "c_paracetamol",
+          "c_temperatura"
+        ]
+      },
+      {
+        "id": "rq_luna_cao",
+        "topic": "Toxicologia",
+        "prompt": "Por que o Rex, que recebeu o mesmo produto, está bem?",
+        "options": [
+          "Cães metabolizam a permetrina com eficiência",
+          "Porque o Rex é maior que a Luna, apenas",
+          "Porque o produto vence em cães",
+          "Porque cães não absorvem nada pela pele"
+        ],
+        "correctIndex": 0,
+        "explanation": "A diferença é metabólica: gatos glicuronidam mal vários compostos.",
+        "triggeredBy": [
+          "q_outros",
+          "f_cao_bem"
+        ]
+      },
+      {
+        "id": "rq_luna_tremor",
+        "topic": "Semiologia",
+        "prompt": "Qual a diferença entre tremor e convulsão generalizada?",
+        "options": [
+          "No tremor, a consciência geralmente está preservada",
+          "No tremor, o animal sempre perde a consciência",
+          "São a mesma coisa",
+          "Convulsões nunca ocorrem em intoxicações"
+        ],
+        "correctIndex": 0,
+        "explanation": "Diferenciar ajuda a escolher o tratamento: relaxantes musculares para tremores, anticonvulsivantes para crises.",
+        "triggeredBy": [
+          "e_neuro",
+          "q_convulsao"
+        ]
+      },
+      {
+        "id": "rq_luna_ck",
+        "topic": "Exames",
+        "prompt": "A CK (creatinoquinase) elevada na Luna indica:",
+        "options": [
+          "Lesão muscular causada pelos tremores",
+          "Lesão hepática",
+          "Infecção urinária",
+          "Hipoglicemia"
+        ],
+        "correctIndex": 0,
+        "explanation": "A atividade muscular intensa libera CK; a fluidoterapia ajuda a proteger os rins.",
+        "triggeredBy": [
+          "t_bioquimica",
+          "c_fluido"
+        ]
+      },
+      {
+        "id": "rq_luna_lipidica",
+        "topic": "Conduta",
+        "prompt": "A emulsão lipídica intravenosa na intoxicação por permetrina é:",
+        "options": [
+          "Um adjuvante com evidências ainda limitadas",
+          "O único tratamento necessário",
+          "Contraindicada em qualquer caso",
+          "Um antídoto específico e comprovado"
+        ],
+        "correctIndex": 0,
+        "explanation": "Pode ser usada conforme protocolo da equipe, sem substituir estabilização e descontaminação.",
+        "triggeredBy": [
+          "c_lipidica"
+        ]
+      },
+      {
+        "id": "rq_luna_rotulo",
+        "topic": "Prevenção",
+        "prompt": "Ao comprar um antiparasitário, o que conferir no rótulo?",
+        "options": [
+          "Espécie indicada, faixa de peso e princípio ativo",
+          "Apenas o preço",
+          "Somente a cor da embalagem",
+          "Nada, todos são iguais"
+        ],
+        "correctIndex": 0,
+        "explanation": "Produtos para cães podem ser tóxicos para gatos; a faixa de peso evita superdosagem.",
+        "triggeredBy": [
+          "c_orientar",
+          "q_produto"
+        ]
+      }
+    ]
+  }
+}

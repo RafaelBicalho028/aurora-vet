@@ -209,6 +209,8 @@ export class GameState {
    * para cada missão concluída, inicia as próximas que ainda não começaram.
    */
   ensureQuestChain(): void {
+    // saves anteriores à Etapa 2: quem já concluiu "Rumo à Etapa 2" recebe a liberação da Vila
+    if (this.data.quests['q_proxima_etapa']?.status === 'completed' && !this.data.flags['etapa2_liberada']) this.setFlag('etapa2_liberada');
     let changed = true;
     while (changed) {
       changed = false;

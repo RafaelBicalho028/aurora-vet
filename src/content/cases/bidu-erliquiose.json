@@ -1,0 +1,1129 @@
+{
+  "schemaVersion": 1,
+  "id": "caso_bidu_erliquiose",
+  "title": "Febre e Sangramento — Bidu, o cão dos carrapatos",
+  "missionId": "q_vila_bidu",
+  "difficulty": 2,
+  "minStage": 2,
+  "baseXp": 260,
+  "passScore": 60,
+  "disciplines": [
+    {
+      "discipline": "clinica",
+      "skill": "semiologia",
+      "section": "anamnesis"
+    },
+    {
+      "discipline": "clinica",
+      "skill": "semiologia",
+      "section": "physicalExam"
+    },
+    {
+      "discipline": "clinica",
+      "skill": "exames",
+      "section": "tests"
+    },
+    {
+      "discipline": "clinica",
+      "skill": "diferencial",
+      "section": "diagnosis"
+    },
+    {
+      "discipline": "clinica",
+      "skill": "raciocinio",
+      "section": "all"
+    },
+    {
+      "discipline": "clinica",
+      "skill": "condutas",
+      "section": "conduct"
+    },
+    {
+      "discipline": "parasitologia",
+      "skill": "ectoparasitas",
+      "section": "all"
+    },
+    {
+      "discipline": "parasitologia",
+      "skill": "diagnostico_parasitologico",
+      "section": "tests"
+    },
+    {
+      "discipline": "farmacologia",
+      "skill": "antimicrobianos",
+      "section": "conduct"
+    },
+    {
+      "discipline": "farmacologia",
+      "skill": "analgesia",
+      "section": "conduct"
+    }
+  ],
+  "educationalNotice": "Material educacional simplificado para fins didáticos. Não substitui a avaliação de um(a) médico(a)-veterinário(a) nem constitui protocolo de prescrição. Pendente de validação técnica.",
+  "validation": {
+    "status": "pendente",
+    "reviewer": null,
+    "date": null,
+    "notes": "Rascunho da Etapa 2. Revisar valores de referência, sensibilidade dos testes e condutas com docente de Clínica Médica de Pequenos Animais / Doenças Infecciosas."
+  },
+  "references": [
+    {
+      "refId": "harrus2011",
+      "supports": "Fases da erliquiose monocítica canina, trombocitopenia e métodos diagnósticos (esfregaço, sorologia, PCR)."
+    },
+    {
+      "refId": "taylor2016",
+      "supports": "Biologia de Rhipicephalus sanguineus e de Babesia spp.; controle de carrapatos."
+    },
+    {
+      "refId": "nelson2019",
+      "supports": "Abordagem do cão com sangramento: distúrbios plaquetários × de coagulação; intoxicação por rodenticidas anticoagulantes."
+    },
+    {
+      "refId": "riviere2018",
+      "supports": "Farmacologia das tetraciclinas e efeitos dos AINEs sobre a função plaquetária."
+    },
+    {
+      "refId": "feitosa2014",
+      "supports": "Roteiro de anamnese e exame físico geral."
+    }
+  ],
+  "patient": {
+    "name": "Bidu",
+    "species": "canino",
+    "speciesLabel": "Cão (Canis lupus familiaris)",
+    "breed": "Sem raça definida (SRD)",
+    "sex": "Macho não castrado",
+    "age": "6 anos",
+    "weightKg": 22,
+    "sprite": "dog_bidu",
+    "tutorName": "Dona Cida",
+    "tutorNpc": "cida",
+    "presentingComplaint": "Desanimado e comendo pouco há uma semana; hoje sangrou pelo nariz."
+  },
+  "intro": "Dona Cida trouxe o Bidu à Clínica Veterinária da Vila. Ele está quieto, quente ao toque e, pela manhã, sangrou pelo nariz. Você conduzirá o atendimento sob supervisão do Dr. Marcos. Use luvas: há carrapatos no paciente, e sangramentos exigem cuidado na manipulação.",
+  "supervisor": {
+    "name": "Dr. Marcos Vieira",
+    "npc": "marcos",
+    "tips": {
+      "anamnesis": "Sangramento tem muitas causas. Pergunte sobre carrapatos, acesso a venenos, traumas e medicamentos — e se alguém já deu algum remédio em casa.",
+      "physicalExam": "Procure onde e como o paciente sangra: pontos pequenos (petéquias) sugerem problema de plaquetas; hematomas e sangramento em cavidades sugerem falha da coagulação.",
+      "tests": "Hemograma com contagem de plaquetas e coagulograma separam os grandes grupos de causas. Depois, confirme o agente com testes específicos.",
+      "diagnosis": "Em região com carrapatos, pense nas hemoparasitoses — mas não esqueça os raticidas anticoagulantes e as causas imunomediadas.",
+      "conduct": "Trate a causa, controle o vetor no paciente, nos contactantes e no ambiente — e cuidado com fármacos que pioram sangramentos."
+    }
+  },
+  "anamnesis": {
+    "questions": [
+      {
+        "id": "q_queixa",
+        "category": "Queixa principal",
+        "text": "O que está acontecendo com o Bidu?",
+        "answer": "Faz uma semana que ele está desanimado, comendo pouco e quente. Hoje de manhã pingou sangue do nariz.",
+        "relevance": "essential",
+        "findingId": "f_apatia_anorexia",
+        "explanation": "Apatia, hiporexia e febre com sangramento formam um quadro sistêmico que exige investigação de causas infecciosas, tóxicas e imunomediadas."
+      },
+      {
+        "id": "q_sangramento",
+        "category": "Queixa principal",
+        "text": "Como foi o sangramento? Viu sangue em outro lugar?",
+        "answer": "Saiu de uma narina só, umas gotas. E vi umas manchinhas roxas na barriga dele.",
+        "relevance": "essential",
+        "findingId": "f_epistaxe",
+        "explanation": "Epistaxe unilateral e manchas roxas na pele direcionam para um distúrbio de hemostasia. Detalhar onde e como sangra ajuda a separar problemas de plaquetas de problemas de coagulação."
+      },
+      {
+        "id": "q_carrapatos",
+        "category": "Ectoparasitas",
+        "text": "Ele tem carrapatos?",
+        "answer": "Vive cheio! O quintal é de terra e ele dorme numa casinha de madeira. Eu tiro com a mão quando vejo.",
+        "relevance": "essential",
+        "findingId": "f_carrapatos",
+        "explanation": "O carrapato-marrom (Rhipicephalus sanguineus) transmite Ehrlichia canis e Babesia vogeli. Infestação frequente é um forte fator de risco."
+      },
+      {
+        "id": "q_controle",
+        "category": "Ectoparasitas",
+        "text": "Usa algum carrapaticida? Quando foi a última vez?",
+        "answer": "Coloquei uma coleira há uns seis meses, mas ele perdeu. Depois disso, nada.",
+        "relevance": "essential",
+        "requires": [
+          "q_carrapatos"
+        ],
+        "findingId": "f_sem_controle",
+        "explanation": "Controle de carrapatos irregular mantém a exposição ao vetor. Sempre pergunte o produto, a data e a regularidade."
+      },
+      {
+        "id": "q_veneno",
+        "category": "Ambiente",
+        "text": "Ele pode ter tido acesso a veneno de rato ou outro produto tóxico?",
+        "answer": "Aqui em casa ninguém usa veneno. Ele não sai sozinho, o quintal é fechado.",
+        "relevance": "essential",
+        "findingId": "f_sem_raticida",
+        "explanation": "Raticidas anticoagulantes causam sangramentos graves e são diferencial obrigatório. A ausência de acesso reduz, mas não elimina, a suspeita — por isso o coagulograma é importante."
+      },
+      {
+        "id": "q_medicamentos",
+        "category": "Medicamentos",
+        "text": "Ele recebeu algum remédio em casa?",
+        "answer": "Nada ainda. Ia dar um remédio de dor que tenho aqui, mas resolvi trazer antes.",
+        "relevance": "essential",
+        "explanation": "Saber o que foi dado evita interações e toxicidades. Anti-inflamatórios em um cão que sangra podem agravar hemorragias."
+      },
+      {
+        "id": "q_trauma",
+        "category": "Histórico",
+        "text": "Ele levou alguma pancada, brigou ou caiu?",
+        "answer": "Não que eu saiba. Ele fica no quintal e não brigou com ninguém.",
+        "relevance": "complementary",
+        "explanation": "Trauma é causa comum de epistaxe e hematomas; sua ausência aponta para causa sistêmica."
+      },
+      {
+        "id": "q_outros",
+        "category": "Contactantes",
+        "text": "Tem outros animais em casa? Como eles estão?",
+        "answer": "A Mel, outra cadela. Também tem carrapato, mas está bem, comendo normal.",
+        "relevance": "complementary",
+        "findingId": "f_contactante",
+        "explanation": "Contactantes compartilham o vetor e podem estar infectados sem sinais clínicos. O controle deve incluir todos os cães."
+      },
+      {
+        "id": "q_vacinas",
+        "category": "Prevenção",
+        "text": "As vacinas estão em dia?",
+        "answer": "Estão sim, a da raiva e a 'das doenças' tomou no começo do ano.",
+        "relevance": "complementary",
+        "explanation": "A vacinação reduz a probabilidade de doenças como cinomose, que também pode causar febre e apatia."
+      },
+      {
+        "id": "q_viagem",
+        "category": "Epidemiologia",
+        "text": "Ele já morou ou viajou para outra região?",
+        "answer": "Nunca saiu da Vila.",
+        "relevance": "complementary",
+        "explanation": "A epidemiologia local orienta os diferenciais. A leishmaniose visceral, por exemplo, depende da presença do vetor (flebotomíneo) na região."
+      },
+      {
+        "id": "q_racao",
+        "category": "Alimentação",
+        "text": "Qual a marca da ração dele?",
+        "answer": "Uma ração de saco grande, a mais em conta do mercado.",
+        "relevance": "irrelevant",
+        "explanation": "A marca da ração não ajuda a esclarecer febre com sangramento. Perguntas fora do foco custam tempo."
+      },
+      {
+        "id": "q_banho",
+        "category": "Manejo",
+        "text": "Com que frequência ele toma banho?",
+        "answer": "Uma vez por mês, mais ou menos.",
+        "relevance": "irrelevant",
+        "explanation": "A frequência de banho não contribui para este diagnóstico."
+      },
+      {
+        "id": "q_brinquedo",
+        "category": "Comportamento",
+        "text": "Qual é o brinquedo favorito dele?",
+        "answer": "Uma bola velha de tênis!",
+        "relevance": "irrelevant",
+        "explanation": "Simpático, mas irrelevante para a investigação clínica."
+      }
+    ]
+  },
+  "physicalExam": {
+    "items": [
+      {
+        "id": "e_temp",
+        "label": "Temperatura retal",
+        "group": "vitais",
+        "result": "40,1 °C",
+        "reference": {
+          "min": 37.5,
+          "max": 39.2,
+          "unit": "°C"
+        },
+        "status": "altered",
+        "relevance": "essential",
+        "findingId": "f_febre",
+        "explanation": "Febre sugere processo infeccioso ou inflamatório sistêmico."
+      },
+      {
+        "id": "e_fc",
+        "label": "Frequência cardíaca",
+        "group": "vitais",
+        "result": "128 bpm",
+        "reference": {
+          "min": 60,
+          "max": 160,
+          "unit": "bpm"
+        },
+        "status": "normal",
+        "relevance": "essential",
+        "explanation": "Dentro da faixa de referência para cão adulto em repouso."
+      },
+      {
+        "id": "e_fr",
+        "label": "Frequência respiratória",
+        "group": "vitais",
+        "result": "34 mpm",
+        "reference": {
+          "min": 10,
+          "max": 30,
+          "unit": "mpm"
+        },
+        "status": "altered",
+        "relevance": "complementary",
+        "explanation": "Taquipneia leve pode acompanhar a febre e o desconforto."
+      },
+      {
+        "id": "e_mucosas",
+        "label": "Mucosas",
+        "group": "geral",
+        "result": "Pálidas, com petéquias na gengiva",
+        "reference": "Róseas e úmidas, sem lesões",
+        "status": "altered",
+        "relevance": "essential",
+        "findingId": "f_petequias",
+        "explanation": "Palidez sugere anemia; petéquias em mucosa indicam sangramento capilar típico de problemas plaquetários."
+      },
+      {
+        "id": "e_tpc",
+        "label": "Tempo de preenchimento capilar",
+        "group": "geral",
+        "result": "2 s",
+        "reference": {
+          "min": 0,
+          "max": 2,
+          "unit": "s"
+        },
+        "status": "normal",
+        "relevance": "complementary",
+        "explanation": "Perfusão periférica preservada."
+      },
+      {
+        "id": "e_hidratacao",
+        "label": "Hidratação",
+        "group": "geral",
+        "result": "Desidratação leve (turgor cutâneo discretamente diminuído)",
+        "reference": "Turgor normal",
+        "status": "altered",
+        "relevance": "complementary",
+        "explanation": "A hiporexia e a febre favorecem a desidratação."
+      },
+      {
+        "id": "e_linfonodos",
+        "label": "Linfonodos",
+        "group": "sistemas",
+        "result": "Poplíteos e pré-escapulares aumentados, indolores",
+        "reference": "Pequenos, móveis e indolores",
+        "status": "altered",
+        "relevance": "essential",
+        "findingId": "f_linfadenomegalia",
+        "explanation": "Linfadenomegalia generalizada é comum em doenças infecciosas sistêmicas, como erliquiose e leishmaniose."
+      },
+      {
+        "id": "e_pele",
+        "label": "Pele e pelame",
+        "group": "sistemas",
+        "result": "Petéquias e equimoses no abdome ventral; vários carrapatos nas orelhas e entre os dedos",
+        "reference": "Sem lesões ou parasitas",
+        "status": "altered",
+        "relevance": "essential",
+        "findingId": "f_carrapatos_exame",
+        "explanation": "Os carrapatos confirmam a exposição ao vetor; petéquias e equimoses reforçam o distúrbio de hemostasia."
+      },
+      {
+        "id": "e_abdome",
+        "label": "Palpação abdominal",
+        "group": "sistemas",
+        "result": "Baço discretamente aumentado, sem dor",
+        "reference": "Sem dor, órgãos de tamanho normal",
+        "status": "altered",
+        "relevance": "complementary",
+        "findingId": "f_esplenomegalia",
+        "explanation": "Esplenomegalia ocorre em hemoparasitoses e doenças infecciosas sistêmicas."
+      },
+      {
+        "id": "e_ausculta",
+        "label": "Auscultação cardiopulmonar",
+        "group": "sistemas",
+        "result": "Ritmo regular; campos pulmonares sem ruídos anormais",
+        "reference": "Sem alterações",
+        "status": "normal",
+        "relevance": "complementary",
+        "explanation": "Ausência de alterações cardiorrespiratórias."
+      }
+    ]
+  },
+  "tests": {
+    "budgetHint": 320,
+    "items": [
+      {
+        "id": "t_hemograma",
+        "name": "Hemograma completo com contagem de plaquetas",
+        "cost": 60,
+        "turnaround": "30 min",
+        "category": "indicated",
+        "result": "Trombocitopenia acentuada e anemia leve não regenerativa; leucócitos no limite inferior.",
+        "table": [
+          {
+            "param": "Plaquetas",
+            "value": "35.000 /µL",
+            "ref": "200.000–500.000 /µL",
+            "flag": "L"
+          },
+          {
+            "param": "Hematócrito",
+            "value": "30 %",
+            "ref": "37–55 %",
+            "flag": "L"
+          },
+          {
+            "param": "Reticulócitos",
+            "value": "Baixos",
+            "ref": "Aumentam em anemias regenerativas",
+            "flag": "L"
+          },
+          {
+            "param": "Leucócitos",
+            "value": "6.200 /µL",
+            "ref": "6.000–17.000 /µL",
+            "flag": ""
+          }
+        ],
+        "findingId": "f_trombocitopenia",
+        "justification": "Primeiro exame no cão que sangra: mostra se há falta de plaquetas e avalia anemia e leucócitos."
+      },
+      {
+        "id": "t_coagulograma",
+        "name": "Coagulograma (TP e TTPa)",
+        "cost": 80,
+        "turnaround": "20 min",
+        "category": "indicated",
+        "result": "Tempo de protrombina e tempo de tromboplastina parcial ativada dentro da referência.",
+        "table": [
+          {
+            "param": "TP",
+            "value": "7,5 s",
+            "ref": "6–9 s",
+            "flag": ""
+          },
+          {
+            "param": "TTPa",
+            "value": "14 s",
+            "ref": "10–17 s",
+            "flag": ""
+          }
+        ],
+        "findingId": "f_coag_normal",
+        "justification": "Separa distúrbios de plaquetas de falhas dos fatores de coagulação. Raticidas anticoagulantes prolongam o TP (e depois o TTPa)."
+      },
+      {
+        "id": "t_esfregaco",
+        "name": "Pesquisa de hemoparasitas em esfregaço sanguíneo",
+        "cost": 30,
+        "turnaround": "20 min",
+        "category": "indicated",
+        "result": "Não foram observadas mórulas de Ehrlichia nem piroplasmas de Babesia.",
+        "justification": "Exame barato e rápido; quando positivo, confirma. Quando negativo, não exclui: a sensibilidade é baixa."
+      },
+      {
+        "id": "t_sorologia",
+        "name": "Teste rápido sorológico para Ehrlichia canis",
+        "cost": 90,
+        "turnaround": "10 min",
+        "category": "indicated",
+        "result": "Reagente: anticorpos anti-Ehrlichia canis detectados.",
+        "findingId": "f_sorologia_pos",
+        "justification": "Sorologia positiva com sinais clínicos compatíveis sustenta o diagnóstico de erliquiose."
+      },
+      {
+        "id": "t_bioquimica",
+        "name": "Bioquímica sérica (proteínas, função renal e hepática)",
+        "cost": 110,
+        "turnaround": "40 min",
+        "category": "acceptable",
+        "result": "Globulinas aumentadas e albumina levemente baixa; ureia, creatinina e enzimas hepáticas normais.",
+        "table": [
+          {
+            "param": "Globulinas",
+            "value": "5,1 g/dL",
+            "ref": "2,5–4,5 g/dL",
+            "flag": "H"
+          },
+          {
+            "param": "Albumina",
+            "value": "2,4 g/dL",
+            "ref": "2,6–3,3 g/dL",
+            "flag": "L"
+          },
+          {
+            "param": "Creatinina",
+            "value": "1,1 mg/dL",
+            "ref": "0,5–1,5 mg/dL",
+            "flag": ""
+          },
+          {
+            "param": "ALT",
+            "value": "45 U/L",
+            "ref": "10–88 U/L",
+            "flag": ""
+          }
+        ],
+        "findingId": "f_hiperglobulinemia",
+        "justification": "Útil para avaliar o estado geral e o comprometimento de órgãos. A hiperglobulinemia é comum na erliquiose."
+      },
+      {
+        "id": "t_leish",
+        "name": "Teste sorológico para leishmaniose visceral",
+        "cost": 90,
+        "turnaround": "10 min",
+        "category": "acceptable",
+        "result": "Não reagente.",
+        "findingId": "f_leish_neg",
+        "justification": "Diferencial importante em áreas endêmicas; o resultado negativo reduz a suspeita."
+      },
+      {
+        "id": "t_pcr",
+        "name": "PCR para Ehrlichia canis",
+        "cost": 220,
+        "turnaround": "5 dias",
+        "category": "acceptable",
+        "result": "Positivo para DNA de Ehrlichia canis.",
+        "findingId": "f_pcr_pos",
+        "justification": "Confirma a infecção ativa, mas o resultado demora; não deve atrasar o início do tratamento."
+      },
+      {
+        "id": "t_radiografia",
+        "name": "Radiografia de tórax",
+        "cost": 180,
+        "turnaround": "20 min",
+        "category": "unnecessary",
+        "result": "Sem alterações significativas.",
+        "justification": "Não há sinais respiratórios que justifiquem o exame neste momento."
+      },
+      {
+        "id": "t_medula",
+        "name": "Aspirado de medula óssea",
+        "cost": 350,
+        "turnaround": "2 dias",
+        "category": "unnecessary",
+        "result": "Medula com hiperplasia megacariocítica.",
+        "justification": "Procedimento invasivo, reservado a citopenias persistentes ou suspeita de fase crônica. Não é o primeiro passo."
+      },
+      {
+        "id": "t_urocultura",
+        "name": "Urocultura",
+        "cost": 150,
+        "turnaround": "3 dias",
+        "category": "unnecessary",
+        "result": "Sem crescimento bacteriano.",
+        "justification": "Não há sinais urinários; o exame não ajuda a explicar febre com sangramento."
+      }
+    ]
+  },
+  "findings": [
+    {
+      "id": "f_apatia_anorexia",
+      "label": "Apatia e hiporexia há uma semana",
+      "supports": [
+        "h_erliquiose",
+        "h_babesiose",
+        "h_leishmaniose",
+        "h_pti"
+      ]
+    },
+    {
+      "id": "f_epistaxe",
+      "label": "Epistaxe unilateral e manchas roxas na pele",
+      "supports": [
+        "h_erliquiose",
+        "h_rodenticida",
+        "h_pti",
+        "h_leishmaniose"
+      ]
+    },
+    {
+      "id": "f_carrapatos",
+      "label": "Infestação frequente por carrapatos (relato)",
+      "supports": [
+        "h_erliquiose",
+        "h_babesiose"
+      ]
+    },
+    {
+      "id": "f_sem_controle",
+      "label": "Sem controle de carrapatos há seis meses",
+      "supports": [
+        "h_erliquiose",
+        "h_babesiose"
+      ]
+    },
+    {
+      "id": "f_sem_raticida",
+      "label": "Sem acesso conhecido a raticidas",
+      "supports": [
+        "h_erliquiose",
+        "h_babesiose",
+        "h_pti",
+        "h_leishmaniose"
+      ]
+    },
+    {
+      "id": "f_contactante",
+      "label": "Contactante canina também com carrapatos",
+      "supports": [
+        "h_erliquiose",
+        "h_babesiose"
+      ]
+    },
+    {
+      "id": "f_febre",
+      "label": "Febre (40,1 °C)",
+      "supports": [
+        "h_erliquiose",
+        "h_babesiose",
+        "h_leishmaniose"
+      ]
+    },
+    {
+      "id": "f_petequias",
+      "label": "Mucosas pálidas com petéquias",
+      "supports": [
+        "h_erliquiose",
+        "h_pti",
+        "h_leishmaniose"
+      ]
+    },
+    {
+      "id": "f_linfadenomegalia",
+      "label": "Linfadenomegalia generalizada",
+      "supports": [
+        "h_erliquiose",
+        "h_leishmaniose",
+        "h_babesiose"
+      ]
+    },
+    {
+      "id": "f_carrapatos_exame",
+      "label": "Carrapatos no exame, com petéquias e equimoses ventrais",
+      "supports": [
+        "h_erliquiose",
+        "h_babesiose"
+      ]
+    },
+    {
+      "id": "f_esplenomegalia",
+      "label": "Esplenomegalia discreta",
+      "supports": [
+        "h_erliquiose",
+        "h_babesiose",
+        "h_leishmaniose"
+      ]
+    },
+    {
+      "id": "f_trombocitopenia",
+      "label": "Trombocitopenia acentuada (35.000/µL) com anemia leve",
+      "supports": [
+        "h_erliquiose",
+        "h_babesiose",
+        "h_pti",
+        "h_leishmaniose",
+        "h_rodenticida"
+      ]
+    },
+    {
+      "id": "f_coag_normal",
+      "label": "TP e TTPa normais",
+      "supports": [
+        "h_erliquiose",
+        "h_babesiose",
+        "h_pti",
+        "h_leishmaniose"
+      ]
+    },
+    {
+      "id": "f_sorologia_pos",
+      "label": "Sorologia reagente para Ehrlichia canis",
+      "supports": [
+        "h_erliquiose"
+      ]
+    },
+    {
+      "id": "f_hiperglobulinemia",
+      "label": "Hiperglobulinemia",
+      "supports": [
+        "h_erliquiose",
+        "h_leishmaniose"
+      ]
+    },
+    {
+      "id": "f_leish_neg",
+      "label": "Sorologia para leishmaniose não reagente",
+      "supports": [
+        "h_erliquiose",
+        "h_babesiose",
+        "h_rodenticida",
+        "h_pti"
+      ]
+    },
+    {
+      "id": "f_pcr_pos",
+      "label": "PCR positivo para Ehrlichia canis",
+      "supports": [
+        "h_erliquiose"
+      ]
+    }
+  ],
+  "diagnosis": {
+    "correctId": "h_erliquiose",
+    "expectedDifferentials": [
+      "h_erliquiose",
+      "h_babesiose",
+      "h_rodenticida"
+    ],
+    "keyEvidence": [
+      "f_carrapatos_exame",
+      "f_trombocitopenia",
+      "f_coag_normal",
+      "f_sorologia_pos"
+    ],
+    "minDifferentials": 3,
+    "maxDifferentials": 6,
+    "explanation": "Erliquiose monocítica canina (fase aguda): exposição ao carrapato-marrom, febre, linfadenomegalia, petéquias e trombocitopenia acentuada, com coagulograma normal (afasta raticida anticoagulante como causa principal) e sorologia reagente para E. canis. O esfregaço negativo não exclui a doença. Babesiose e leishmaniose são diferenciais importantes na mesma região.",
+    "hypotheses": [
+      {
+        "id": "h_erliquiose",
+        "name": "Erliquiose monocítica canina",
+        "plausibility": "key",
+        "vetidexId": "doenca_erliquiose",
+        "explanation": "Doença por Ehrlichia canis transmitida pelo carrapato-marrom; trombocitopenia é achado frequente."
+      },
+      {
+        "id": "h_babesiose",
+        "name": "Babesiose canina",
+        "plausibility": "key",
+        "vetidexId": "doenca_babesiose",
+        "explanation": "Hemoparasitose transmitida pelo mesmo carrapato; causa anemia hemolítica, febre e trombocitopenia. Pode coexistir com a erliquiose."
+      },
+      {
+        "id": "h_rodenticida",
+        "name": "Intoxicação por raticida anticoagulante",
+        "plausibility": "key",
+        "explanation": "Causa sangramentos graves por falta de fatores de coagulação dependentes de vitamina K; prolonga o TP. Aqui, o coagulograma normal e a ausência de acesso afastam essa hipótese."
+      },
+      {
+        "id": "h_pti",
+        "name": "Trombocitopenia imunomediada",
+        "plausibility": "plausible",
+        "explanation": "Destruição imunomediada de plaquetas; é diagnóstico de exclusão, depois de descartadas causas infecciosas."
+      },
+      {
+        "id": "h_leishmaniose",
+        "name": "Leishmaniose visceral canina",
+        "plausibility": "plausible",
+        "explanation": "Pode causar febre, linfadenomegalia, epistaxe e hiperglobulinemia; depende da presença do vetor na região. A sorologia não reagente reduz a suspeita."
+      },
+      {
+        "id": "h_hemofilia",
+        "name": "Hemofilia hereditária",
+        "plausibility": "unlikely",
+        "explanation": "Distúrbio congênito de fatores de coagulação que se manifesta desde cedo e prolonga o TTPa; improvável em cão adulto sem histórico."
+      },
+      {
+        "id": "h_cinomose",
+        "name": "Cinomose",
+        "plausibility": "unlikely",
+        "explanation": "Doença viral com sinais respiratórios, gastrintestinais e neurológicos; improvável em cão adulto vacinado e sem esses sinais."
+      }
+    ]
+  },
+  "conduct": {
+    "explanation": "Tratamento antimicrobiano específico com doxiciclina pelo período definido pelo médico-veterinário, controle de carrapatos no Bidu, na Mel e no ambiente, cuidados de suporte e reavaliação das plaquetas. Evitar fármacos que prejudicam a hemostasia, como os AINEs.",
+    "options": [
+      {
+        "id": "c_doxiciclina",
+        "text": "Iniciar doxiciclina, conforme prescrição do Dr. Marcos, e explicar ao tutor a importância de completar o tratamento.",
+        "type": "tratamento",
+        "category": "correct",
+        "explanation": "A doxiciclina é o tratamento de escolha para a erliquiose canina; a melhora clínica costuma ser rápida, mas o tratamento é prolongado.",
+        "pharmacology": {
+          "drugClass": "Tetraciclinas (doxiciclina)",
+          "mechanism": "Liga-se à subunidade ribossomal 30S e inibe a síntese proteica bacteriana; tem boa penetração intracelular, importante para bactérias como Ehrlichia.",
+          "indications": "Erliquiose e outras infecções por bactérias intracelulares sensíveis, sob prescrição.",
+          "contraindications": "Cautela em gestantes e filhotes em formação dentária; comprimidos podem causar esofagite se ficarem no esôfago (oferecer água ou alimento após a administração).",
+          "principles": "Duração e esquema definidos pelo médico-veterinário; reavaliar plaquetas e sinais clínicos durante o tratamento."
+        }
+      },
+      {
+        "id": "c_carrapatos",
+        "text": "Controlar carrapatos no Bidu e na Mel com produtos para cães e tratar o ambiente (quintal e casinha).",
+        "type": "prevencao",
+        "category": "correct",
+        "explanation": "Sem controle do vetor, há reinfecção. O carrapato-marrom vive no ambiente doméstico: casinhas, frestas e muros."
+      },
+      {
+        "id": "c_monitorar",
+        "text": "Agendar retorno para reavaliar hemograma e plaquetas e orientar sinais de alerta (sangramentos, apatia).",
+        "type": "observacao",
+        "category": "correct",
+        "explanation": "A contagem de plaquetas mostra a resposta ao tratamento e ajuda a detectar complicações."
+      },
+      {
+        "id": "c_suporte",
+        "text": "Cuidados de suporte: repouso, evitar traumas e oferecer alimento palatável e água à vontade.",
+        "type": "suporte",
+        "category": "acceptable",
+        "explanation": "Medidas simples que ajudam na recuperação e reduzem o risco de sangramentos."
+      },
+      {
+        "id": "c_zoonose",
+        "text": "Explicar à tutora que a erliquiose não passa diretamente do cão para as pessoas, mas que o controle de carrapatos protege toda a família.",
+        "type": "prevencao",
+        "category": "acceptable",
+        "explanation": "A transmissão depende do carrapato; orientar sobre o vetor é parte da Saúde Única."
+      },
+      {
+        "id": "c_transfusao",
+        "text": "Realizar transfusão de sangue imediatamente.",
+        "type": "procedimento",
+        "category": "incorrect",
+        "explanation": "A anemia é leve e o paciente está estável; a transfusão tem riscos e não está indicada agora."
+      },
+      {
+        "id": "c_vitk",
+        "text": "Tratar apenas como intoxicação por raticida, com vitamina K, sem outro tratamento.",
+        "type": "tratamento",
+        "category": "incorrect",
+        "explanation": "O coagulograma normal e a ausência de acesso a raticidas não sustentam essa hipótese; a causa infecciosa ficaria sem tratamento."
+      },
+      {
+        "id": "c_corticoide",
+        "text": "Usar somente corticoide para a trombocitopenia, sem tratar a infecção.",
+        "type": "tratamento",
+        "category": "incorrect",
+        "explanation": "Com sorologia reagente, tratar só com imunossupressão deixa a infecção ativa. O uso de corticoides é decisão do médico-veterinário em situações específicas."
+      },
+      {
+        "id": "c_aine",
+        "text": "Prescrever um anti-inflamatório não esteroidal (AINE) para a febre e a dor.",
+        "type": "tratamento",
+        "category": "critical",
+        "explanation": "AINEs prejudicam a função das plaquetas e a mucosa gastrintestinal.",
+        "consequence": "Em um cão com 35.000 plaquetas/µL e epistaxe, o AINE aumenta o risco de hemorragias graves, inclusive gastrintestinais. O Dr. Marcos suspendeu a medicação a tempo."
+      }
+    ]
+  },
+  "outcome": {
+    "success": "Com doxiciclina e controle de carrapatos, o Bidu volta a comer em poucos dias e as plaquetas sobem no retorno. Dona Cida tratou a casinha e o quintal, e a Mel também recebeu carrapaticida.",
+    "partial": "O Bidu está melhorando, mas faltaram etapas importantes na investigação ou na conduta. Veja o relatório para entender o que poderia ter sido diferente.",
+    "critical": "Uma decisão colocou o Bidu em risco de hemorragia grave. O Dr. Marcos interveio a tempo e explica por que, em pacientes que sangram, cada fármaco precisa ser avaliado."
+  },
+  "clinicalTime": {
+    "budgetMinutes": 200,
+    "urgent": false
+  },
+  "vetidexUnlocks": [
+    "especie_cao",
+    "doenca_erliquiose",
+    "doenca_babesiose",
+    "parasita_rhipicephalus",
+    "exame_hemograma",
+    "exame_coagulograma",
+    "exame_teste_rapido",
+    "farm_doxiciclina"
+  ],
+  "review": {
+    "topics": [
+      {
+        "id": "rt_bidu_anam",
+        "title": "Anamnese do cão com sangramento",
+        "section": "anamnesis",
+        "vetidexId": "parasita_rhipicephalus"
+      },
+      {
+        "id": "rt_bidu_exame",
+        "title": "Petéquias × hematomas: plaquetas ou coagulação?",
+        "section": "physicalExam",
+        "vetidexId": "doenca_erliquiose"
+      },
+      {
+        "id": "rt_bidu_exames",
+        "title": "Hemograma, coagulograma e testes para hemoparasitas",
+        "section": "tests",
+        "vetidexId": "exame_coagulograma"
+      },
+      {
+        "id": "rt_bidu_dif",
+        "title": "Diferenciais: erliquiose, babesiose e raticidas",
+        "section": "diagnosis",
+        "vetidexId": "doenca_babesiose"
+      },
+      {
+        "id": "rt_bidu_conduta",
+        "title": "Doxiciclina, controle do vetor e fármacos a evitar",
+        "section": "conduct",
+        "vetidexId": "farm_doxiciclina"
+      }
+    ],
+    "questions": [
+      {
+        "id": "rq_bidu_vetor",
+        "topic": "Parasitologia",
+        "prompt": "Qual carrapato transmite Ehrlichia canis e Babesia vogeli aos cães no Brasil?",
+        "options": [
+          "Rhipicephalus sanguineus (carrapato-marrom-do-cão)",
+          "Amblyomma sculptum (carrapato-estrela)",
+          "Ctenocephalides felis",
+          "Sarcoptes scabiei"
+        ],
+        "correctIndex": 0,
+        "explanation": "O carrapato-marrom completa o ciclo em ambientes domésticos e transmite as duas hemoparasitoses.",
+        "triggeredBy": [
+          "q_carrapatos",
+          "e_pele",
+          "h_erliquiose"
+        ]
+      },
+      {
+        "id": "rq_bidu_petequia",
+        "topic": "Semiologia",
+        "prompt": "Petéquias em mucosas e pele sugerem principalmente:",
+        "options": [
+          "Distúrbio de plaquetas (número ou função)",
+          "Falta de fatores de coagulação",
+          "Desidratação",
+          "Hipertermia"
+        ],
+        "correctIndex": 0,
+        "explanation": "Petéquias indicam sangramento capilar típico de trombocitopenia ou trombocitopatia; falhas de fatores costumam causar hematomas e sangramentos em cavidades.",
+        "triggeredBy": [
+          "e_mucosas",
+          "e_pele"
+        ]
+      },
+      {
+        "id": "rq_bidu_coag",
+        "topic": "Exames",
+        "prompt": "Na intoxicação por raticidas anticoagulantes, qual alteração aparece primeiro no coagulograma?",
+        "options": [
+          "Prolongamento do tempo de protrombina (TP)",
+          "Trombocitose",
+          "Encurtamento do TTPa",
+          "Nenhuma alteração"
+        ],
+        "correctIndex": 0,
+        "explanation": "O fator VII tem meia-vida curta; por isso o TP se prolonga primeiro.",
+        "triggeredBy": [
+          "t_coagulograma",
+          "h_rodenticida",
+          "c_vitk"
+        ]
+      },
+      {
+        "id": "rq_bidu_esfregaco",
+        "topic": "Exames",
+        "prompt": "Um esfregaço sanguíneo sem mórulas de Ehrlichia significa que:",
+        "options": [
+          "A doença não está excluída, pois a sensibilidade é baixa",
+          "A erliquiose está descartada",
+          "O cão está curado",
+          "O exame foi mal feito"
+        ],
+        "correctIndex": 0,
+        "explanation": "Mórulas raramente são vistas; sorologia e PCR complementam o diagnóstico.",
+        "triggeredBy": [
+          "t_esfregaco",
+          "t_sorologia"
+        ]
+      },
+      {
+        "id": "rq_bidu_aine",
+        "topic": "Farmacologia",
+        "prompt": "Por que evitar AINEs em um cão com trombocitopenia e sangramento?",
+        "options": [
+          "Porque prejudicam a função plaquetária e a mucosa gástrica",
+          "Porque aumentam o número de plaquetas",
+          "Porque são antibióticos",
+          "Porque não têm efeito em cães"
+        ],
+        "correctIndex": 0,
+        "explanation": "A inibição da COX reduz o tromboxano plaquetário e a proteção da mucosa, aumentando o risco de hemorragias.",
+        "triggeredBy": [
+          "c_aine",
+          "q_medicamentos"
+        ]
+      },
+      {
+        "id": "rq_bidu_doxi",
+        "topic": "Farmacologia",
+        "prompt": "Qual é o antimicrobiano de escolha para a erliquiose canina?",
+        "options": [
+          "Doxiciclina",
+          "Amoxicilina",
+          "Metronidazol",
+          "Cefalexina"
+        ],
+        "correctIndex": 0,
+        "explanation": "A doxiciclina atinge concentrações intracelulares adequadas e é o tratamento de escolha.",
+        "triggeredBy": [
+          "c_doxiciclina",
+          "c_corticoide"
+        ]
+      },
+      {
+        "id": "rq_bidu_ambiente",
+        "topic": "Prevenção",
+        "prompt": "Onde o carrapato-marrom costuma se esconder no ambiente doméstico?",
+        "options": [
+          "Frestas de muros, casinhas e cantos protegidos",
+          "Apenas na grama alta do campo",
+          "Somente no pelo do cão",
+          "Na água parada"
+        ],
+        "correctIndex": 0,
+        "explanation": "Ele é um carrapato de ambiente domiciliar; por isso o tratamento do ambiente é parte do controle.",
+        "triggeredBy": [
+          "c_carrapatos",
+          "q_controle"
+        ]
+      },
+      {
+        "id": "rq_bidu_contactante",
+        "topic": "Prevenção",
+        "prompt": "A Mel, contactante sem sinais, deve:",
+        "options": [
+          "Também receber controle de carrapatos e ser observada",
+          "Ser ignorada, pois está saudável",
+          "Receber doxiciclina sem avaliação",
+          "Ser separada para sempre do Bidu"
+        ],
+        "correctIndex": 0,
+        "explanation": "Contactantes compartilham o vetor e podem se infectar; o controle deve incluir todos os cães da casa.",
+        "triggeredBy": [
+          "q_outros",
+          "c_carrapatos"
+        ]
+      },
+      {
+        "id": "rq_bidu_celula",
+        "topic": "Microbiologia",
+        "prompt": "Ehrlichia canis infecta principalmente qual célula do cão?",
+        "options": [
+          "Monócitos",
+          "Hemácias",
+          "Plaquetas",
+          "Neurônios"
+        ],
+        "correctIndex": 0,
+        "explanation": "Por isso a doença se chama erliquiose monocítica; as mórulas aparecem no citoplasma de monócitos.",
+        "triggeredBy": [
+          "h_erliquiose",
+          "t_esfregaco"
+        ]
+      },
+      {
+        "id": "rq_bidu_fases",
+        "topic": "Clínica",
+        "prompt": "Quais são as fases clássicas da erliquiose monocítica canina?",
+        "options": [
+          "Aguda, subclínica e crônica",
+          "Incubação, cura e recidiva obrigatória",
+          "Apenas aguda",
+          "Neurológica e cutânea"
+        ],
+        "correctIndex": 0,
+        "explanation": "Na fase crônica podem ocorrer pancitopenia e hipoplasia medular, com pior prognóstico.",
+        "triggeredBy": [
+          "h_erliquiose",
+          "t_medula"
+        ]
+      },
+      {
+        "id": "rq_bidu_babesia",
+        "topic": "Diagnóstico",
+        "prompt": "Qual achado é mais característico da babesiose do que da erliquiose?",
+        "options": [
+          "Anemia hemolítica, às vezes com urina escura",
+          "Hiperglobulinemia",
+          "Epistaxe unilateral",
+          "Linfadenomegalia"
+        ],
+        "correctIndex": 0,
+        "explanation": "A Babesia destrói hemácias; hemoglobinúria e icterícia podem ocorrer.",
+        "triggeredBy": [
+          "h_babesiose",
+          "t_esfregaco"
+        ]
+      },
+      {
+        "id": "rq_bidu_leish",
+        "topic": "Epidemiologia",
+        "prompt": "A leishmaniose visceral canina é transmitida por:",
+        "options": [
+          "Flebotomíneos (mosquito-palha)",
+          "Carrapato-marrom",
+          "Pulgas",
+          "Contato direto com saliva"
+        ],
+        "correctIndex": 0,
+        "explanation": "Por isso, a suspeita depende da presença do vetor na região.",
+        "triggeredBy": [
+          "h_leishmaniose",
+          "t_leish",
+          "q_viagem"
+        ]
+      },
+      {
+        "id": "rq_bidu_sorologia",
+        "topic": "Exames",
+        "prompt": "Uma sorologia reagente para Ehrlichia canis indica:",
+        "options": [
+          "Contato com o agente; com sinais compatíveis, sustenta o diagnóstico",
+          "Sempre infecção atual, mesmo sem sinais",
+          "Que o cão está imune",
+          "Que o cão foi vacinado"
+        ],
+        "correctIndex": 0,
+        "explanation": "Anticorpos podem persistir; a interpretação depende da clínica, e o PCR detecta o DNA do agente.",
+        "triggeredBy": [
+          "t_sorologia",
+          "t_pcr"
+        ]
+      },
+      {
+        "id": "rq_bidu_pcr",
+        "topic": "Exames",
+        "prompt": "Por que o PCR não deve atrasar o início do tratamento?",
+        "options": [
+          "Porque o resultado demora e o quadro clínico já justifica tratar",
+          "Porque o PCR é sempre negativo",
+          "Porque o PCR substitui o hemograma",
+          "Porque é proibido"
+        ],
+        "correctIndex": 0,
+        "explanation": "Exames demorados complementam o diagnóstico, mas não devem atrasar uma conduta já indicada.",
+        "triggeredBy": [
+          "t_pcr",
+          "c_doxiciclina"
+        ]
+      },
+      {
+        "id": "rq_bidu_medula",
+        "topic": "Exames",
+        "prompt": "Quando o aspirado de medula óssea é considerado na erliquiose?",
+        "options": [
+          "Em citopenias persistentes ou suspeita de fase crônica",
+          "Como primeiro exame em todo cão com febre",
+          "Para confirmar carrapatos",
+          "Nunca"
+        ],
+        "correctIndex": 0,
+        "explanation": "É invasivo e reservado a situações específicas.",
+        "triggeredBy": [
+          "t_medula"
+        ]
+      }
+    ]
+  }
+}

@@ -4,20 +4,20 @@ Data da execução registrada: 18/11/2026. Ambiente: Linux, Node 22, Chromium (P
 
 ## 1. Testes automatizados (Vitest) — `npm test`
 
-Resultado: **10 arquivos, 230 testes, todos aprovados** (versão 0.4). Os mesmos testes rodam automaticamente no GitHub Actions (`.github/workflows/ci.yml`) quando o repositório for publicado.
+Resultado: **10 arquivos, 287 testes, todos aprovados** (versão 0.5). Os mesmos testes rodam automaticamente no GitHub Actions (`.github/workflows/ci.yml`) quando o repositório for publicado.
 
 | Arquivo | Testes | O que verifica |
 |---|---|---|
-| `tests/content.test.ts` | 37 | Esquema e integridade dos dois casos clínicos; **a solução ideal derivada dos dados obtém 100**; validador detecta dados incompletos, referências inventadas, ausência de conduta correta, evidências inexistentes e ciclos de pré-requisitos; minigame, VetiDex (campos, categorias, referências, toda entrada é desbloqueável); missões, diálogos (nós existentes e alcançáveis, quizzes sempre com resposta correta), NPCs, animais e cadeia de missões completável. |
+| `tests/content.test.ts` | 47 | Esquema e integridade dos dois casos clínicos; **a solução ideal derivada dos dados obtém 100**; validador detecta dados incompletos, referências inventadas, ausência de conduta correta, evidências inexistentes e ciclos de pré-requisitos; minigame, VetiDex (campos, categorias, referências, toda entrada é desbloqueável); missões, diálogos (nós existentes e alcançáveis, quizzes sempre com resposta correta), NPCs, animais e cadeia de missões completável. |
 | `tests/scoring.test.ts` | 23 | Regras de pontuação de cada etapa: perguntas essenciais/irrelevantes, pré-requisitos de perguntas, interpretação do exame físico, exames desnecessários/aceitáveis, pré-requisito de segurança (aspirado antes do coagulograma), evidência não coletada não conta, diferenciais improváveis, condutas incorretas e **críticas (limite 50)**, nota 100 apenas sem falhas, agendamento de revisões e ganho de domínio. |
-| `tests/maps.test.ts` | 105 | Estrutura dos mapas, ponto de chegada caminhável, transições campus↔interiores nos dois sentidos, destinos de transição válidos e sem laço, **busca em largura garantindo que o jogador não fica preso**, portas alcançáveis, portas trancadas com mensagem, todos os NPCs, animais e objetos interativos alcançáveis. |
+| `tests/maps.test.ts` | 144 | Estrutura dos mapas, ponto de chegada caminhável, transições campus↔interiores nos dois sentidos, destinos de transição válidos e sem laço, **busca em largura garantindo que o jogador não fica preso**, portas alcançáveis, portas trancadas com mensagem, todos os NPCs, animais e objetos interativos alcançáveis. |
 | `tests/save.test.ts` | 10 | Salvar/carregar (ida e volta), JSON corrompido, estrutura inválida, versão futura, migração de saves antigos, apagar progresso, configurações e salvamento automático ao concluir objetivos. |
 | `tests/progression.test.ts` | 10 | Curva de XP, etapas, níveis de domínio, XP por tentativa, revisão espaçada (promoção, reinício, consolidação) e pontuação do minigame. |
-| `tests/questions.test.ts` | 10 | Sorteio sem repetição na sessão; **após reprovar, a nova tentativa traz perguntas inéditas enquanto houver no banco**; retorno às vistas há mais tempo; embaralhamento preserva a correta; casos embaralhados mantêm conteúdo e nota ideal 100. |
+| `tests/questions.test.ts` | 12 | Sorteio sem repetição na sessão; **após reprovar, a nova tentativa traz perguntas inéditas enquanto houver no banco**; retorno às vistas há mais tempo; embaralhamento preserva a correta; casos embaralhados mantêm conteúdo e nota ideal 100. |
 | `tests/pets.test.ts` | 11 | Fichas de 24 pets (raças de cães e gatos e outros animais) com referências válidas; sprites gerados dentro da área e com olhos; limite de adoção, troca de companheiro, afeição e migração de saves antigos. |
-| `tests/clinicalTime.test.ts` | 8 | Interpretação dos tempos de resposta; **a solução ideal de cada caso cabe na meta de tempo e tira 100**; urgência penaliza excesso de perguntas e exames lentos (até −6); casos estáveis não perdem pontos por tempo. |
+| `tests/clinicalTime.test.ts` | 10 | Interpretação dos tempos de resposta; **a solução ideal de cada caso cabe na meta de tempo e tira 100**; urgência penaliza excesso de perguntas e exames lentos (até −6); casos estáveis não perdem pontos por tempo. |
 | `tests/appearance.test.ts` | 8 | Todas as combinações de cabelo, roupa, estampa e sexo geram quadros válidos; estilos de cabelo distintos; estampas só no tronco (no jaleco, só na roupa de baixo); traços por sexo; saves antigos sem sexo continuam funcionando; concordância de gênero nos textos. |
-| `tests/gamestate.test.ts` | 8 | Missões encadeadas e recompensas, condições compostas, XP de diálogo concedido uma vez, registro de atendimento aprovado/crítico, objetivos dinâmicos. |
+| `tests/gamestate.test.ts` | 12 | Missões encadeadas e recompensas, condições compostas, XP de diálogo concedido uma vez, registro de atendimento aprovado/crítico, objetivos dinâmicos. |
 
 Verificação de tipos (`npm run typecheck`): sem erros. Build (`npm run build`): concluído.
 
@@ -27,6 +27,7 @@ Roteiros em `dev/` (precisam de um servidor rodando: `npm run dev` ou `npm run p
 
 | Roteiro | Resultado |
 |---|---|
+| `dev/e2e-vila.cjs` (v0.5) — Portão Sul fechado na Etapa 1; save antigo com “Rumo à Etapa 2” concluída recebe a liberação; atravessa o portão andando, entra na clínica pela porta, atende o Bidu e a Luna e conclui as missões do pet shop e do centro de adoção | Portão bloqueado na Etapa 1 e aberto na 2; HUD “Etapa 2”; Bidu **100**, Luna **100**; 4 missões da Vila concluídas. 0 erros. |
 | `dev/e2e-institutos.cjs` (v0.4) — caminha do campus ao Setor dos Institutos pela avenida oeste, entra em um prédio pela porta, estuda as 7 aulas (revelando as respostas) e faz os 6 questionários novos | 7 missões de disciplina concluídas. 0 erros. |
 | `dev/e2e-scroll.cjs` (v0.4) — no atendimento, perguntar/avaliar mantém a posição da rolagem; mudar de etapa volta ao topo (desktop e celular) | Posição mantida; nova etapa no topo. |
 | `dev/e2e-creator.cjs` (v0.4) — criação com sexo, tranças, camiseta e estampa de patinhas | Aparência salva; texto concorda com o sexo escolhido. |
@@ -45,7 +46,7 @@ Não houve teste manual por pessoas além da automação acima. Não foram testa
 
 - **Conteúdo clínico pendente de validação técnica** por médico(a)-veterinário(a); intervalos de referência são ilustrativos.
 - As referências indicam **onde verificar**; o texto do jogo é uma síntese e não foi conferido página a página nas edições citadas.
-- Somente a região da Universidade (campus e Setor dos Institutos) está disponível; demais regiões aparecem bloqueadas.
+- Disponíveis: Universidade (campus e Setor dos Institutos) e Vila dos Animais (Etapa 2, primeira parte). As demais regiões aparecem como “em desenvolvimento”.
 - Avisos rápidos (toasts) e o diário mostram os textos sem concordância de gênero; por isso os objetivos usam formas neutras.
 - Áudio sintetizado simples (chiptune); começa após a primeira interação do usuário (política dos navegadores).
 - O save é local ao navegador/dispositivo (LocalStorage); limpar dados do site apaga o progresso. Não há sincronização entre dispositivos.

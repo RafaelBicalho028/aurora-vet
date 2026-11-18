@@ -28,6 +28,7 @@ export interface WorldData { mapId: string; x: number; y: number; facing: Direct
 const MAP_ENTER_OBJECTIVES: Record<string, [string, string][]> = {
   anatomia: [['q_boas_vindas', 'o_lab']],
   hospital: [['q_biosseguranca', 'o_hospital']],
+  vila: [['q_vila_chegada', 'o_vila']],
 };
 
 let petReminderShown = false;
@@ -83,7 +84,7 @@ export class WorldScene extends Phaser.Scene {
       img.setDepth(art.flat ? -5000 : (y + 1) * TILE - 2);
     };
     for (const o of implicitObjects(this.map)) placeObj(o.type, o.x, o.y, o.seed);
-    for (const o of this.map.objects) placeObj(o.type, o.x, o.y, o.seed ?? o.x * 31 + o.y);
+    for (const o of this.map.objects) if (!o.presentWhen || st.check(o.presentWhen)) placeObj(o.type, o.x, o.y, o.seed ?? o.x * 31 + o.y);
 
     // jogador
     registerCharacter(this, 'player', lookFromAppearance(st.data.player.appearance));

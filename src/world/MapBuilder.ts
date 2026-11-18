@@ -62,6 +62,7 @@ export function buildCollision(map: MapDef, check: (c: any) => boolean = () => t
     }
   }
   for (const o of map.objects) {
+    if (o.presentWhen && !check(o.presentWhen)) continue; // objeto removido (ex.: portão aberto)
     const art = OBJECTS[o.type];
     if (!art) throw new Error(`Objeto desconhecido no mapa ${map.id}: ${o.type}`);
     for (const [bx, by] of art.blocks) block(o.x + bx, o.y + by);

@@ -88,6 +88,17 @@ Todas as teclas podem ser **remapeadas** em *Menu → Configurações*. Em telas
 | Diário de missões (principais e secundárias) | ✅ |
 | Tela de desempenho educacional (histórico, médias por etapa, disciplinas, conteúdos para revisar, evolução, revisão espaçada) | ✅ |
 
+### Novidades da versão 0.5 — Etapa 2: Vila dos Animais
+
+- **Etapa 2 liberada**: ao concluir “Rumo à Etapa 2” (nível 5), o **Portão Sul** do campus se abre. Saves antigos que já tinham concluído essa missão recebem a liberação automaticamente.
+- **Novo mapa: Vila dos Animais**, com praça, **Clínica Veterinária da Vila** (Dr. Marcos Vieira), **Pet Shop Patas & Cia.** (Seu Hiro), **Centro de Adoção** (Tânia), residências e a Dona Rosa com os gatos comunitários.
+- **Dois casos clínicos novos** (15 perguntas de revisão cada):
+  - *Febre e Sangramento* — Bidu: erliquiose monocítica canina, com babesiose, raticida anticoagulante e leishmaniose como diferenciais; o AINE é conduta crítica.
+  - *A Gata que Tremia* — Luna: intoxicação por permetrina (urgente, com tempo clínico); paracetamol e indução de vômito são condutas críticas.
+- **Missões**: A Vila dos Animais → Febre e Sangramento → A Gata que Tremia → Saúde na Vizinhança (orientar clientes no pet shop e conhecer o centro de adoção).
+- 5 entradas novas na VetiDex (babesiose, carrapato-marrom, doxiciclina, intoxicação por permetrina, relaxantes musculares).
+- O mapa (M) agora mostra **“Em desenvolvimento”** nas regiões que ainda não existem (Região Rural, Reserva Ambiental, Centro Veterinário Avançado).
+
 ### Novidades da versão 0.4
 
 - **Correção**: a tela de atendimento não volta mais ao topo ao fazer uma pergunta ou avaliar um item; ela só vai ao topo quando você muda de etapa.
@@ -131,7 +142,7 @@ Todas as teclas podem ser **remapeadas** em *Menu → Configurações*. Em telas
 
 ## 4. Funcionalidades planejadas (ainda não implementadas)
 
-- Regiões **Vila dos Animais**, **Região Rural**, **Reserva Ambiental** e **Centro Veterinário Avançado** (já aparecem no mapa como bloqueadas).
+- Mais casos e visitas domiciliares na Vila dos Animais; regiões **Região Rural**, **Reserva Ambiental** e **Centro Veterinário Avançado** (aparecem no mapa como “em desenvolvimento”).
 - Missões 2 e 4 do roteiro (bovino com queda na produção, investigação epidemiológica).
 - Minigames de microscopia, hemograma, diagnóstico por imagem, parasitologia e farmacologia.
 - Aulas de Histologia, Imunologia, Nutrição e Diagnóstico por Imagem; práticas interativas (microscópio, necrópsia virtual) dentro dos institutos.

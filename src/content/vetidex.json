@@ -1430,6 +1430,102 @@
         "riispoa2017"
       ],
       "unlockHint": "Assista à aula do Prof. Tomás no Instituto de Saúde Pública."
+    },
+    {
+      "id": "doenca_babesiose",
+      "name": "Babesiose canina",
+      "category": "doencas",
+      "summary": "Hemoparasitose causada por protozoários do gênero Babesia, que destroem hemácias.",
+      "manifestations": [
+        "Febre e apatia",
+        "Anemia hemolítica, mucosas pálidas ou ictéricas",
+        "Urina escura (hemoglobinúria) em casos graves",
+        "Trombocitopenia"
+      ],
+      "science": "No Brasil, Babesia vogeli é transmitida pelo carrapato-marrom (Rhipicephalus sanguineus). Diagnóstico por esfregaço sanguíneo, sorologia e PCR.",
+      "didactic": "Pode coexistir com a erliquiose, pois o vetor é o mesmo.",
+      "professional": "O controle de carrapatos no animal e no ambiente é a principal prevenção.",
+      "refs": [
+        "taylor2016"
+      ],
+      "unlockHint": "Atenda o Bidu na Clínica Veterinária da Vila."
+    },
+    {
+      "id": "parasita_rhipicephalus",
+      "name": "Rhipicephalus sanguineus (carrapato-marrom-do-cão)",
+      "category": "parasitas",
+      "summary": "Carrapato de três hospedeiros, adaptado ao ambiente doméstico e ao cão.",
+      "manifestations": [
+        "Infestação em orelhas, pescoço e entre os dedos",
+        "Vetor de Ehrlichia canis e Babesia vogeli"
+      ],
+      "science": "Completa o ciclo em frestas de muros, casinhas e cantos protegidos; os estágios de vida livre ficam no ambiente.",
+      "didactic": "O controle precisa incluir todos os cães da casa e o ambiente.",
+      "professional": "Controle integrado reduz doenças transmitidas por carrapatos.",
+      "refs": [
+        "taylor2016",
+        "harrus2011"
+      ],
+      "unlockHint": "Atenda o Bidu na Clínica Veterinária da Vila."
+    },
+    {
+      "id": "farm_doxiciclina",
+      "name": "Doxiciclina",
+      "category": "farmacologia",
+      "summary": "Antimicrobiano do grupo das tetraciclinas, com boa penetração intracelular.",
+      "manifestations": [
+        "Classe: tetraciclinas",
+        "Mecanismo: inibe a síntese proteica bacteriana (subunidade ribossomal 30S)",
+        "Indicação clássica: erliquiose canina, sob prescrição",
+        "Cuidados: esofagite por comprimidos; gestantes e filhotes em formação dentária"
+      ],
+      "science": "A atividade contra bactérias intracelulares, como Ehrlichia, explica o uso na erliquiose.",
+      "didactic": "Ofereça água ou alimento após o comprimido para que ele não fique no esôfago.",
+      "professional": "Duração e esquema são definidos pelo médico-veterinário; reavaliar o paciente durante o tratamento.",
+      "refs": [
+        "riviere2018",
+        "harrus2011"
+      ],
+      "unlockHint": "Atenda o Bidu na Clínica Veterinária da Vila."
+    },
+    {
+      "id": "doenca_intox_permetrina",
+      "name": "Intoxicação por permetrina em gatos",
+      "category": "doencas",
+      "summary": "Intoxicação por piretroide, comum quando produtos antipulgas para cães são aplicados em gatos.",
+      "manifestations": [
+        "Tremores e fasciculações (especialmente faciais)",
+        "Hipersalivação e hiperestesia",
+        "Midríase, taquicardia e hipertermia",
+        "Convulsões em casos graves"
+      ],
+      "science": "A permetrina prolonga a abertura dos canais de sódio dos neurônios; gatos têm baixa capacidade de glicuronidação e a eliminam lentamente.",
+      "didactic": "Estabilizar e controlar os tremores antes do banho de descontaminação.",
+      "professional": "Prevenção: ler o rótulo e usar apenas produtos indicados para gatos.",
+      "refs": [
+        "boland2010",
+        "riviere2018"
+      ],
+      "unlockHint": "Atenda a Luna na Clínica Veterinária da Vila."
+    },
+    {
+      "id": "farm_relaxantes_musculares",
+      "name": "Relaxantes musculares e anticonvulsivantes na urgência",
+      "category": "farmacologia",
+      "summary": "Fármacos usados para controlar tremores e convulsões em intoxicações e outras urgências neurológicas.",
+      "manifestations": [
+        "Metocarbamol: relaxante muscular de ação central",
+        "Benzodiazepínicos: anticonvulsivantes que potencializam o GABA",
+        "Uso sob prescrição e monitorização"
+      ],
+      "science": "O metocarbamol deprime reflexos polissinápticos na medula espinhal; os benzodiazepínicos aumentam a inibição mediada pelo GABA.",
+      "didactic": "Monitore consciência, respiração e temperatura após a administração.",
+      "professional": "A escolha do fármaco depende do quadro e é do médico-veterinário.",
+      "refs": [
+        "riviere2018",
+        "boland2010"
+      ],
+      "unlockHint": "Atenda a Luna na Clínica Veterinária da Vila."
     }
   ]
 }

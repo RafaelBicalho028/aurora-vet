@@ -34,6 +34,8 @@ export interface ObjectPlacement {
   y: number;
   seed?: number;
   interact?: InteractionDef;
+  /** o objeto só existe (e bloqueia) enquanto a condição for verdadeira — ex.: portão fechado até a Etapa 2 */
+  presentWhen?: Condition;
 }
 
 export interface InteractionDef {

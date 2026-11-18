@@ -8,7 +8,7 @@ Os casos ficam em **`src/content/cases/*.json`**, separados do código, para que
 2. **Edite os metadados**: `id` (único), `title`, `difficulty` (1–5), `minStage` (etapa acadêmica mínima), `baseXp`, `passScore`, `disciplines` (quais habilidades recebem XP de domínio e por qual etapa do atendimento).
 3. **Referências**: liste em `references` apenas ids existentes em `src/content/references.json`, dizendo em `supports` o que cada fonte sustenta. Para uma fonte nova, adicione-a ao catálogo **somente se ela for verificável** (não invente referências).
 4. **Validação**: mantenha `validation.status = "pendente"` até a revisão por médico(a)-veterinário(a). Para marcar `"validado"`, preencha `reviewer` e `date`.
-5. **Paciente**: `sprite` deve ser uma textura existente (`dog_caramelo`, `dog_campus`, `cat_laranja`, `cat_cinza`, `cow`, `sheep`) ou uma nova (veja `docs/ARTE.md`). `tutorNpc` deve ser o id de um NPC (para o retrato).
+5. **Paciente**: `sprite` deve ser uma textura existente (`dog_caramelo`, `dog_campus`, `dog_bidu`, `cat_laranja`, `cat_cinza`, `cat_luna`, `pup_pingo`, `cow`, `sheep`) ou uma nova (veja `docs/ARTE.md`). `tutorNpc` deve ser o id de um NPC (para o retrato).
 6. **Anamnese** (`anamnesis.questions`): cada pergunta tem `relevance` (`essential` | `complementary` | `irrelevant`), `answer`, `explanation` e, opcionalmente:
    - `requires`: ids de perguntas que precisam ser feitas antes (perguntas de aprofundamento);
    - `findingId`: o achado que a resposta revela.

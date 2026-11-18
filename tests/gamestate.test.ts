@@ -92,3 +92,41 @@ describe('Registro de atendimentos', () => {
     expect(st.data.quests['q_proxima_etapa'].status).toBe('completed');
   });
 });
+
+describe('Etapa 2 — Vila dos Animais', () => {
+  it('concluir "Rumo à Etapa 2" libera a Vila e inicia a chegada à Vila', () => {
+    const st = mk();
+    st.startQuest('q_proxima_etapa');
+    st.data.totalXp = 5000; // nível alto o bastante
+    st.completeObjective('q_proxima_etapa', 'o_revisao');
+    st.completeObjective('q_proxima_etapa', 'o_nivel');
+    expect(st.data.quests['q_proxima_etapa'].status).toBe('completed');
+    expect(st.check({ flag: 'etapa2_liberada' })).toBe(true);
+    expect(st.data.quests['q_vila_chegada'].status).toBe('active');
+  });
+  it('saves antigos que já tinham concluído "Rumo à Etapa 2" recebem a liberação', () => {
+    const st = mk();
+    st.data.quests['q_proxima_etapa'] = { status: 'completed', objectives: { o_revisao: true, o_nivel: true }, startedAt: 0 };
+    st.ensureQuestChain();
+    expect(st.check({ flag: 'etapa2_liberada' })).toBe(true);
+    expect(st.data.quests['q_vila_chegada'].status).toBe('active');
+  });
+  it('a cadeia da Vila encadeia Bidu → Luna → Saúde na Vizinhança', () => {
+    const st = mk();
+    st.startQuest('q_vila_chegada');
+    st.completeObjective('q_vila_chegada', 'o_vila');
+    st.completeObjective('q_vila_chegada', 'o_marcos');
+    expect(st.data.quests['q_vila_bidu'].status).toBe('active');
+    st.completeObjective('q_vila_bidu', 'o_atender');
+    st.completeObjective('q_vila_bidu', 'o_relatar');
+    expect(st.data.quests['q_vila_luna'].status).toBe('active');
+    st.completeObjective('q_vila_luna', 'o_atender');
+    st.completeObjective('q_vila_luna', 'o_relatar');
+    expect(st.data.quests['q_vila_rotina'].status).toBe('active');
+  });
+  it('os casos da Vila exigem a Etapa 2 e pertencem às missões da Vila', () => {
+    expect(CASES['caso_bidu_erliquiose'].minStage).toBe(2);
+    expect(CASES['caso_luna_permetrina'].minStage).toBe(2);
+    expect(CASES['caso_luna_permetrina'].clinicalTime?.urgent).toBe(true);
+  });
+});

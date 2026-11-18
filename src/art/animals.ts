@@ -284,6 +284,8 @@ export function buildAllAnimals(): AnimalSheet[] {
     buildCow('cow'),
     buildSheep('sheep'),
     buildFlea('flea'),
+    { key: 'dog_bidu', canvas: buildPetSheet({ kind: 'dog', size: 'm', bodyLen: 10, legLen: 3, ear: 'flop', snout: 2, tail: 'down', coat: 'short', pattern: 'saddle', base: '#b07040', dark: '#2e2a33' }), frameW: PET_W, frameH: PET_H, frames: 4 },
+    { key: 'cat_luna', canvas: buildPetSheet({ kind: 'cat', size: 'm', bodyLen: 10, legLen: 3, ear: 'up', snout: 1, tail: 'up', coat: 'short', pattern: 'point', base: '#efe3cc', dark: '#4a3a33', eye: '#5aa8e8' }), frameW: PET_W, frameH: PET_H, frames: 4 },
     { key: 'pup_pingo', canvas: buildPetSheet({ kind: 'dog', size: 'xs', bodyLen: 7, legLen: 2, ear: 'flop', snout: 1, tail: 'up', coat: 'short', pattern: 'tuxedo', base: '#6b4a3a', light: '#f2efe8' }), frameW: PET_W, frameH: PET_H, frames: 4 },
   ];
 }

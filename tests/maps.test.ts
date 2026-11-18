@@ -111,6 +111,20 @@ describe('Ninguém fica preso / tudo é alcançável', () => {
     }
   });
 
+  it('o Portão Sul fica fechado na Etapa 1 e leva à Vila dos Animais quando a Etapa 2 é liberada', () => {
+    const fechado = buildCollision(MAPS.campus, () => true);   // condição "portão presente" verdadeira
+    const aberto = buildCollision(MAPS.campus, () => false);
+    for (const x of [20, 21, 22, 23]) {
+      expect(fechado.blocked[33][x], `fechado ${x}`).toBe(true);
+      expect(aberto.blocked[33][x], `aberto ${x}`).toBe(false);
+      expect(aberto.warps.get(`${x},33`)?.map).toBe('vila');
+    }
+    const r = reachable('campus', [MAPS.campus.spawn.x, MAPS.campus.spawn.y], { unlockAll: true });
+    expect([...r].some((k) => aberto.warps.get(k)?.map === 'vila')).toBe(true);
+    const back = buildCollision(MAPS.vila, () => false);
+    expect(back.warps.get('19,0')?.map).toBe('campus');
+  });
+
   it('o Setor dos Institutos é alcançável a partir do campus pela avenida oeste', () => {
     const r = reachable('campus', [MAPS.campus.spawn.x, MAPS.campus.spawn.y], { unlockAll: false });
     const col = buildCollision(MAPS.campus, () => true);

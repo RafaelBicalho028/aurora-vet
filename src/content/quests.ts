@@ -83,12 +83,53 @@ export const QUESTS: QuestDef[] = [
   },
   {
     id: 'q_proxima_etapa', title: 'Rumo à Etapa 2', category: 'principal', giver: 'Dra. Helena', stage: 1,
-    summary: 'Consolide o que aprendeu: revise conteúdos, refaça casos e explore o campus. A Etapa 2 (Estudante em Formação) abrirá a Vila dos Animais e os laboratórios.',
+    summary: 'Consolide o que aprendeu: revise conteúdos, refaça casos e explore o campus. Ao concluir, a Etapa 2 (Estudante em Formação) libera o Portão Sul e a Vila dos Animais.',
     objectives: [
       { id: 'o_revisao', text: 'Responda 3 perguntas na Estação de Revisão (Biblioteca)' },
       { id: 'o_nivel', text: 'Alcance o nível 5' },
     ],
-    rewards: { xp: 100, flags: ['etapa2_preparado'] },
+    rewards: { xp: 100, flags: ['etapa2_preparado', 'etapa2_liberada'] },
+    next: ['q_vila_chegada'],
+  },
+  // ------------------------------------------------ ETAPA 2: Vila dos Animais
+  {
+    id: 'q_vila_chegada', title: 'A Vila dos Animais', category: 'principal', giver: 'Dra. Helena', stage: 2,
+    summary: 'Etapa 2 liberada! Atravesse o Portão Sul do campus e apresente-se ao Dr. Marcos, na Clínica Veterinária da Vila, onde você fará atendimentos supervisionados.',
+    objectives: [
+      { id: 'o_vila', text: 'Atravesse o Portão Sul até a Vila dos Animais' },
+      { id: 'o_marcos', text: 'Apresente-se ao Dr. Marcos na Clínica Veterinária da Vila' },
+    ],
+    rewards: { xp: 60, items: ['caderneta_vila'] },
+    next: ['q_vila_bidu'],
+  },
+  {
+    id: 'q_vila_bidu', title: 'Febre e Sangramento', category: 'principal', giver: 'Dr. Marcos', stage: 2,
+    summary: 'Bidu, cão de 6 anos cheio de carrapatos, está apático, com febre e sangrou pelo nariz. Investigue as causas de sangramento e as doenças transmitidas por carrapatos.',
+    objectives: [
+      { id: 'o_atender', text: 'Atenda o Bidu (fale com a Dona Cida) — nota ≥ 60' },
+      { id: 'o_relatar', text: 'Discuta o caso com o Dr. Marcos' },
+    ],
+    rewards: { xp: 140 },
+    next: ['q_vila_luna'],
+  },
+  {
+    id: 'q_vila_luna', title: 'A Gata que Tremia', category: 'principal', giver: 'Dr. Marcos', stage: 2,
+    summary: 'Luna, uma gata siamesa, começou a tremer depois de receber um antipulgas. É uma urgência toxicológica: aja rápido e com segurança.',
+    objectives: [
+      { id: 'o_atender', text: 'Atenda a Luna (fale com o Gabriel) — nota ≥ 60' },
+      { id: 'o_relatar', text: 'Discuta o caso com o Dr. Marcos' },
+    ],
+    rewards: { xp: 160 },
+    next: ['q_vila_rotina'],
+  },
+  {
+    id: 'q_vila_rotina', title: 'Saúde na Vizinhança', category: 'principal', giver: 'Dr. Marcos', stage: 2,
+    summary: 'Prevenção também é medicina veterinária. Ajude o pet shop a orientar os clientes sobre antiparasitários e conheça o Centro de Adoção da Vila.',
+    objectives: [
+      { id: 'o_petshop', text: 'Ajude o Seu Hiro a orientar clientes no Pet Shop Patas & Cia.' },
+      { id: 'o_adocao', text: 'Conheça o trabalho da Tânia no Centro de Adoção' },
+    ],
+    rewards: { xp: 100, flags: ['etapa2_parte1_ok'] },
   },
   {
     id: 'q_sinais_vitais', title: 'Sinais Vitais', category: 'secundaria', giver: 'Profa. Lívia', stage: 1,
@@ -189,5 +230,6 @@ export const ITEMS: Record<string, ItemDef> = {
   estetoscopio: { id: 'estetoscopio', name: 'Estetoscópio', description: 'Para auscultação cardíaca, pulmonar e abdominal. Uso em atendimentos supervisionados.', icon: '🩺' },
   termometro: { id: 'termometro', name: 'Termômetro clínico digital', description: 'Aferição da temperatura retal. Higienize após cada uso.', icon: '🌡' },
   luvas: { id: 'luvas', name: 'Luvas de procedimento', description: 'EPI para examinar lesões de causa desconhecida e manipular materiais biológicos.', icon: '🧤' },
+  caderneta_vila: { id: 'caderneta_vila', name: 'Caderneta da Clínica da Vila', description: 'Credencial de estagiário(a) da Clínica Veterinária da Vila. Atendimentos sempre sob supervisão do Dr. Marcos.', icon: '📗' },
   guia_bolso: { id: 'guia_bolso', name: 'Guia de bolso: parâmetros vitais', description: 'Faixas de referência aproximadas de FC, FR e temperatura (cão, gato, bovino). Valores variam entre referências.', icon: '📋' },
 };

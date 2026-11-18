@@ -16,7 +16,8 @@ const BANKQ = bank.pools.flatMap((pl) => pl.questions);
 async function answerBankQuiz(p) {
   if (await p.locator('.quiz >> text=Começar').count()) await p.click('.quiz >> text=Começar');
   for (let i = 0; i < 10; i++) {
-    if (await p.locator('.quiz >> text=Continuar').count()) { await p.click('.quiz >> text=Continuar'); return true; }
+    const done = p.locator('.quiz button.btn-primary', { hasText: /^Continuar$/ });
+    if (await done.count()) { await done.click(); return true; }
     const prompt = (await p.locator('.quiz h3').innerText()).trim();
     const q = BANKQ.find((x) => x.prompt === prompt);
     await p.locator('.quiz .btn.option', { hasText: q.options[q.correctIndex] }).first().click();
@@ -24,7 +25,7 @@ async function answerBankQuiz(p) {
   }
   return false;
 }
-module.exports = { answerBankQuiz };
+module.exports = { answerBankQuiz, playCase };
 const log = (...a) => console.log('•', ...a);
 
 async function playCase(p, c, tag, mistakes = false) {

@@ -138,6 +138,7 @@ export const DIALOGUES: Record<string, DialogueDef> = {
       { when: { questActive: 'q_filhote' }, start: 'pingo_dica' },
       { when: { questActive: 'q_emergencia', objectiveDone: ['q_emergencia', 'o_atender'] }, start: 'relato_nino' },
       { when: { questActive: 'q_emergencia' }, start: 'nino_dica' },
+      { when: { questStarted: 'q_vila_chegada' }, start: 'vila' },
       { when: { questStarted: 'q_proxima_etapa' }, start: 'final' },
       { start: 'geral' },
     ],
@@ -196,6 +197,7 @@ export const DIALOGUES: Record<string, DialogueDef> = {
       nino_dica2: { text: 'Bexiga, potássio e coração. E a ordem importa: estabilizar antes de desobstruir.' },
       relato_nino: { expression: 'feliz', text: 'Excelente trabalho sob pressão! Na obstrução uretral, a hipercalemia é o que mata — por isso estabilizamos antes de desobstruir.', effects: [{ type: 'objective', quest: 'q_emergencia', objective: 'o_relatar' }], next: 'relato_nino2' },
       relato_nino2: { expression: 'feliz', text: 'Com isso você conclui seus atendimentos da Etapa 1. Continue revisando na Estação de Revisão da biblioteca. Quando estiver preparado(a), a Etapa 2 abrirá a Vila dos Animais e os laboratórios. Estou orgulhosa de você, {nome}!' },
+      vila: { expression: 'feliz', text: 'Parabéns pela Etapa 2, {nome}! O Portão Sul do campus está aberto: o Dr. Marcos espera você na Clínica Veterinária da Vila.', next: 'final' },
       final: {
         text: 'Quer refazer algum atendimento para treinar? Treinos rendem menos XP, mas fixam o conteúdo e atualizam sua revisão.',
         choices: [
@@ -378,6 +380,166 @@ export const DIALOGUES: Record<string, DialogueDef> = {
       },
       dica: { text: 'Estude os quadros clínicos antes do questionário: as perguntas mudam a cada tentativa, então decorar não adianta — entender, sim. E tudo o que você aprende vai para a VetiDex e para o painel de desempenho.' },
       onde: { text: 'Ficam no campus central: o Instituto de Fisiologia, da Profa. Lívia, no sudoeste, e o Laboratório de Microbiologia, da Profa. Renata, no sudeste. Siga a avenida para o leste.' },
+    },
+  },
+
+  // ---------------------------------------------------------------- ETAPA 2: VILA DOS ANIMAIS
+  marcos: {
+    entries: [
+      { when: { objectiveNotDone: ['q_vila_chegada', 'o_marcos'] }, start: 'intro' },
+      { when: { questActive: 'q_vila_bidu', objectiveDone: ['q_vila_bidu', 'o_atender'] }, start: 'relato_bidu' },
+      { when: { questActive: 'q_vila_bidu' }, start: 'bidu_dica' },
+      { when: { questActive: 'q_vila_luna', objectiveDone: ['q_vila_luna', 'o_atender'] }, start: 'relato_luna' },
+      { when: { questActive: 'q_vila_luna' }, start: 'luna_dica' },
+      { when: { questActive: 'q_vila_rotina' }, start: 'rotina' },
+      { when: { questDone: 'q_vila_rotina' }, start: 'final' },
+      { start: 'geral' },
+    ],
+    nodes: {
+      intro: { expression: 'feliz', text: 'Você deve ser {nome}, da Universidade! Sou o Dr. Marcos Vieira. A Dra. Helena me contou do seu bom trabalho no Hospital.', effects: [{ type: 'objective', quest: 'q_vila_chegada', objective: 'o_marcos' }], next: 'intro2' },
+      intro2: { text: 'Aqui na Vila a rotina é de clínica de bairro: doenças transmitidas por carrapatos, intoxicações em casa, prevenção. Você atende, eu supervisiono. Combinado?', next: 'intro3' },
+      intro3: { expression: 'preocupado', text: 'E já temos trabalho: a Dona Cida está na sala de espera com o Bidu, que sangrou pelo nariz. Converse com ela para começar.' },
+      geral: { text: 'Na clínica de bairro, prevenção é metade do trabalho: vacina, controle de parasitas e orientação ao tutor.' },
+      bidu_dica: {
+        text: 'O Bidu está na sala de espera com a Dona Cida. Sangramento tem muitas causas — pense em plaquetas, coagulação e no que o carrapato pode transmitir.',
+        choices: [{ text: 'Pode me dar uma dica?', next: 'bidu_dica2' }, { text: 'Vou lá!' }],
+      },
+      bidu_dica2: { text: 'Petéquias sugerem problema de plaquetas; hematomas e sangramento em cavidades, de coagulação. Hemograma e coagulograma separam esses grupos.' },
+      relato_bidu: { expression: 'feliz', text: 'Bom raciocínio com o Bidu. A erliquiose é muito comum onde há carrapato-marrom — e o coagulograma normal ajudou a afastar o raticida.', effects: [{ type: 'objective', quest: 'q_vila_bidu', objective: 'o_relatar' }], next: 'relato_bidu2' },
+      relato_bidu2: { expression: 'surpreso', text: 'Ih, ouviu isso? Alguém chegou correndo com uma gata nos braços. É o Gabriel, com a Luna. Parece urgente — vá logo!' },
+      luna_dica: {
+        expression: 'preocupado',
+        text: 'A Luna está tremendo na sala de espera. Urgência: priorize o que muda a conduta e não perca tempo com o que não ajuda.',
+        choices: [{ text: 'Pode me dar uma dica?', next: 'luna_dica2' }, { text: 'Estou indo!' }],
+      },
+      luna_dica2: { text: 'Pergunte o que ela recebeu nas últimas horas — e para qual espécie era o produto. Gato não é cão pequeno.' },
+      relato_luna: { expression: 'feliz', text: 'A Luna está bem melhor. Intoxicação por permetrina é das urgências mais comuns em gatos, e quase sempre evitável com uma leitura de rótulo.', effects: [{ type: 'objective', quest: 'q_vila_luna', objective: 'o_relatar' }], next: 'relato_luna2' },
+      relato_luna2: { text: 'Por isso quero que você ajude a prevenir: passe no Pet Shop do Seu Hiro, que sempre pede orientação, e conheça o Centro de Adoção da Tânia.' },
+      rotina: { text: 'O Pet Shop Patas & Cia. fica a oeste da rua principal, e o Centro de Adoção, ao sul da praça. Prevenção também é medicina veterinária!' },
+      final: {
+        expression: 'feliz',
+        text: 'Você concluiu a primeira parte da Etapa 2, {nome}! Novos casos da Vila chegam em breve. Quer treinar algum atendimento enquanto isso?',
+        choices: [
+          { text: 'Treinar o caso do Bidu (erliquiose)', effects: [{ type: 'startCase', caseId: 'caso_bidu_erliquiose' }] },
+          { text: 'Treinar o caso da Luna (permetrina)', effects: [{ type: 'startCase', caseId: 'caso_luna_permetrina' }] },
+          { text: 'Agora não, obrigado(a).' },
+        ],
+      },
+    },
+  },
+  cida: {
+    entries: [
+      { when: { questActive: 'q_vila_bidu', objectiveNotDone: ['q_vila_bidu', 'o_atender'] }, start: 'atender' },
+      { when: { questStarted: 'q_vila_luna' }, start: 'grata' },
+      { when: { objectiveDone: ['q_vila_bidu', 'o_atender'] }, start: 'grata' },
+      { start: 'espera' },
+    ],
+    nodes: {
+      espera: { expression: 'preocupado', text: 'Estou esperando o Dr. Marcos... o Bidu está tão quietinho.' },
+      atender: { expression: 'preocupado', text: 'Você é o(a) estagiário(a)? O Dr. Marcos disse que vai acompanhar. O Bidu está desanimado há uma semana e hoje sangrou pelo nariz!', next: 'atender2' },
+      atender2: {
+        text: 'Pode ver o que ele tem?',
+        choices: [
+          { text: 'Vamos começar o atendimento.', effects: [{ type: 'startCase', caseId: 'caso_bidu_erliquiose' }] },
+          { text: 'Só um momento, já volto.', next: 'aguarda' },
+        ],
+      },
+      aguarda: { text: 'Tudo bem, a gente espera aqui.' },
+      grata: { expression: 'feliz', text: 'O Bidu já está comendo de novo! Tratei a casinha e o quintal, e a Mel também ganhou carrapaticida. Obrigada!' },
+    },
+  },
+  gabriel: {
+    entries: [
+      { when: { questActive: 'q_vila_luna', objectiveNotDone: ['q_vila_luna', 'o_atender'] }, start: 'atender' },
+      { when: { objectiveDone: ['q_vila_luna', 'o_atender'] }, start: 'grato' },
+      { start: 'grato' },
+    ],
+    nodes: {
+      atender: { expression: 'preocupado', text: 'Por favor, me ajuda! A Luna começou a tremer e babar umas horas depois que eu coloquei o antipulgas!', next: 'atender2' },
+      atender2: {
+        text: 'Ela vai ficar bem?',
+        choices: [
+          { text: 'Vamos atender a Luna agora.', effects: [{ type: 'startCase', caseId: 'caso_luna_permetrina' }] },
+          { text: 'Um instante!', next: 'aguarda' },
+        ],
+      },
+      aguarda: { expression: 'preocupado', text: 'Rápido, por favor... ela não para de tremer.' },
+      grato: { expression: 'feliz', text: 'A Luna está ótima! Agora eu leio o rótulo de tudo: produto de gato para gato, de cachorro para cachorro. E o Rex fica longe dela até o produto secar.' },
+    },
+  },
+  hiro: {
+    entries: [
+      { when: { questActive: 'q_vila_rotina', objectiveNotDone: ['q_vila_rotina', 'o_petshop'] }, start: 'ajuda' },
+      { start: 'padrao' },
+    ],
+    nodes: {
+      padrao: { expression: 'feliz', text: 'Bem-vindo(a) ao Patas & Cia.! Aqui, antes de vender antiparasitário, eu pergunto: qual espécie e quanto pesa?' },
+      ajuda: { expression: 'feliz', text: 'Ah, o(a) estagiário(a) do Dr. Marcos! Chegou na hora: tenho três clientes com dúvidas. Me ajuda a orientar?', next: 'c1' },
+      c1: {
+        text: 'Uma cliente quer antipulgas para o gato, mas o de cachorro está em promoção. O que eu digo a ela?',
+        choices: [
+          { text: 'Só produtos indicados para gatos: os de cão podem ter permetrina, que é tóxica para gatos.', correct: true, next: 'c2' },
+          { text: 'Pode usar metade de uma pipeta de cachorro.', correct: false, next: 'c1_erro' },
+        ],
+      },
+      c1_erro: { expression: 'preocupado', text: 'Hmm... a Luna quase morreu assim! Gatos eliminam mal a permetrina; não é questão de dose. Vamos pensar de novo?', next: 'c1' },
+      c2: {
+        text: 'Agora um senhor quer dar o remédio de dor dele para o cachorro, que está mancando. E aí?',
+        choices: [
+          { text: 'Não: anti-inflamatórios humanos podem causar úlcera e lesão renal em cães. Ele precisa levar o cão ao veterinário.', correct: true, next: 'c3' },
+          { text: 'Pode dar, se for uma dose pequena.', correct: false, next: 'c2_erro' },
+        ],
+      },
+      c2_erro: { expression: 'preocupado', text: 'Cuidado: ibuprofeno e naproxeno, por exemplo, são perigosos para cães mesmo em doses que parecem pequenas. Tenta de novo?', next: 'c2' },
+      c3: {
+        text: 'Por último, um moço tem três cães e quer carrapaticida só para o que está com carrapato. O que você recomenda?',
+        choices: [
+          { text: 'Tratar todos os cães da casa e o ambiente, conforme a orientação do veterinário.', correct: true, next: 'fim' },
+          { text: 'Só o cão que tem carrapato precisa.', correct: false, next: 'c3_erro' },
+        ],
+      },
+      c3_erro: { expression: 'preocupado', text: 'Os outros cães e o ambiente mantêm o ciclo do carrapato — foi assim com o Bidu e a Mel. De novo?', next: 'c3' },
+      fim: { expression: 'feliz', text: 'Perfeito! Vou colar essas orientações no balcão. Obrigado, você ajudou a prevenir mais casos como o da Luna.', effects: [{ type: 'objective', quest: 'q_vila_rotina', objective: 'o_petshop' }, { type: 'mastery', discipline: 'farmacologia', skill: 'toxicologia', xp: 20 }] },
+    },
+  },
+  tania: {
+    entries: [
+      { when: { questActive: 'q_vila_rotina', objectiveNotDone: ['q_vila_rotina', 'o_adocao'] }, start: 'visita' },
+      { start: 'padrao' },
+    ],
+    nodes: {
+      visita: { expression: 'feliz', text: 'Oi! Sou a Tânia, coordenadora do Centro de Adoção. O Dr. Marcos avisou que você viria.', next: 'visita2' },
+      visita2: {
+        text: 'Aqui todo animal sai castrado, vacinado, vermifugado e com microchip. Na sua opinião, por que castramos antes da adoção?',
+        choices: [
+          { text: 'Evita ninhadas indesejadas e reduz riscos de doenças, como piometra e tumores mamários.', correct: true, next: 'visita_ok' },
+          { text: 'Só para o animal ficar mais calmo.', correct: false, next: 'visita_erro' },
+        ],
+      },
+      visita_erro: { text: 'O comportamento pode mudar, mas o principal é outro: controle populacional e prevenção de doenças reprodutivas. Pense de novo?', next: 'visita2' },
+      visita_ok: { expression: 'feliz', text: 'Isso! E a adoção responsável continua depois: acompanhamos as famílias por meses. Se um dia quiser um companheiro, é só falar comigo.', effects: [{ type: 'objective', quest: 'q_vila_rotina', objective: 'o_adocao' }, { type: 'mastery', discipline: 'saude_publica', skill: 'saude_unica', xp: 15 }, { type: 'dex', ids: ['prev_vacinacao'] }] },
+      padrao: {
+        text: 'Bem-vindo(a) ao Centro de Adoção! Quer conhecer os animais ou adotar um companheiro?',
+        choices: [
+          { text: 'Quero adotar um companheiro', effects: [{ type: 'adoptPet' }] },
+          { text: 'Só vim visitar.' },
+        ],
+      },
+    },
+  },
+  rosa: {
+    entries: [{ start: 'oi' }],
+    nodes: {
+      oi: { expression: 'feliz', text: 'Bom dia! Eu cuido dos gatos da praça. Viu o Mingau? Ele tem a pontinha da orelha cortada.', next: 'oi2' },
+      oi2: {
+        text: 'Sabe o que essa marca significa?',
+        choices: [
+          { text: 'Que ele foi castrado num programa de captura, esterilização e devolução.', correct: true, next: 'certo' },
+          { text: 'Que ele brigou com outro gato.', correct: false, next: 'errado' },
+        ],
+      },
+      certo: { expression: 'feliz', text: 'Isso mesmo! A gente captura, a clínica castra e vacina contra a raiva, e devolvemos à praça. Assim a colônia para de crescer e fica mais saudável.' },
+      errado: { text: 'Não! É uma marca feita durante a castração, sob anestesia, para identificar de longe quem já foi castrado e vacinado — e evitar capturas repetidas.' },
     },
   },
 

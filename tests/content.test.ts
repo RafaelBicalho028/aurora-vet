@@ -18,7 +18,7 @@ import type { Condition, Effect } from '../src/systems/dialogue/types';
 const ctx = {
   referenceIds: new Set(Object.keys(REFERENCE_MAP)),
   vetidexIds: new Set(VETIDEX.map((e) => e.id)),
-  textureKeys: new Set(['dog_caramelo', 'dog_campus', 'cat_laranja', 'cat_cinza', 'cow', 'sheep', 'flea', 'pup_pingo']),
+  textureKeys: new Set(['dog_caramelo', 'dog_campus', 'cat_laranja', 'cat_cinza', 'cow', 'sheep', 'flea', 'pup_pingo', 'dog_bidu', 'cat_luna']),
 };
 
 describe('Casos clínicos', () => {
@@ -251,7 +251,7 @@ describe('Missões, diálogos e NPCs', () => {
     Object.values(QUIZZES).forEach((q) => q.onComplete.forEach((e) => { if (e.type === 'objective') completable.add(`${e.quest}.${e.objective}`); }));
     Object.values(MINIGAMES).forEach((m) => completable.add(`${m.missionId}.o_aula`));
     Object.values(LESSONS).forEach((l) => l.onComplete.forEach((e) => { if (e.type === 'objective') completable.add(`${e.quest}.${e.objective}`); }));
-    ['q_proxima_etapa.o_nivel', 'q_proxima_etapa.o_revisao', 'q_boas_vindas.o_lab', 'q_biosseguranca.o_hospital'].forEach((k) => completable.add(k));
+    ['q_proxima_etapa.o_nivel', 'q_proxima_etapa.o_revisao', 'q_boas_vindas.o_lab', 'q_biosseguranca.o_hospital', 'q_vila_chegada.o_vila'].forEach((k) => completable.add(k));
     for (const q of QUESTS) for (const o of q.objectives) expect(completable.has(`${q.id}.${o.id}`), `${q.id}.${o.id}`).toBe(true);
   });
 });

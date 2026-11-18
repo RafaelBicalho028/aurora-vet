@@ -34,7 +34,7 @@ export interface AcademicStage {
 /** Etapas da jornada. Representam progresso no jogo, NÃO habilitação profissional. */
 export const STAGES: AcademicStage[] = [
   { id: 1, title: 'Calouro Veterinário', minLevel: 1, description: 'Anatomia, histologia, fisiologia, biossegurança e fundamentos da profissão.' },
-  { id: 2, title: 'Estudante em Formação', minLevel: 5, description: 'Microbiologia, parasitologia, farmacologia, patologia e semiologia.' },
+  { id: 2, title: 'Estudante em Formação', minLevel: 5, description: 'Atendimentos na Vila dos Animais: doenças transmitidas por vetores, toxicologia e prevenção na comunidade.' },
   { id: 3, title: 'Estagiário Clínico', minLevel: 9, description: 'Atendimentos supervisionados, exames e diagnósticos diferenciais.' },
   { id: 4, title: 'Médico Veterinário em Treinamento', minLevel: 14, description: 'Casos complexos, emergências, saúde coletiva e procedimentos supervisionados.' },
   { id: 5, title: 'Especialista Veterinário', minLevel: 20, description: 'Casos avançados envolvendo diferentes espécies e especialidades.' },

@@ -36,6 +36,13 @@ export const NPCS: NpcDef[] = [
   { id: 'beatriz', name: 'Profa. Beatriz Leal', role: 'Professora de Cirurgia e Anestesiologia', look: scrubs(4, 0, 'trancas', '#3f8a5c', { sex: 'feminino' }), map: 'cirurgia', x: 8, y: 3, facing: 'down', dialogue: 'beatriz' },
   { id: 'tomas', name: 'Prof. Tomás Araújo', role: 'Professor de Saúde Pública Veterinária', look: coat(4, 0, 'curto', 0, { beard: true, sex: 'masculino' }), map: 'saude_publica', x: 8, y: 3, facing: 'down', dialogue: 'tomas' },
   { id: 'nara', name: 'Nara', role: 'Colega de graduação (monitora dos institutos)', look: casual(1, 6, 'rabo', '#3d6fb6', '#3a5a8a', { sex: 'feminino', pattern: 'patinhas', patternColor: '#f4f0e6' }), map: 'institutos', x: 30, y: 13, facing: 'left', wander: 2, dialogue: 'nara' },
+  // ---- Etapa 2: Vila dos Animais
+  { id: 'marcos', name: 'Dr. Marcos Vieira', role: 'Médico-veterinário da Clínica Veterinária da Vila', look: scrubs(3, 5, 'curto', '#2f8a7a', { glasses: true, beard: true, sex: 'masculino' }), map: 'clinica_vila', x: 10, y: 5, facing: 'down', dialogue: 'marcos' },
+  { id: 'cida', name: 'Dona Cida', role: 'Tutora do Bidu', look: casual(2, 5, 'coque', '#c8506a', '#4a4058', { sex: 'feminino', pattern: 'bolinhas', patternColor: '#f4f0e6' }), map: 'clinica_vila', x: 3, y: 7, facing: 'right', dialogue: 'cida', visibleWhen: { questStarted: 'q_vila_bidu' } },
+  { id: 'gabriel', name: 'Gabriel', role: 'Tutor da Luna', look: casual(1, 0, 'cacheado', '#3a3a48', '#3a5a8a', { sex: 'masculino', pattern: 'listras', patternColor: '#e8566a' }), map: 'clinica_vila', x: 3, y: 10, facing: 'right', dialogue: 'gabriel', visibleWhen: { questStarted: 'q_vila_luna' } },
+  { id: 'hiro', name: 'Seu Hiro', role: 'Dono do Pet Shop Patas & Cia.', look: casual(1, 5, 'raspado', '#e08a3a', '#4a4038', { sex: 'masculino', glasses: true }), map: 'petshop', x: 8, y: 3, facing: 'down', dialogue: 'hiro' },
+  { id: 'tania', name: 'Tânia', role: 'Coordenadora do Centro de Adoção da Vila', look: casual(4, 0, 'trancas', '#d8607a', '#3a4258', { sex: 'feminino', pattern: 'patinhas', patternColor: '#f4f0e6' }), map: 'adocao', x: 8, y: 3, facing: 'down', dialogue: 'tania' },
+  { id: 'rosa', name: 'Dona Rosa', role: 'Cuidadora de gatos comunitários', look: casual(0, 5, 'chanel', '#8a6bc9', '#4a4058', { sex: 'feminino', glasses: true }), map: 'vila', x: 6, y: 7, facing: 'down', dialogue: 'rosa' },
   { id: 'bruno', name: 'Bruno', role: 'Colega de graduação', look: coat(1, 3, 'curto', 4), map: 'biblioteca', x: 5, y: 7, facing: 'down', dialogue: 'bruno' },
 ];
 
@@ -55,6 +62,26 @@ export const ANIMALS: AnimalDef[] = [
   {
     id: 'nino', name: 'Nino', sprite: 'cat_cinza', map: 'hospital', x: 9, y: 11, behavior: 'idle',
     interact: { dialogue: 'nino_animal' }, visibleWhen: { questStarted: 'q_emergencia' },
+  },
+  {
+    id: 'bidu', name: 'Bidu', sprite: 'dog_bidu', map: 'clinica_vila', x: 4, y: 7, behavior: 'idle',
+    interact: { lines: ['O Bidu está deitado, quieto e quente. Há carrapatos nas orelhas dele.', 'Converse com a Dona Cida para iniciar o atendimento.'] }, visibleWhen: { questStarted: 'q_vila_bidu' },
+  },
+  {
+    id: 'luna', name: 'Luna', sprite: 'cat_luna', map: 'clinica_vila', x: 4, y: 10, behavior: 'scratch',
+    interact: { lines: ['A Luna treme sem parar e baba muito. O pelo da nuca está oleoso.', 'É urgente: converse com o Gabriel para iniciar o atendimento.'] }, visibleWhen: { questStarted: 'q_vila_luna' },
+  },
+  {
+    id: 'biscoito', name: 'Biscoito', sprite: 'dog_campus', map: 'adocao', x: 4, y: 6, behavior: 'idle',
+    interact: { lines: ['Biscoito, 3 anos, castrado e vacinado, abana o rabo para você.', 'Ficha: “Dócil, adora passear. Procura família com quintal ou passeios diários.”'] },
+  },
+  {
+    id: 'nuvem', name: 'Nuvem', sprite: 'cat_cinza', map: 'adocao', x: 12, y: 5, behavior: 'idle',
+    interact: { lines: ['Nuvem, gata de 1 ano, observa você com calma.', 'Ficha: “Castrada, vacinada e testada. Ideal para apartamento com telas nas janelas.”'] },
+  },
+  {
+    id: 'mingau', name: 'Mingau', sprite: 'cat_laranja', map: 'vila', x: 16, y: 16, behavior: 'wander', wander: 2,
+    interact: { lines: ['Mingau, gato comunitário da praça, tem a pontinha da orelha esquerda cortada.', 'É a marca de que ele foi castrado no programa de captura, esterilização e devolução da Dona Rosa.'] },
   },
   {
     id: 'caramelo', name: 'Paçoca', sprite: 'dog_campus', map: 'campus', x: 19, y: 16, behavior: 'wander', wander: 3,
