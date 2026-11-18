@@ -1,0 +1,28 @@
+{
+  "name": "vetquest",
+  "private": true,
+  "version": "0.1.0",
+  "description": "VetQuest: Jornada Veterinária — RPG educacional 2D para estudantes de Medicina Veterinária",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "validate:content": "vitest run tests/content.test.ts",
+    "e2e": "node dev/e2e-full.cjs",
+    "e2e:side": "node dev/e2e-side.cjs",
+    "e2e:mobile": "node dev/e2e-mobile.cjs"
+  },
+  "dependencies": {
+    "@fontsource/nunito": "5.3.0",
+    "@fontsource/pixelify-sans": "5.3.0",
+    "phaser": "3.90.0"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "vite": "6.4.5",
+    "vitest": "3.2.7"
+  }
+}

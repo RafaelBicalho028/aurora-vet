@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "id": "mg_anatomia_intro",
+  "title": "Aula 1 — Osteologia e Anatomia Comparada",
+  "missionId": "q_aula_anatomia",
+  "baseXp": 150,
+  "passScore": 60,
+  "disciplines": [
+    {
+      "discipline": "anatomia",
+      "skill": "osteologia",
+      "part": "hotspots"
+    },
+    {
+      "discipline": "anatomia",
+      "skill": "comparada",
+      "part": "quiz"
+    },
+    {
+      "discipline": "anatomia",
+      "skill": "digestorio",
+      "part": "quiz"
+    }
+  ],
+  "educationalNotice": "Esquema didático simplificado e fora de escala. Conteúdo pendente de validação por docente de Anatomia Veterinária.",
+  "validation": {
+    "status": "pendente",
+    "reviewer": null,
+    "date": null,
+    "notes": "Rascunho do MVP."
+  },
+  "references": [
+    {
+      "refId": "dyce2010",
+      "supports": "Osteologia do cão, fórmulas vertebrais e dentárias, estômago dos ruminantes, ausência de vesícula biliar em equinos."
+    }
+  ],
+  "intro": "Bem-vindo(a) ao Laboratório de Anatomia! Hoje vamos identificar ossos do esqueleto do cão e comparar estruturas entre espécies. As estruturas e perguntas são sorteadas de um banco maior a cada tentativa, priorizando as que você ainda não viu. Erros fazem parte do aprendizado — leia cada explicação.",
+  "hotspots": {
+    "pointsEach": 6,
+    "structures": [
+      {
+        "id": "s_cranio",
+        "name": "Crânio",
+        "x": 96,
+        "y": 64,
+        "info": "Protege o encéfalo e os órgãos dos sentidos. Em cães, o formato varia entre dolicocefálicos, mesaticefálicos e braquicefálicos."
+      },
+      {
+        "id": "s_mandibula",
+        "name": "Mandíbula",
+        "x": 60,
+        "y": 100,
+        "info": "Único osso móvel do crânio, articula-se na articulação temporomandibular."
+      },
+      {
+        "id": "s_cervicais",
+        "name": "Vértebras cervicais",
+        "x": 128,
+        "y": 90,
+        "info": "Mamíferos domésticos têm 7 vértebras cervicais; o atlas (C1) e o áxis (C2) são especializados."
+      },
+      {
+        "id": "s_escapula",
+        "name": "Escápula",
+        "x": 168,
+        "y": 100,
+        "info": "Osso plano do cíngulo do membro torácico; une-se ao tronco por músculos (sinsarcose)."
+      },
+      {
+        "id": "s_umero",
+        "name": "Úmero",
+        "x": 166,
+        "y": 152,
+        "info": "Osso longo do braço, articula-se com a escápula (ombro) e com rádio e ulna (cotovelo)."
+      },
+      {
+        "id": "s_radio_ulna",
+        "name": "Rádio e ulna",
+        "x": 170,
+        "y": 192,
+        "info": "Ossos do antebraço. O olécrano da ulna forma a ponta do cotovelo."
+      },
+      {
+        "id": "s_costelas",
+        "name": "Costelas",
+        "x": 212,
+        "y": 132,
+        "info": "O cão tem 13 pares, acompanhando as 13 vértebras torácicas."
+      },
+      {
+        "id": "s_lombares",
+        "name": "Vértebras lombares",
+        "x": 285,
+        "y": 96,
+        "info": "O cão tem normalmente 7 vértebras lombares, com processos transversos longos."
+      },
+      {
+        "id": "s_pelve",
+        "name": "Osso do quadril (pelve)",
+        "x": 338,
+        "y": 122,
+        "info": "Formado por íleo, ísquio e púbis, que se fundem no acetábulo."
+      },
+      {
+        "id": "s_femur",
+        "name": "Fêmur",
+        "x": 314,
+        "y": 145,
+        "info": "Maior osso longo do membro pélvico; a cabeça do fêmur articula-se no acetábulo."
+      },
+      {
+        "id": "s_tibia",
+        "name": "Tíbia e fíbula",
+        "x": 318,
+        "y": 186,
+        "info": "Ossos da perna. A patela, osso sesamoide, situa-se no tendão do quadríceps femoral, cranialmente ao joelho."
+      },
+      {
+        "id": "s_calcaneo",
+        "name": "Calcâneo (tarso)",
+        "x": 336,
+        "y": 200,
+        "info": "Osso do tarso cuja tuberosidade recebe o tendão calcâneo comum — a 'ponta do jarrete'."
+      },
+      {
+        "id": "s_orbita",
+        "name": "Órbita",
+        "x": 74,
+        "y": 70,
+        "info": "Cavidade óssea que aloja o bulbo ocular. No cão, a órbita é incompleta, fechada caudalmente pelo ligamento orbital."
+      },
+      {
+        "id": "s_toracicas",
+        "name": "Vértebras torácicas",
+        "x": 190,
+        "y": 86,
+        "info": "O cão tem 13 vértebras torácicas, com processos espinhosos altos na região da cernelha."
+      },
+      {
+        "id": "s_sacro",
+        "name": "Sacro",
+        "x": 318,
+        "y": 101,
+        "info": "No cão, formado por 3 vértebras fundidas que se articulam com o íleo."
+      },
+      {
+        "id": "s_caudais",
+        "name": "Vértebras caudais",
+        "x": 370,
+        "y": 128,
+        "info": "Em número variável (geralmente 20 a 23 no cão), formam o esqueleto da cauda."
+      },
+      {
+        "id": "s_esterno",
+        "name": "Esterno",
+        "x": 200,
+        "y": 166,
+        "info": "Formado por esternébras; recebe as cartilagens costais das costelas esternais."
+      },
+      {
+        "id": "s_olecrano",
+        "name": "Olécrano (ulna)",
+        "x": 181,
+        "y": 166,
+        "info": "Tuberosidade proximal da ulna, onde se insere o músculo tríceps braquial."
+      },
+      {
+        "id": "s_carpo",
+        "name": "Carpo",
+        "x": 168,
+        "y": 214,
+        "info": "Conjunto de ossos curtos entre o antebraço e o metacarpo."
+      },
+      {
+        "id": "s_patela",
+        "name": "Patela",
+        "x": 300,
+        "y": 162,
+        "info": "Osso sesamoide no tendão do quadríceps femoral, que desliza no sulco troclear do fêmur."
+      },
+      {
+        "id": "s_metatarso",
+        "name": "Metatarso",
+        "x": 322,
+        "y": 215,
+        "info": "Ossos longos entre o tarso e as falanges do membro pélvico."
+      }
+    ],
+    "count": 8
+  },
+  "quiz": {
+    "pool": "anatomia_comparada",
+    "count": 6,
+    "pointsEach": 8
+  },
+  "vetidexUnlocks": [
+    "anat_esqueleto_cao",
+    "anat_coluna_vertebral",
+    "anat_estomago_ruminante",
+    "anat_formula_dentaria",
+    "anat_figado_vesicula",
+    "especie_equino"
+  ]
+}

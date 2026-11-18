@@ -1,0 +1,13 @@
+{
+  "name": "VetQuest: Jornada Veterinária",
+  "short_name": "VetQuest",
+  "description": "RPG educacional para estudantes de Medicina Veterinária.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "any",
+  "background_color": "#1b1626",
+  "theme_color": "#1b1626",
+  "lang": "pt-BR",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

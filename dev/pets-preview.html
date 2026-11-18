@@ -1,0 +1,6 @@
+<!doctype html><html><head><meta charset="utf-8"><style>body{background:#6a9a5a;margin:8px;font:12px sans-serif;display:flex;flex-wrap:wrap;gap:10px}canvas{image-rendering:pixelated}div{background:#5a8a4a;padding:4px}</style></head>
+<body><script type="module">
+import { buildPetSheet } from '../src/art/pets';
+import { BREEDS } from '../src/content/pets';
+for (const b of BREEDS) { const c = buildPetSheet(b.look); const s = document.createElement('canvas'); s.width=c.width*4; s.height=c.height*4; const x=s.getContext('2d'); x.imageSmoothingEnabled=false; x.drawImage(c,0,0,s.width,s.height); const d=document.createElement('div'); d.textContent=b.name; d.appendChild(document.createElement('br')); d.appendChild(s); document.body.appendChild(d); }
+</script></body></html>

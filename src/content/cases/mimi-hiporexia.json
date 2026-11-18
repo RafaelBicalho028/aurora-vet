@@ -1,0 +1,1326 @@
+{
+  "schemaVersion": 1,
+  "id": "caso_mimi_hiporexia",
+  "title": "O Gato que Não Come — Mimi",
+  "missionId": "q_gato_nao_come",
+  "difficulty": 2,
+  "minStage": 1,
+  "baseXp": 280,
+  "passScore": 60,
+  "disciplines": [
+    {
+      "discipline": "clinica",
+      "skill": "semiologia",
+      "section": "anamnesis"
+    },
+    {
+      "discipline": "clinica",
+      "skill": "semiologia",
+      "section": "physicalExam"
+    },
+    {
+      "discipline": "clinica",
+      "skill": "exames",
+      "section": "tests"
+    },
+    {
+      "discipline": "clinica",
+      "skill": "diferencial",
+      "section": "diagnosis"
+    },
+    {
+      "discipline": "clinica",
+      "skill": "raciocinio",
+      "section": "all"
+    },
+    {
+      "discipline": "clinica",
+      "skill": "condutas",
+      "section": "conduct"
+    },
+    {
+      "discipline": "fisiologia",
+      "skill": "digestiva",
+      "section": "all"
+    },
+    {
+      "discipline": "fisiologia",
+      "skill": "homeostase",
+      "section": "conduct"
+    },
+    {
+      "discipline": "cirurgia",
+      "skill": "pre_operatorio",
+      "section": "tests"
+    },
+    {
+      "discipline": "cirurgia",
+      "skill": "monitorizacao",
+      "section": "conduct"
+    }
+  ],
+  "educationalNotice": "Material educacional simplificado para fins didáticos. Intervalos de referência são ilustrativos e variam entre laboratórios. Não substitui a avaliação de um(a) médico(a)-veterinário(a) nem constitui protocolo de prescrição. Pendente de validação técnica.",
+  "validation": {
+    "status": "pendente",
+    "reviewer": null,
+    "date": null,
+    "notes": "Rascunho inicial elaborado para o MVP. Revisar intervalos laboratoriais, sequência diagnóstica e condutas com docente de Clínica Médica de Felinos."
+  },
+  "references": [
+    {
+      "refId": "center2005",
+      "supports": "Fisiopatogenia, fatores de risco, achados laboratoriais (FA vs. GGT) e suporte nutricional na lipidose hepática felina."
+    },
+    {
+      "refId": "valtolina2017",
+      "supports": "Diagnóstico por citologia aspirativa, avaliação da coagulação, síndrome de realimentação e prognóstico."
+    },
+    {
+      "refId": "nelson2019",
+      "supports": "Abordagem do gato ictérico e diagnóstico diferencial de hepatopatias felinas."
+    },
+    {
+      "refId": "thrall2012",
+      "supports": "Interpretação de hemograma, bioquímica e bilirrubinúria em felinos."
+    },
+    {
+      "refId": "boland2010",
+      "supports": "Toxicidade de fármacos em gatos relacionada à glicuronidação deficiente (contexto da permetrina)."
+    },
+    {
+      "refId": "merck",
+      "supports": "Toxicidade do paracetamol (acetaminofeno) em gatos e parâmetros vitais de referência."
+    },
+    {
+      "refId": "feitosa2014",
+      "supports": "Roteiro de anamnese e exame físico geral."
+    }
+  ],
+  "patient": {
+    "name": "Mimi",
+    "species": "felino",
+    "speciesLabel": "Gato (Felis catus)",
+    "breed": "Sem raça definida (SRD)",
+    "sex": "Fêmea castrada",
+    "age": "7 anos",
+    "weightKg": 7.2,
+    "sprite": "cat_laranja",
+    "tutorName": "Dona Marta",
+    "tutorNpc": "marta",
+    "presentingComplaint": "Não come direito há cerca de quatro dias e está muito parada."
+  },
+  "intro": "Dona Marta trouxe a Mimi, uma gata SRD de 7 anos, porque ela quase não come há alguns dias e passa o tempo escondida. Em gatos, a falta de apetite nunca deve ser subestimada. Avalie com cuidado — e pense na urgência do caso.",
+  "supervisor": {
+    "name": "Dra. Helena Duarte",
+    "npc": "helena",
+    "tips": {
+      "anamnesis": "Há quanto tempo ela não come? O que mudou na vida dela? E não esqueça: em gato prostrado, sempre pergunte como está a micção.",
+      "physicalExam": "Olhe as mucosas com atenção, avalie o escore corporal, a hidratação e palpe com cuidado o abdome — inclusive a bexiga.",
+      "tests": "Pense em quais exames mudam sua conduta. E antes de qualquer procedimento invasivo em hepatopata, pense em segurança.",
+      "diagnosis": "Icterícia em gato tem várias causas: pré-hepáticas, hepáticas e pós-hepáticas. Use o padrão das enzimas e a imagem para separar as hipóteses.",
+      "conduct": "Este é um quadro que exige ação. O que mantém a doença em progressão? Como corrigir isso com segurança?"
+    }
+  },
+  "anamnesis": {
+    "questions": [
+      {
+        "id": "q_queixa",
+        "category": "Queixa principal",
+        "text": "O que está acontecendo com a Mimi?",
+        "answer": "Ela parou de comer! Há uns quatro dias só belisca, e desde ontem nem isso. Fica escondida, quietinha.",
+        "relevance": "essential",
+        "findingId": "f_anorexia",
+        "explanation": "Hiporexia que evolui para anorexia por vários dias é um sinal de alerta em gatos, especialmente obesos: o balanço energético negativo mobiliza gordura para o fígado."
+      },
+      {
+        "id": "q_inicio",
+        "category": "Início e evolução",
+        "text": "Quando começou e como evoluiu? Teve vômito ou diarreia?",
+        "answer": "Começou logo depois da mudança, há uns cinco dias. Primeiro comia menos, agora não come nada. Vomitou duas vezes ontem. Diarreia, não.",
+        "relevance": "essential",
+        "findingId": "f_vomito",
+        "explanation": "Cronologia e sinais associados (vômito) ajudam a delimitar hipóteses digestivas, hepáticas e pancreáticas."
+      },
+      {
+        "id": "q_ambiente",
+        "category": "Ambiente",
+        "text": "Houve alguma mudança na rotina ou no ambiente dela?",
+        "answer": "Sim! Mudamos de apartamento semana passada e meu filho trouxe um cachorro filhote. Ela anda muito assustada.",
+        "relevance": "essential",
+        "findingId": "f_estresse",
+        "explanation": "Gatos são sensíveis a mudanças ambientais. Estresse é um gatilho frequente de anorexia."
+      },
+      {
+        "id": "q_alimentacao",
+        "category": "Histórico alimentar",
+        "text": "O que ela come? Houve troca de alimento?",
+        "answer": "Ração seca à vontade. Ah... como ela está gordinha, troquei de uma vez pela ração light na semana da mudança. Ela cheirou e foi embora.",
+        "relevance": "essential",
+        "findingId": "f_troca_dieta",
+        "explanation": "Troca abrupta de dieta e restrição calórica sem acompanhamento podem precipitar anorexia em gatos obesos."
+      },
+      {
+        "id": "q_peso",
+        "category": "Histórico alimentar",
+        "text": "Ela ganhou ou perdeu peso nos últimos meses?",
+        "answer": "Ela sempre foi pesadinha, e no último ano engordou mais. Agora parece que emagreceu um pouco.",
+        "relevance": "complementary",
+        "requires": [
+          "q_alimentacao"
+        ],
+        "explanation": "Pergunta de aprofundamento: obesidade prévia aumenta o risco de lipidose hepática quando há anorexia."
+      },
+      {
+        "id": "q_urina",
+        "category": "Início e evolução",
+        "text": "Ela está urinando normalmente? Faz força na caixa de areia?",
+        "answer": "Faz xixi normal, sem esforço. Só achei o xixi mais amarelo-escuro.",
+        "relevance": "essential",
+        "findingId": "f_urina_escura",
+        "explanation": "Em gato prostrado, é prioritário afastar obstrução uretral (emergência). Urina escura pode indicar bilirrubinúria."
+      },
+      {
+        "id": "q_idade",
+        "category": "Idade e espécie",
+        "text": "Quantos anos ela tem? É castrada?",
+        "answer": "Sete anos. Castrada, sem raça definida.",
+        "relevance": "complementary",
+        "explanation": "A idade orienta diferenciais (ex.: hipertireoidismo é mais comum em gatos idosos)."
+      },
+      {
+        "id": "q_vacinacao",
+        "category": "Vacinação",
+        "text": "Vacinas e vermifugação estão em dia?",
+        "answer": "As vacinas sim, ano passado. Vermífugo, acho que também.",
+        "relevance": "complementary",
+        "explanation": "Faz parte da anamnese completa e do histórico preventivo."
+      },
+      {
+        "id": "q_medicamentos",
+        "category": "Medicamentos utilizados",
+        "text": "Ela tomou algum medicamento?",
+        "answer": "Não dei nada... Pensei em dar um remédio de enjoo ou um paracetamol que tenho em casa, mas fiquei com medo.",
+        "relevance": "complementary",
+        "explanation": "Oportunidade para orientar: o paracetamol é extremamente tóxico para gatos e medicamentos humanos não devem ser usados sem prescrição veterinária."
+      },
+      {
+        "id": "q_exposicao",
+        "category": "Exposição a outros animais",
+        "text": "Ela tem acesso à rua ou contato com outros gatos?",
+        "answer": "Não, vive só dentro de casa. Agora tem o filhote de cachorro, mas eles quase não se encontram.",
+        "relevance": "complementary",
+        "explanation": "O acesso à rua altera o risco de doenças infecciosas (FeLV, FIV), traumas e intoxicações."
+      },
+      {
+        "id": "q_toxicos",
+        "category": "Ambiente",
+        "text": "Na casa nova, ela teve acesso a plantas, produtos de limpeza ou remédios?",
+        "answer": "Acho que não... As plantas ainda estão nas caixas da mudança e os produtos ficam no armário.",
+        "relevance": "complementary",
+        "explanation": "Intoxicações (ex.: lírios — Lilium spp., nefrotóxicos para gatos) entram no diagnóstico diferencial de gatos apáticos."
+      },
+      {
+        "id": "q_brinquedo",
+        "category": "Outros",
+        "text": "Qual é o brinquedo preferido dela?",
+        "answer": "A varinha com penas! Mas faz dias que ela nem olha.",
+        "relevance": "irrelevant",
+        "explanation": "Pergunta pouco útil para o raciocínio clínico neste momento."
+      },
+      {
+        "id": "q_colo",
+        "category": "Outros",
+        "text": "Ela gosta de ficar no colo?",
+        "answer": "Às vezes... por quê?",
+        "relevance": "irrelevant",
+        "explanation": "Pergunta sem relação com o quadro."
+      }
+    ]
+  },
+  "physicalExam": {
+    "items": [
+      {
+        "id": "e_fc",
+        "label": "Frequência cardíaca",
+        "group": "vitais",
+        "result": "196 bpm",
+        "reference": {
+          "min": 140,
+          "max": 220,
+          "unit": "bpm",
+          "note": "Gato adulto; o estresse do ambiente clínico eleva a FC."
+        },
+        "status": "normal",
+        "relevance": "essential",
+        "explanation": "Dentro da faixa de referência para gatos."
+      },
+      {
+        "id": "e_fr",
+        "label": "Frequência respiratória",
+        "group": "vitais",
+        "result": "28 mpm",
+        "reference": {
+          "min": 20,
+          "max": 30,
+          "unit": "mpm"
+        },
+        "status": "normal",
+        "relevance": "essential",
+        "explanation": "Sem taquipneia ou padrão respiratório anormal."
+      },
+      {
+        "id": "e_temp",
+        "label": "Temperatura retal",
+        "group": "vitais",
+        "result": "38,4 °C",
+        "reference": {
+          "min": 38.1,
+          "max": 39.2,
+          "unit": "°C"
+        },
+        "status": "normal",
+        "relevance": "essential",
+        "explanation": "Normotermia. Febre seria mais sugestiva de processos inflamatórios/infecciosos, como colangite neutrofílica."
+      },
+      {
+        "id": "e_mucosas",
+        "label": "Mucosas",
+        "group": "geral",
+        "result": "Amareladas (ictéricas) na mucosa oral e na esclera; face interna do pavilhão auricular também amarelada.",
+        "reference": "Róseas e úmidas",
+        "status": "altered",
+        "relevance": "essential",
+        "findingId": "f_ictericia",
+        "explanation": "Icterícia indica hiperbilirrubinemia — causas pré-hepáticas (hemólise), hepáticas ou pós-hepáticas (obstrução biliar)."
+      },
+      {
+        "id": "e_tpc",
+        "label": "Tempo de preenchimento capilar",
+        "group": "geral",
+        "result": "1,8 s",
+        "reference": {
+          "min": 0,
+          "max": 2,
+          "unit": "s"
+        },
+        "status": "normal",
+        "relevance": "complementary",
+        "explanation": "Perfusão periférica preservada."
+      },
+      {
+        "id": "e_hidratacao",
+        "label": "Hidratação",
+        "group": "geral",
+        "result": "Turgor cutâneo discretamente diminuído; mucosas pegajosas. Desidratação estimada em ~6%.",
+        "reference": "Turgor preservado, mucosas úmidas",
+        "status": "altered",
+        "relevance": "essential",
+        "findingId": "f_desidratacao",
+        "explanation": "Desidratação leve a moderada, esperada após dias sem ingestão e com vômitos. Orienta a fluidoterapia."
+      },
+      {
+        "id": "e_ecc",
+        "label": "Escore de condição corporal",
+        "group": "geral",
+        "result": "ECC 8/9 (sobrepeso acentuado), com discreta perda de massa muscular epaxial.",
+        "reference": "ECC 5/9 (ideal)",
+        "status": "altered",
+        "relevance": "essential",
+        "findingId": "f_obesa",
+        "explanation": "Obesidade é o principal fator predisponente da lipidose hepática quando há anorexia."
+      },
+      {
+        "id": "e_linfonodos",
+        "label": "Linfonodos",
+        "group": "geral",
+        "result": "Sem alterações palpáveis.",
+        "reference": "Não aumentados",
+        "status": "normal",
+        "relevance": "complementary",
+        "explanation": "Linfadenomegalia generalizada poderia sugerir linfoma ou doença infecciosa."
+      },
+      {
+        "id": "e_oral",
+        "label": "Cavidade oral",
+        "group": "especifico",
+        "result": "Sem úlceras, sem corpo estranho linear sob a língua; doença periodontal discreta.",
+        "reference": "Sem lesões",
+        "status": "normal",
+        "relevance": "complementary",
+        "explanation": "Doença oral e corpos estranhos lineares (presos sob a língua) são causas de hiporexia em gatos."
+      },
+      {
+        "id": "e_ausculta",
+        "label": "Auscultação cardiopulmonar",
+        "group": "sistemas",
+        "result": "Bulhas normofonéticas, sem sopros; campos pulmonares limpos.",
+        "reference": "Sem sopros, arritmias ou ruídos",
+        "status": "normal",
+        "relevance": "complementary",
+        "explanation": "Sem alterações cardiorrespiratórias."
+      },
+      {
+        "id": "e_palpacao",
+        "label": "Palpação abdominal",
+        "group": "sistemas",
+        "result": "Hepatomegalia: borda hepática lisa, palpável além do arco costal; desconforto leve. Alças intestinais sem espessamento ou corpo estranho palpável.",
+        "reference": "Fígado não palpável além do arco costal; indolor",
+        "status": "altered",
+        "relevance": "essential",
+        "findingId": "f_hepatomegalia",
+        "explanation": "Hepatomegalia difusa e lisa é compatível com infiltração (lipídica, inflamatória ou neoplásica)."
+      },
+      {
+        "id": "e_bexiga",
+        "label": "Palpação vesical",
+        "group": "sistemas",
+        "result": "Bexiga moderadamente repleta, macia, indolor e compressível.",
+        "reference": "Macia e compressível",
+        "status": "normal",
+        "relevance": "essential",
+        "findingId": "f_bexiga_normal",
+        "explanation": "Bexiga túrgida e dolorosa indicaria obstrução uretral — emergência. Aqui ela está normal."
+      },
+      {
+        "id": "e_neuro",
+        "label": "Avaliação neurológica básica",
+        "group": "sistemas",
+        "result": "Letárgica, porém responsiva; sem ptialismo, sem déficits de marcha ou de reações posturais.",
+        "reference": "Alerta e responsiva",
+        "status": "altered",
+        "relevance": "complementary",
+        "findingId": "f_letargia",
+        "explanation": "Letargia é inespecífica. Ptialismo e alterações mentais mais intensas poderiam sugerir encefalopatia hepática."
+      }
+    ]
+  },
+  "tests": {
+    "budgetHint": 500,
+    "items": [
+      {
+        "id": "t_hemograma",
+        "name": "Hemograma",
+        "cost": 60,
+        "turnaround": "4 h",
+        "category": "indicated",
+        "result": "Anemia discreta não regenerativa e poiquilocitose; leucograma sem alterações relevantes.",
+        "table": [
+          {
+            "param": "Hematócrito",
+            "value": "28 %",
+            "ref": "30–45 %",
+            "flag": "L"
+          },
+          {
+            "param": "Reticulócitos agregados",
+            "value": "15.000 /µL",
+            "ref": "< 60.000 /µL",
+            "flag": ""
+          },
+          {
+            "param": "Leucócitos",
+            "value": "14.500 /µL",
+            "ref": "5.500–19.500 /µL",
+            "flag": ""
+          },
+          {
+            "param": "Plaquetas",
+            "value": "250.000 /µL",
+            "ref": "200.000–600.000 /µL",
+            "flag": ""
+          },
+          {
+            "param": "Morfologia",
+            "value": "Poiquilócitos frequentes",
+            "ref": "—",
+            "flag": "A"
+          }
+        ],
+        "findingId": "f_hemograma",
+        "justification": "Base mínima no paciente sistêmico: avalia anemia (incluindo hemólise como causa pré-hepática de icterícia) e resposta inflamatória."
+      },
+      {
+        "id": "t_bioquimica",
+        "name": "Bioquímica sérica (perfil hepático, renal e eletrólitos)",
+        "cost": 120,
+        "turnaround": "4 h",
+        "category": "indicated",
+        "result": "FA acentuadamente aumentada com GGT normal; ALT aumentada; hiperbilirrubinemia; hipocalemia; função renal preservada.",
+        "table": [
+          {
+            "param": "ALT",
+            "value": "310 U/L",
+            "ref": "12–130 U/L",
+            "flag": "H"
+          },
+          {
+            "param": "Fosfatase alcalina (FA)",
+            "value": "480 U/L",
+            "ref": "14–111 U/L",
+            "flag": "H"
+          },
+          {
+            "param": "GGT",
+            "value": "3 U/L",
+            "ref": "0–4 U/L",
+            "flag": ""
+          },
+          {
+            "param": "Bilirrubina total",
+            "value": "4,8 mg/dL",
+            "ref": "0,1–0,4 mg/dL",
+            "flag": "H"
+          },
+          {
+            "param": "Albumina",
+            "value": "2,8 g/dL",
+            "ref": "2,6–3,9 g/dL",
+            "flag": ""
+          },
+          {
+            "param": "Glicose",
+            "value": "160 mg/dL",
+            "ref": "70–150 mg/dL",
+            "flag": "H"
+          },
+          {
+            "param": "Creatinina",
+            "value": "1,2 mg/dL",
+            "ref": "0,8–2,0 mg/dL",
+            "flag": ""
+          },
+          {
+            "param": "Potássio",
+            "value": "3,0 mEq/L",
+            "ref": "3,5–5,5 mEq/L",
+            "flag": "L"
+          },
+          {
+            "param": "Fósforo",
+            "value": "3,2 mg/dL",
+            "ref": "3,0–6,5 mg/dL",
+            "flag": ""
+          }
+        ],
+        "findingId": "f_fa_ggt",
+        "justification": "Essencial no gato ictérico: o padrão FA muito elevada com GGT normal/discreta é característico da lipidose hepática; eletrólitos orientam a fluidoterapia e o risco de síndrome de realimentação."
+      },
+      {
+        "id": "t_ultrassom",
+        "name": "Ultrassonografia abdominal",
+        "cost": 180,
+        "turnaround": "1 h",
+        "category": "indicated",
+        "result": "Hepatomegalia difusa com parênquima hiperecogênico em relação à gordura falciforme. Vias biliares sem dilatação, vesícula biliar normal. Pâncreas com dimensões e ecogenicidade preservadas. Sem efusão.",
+        "findingId": "f_us_hiperecogenico",
+        "justification": "Diferencia causas hepáticas de pós-hepáticas (obstrução biliar), avalia pâncreas e guia o aspirado hepático."
+      },
+      {
+        "id": "t_coagulograma",
+        "name": "Coagulograma (TP e TTPa)",
+        "cost": 80,
+        "turnaround": "2 h",
+        "category": "indicated",
+        "result": "TP e TTPa discretamente prolongados.",
+        "findingId": "f_coagulopatia",
+        "justification": "Hepatopatas podem ter coagulopatia (incluindo deficiência de vitamina K). A coagulação deve ser avaliada antes de procedimentos invasivos, como aspirados e colocação de sondas."
+      },
+      {
+        "id": "t_paaf",
+        "name": "Citologia aspirativa hepática guiada por ultrassom (PAAF)",
+        "cost": 150,
+        "turnaround": "24 h",
+        "category": "indicated",
+        "requires": [
+          "t_coagulograma"
+        ],
+        "requiresMessage": "Em hepatopatias, avalie a coagulação ANTES de procedimentos invasivos como o aspirado guiado por ultrassom: há risco de sangramento.",
+        "result": "Hepatócitos com vacuolização citoplasmática lipídica difusa e acentuada (vacúolos claros e bem delimitados), sem inflamação significativa ou células neoplásicas.",
+        "findingId": "f_citologia_lipidica",
+        "justification": "Método minimamente invasivo que, associado ao quadro clínico, sustenta o diagnóstico de lipidose. Limitação: pode não detectar doença concomitante."
+      },
+      {
+        "id": "t_urinalise",
+        "name": "Urinálise",
+        "cost": 50,
+        "turnaround": "2 h",
+        "category": "acceptable",
+        "result": "Densidade 1,040; bilirrubinúria 2+ (em gatos, bilirrubinúria é sempre anormal); sem cristais ou bactérias.",
+        "findingId": "f_bilirrubinuria",
+        "justification": "Complementa a avaliação: confirma bilirrubinúria e avalia concentração urinária, mas não diferencia as causas de icterícia."
+      },
+      {
+        "id": "t_fpli",
+        "name": "Lipase pancreática felina específica (fPLI)",
+        "cost": 150,
+        "turnaround": "24 h",
+        "category": "acceptable",
+        "result": "Dentro do intervalo de referência.",
+        "findingId": "f_fpli_normal",
+        "justification": "Pancreatite pode coexistir com lipidose e colangite; o teste é razoável, embora não decisivo isoladamente."
+      },
+      {
+        "id": "t_fiv_felv",
+        "name": "Teste rápido FIV/FeLV",
+        "cost": 90,
+        "turnaround": "15 min",
+        "category": "acceptable",
+        "result": "Antígeno de FeLV e anticorpos anti-FIV: negativos.",
+        "justification": "Recomendado conhecer o status retroviral de gatos doentes, embora o risco seja baixo em gata de vida exclusivamente domiciliar."
+      },
+      {
+        "id": "t_radiografia",
+        "name": "Radiografia abdominal",
+        "cost": 150,
+        "turnaround": "1 h",
+        "category": "acceptable",
+        "result": "Silhueta hepática aumentada, ultrapassando o arco costal; sem corpos estranhos radiopacos.",
+        "justification": "Confirma hepatomegalia, mas oferece menos informação que a ultrassonografia sobre parênquima e vias biliares."
+      },
+      {
+        "id": "t_t4",
+        "name": "T4 total",
+        "cost": 120,
+        "turnaround": "24 h",
+        "category": "unnecessary",
+        "result": "Dentro do intervalo de referência.",
+        "justification": "Hipertireoidismo é incomum em gatos de 7 anos e cursa tipicamente com polifagia e perda de peso, não com anorexia e icterícia."
+      },
+      {
+        "id": "t_copro",
+        "name": "Exame coproparasitológico",
+        "cost": 30,
+        "turnaround": "24 h",
+        "category": "unnecessary",
+        "result": "Negativo.",
+        "justification": "Não contribui para esclarecer a icterícia e a anorexia neste momento."
+      },
+      {
+        "id": "t_biopsia",
+        "name": "Biópsia hepática cirúrgica",
+        "cost": 900,
+        "turnaround": "7 dias",
+        "category": "unnecessary",
+        "result": "Procedimento não realizado: a equipe considerou a paciente instável para anestesia geral neste momento.",
+        "justification": "Invasiva e arriscada em paciente desidratada, com coagulopatia e sem suporte nutricional. A citologia costuma ser suficiente para o diagnóstico presuntivo inicial."
+      },
+      {
+        "id": "t_tc",
+        "name": "Tomografia computadorizada",
+        "cost": 1200,
+        "turnaround": "1 dia",
+        "category": "unnecessary",
+        "result": "Hepatomegalia difusa, sem outras alterações.",
+        "justification": "Requer anestesia e não acrescenta informação decisiva em relação à ultrassonografia neste caso."
+      }
+    ]
+  },
+  "findings": [
+    {
+      "id": "f_anorexia",
+      "label": "Hiporexia progredindo para anorexia há ~4 dias",
+      "supports": [
+        "h_lipidose",
+        "h_colangite",
+        "h_pancreatite",
+        "h_linfoma",
+        "h_obstrucao_biliar",
+        "h_drc"
+      ]
+    },
+    {
+      "id": "f_vomito",
+      "label": "Dois episódios de vômito",
+      "supports": [
+        "h_lipidose",
+        "h_colangite",
+        "h_pancreatite",
+        "h_obstrucao_biliar",
+        "h_linfoma"
+      ]
+    },
+    {
+      "id": "f_estresse",
+      "label": "Estresse recente: mudança de casa e chegada de um cão",
+      "supports": [
+        "h_lipidose"
+      ]
+    },
+    {
+      "id": "f_troca_dieta",
+      "label": "Troca abrupta para ração light, com recusa alimentar",
+      "supports": [
+        "h_lipidose"
+      ]
+    },
+    {
+      "id": "f_urina_escura",
+      "label": "Micção sem esforço; urina amarelo-escura",
+      "supports": [
+        "h_lipidose",
+        "h_colangite",
+        "h_obstrucao_biliar"
+      ]
+    },
+    {
+      "id": "f_ictericia",
+      "label": "Mucosas ictéricas",
+      "supports": [
+        "h_lipidose",
+        "h_colangite",
+        "h_obstrucao_biliar",
+        "h_linfoma",
+        "h_pancreatite",
+        "h_pif"
+      ]
+    },
+    {
+      "id": "f_desidratacao",
+      "label": "Desidratação estimada em ~6%",
+      "supports": [
+        "h_lipidose",
+        "h_colangite",
+        "h_pancreatite",
+        "h_drc"
+      ]
+    },
+    {
+      "id": "f_obesa",
+      "label": "Obesidade (ECC 8/9)",
+      "supports": [
+        "h_lipidose"
+      ]
+    },
+    {
+      "id": "f_hepatomegalia",
+      "label": "Hepatomegalia lisa à palpação",
+      "supports": [
+        "h_lipidose",
+        "h_colangite",
+        "h_linfoma"
+      ]
+    },
+    {
+      "id": "f_bexiga_normal",
+      "label": "Bexiga macia e compressível (sem obstrução uretral)",
+      "supports": [
+        "h_lipidose",
+        "h_colangite",
+        "h_pancreatite",
+        "h_linfoma",
+        "h_obstrucao_biliar"
+      ]
+    },
+    {
+      "id": "f_letargia",
+      "label": "Letargia, sem ptialismo",
+      "supports": [
+        "h_lipidose",
+        "h_colangite",
+        "h_pancreatite",
+        "h_linfoma",
+        "h_pif",
+        "h_drc"
+      ]
+    },
+    {
+      "id": "f_hemograma",
+      "label": "Anemia discreta não regenerativa com poiquilócitos",
+      "supports": [
+        "h_lipidose",
+        "h_colangite",
+        "h_linfoma",
+        "h_drc"
+      ]
+    },
+    {
+      "id": "f_fa_ggt",
+      "label": "FA acentuadamente aumentada com GGT normal, hiperbilirrubinemia e hipocalemia",
+      "supports": [
+        "h_lipidose"
+      ]
+    },
+    {
+      "id": "f_us_hiperecogenico",
+      "label": "Fígado aumentado e difusamente hiperecogênico; vias biliares e pâncreas normais",
+      "supports": [
+        "h_lipidose"
+      ]
+    },
+    {
+      "id": "f_coagulopatia",
+      "label": "TP e TTPa discretamente prolongados",
+      "supports": [
+        "h_lipidose",
+        "h_colangite",
+        "h_obstrucao_biliar"
+      ]
+    },
+    {
+      "id": "f_citologia_lipidica",
+      "label": "Citologia: vacuolização lipídica difusa e acentuada dos hepatócitos",
+      "supports": [
+        "h_lipidose"
+      ]
+    },
+    {
+      "id": "f_bilirrubinuria",
+      "label": "Bilirrubinúria 2+",
+      "supports": [
+        "h_lipidose",
+        "h_colangite",
+        "h_obstrucao_biliar",
+        "h_pancreatite"
+      ]
+    },
+    {
+      "id": "f_fpli_normal",
+      "label": "fPLI dentro do intervalo de referência",
+      "supports": [
+        "h_lipidose",
+        "h_colangite"
+      ]
+    }
+  ],
+  "diagnosis": {
+    "correctId": "h_lipidose",
+    "expectedDifferentials": [
+      "h_lipidose",
+      "h_colangite",
+      "h_pancreatite",
+      "h_obstrucao_biliar"
+    ],
+    "keyEvidence": [
+      "f_anorexia",
+      "f_obesa",
+      "f_ictericia",
+      "f_fa_ggt",
+      "f_us_hiperecogenico",
+      "f_citologia_lipidica"
+    ],
+    "minDifferentials": 3,
+    "maxDifferentials": 6,
+    "explanation": "Lipidose hepática felina, provavelmente secundária à anorexia desencadeada por estresse (mudança e novo cão) e troca abrupta de dieta em gata obesa. Sustentam o diagnóstico: icterícia, hepatomegalia, FA desproporcionalmente elevada em relação à GGT, fígado hiperecogênico com vias biliares normais e vacuolização lipídica acentuada na citologia. Doenças concomitantes (pancreatite, colangite) devem ser monitoradas.",
+    "hypotheses": [
+      {
+        "id": "h_lipidose",
+        "name": "Lipidose hepática felina",
+        "plausibility": "key",
+        "vetidexId": "doenca_lipidose",
+        "explanation": "Acúmulo de triglicerídeos nos hepatócitos após balanço energético negativo, sobretudo em gatos obesos."
+      },
+      {
+        "id": "h_colangite",
+        "name": "Colangite / colangio-hepatite",
+        "plausibility": "key",
+        "explanation": "Importante causa de icterícia em gatos. Costuma elevar a GGT de forma mais marcada; a forma neutrofílica pode cursar com febre."
+      },
+      {
+        "id": "h_pancreatite",
+        "name": "Pancreatite",
+        "plausibility": "key",
+        "explanation": "Comum em gatos com hiporexia e pode coexistir com lipidose e colangite. Pâncreas normal à ultrassonografia e fPLI normal tornam-na menos provável aqui."
+      },
+      {
+        "id": "h_obstrucao_biliar",
+        "name": "Obstrução biliar extra-hepática",
+        "plausibility": "key",
+        "explanation": "Causa pós-hepática de icterícia; esperar-se-ia dilatação das vias biliares à ultrassonografia."
+      },
+      {
+        "id": "h_linfoma",
+        "name": "Linfoma / neoplasia hepática",
+        "plausibility": "plausible",
+        "explanation": "Pode causar hepatomegalia e icterícia; a citologia não mostrou células neoplásicas."
+      },
+      {
+        "id": "h_pif",
+        "name": "Peritonite infecciosa felina (PIF)",
+        "plausibility": "plausible",
+        "explanation": "Pode causar icterícia, mas é mais frequente em gatos jovens de ambientes com vários gatos, muitas vezes com febre e efusões."
+      },
+      {
+        "id": "h_drc",
+        "name": "Doença renal crônica",
+        "plausibility": "plausible",
+        "explanation": "Causa hiporexia e desidratação, mas não explica a icterícia; creatinina normal e urina concentrada."
+      },
+      {
+        "id": "h_hemolise",
+        "name": "Anemia hemolítica (icterícia pré-hepática)",
+        "plausibility": "plausible",
+        "explanation": "A anemia é discreta e não regenerativa, o que não sustenta hemólise como causa da icterícia."
+      },
+      {
+        "id": "h_hipertireoidismo",
+        "name": "Hipertireoidismo",
+        "plausibility": "unlikely",
+        "explanation": "Mais comum em gatos idosos, com polifagia e perda de peso — não com anorexia e icterícia."
+      },
+      {
+        "id": "h_obstrucao_uretral",
+        "name": "Obstrução uretral",
+        "plausibility": "unlikely",
+        "explanation": "Emergência importante em gatos prostrados, mas a micção é normal e a bexiga está macia e compressível."
+      }
+    ]
+  },
+  "conduct": {
+    "explanation": "A lipidose hepática felina exige internação e suporte: correção hídrica e eletrolítica, controle de náusea e, principalmente, suporte nutricional enteral precoce por sonda, com reintrodução gradual da alimentação e monitorização de eletrólitos (risco de síndrome de realimentação). O prognóstico é bom quando o suporte nutricional é instituído precocemente.",
+    "options": [
+      {
+        "id": "c_internar",
+        "text": "Internar a Mimi para estabilização e suporte intensivo.",
+        "type": "internacao",
+        "category": "correct",
+        "explanation": "Gata ictérica, desidratada e anoréxica há dias precisa de cuidado contínuo; o tratamento domiciliar não oferece suporte suficiente."
+      },
+      {
+        "id": "c_fluido",
+        "text": "Fluidoterapia intravenosa com correção da desidratação e dos eletrólitos (especialmente potássio), prescrita e monitorizada pela equipe.",
+        "type": "suporte",
+        "category": "correct",
+        "explanation": "Corrige déficit hídrico e hipocalemia, que pode agravar a fraqueza e a anorexia.",
+        "pharmacology": {
+          "drugClass": "Fluidoterapia com cristaloides e suplementação de potássio",
+          "mechanism": "Cristaloides isotônicos repõem o volume extracelular; o cloreto de potássio corrige a hipocalemia.",
+          "indications": "Desidratação, perdas contínuas (vômito) e distúrbios eletrolíticos.",
+          "contraindications": "Cautela com sobrecarga de volume em cardiopatas; potássio exige limite de velocidade de infusão e monitorização.",
+          "principles": "Calcular déficit, manutenção e perdas; reavaliar hidratação e eletrólitos periodicamente."
+        }
+      },
+      {
+        "id": "c_sonda",
+        "text": "Suporte nutricional enteral por sonda de alimentação (ex.: nasoesofágica inicialmente; esofagostomia após estabilização), colocada pela equipe sob supervisão.",
+        "type": "procedimento",
+        "category": "correct",
+        "explanation": "É a base do tratamento: reverte o balanço energético negativo. A alimentação é reintroduzida gradualmente, começando com uma fração da necessidade energética de repouso."
+      },
+      {
+        "id": "c_realimentacao",
+        "text": "Monitorar potássio, fósforo, magnésio e glicose durante a reintrodução alimentar.",
+        "type": "suporte",
+        "category": "correct",
+        "explanation": "A síndrome de realimentação (queda de fósforo, potássio e magnésio) pode causar hemólise, fraqueza e arritmias."
+      },
+      {
+        "id": "c_antiemetico",
+        "text": "Controle de náusea e vômito com antiemético de uso veterinário, conforme prescrição.",
+        "type": "tratamento",
+        "category": "correct",
+        "explanation": "Náusea perpetua a anorexia e dificulta o suporte nutricional.",
+        "pharmacology": {
+          "drugClass": "Antieméticos (antagonistas NK1, antagonistas 5-HT3)",
+          "mechanism": "Antagonistas NK1 bloqueiam a substância P no centro do vômito; antagonistas 5-HT3 bloqueiam receptores de serotonina periféricos e centrais.",
+          "indications": "Vômito e náusea de diversas causas.",
+          "contraindications": "Antagonistas NK1 são metabolizados pelo fígado: usar com cautela em hepatopatas. Avaliar obstrução gastrointestinal antes do uso.",
+          "principles": "Controlar náusea melhora a tolerância à alimentação; ajustar a escolha à função hepática."
+        }
+      },
+      {
+        "id": "c_orientar",
+        "text": "Orientar a tutora: perda de peso em gatos deve ser gradual e supervisionada, a troca de dieta deve ser progressiva e um gato que deixa de comer precisa de avaliação precoce.",
+        "type": "prevencao",
+        "category": "correct",
+        "explanation": "Educação do tutor previne recidivas e novos casos."
+      },
+      {
+        "id": "c_vitk",
+        "text": "Discutir com a supervisora suplementação de vitamina K1 diante dos tempos de coagulação prolongados.",
+        "type": "tratamento",
+        "category": "acceptable",
+        "explanation": "Gatos com lipidose podem ter deficiência de vitamina K; a suplementação é considerada antes de procedimentos invasivos, a critério do veterinário."
+      },
+      {
+        "id": "c_casa_apetite",
+        "text": "Dar alta com estimulante de apetite e aguardar que ela volte a comer em casa.",
+        "type": "observacao",
+        "category": "critical",
+        "explanation": "Subestima a gravidade: a paciente está ictérica, desidratada e sem comer há dias.",
+        "consequence": "Sem suporte nutricional adequado, a lipidose tende a progredir, com risco de encefalopatia hepática, coagulopatia e óbito. A Mimi precisou retornar em estado mais grave."
+      },
+      {
+        "id": "c_jejum",
+        "text": "Manter jejum até que as enzimas hepáticas normalizem.",
+        "type": "suporte",
+        "category": "critical",
+        "explanation": "O jejum mantém o balanço energético negativo que causa a doença.",
+        "consequence": "O jejum prolongado agravaria a infiltração lipídica hepática, com piora clínica progressiva."
+      },
+      {
+        "id": "c_dieta_restricao",
+        "text": "Manter a ração light com restrição calórica, aproveitando para ela emagrecer.",
+        "type": "tratamento",
+        "category": "critical",
+        "explanation": "A restrição calórica abrupta foi um dos gatilhos. Na lipidose, a prioridade é suprir as necessidades energéticas.",
+        "consequence": "A restrição perpetuaria a mobilização de gordura para o fígado, piorando a lipidose."
+      },
+      {
+        "id": "c_paracetamol",
+        "text": "Autorizar a tutora a dar paracetamol em casa para “aliviar o mal-estar”.",
+        "type": "tratamento",
+        "category": "critical",
+        "explanation": "Paracetamol é extremamente tóxico para gatos.",
+        "consequence": "Poderia causar metemoglobinemia, formação de corpúsculos de Heinz, edema facial e lesão hepática — potencialmente fatal."
+      },
+      {
+        "id": "c_seringa",
+        "text": "Alimentar à força com seringa várias vezes ao dia como estratégia principal.",
+        "type": "suporte",
+        "category": "incorrect",
+        "explanation": "Raramente atinge as necessidades calóricas, aumenta o estresse, o risco de aspiração e pode gerar aversão alimentar."
+      },
+      {
+        "id": "c_corticoide",
+        "text": "Iniciar corticoide empírico.",
+        "type": "tratamento",
+        "category": "incorrect",
+        "explanation": "Sem evidência de doença inflamatória que o justifique; glicocorticoides podem agravar a lipidose e predispor a outras complicações."
+      },
+      {
+        "id": "c_cirurgia",
+        "text": "Encaminhar para cirurgia exploratória imediata.",
+        "type": "encaminhamento",
+        "category": "incorrect",
+        "explanation": "Sem sinais de obstrução biliar ou corpo estranho; anestesia em paciente instável aumenta riscos sem benefício."
+      }
+    ]
+  },
+  "outcome": {
+    "success": "Com sonda de alimentação, fluidoterapia e controle de náusea, a Mimi melhora progressivamente. Após alguns dias ela recomeça a comer sozinha e a icterícia regride. Dona Marta aprende a fazer a transição de dieta e o plano de perda de peso com acompanhamento.",
+    "partial": "A Mimi sobreviveu graças à intervenção da equipe, mas a recuperação foi mais lenta do que poderia. Revise as decisões apontadas no relatório.",
+    "critical": "Uma decisão colocou a Mimi em risco. A Dra. Helena revê o plano a tempo, mas explica que, na vida real, atrasos e erros terapêuticos podem ser fatais em gatos com lipidose."
+  },
+  "vetidexUnlocks": [
+    "especie_gato",
+    "doenca_lipidose",
+    "manif_ictericia",
+    "manif_hiporexia",
+    "exame_hemograma",
+    "exame_bioquimica",
+    "exame_urinalise",
+    "exame_ultrassom",
+    "exame_paaf",
+    "exame_coagulograma",
+    "farm_antiemeticos",
+    "farm_fluidoterapia",
+    "farm_suporte_nutricional",
+    "farm_toxicidade_felina",
+    "doenca_realimentacao",
+    "prev_manejo_peso_felino"
+  ],
+  "review": {
+    "topics": [
+      {
+        "id": "rt_anorexia_felina",
+        "title": "Anamnese do gato com hiporexia: estresse, dieta e micção",
+        "section": "anamnesis",
+        "vetidexId": "manif_hiporexia"
+      },
+      {
+        "id": "rt_ictericia",
+        "title": "Exame físico: icterícia, ECC e palpação abdominal",
+        "section": "physicalExam",
+        "vetidexId": "manif_ictericia"
+      },
+      {
+        "id": "rt_exames_hepaticos",
+        "title": "Exames no gato ictérico e segurança antes de procedimentos",
+        "section": "tests",
+        "vetidexId": "exame_bioquimica"
+      },
+      {
+        "id": "rt_diferenciais_ictericia",
+        "title": "Diferenciais de icterícia em felinos",
+        "section": "diagnosis",
+        "vetidexId": "doenca_lipidose"
+      },
+      {
+        "id": "rt_suporte_nutricional",
+        "title": "Suporte nutricional e síndrome de realimentação",
+        "section": "conduct",
+        "vetidexId": "farm_suporte_nutricional"
+      }
+    ],
+    "questions": [
+      {
+        "id": "rq_lip_risco",
+        "topic": "Clínica de felinos",
+        "prompt": "Qual é o principal fator de risco para lipidose hepática felina?",
+        "options": [
+          "Anorexia (balanço energético negativo), especialmente em gatos obesos",
+          "Excesso de proteína na dieta",
+          "Vacinação recente",
+          "Acesso à rua"
+        ],
+        "correctIndex": 0,
+        "explanation": "A mobilização de gordura periférica excede a capacidade hepática de metabolizá-la e exportá-la.",
+        "triggeredBy": [
+          "q_alimentacao",
+          "q_ambiente",
+          "e_ecc",
+          "h_lipidose",
+          "f_obesa"
+        ]
+      },
+      {
+        "id": "rq_fa_ggt",
+        "topic": "Patologia clínica",
+        "prompt": "Na lipidose hepática felina, qual padrão bioquímico é característico?",
+        "options": [
+          "FA acentuadamente aumentada com GGT normal ou discretamente aumentada",
+          "GGT muito mais elevada que a FA",
+          "Enzimas hepáticas sempre normais",
+          "Hipoglicemia grave obrigatória"
+        ],
+        "correctIndex": 0,
+        "explanation": "Na colangite e em obstruções biliares a GGT tende a subir mais que na lipidose.",
+        "triggeredBy": [
+          "t_bioquimica",
+          "f_fa_ggt",
+          "h_colangite"
+        ]
+      },
+      {
+        "id": "rq_bilirrubinuria",
+        "topic": "Patologia clínica",
+        "prompt": "Em gatos, a presença de bilirrubinúria:",
+        "options": [
+          "É sempre considerada anormal",
+          "É normal em urinas concentradas",
+          "Indica apenas desidratação",
+          "Ocorre normalmente em machos"
+        ],
+        "correctIndex": 0,
+        "explanation": "Gatos têm limiar renal alto para bilirrubina; diferentemente de cães machos, nos quais pequenas quantidades podem ser normais.",
+        "triggeredBy": [
+          "t_urinalise",
+          "e_mucosas",
+          "q_urina"
+        ]
+      },
+      {
+        "id": "rq_nutricao",
+        "topic": "Terapêutica",
+        "prompt": "Qual é a medida central do tratamento da lipidose hepática felina?",
+        "options": [
+          "Suporte nutricional enteral adequado, geralmente por sonda",
+          "Jejum até normalizar as enzimas",
+          "Restrição calórica para perda de peso",
+          "Corticoterapia"
+        ],
+        "correctIndex": 0,
+        "explanation": "O suporte nutricional reverte o balanço energético negativo e é o principal fator prognóstico.",
+        "triggeredBy": [
+          "c_sonda",
+          "c_casa_apetite",
+          "c_jejum",
+          "c_seringa",
+          "c_dieta_restricao"
+        ]
+      },
+      {
+        "id": "rq_realimentacao",
+        "topic": "Fisiologia",
+        "prompt": "A síndrome de realimentação caracteriza-se principalmente por:",
+        "options": [
+          "Queda de fósforo, potássio e magnésio séricos após a reintrodução alimentar",
+          "Aumento súbito do potássio",
+          "Hiperfosfatemia grave",
+          "Febre alta"
+        ],
+        "correctIndex": 0,
+        "explanation": "A insulina liberada com a alimentação desloca esses eletrólitos para o meio intracelular.",
+        "triggeredBy": [
+          "c_realimentacao",
+          "c_sonda"
+        ]
+      },
+      {
+        "id": "rq_coag",
+        "topic": "Segurança",
+        "prompt": "Antes de um aspirado hepático guiado por ultrassom em um gato ictérico, deve-se:",
+        "options": [
+          "Avaliar a coagulação",
+          "Realizar tomografia",
+          "Manter jejum de 72 horas",
+          "Nenhuma avaliação prévia é necessária"
+        ],
+        "correctIndex": 0,
+        "explanation": "Hepatopatas podem ter coagulopatia; o risco de sangramento deve ser avaliado antes de procedimentos invasivos.",
+        "triggeredBy": [
+          "t_coagulograma",
+          "t_paaf"
+        ]
+      },
+      {
+        "id": "rq_paracetamol",
+        "topic": "Farmacologia",
+        "prompt": "Por que o paracetamol é perigoso para gatos?",
+        "options": [
+          "Gatos têm glicuronidação deficiente, levando a metemoglobinemia e lesão hepática",
+          "Porque causa apenas sonolência",
+          "Porque é inativado no estômago",
+          "Não é perigoso em doses baixas"
+        ],
+        "correctIndex": 0,
+        "explanation": "Mesmo doses pequenas podem ser fatais para gatos.",
+        "triggeredBy": [
+          "c_paracetamol",
+          "q_medicamentos"
+        ]
+      },
+      {
+        "id": "rq_bexiga",
+        "topic": "Semiologia",
+        "prompt": "Em um gato prostrado e sem comer, por que é prioritário avaliar micção e bexiga?",
+        "options": [
+          "Para identificar obstrução uretral, uma emergência",
+          "Para estimar a idade",
+          "Para escolher a ração",
+          "Não é prioritário"
+        ],
+        "correctIndex": 0,
+        "explanation": "A obstrução uretral pode levar rapidamente a hipercalemia grave e óbito.",
+        "triggeredBy": [
+          "e_bexiga",
+          "q_urina"
+        ]
+      },
+      {
+        "id": "rq_us_biliar",
+        "topic": "Imagem",
+        "prompt": "Qual achado ultrassonográfico sugere obstrução biliar extra-hepática?",
+        "options": [
+          "Dilatação das vias biliares e da vesícula",
+          "Fígado hiperecogênico com vias biliares normais",
+          "Bexiga repleta",
+          "Rins pequenos"
+        ],
+        "correctIndex": 0,
+        "explanation": "Por isso a ultrassonografia ajuda a separar icterícia hepática de pós-hepática.",
+        "triggeredBy": [
+          "t_ultrassom",
+          "h_obstrucao_biliar"
+        ]
+      },
+      {
+        "id": "rq_hemolise",
+        "topic": "Patologia clínica",
+        "prompt": "A icterícia pré-hepática por hemólise costuma vir acompanhada de:",
+        "options": [
+          "Anemia, geralmente regenerativa",
+          "Hepatomegalia hiperecogênica obrigatória",
+          "Aumento isolado de GGT",
+          "Hipercalemia"
+        ],
+        "correctIndex": 0,
+        "explanation": "Na Mimi a anemia era discreta e não regenerativa, o que não sustenta hemólise como causa.",
+        "triggeredBy": [
+          "t_hemograma",
+          "h_hemolise"
+        ]
+      },
+      {
+        "id": "rq_ictericia_tipos",
+        "topic": "Semiologia",
+        "prompt": "Como se classificam as causas de icterícia?",
+        "options": [
+          "Pré-hepáticas, hepáticas e pós-hepáticas",
+          "Agudas e crônicas apenas",
+          "Virais e bacterianas",
+          "Renais e cardíacas"
+        ],
+        "correctIndex": 0,
+        "explanation": "Essa classificação organiza o diagnóstico diferencial do paciente ictérico.",
+        "triggeredBy": [
+          "e_mucosas",
+          "h_lipidose"
+        ]
+      },
+      {
+        "id": "rq_vitk",
+        "topic": "Fisiologia",
+        "prompt": "Por que hepatopatas com colestase podem desenvolver deficiência de vitamina K?",
+        "options": [
+          "A redução do fluxo biliar prejudica a absorção de vitaminas lipossolúveis",
+          "Porque o fígado excreta vitamina K em excesso",
+          "Porque a vitamina K é hidrossolúvel",
+          "Porque a vitamina K é produzida nos rins"
+        ],
+        "correctIndex": 0,
+        "explanation": "A vitamina K é necessária para a ativação dos fatores II, VII, IX e X.",
+        "triggeredBy": [
+          "t_coagulograma",
+          "c_vitk"
+        ]
+      },
+      {
+        "id": "rq_nk1_hepat",
+        "topic": "Farmacologia",
+        "prompt": "Por que usar antagonistas NK1 (ex.: maropitant) com cautela em hepatopatas?",
+        "options": [
+          "Porque são metabolizados pelo fígado",
+          "Porque causam hipertensão grave",
+          "Porque são nefrotóxicos em gatos",
+          "Porque aumentam o apetite em excesso"
+        ],
+        "correctIndex": 0,
+        "explanation": "A função hepática reduzida pode prolongar a ação do fármaco.",
+        "triggeredBy": [
+          "c_antiemetico"
+        ]
+      },
+      {
+        "id": "rq_hipocalemia",
+        "topic": "Fisiologia",
+        "prompt": "Por que corrigir a hipocalemia em gatos com lipidose hepática?",
+        "options": [
+          "Ela agrava fraqueza muscular, letargia e anorexia",
+          "Porque o potássio alto é perigoso",
+          "Porque não tem importância clínica",
+          "Porque causa febre"
+        ],
+        "correctIndex": 0,
+        "explanation": "A suplementação é feita com cautela e monitorização, pela equipe veterinária.",
+        "triggeredBy": [
+          "c_fluido",
+          "t_bioquimica"
+        ]
+      },
+      {
+        "id": "rq_lirios",
+        "topic": "Toxicologia",
+        "prompt": "Qual planta ornamental é altamente nefrotóxica para gatos?",
+        "options": [
+          "Lírios (Lilium spp.)",
+          "Manjericão",
+          "Grama comum",
+          "Hortelã"
+        ],
+        "correctIndex": 0,
+        "explanation": "Mesmo pequenas quantidades (inclusive pólen) podem causar lesão renal aguda em gatos.",
+        "triggeredBy": [
+          "q_toxicos"
+        ]
+      },
+      {
+        "id": "rq_transicao",
+        "topic": "Nutrição",
+        "prompt": "Como deve ser feita a troca de dieta de um gato?",
+        "options": [
+          "De forma gradual, misturando o alimento novo ao antigo ao longo de vários dias",
+          "De um dia para o outro",
+          "Com jejum de dois dias antes da troca",
+          "Apenas quando o gato parar de comer"
+        ],
+        "correctIndex": 0,
+        "explanation": "Trocas abruptas podem levar à recusa alimentar, especialmente em gatos estressados.",
+        "triggeredBy": [
+          "q_alimentacao",
+          "c_orientar"
+        ]
+      }
+    ]
+  }
+}

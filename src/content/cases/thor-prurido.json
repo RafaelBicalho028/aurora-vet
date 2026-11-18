@@ -1,0 +1,1257 @@
+{
+  "schemaVersion": 1,
+  "id": "caso_thor_prurido",
+  "title": "O Primeiro Paciente — Thor, o cão que não para de se coçar",
+  "missionId": "q_primeiro_paciente",
+  "difficulty": 1,
+  "minStage": 1,
+  "baseXp": 220,
+  "passScore": 60,
+  "disciplines": [
+    {
+      "discipline": "clinica",
+      "skill": "semiologia",
+      "section": "anamnesis"
+    },
+    {
+      "discipline": "clinica",
+      "skill": "semiologia",
+      "section": "physicalExam"
+    },
+    {
+      "discipline": "clinica",
+      "skill": "exames",
+      "section": "tests"
+    },
+    {
+      "discipline": "clinica",
+      "skill": "diferencial",
+      "section": "diagnosis"
+    },
+    {
+      "discipline": "clinica",
+      "skill": "raciocinio",
+      "section": "all"
+    },
+    {
+      "discipline": "clinica",
+      "skill": "condutas",
+      "section": "conduct"
+    },
+    {
+      "discipline": "parasitologia",
+      "skill": "ectoparasitas",
+      "section": "all"
+    },
+    {
+      "discipline": "parasitologia",
+      "skill": "diagnostico_parasitologico",
+      "section": "tests"
+    },
+    {
+      "discipline": "parasitologia",
+      "skill": "zoonoses",
+      "section": "conduct"
+    },
+    {
+      "discipline": "saude_publica",
+      "skill": "saude_unica",
+      "section": "conduct"
+    }
+  ],
+  "educationalNotice": "Material educacional simplificado para fins didáticos. Não substitui a avaliação de um(a) médico(a)-veterinário(a) nem constitui protocolo de prescrição. Pendente de validação técnica.",
+  "validation": {
+    "status": "pendente",
+    "reviewer": null,
+    "date": null,
+    "notes": "Rascunho inicial elaborado para o MVP. Revisar valores de referência, nomenclatura e condutas com docente de Clínica Médica de Pequenos Animais / Dermatologia."
+  },
+  "references": [
+    {
+      "refId": "miller2013",
+      "supports": "Abordagem diagnóstica do prurido, distribuição de lesões na DAPP, raspados e citologia cutânea."
+    },
+    {
+      "refId": "rust1997",
+      "supports": "Biologia de Ctenocephalides felis e predomínio de estágios imaturos no ambiente."
+    },
+    {
+      "refId": "hensel2015",
+      "supports": "Diagnóstico da dermatite atópica por exclusão; testes alérgicos não são diagnósticos."
+    },
+    {
+      "refId": "boland2010",
+      "supports": "Toxicidade da permetrina em gatos."
+    },
+    {
+      "refId": "fda2018",
+      "supports": "Alerta sobre eventos neurológicos associados às isoxazolinas."
+    },
+    {
+      "refId": "taylor2016",
+      "supports": "Ciclo de Dipylidium caninum e papel da pulga como hospedeiro intermediário."
+    },
+    {
+      "refId": "feitosa2014",
+      "supports": "Roteiro de anamnese e exame físico geral."
+    }
+  ],
+  "patient": {
+    "name": "Thor",
+    "species": "canino",
+    "speciesLabel": "Cão (Canis lupus familiaris)",
+    "breed": "Sem raça definida (SRD)",
+    "sex": "Macho castrado",
+    "age": "4 anos",
+    "weightKg": 18,
+    "sprite": "dog_caramelo",
+    "tutorName": "Sr. Joaquim",
+    "tutorNpc": "joaquim",
+    "presentingComplaint": "Coceira intensa há cerca de três semanas, pior no fim das costas."
+  },
+  "intro": "Sr. Joaquim chegou ao Hospital Veterinário com o Thor, um cão SRD caramelo de 4 anos. Ele se coça tanto que mal dorme. Você conduzirá o atendimento sob supervisão da Dra. Helena. Lembre-se: higienize as mãos e use luvas de procedimento para examinar lesões de pele de causa ainda desconhecida.",
+  "supervisor": {
+    "name": "Dra. Helena Duarte",
+    "npc": "helena",
+    "tips": {
+      "anamnesis": "Em dermatologia, a história vale ouro: quando começou, onde coça, se há sazonalidade, quem mais vive com o paciente e como está o controle de parasitas.",
+      "physicalExam": "Faça o exame físico geral completo antes de focar na pele. Depois, observe a DISTRIBUIÇÃO das lesões — ela é uma pista diagnóstica valiosa.",
+      "tests": "Comece pelos exames dermatológicos simples, baratos e de alto rendimento. Exame caro não é sinônimo de exame bom.",
+      "diagnosis": "Monte uma lista de diferenciais e só depois escolha o mais provável. Justifique com os achados que você realmente obteve.",
+      "conduct": "Pense no paciente, nos animais contactantes e no ambiente. E atenção à segurança de cada espécie!"
+    }
+  },
+  "anamnesis": {
+    "questions": [
+      {
+        "id": "q_queixa",
+        "category": "Queixa principal",
+        "text": "O que trouxe o Thor hoje?",
+        "answer": "Ele não para de se coçar! Morde o fim das costas e perto do rabo, até de madrugada. Ninguém dorme lá em casa.",
+        "relevance": "essential",
+        "findingId": "f_prurido_intenso",
+        "explanation": "A queixa principal orienta toda a investigação. Prurido intenso direciona para dermatopatias alérgicas, parasitárias ou infecciosas."
+      },
+      {
+        "id": "q_inicio",
+        "category": "Início e evolução",
+        "text": "Quando começou e como evoluiu?",
+        "answer": "Começou há umas três semanas, quando esquentou. No verão passado aconteceu algo parecido, mas melhorou sozinho no frio.",
+        "relevance": "essential",
+        "findingId": "f_sazonal",
+        "explanation": "Sazonalidade e recorrência ajudam a diferenciar causas. Pulgas proliferam mais em períodos quentes e úmidos; a dermatite atópica também pode ser sazonal."
+      },
+      {
+        "id": "q_local",
+        "category": "Queixa principal",
+        "text": "Em que parte do corpo ele se coça mais?",
+        "answer": "Na parte de trás: lombo, base do rabo e atrás das coxas. Orelhas e patas, quase nada.",
+        "relevance": "essential",
+        "findingId": "f_relato_caudal",
+        "explanation": "A localização do prurido é uma das pistas mais úteis. Prurido caudal (lombossacro) é típico da DAPP; face, orelhas e patas sugerem dermatite atópica; margens de orelha e cotovelos, escabiose."
+      },
+      {
+        "id": "q_idade",
+        "category": "Idade e espécie",
+        "text": "Qual a idade dele e de onde ele veio?",
+        "answer": "Tem uns 4 anos. Adotei filhote no centro de adoção da Vila.",
+        "relevance": "complementary",
+        "explanation": "A idade de início ajuda: a dermatite atópica costuma iniciar em cães jovens (geralmente entre 6 meses e 3 anos), enquanto a DAPP pode surgir em qualquer idade."
+      },
+      {
+        "id": "q_raca_sexo",
+        "category": "Raça e sexo",
+        "text": "Qual a raça e o sexo? Ele é castrado?",
+        "answer": "É SRD, vira-lata caramelo. Macho, castrado.",
+        "relevance": "complementary",
+        "explanation": "Raça e sexo compõem a resenha. Algumas dermatopatias têm predisposição racial; neste caso, não há predisposição relevante."
+      },
+      {
+        "id": "q_antiparasitario",
+        "category": "Vermifugação e ectoparasitas",
+        "text": "Ele usa antipulgas e vermífugo? Quando foi a última dose?",
+        "answer": "Antipulgas... dei um comprimido há uns cinco meses, acho. Vermífugo também faz tempo, não lembro.",
+        "relevance": "essential",
+        "findingId": "f_controle_irregular",
+        "explanation": "Controle de ectoparasitas irregular é um fator de risco central para DAPP e outras parasitoses. Sempre pergunte o produto, a data e a regularidade."
+      },
+      {
+        "id": "q_outros_animais",
+        "category": "Exposição a outros animais",
+        "text": "Ele convive com outros animais?",
+        "answer": "Tem a Pipoca, uma gata que entra e sai de casa. E ele brinca com os cães da rua pelo portão.",
+        "relevance": "essential",
+        "findingId": "f_contactante_gato",
+        "explanation": "Contactantes podem ser fonte de pulgas, ácaros e fungos. Gatos com acesso à rua são frequentemente portadores de pulgas."
+      },
+      {
+        "id": "q_gata_antipulgas",
+        "category": "Exposição a outros animais",
+        "text": "A Pipoca recebe antipulgas? Ela se coça?",
+        "answer": "A gata? Nunca dei nada pra ela... Ela não se coça muito, não. Às vezes vejo uns bichinhos pretos correndo no pelo dela.",
+        "relevance": "essential",
+        "requires": [
+          "q_outros_animais"
+        ],
+        "findingId": "f_gata_sem_controle",
+        "explanation": "Pergunta de aprofundamento: só surge depois de investigar os contactantes. Animais sem sinais clínicos podem manter a infestação da casa."
+      },
+      {
+        "id": "q_humanos",
+        "category": "Ambiente",
+        "text": "Alguém da casa está com coceira ou lesões na pele?",
+        "answer": "Não, ninguém em casa está com coceira.",
+        "relevance": "complementary",
+        "findingId": "f_sem_lesoes_humanas",
+        "explanation": "Lesões pruriginosas em pessoas da casa podem sugerir agentes zoonóticos, como Sarcoptes scabiei (pseudoescabiose humana) ou dermatófitos. A ausência não exclui, mas reduz a suspeita."
+      },
+      {
+        "id": "q_alimentacao",
+        "category": "Histórico alimentar",
+        "text": "O que ele come? Houve troca recente de alimento?",
+        "answer": "Ração seca, a mesma marca há dois anos. De vez em quando um pedacinho de pão.",
+        "relevance": "complementary",
+        "explanation": "Reações adversas ao alimento podem ocorrer com alimentos consumidos há muito tempo — dieta estável não as exclui. O diagnóstico depende de dieta de eliminação controlada."
+      },
+      {
+        "id": "q_vacinacao",
+        "category": "Vacinação",
+        "text": "A vacinação dele está em dia?",
+        "answer": "Tomou a vacina múltipla e a antirrábica no ano passado.",
+        "relevance": "complementary",
+        "explanation": "O histórico vacinal faz parte da anamnese completa e é oportunidade de orientação preventiva, embora não explique o prurido."
+      },
+      {
+        "id": "q_ambiente",
+        "category": "Ambiente",
+        "text": "Onde ele vive e onde dorme?",
+        "answer": "Casa com quintal. Ele dorme no sofá e no tapete da sala, junto com a gata.",
+        "relevance": "complementary",
+        "findingId": "f_ambiente_compartilhado",
+        "explanation": "Tapetes, sofás e camas compartilhadas acumulam ovos, larvas e pupas de pulgas — por isso o controle ambiental é parte do tratamento."
+      },
+      {
+        "id": "q_medicamentos",
+        "category": "Medicamentos utilizados",
+        "text": "Ele usou algum remédio para a coceira?",
+        "answer": "Passei uma pomada que tinha em casa, mas não adiantou muito.",
+        "relevance": "complementary",
+        "explanation": "Medicamentos prévios podem mascarar sinais, alterar exames e indicar uso inadequado de fármacos."
+      },
+      {
+        "id": "q_medicamentos_detalhe",
+        "category": "Medicamentos utilizados",
+        "text": "Sabe qual era a pomada? Usou mais alguma coisa?",
+        "answer": "Era uma pomada com corticoide de quando meu filho teve alergia. Ah, e dou banho com sabão de coco toda semana.",
+        "relevance": "complementary",
+        "requires": [
+          "q_medicamentos"
+        ],
+        "explanation": "Detalhar o produto revela uso de medicamento humano sem orientação veterinária. Perguntas de aprofundamento frequentemente mudam a informação obtida."
+      },
+      {
+        "id": "q_fogos",
+        "category": "Outros",
+        "text": "Ele tem medo de fogos de artifício?",
+        "answer": "Tem sim, coitado... mas o que isso tem a ver com a coceira?",
+        "relevance": "irrelevant",
+        "explanation": "Pergunta sem relação com o problema atual. Uma anamnese eficiente é direcionada pela queixa."
+      },
+      {
+        "id": "q_latidos",
+        "category": "Outros",
+        "text": "Ele late muito quando a campainha toca?",
+        "answer": "Late! Mas acho que isso não tem a ver com a pele, né?",
+        "relevance": "irrelevant",
+        "explanation": "Pergunta sem relação com o quadro dermatológico."
+      }
+    ]
+  },
+  "physicalExam": {
+    "items": [
+      {
+        "id": "e_fc",
+        "label": "Frequência cardíaca",
+        "group": "vitais",
+        "result": "96 bpm",
+        "reference": {
+          "min": 60,
+          "max": 160,
+          "unit": "bpm",
+          "note": "Cão adulto em repouso; varia com porte e estresse."
+        },
+        "status": "normal",
+        "relevance": "essential",
+        "explanation": "Parâmetro vital do exame físico geral; dentro da faixa de referência para cão adulto."
+      },
+      {
+        "id": "e_fr",
+        "label": "Frequência respiratória",
+        "group": "vitais",
+        "result": "24 mpm",
+        "reference": {
+          "min": 10,
+          "max": 30,
+          "unit": "mpm"
+        },
+        "status": "normal",
+        "relevance": "essential",
+        "explanation": "Sem taquipneia ou dispneia."
+      },
+      {
+        "id": "e_temp",
+        "label": "Temperatura retal",
+        "group": "vitais",
+        "result": "38,7 °C",
+        "reference": {
+          "min": 37.5,
+          "max": 39.2,
+          "unit": "°C"
+        },
+        "status": "normal",
+        "relevance": "essential",
+        "explanation": "Normotermia. Febre poderia sugerir processo infeccioso/inflamatório sistêmico."
+      },
+      {
+        "id": "e_mucosas",
+        "label": "Mucosas",
+        "group": "geral",
+        "result": "Róseas e úmidas",
+        "reference": "Róseas e úmidas",
+        "status": "normal",
+        "relevance": "essential",
+        "explanation": "Mucosas normocoradas indicam perfusão e oxigenação adequadas, sem sinais de anemia ou icterícia."
+      },
+      {
+        "id": "e_tpc",
+        "label": "Tempo de preenchimento capilar",
+        "group": "geral",
+        "result": "1,5 s",
+        "reference": {
+          "min": 0,
+          "max": 2,
+          "unit": "s"
+        },
+        "status": "normal",
+        "relevance": "complementary",
+        "explanation": "TPC < 2 s sugere perfusão periférica adequada."
+      },
+      {
+        "id": "e_hidratacao",
+        "label": "Hidratação",
+        "group": "geral",
+        "result": "Turgor cutâneo preservado, mucosas úmidas",
+        "reference": "Turgor preservado",
+        "status": "normal",
+        "relevance": "complementary",
+        "explanation": "Sem sinais clínicos de desidratação."
+      },
+      {
+        "id": "e_linfonodos",
+        "label": "Linfonodos",
+        "group": "geral",
+        "result": "Poplíteos discretamente aumentados, indolores; demais sem alterações",
+        "reference": "Não aumentados, móveis, indolores",
+        "status": "altered",
+        "relevance": "complementary",
+        "findingId": "f_linfonodo_reativo",
+        "explanation": "Linfadenomegalia periférica discreta é comum em dermatites (reatividade). É um achado inespecífico, mas deve ser registrado."
+      },
+      {
+        "id": "e_ausculta",
+        "label": "Auscultação cardiopulmonar",
+        "group": "sistemas",
+        "result": "Bulhas normofonéticas, ritmo regular; campos pulmonares sem ruídos adventícios",
+        "reference": "Sem sopros, arritmias ou ruídos adventícios",
+        "status": "normal",
+        "relevance": "complementary",
+        "explanation": "Sem alterações cardiorrespiratórias."
+      },
+      {
+        "id": "e_palpacao",
+        "label": "Palpação abdominal",
+        "group": "sistemas",
+        "result": "Abdome indolor, sem massas ou organomegalias palpáveis",
+        "reference": "Indolor, sem massas",
+        "status": "normal",
+        "relevance": "complementary",
+        "explanation": "Sem alterações abdominais."
+      },
+      {
+        "id": "e_neuro",
+        "label": "Avaliação neurológica básica",
+        "group": "sistemas",
+        "result": "Alerta, deambulação normal, reações posturais preservadas",
+        "reference": "Alerta, marcha e reações posturais normais",
+        "status": "normal",
+        "relevance": "complementary",
+        "explanation": "Sem déficits neurológicos."
+      },
+      {
+        "id": "e_derm",
+        "label": "Exame dermatológico",
+        "group": "especifico",
+        "result": "Pápulas crostosas, alopecia parcial, escoriações e hiperpigmentação na região lombossacra dorsal, base da cauda e face caudomedial das coxas. Face, axilas e patas sem lesões.",
+        "reference": "Pele íntegra, pelame uniforme",
+        "status": "altered",
+        "relevance": "essential",
+        "findingId": "f_lesoes_lombossacras",
+        "explanation": "A distribuição caudal (lombossacra, base da cauda, coxas) é o padrão clássico da DAPP em cães."
+      },
+      {
+        "id": "e_pente",
+        "label": "Inspeção com pente fino",
+        "group": "especifico",
+        "result": "Grânulos escuros em forma de vírgula no pelame lombossacro e uma pulga adulta.",
+        "reference": "Ausência de parasitas e detritos",
+        "status": "altered",
+        "relevance": "essential",
+        "findingId": "f_pulgas",
+        "explanation": "Encontrar pulgas ou suas fezes confirma infestação. Atenção: em cães alérgicos, poucas pulgas bastam para causar prurido intenso, e a ausência delas no exame não exclui DAPP."
+      },
+      {
+        "id": "e_orelhas",
+        "label": "Orelhas e otoscopia",
+        "group": "especifico",
+        "result": "Condutos auditivos sem eritema ou secreção; margens dos pavilhões íntegras.",
+        "reference": "Sem eritema, secreção ou lesões",
+        "status": "normal",
+        "relevance": "complementary",
+        "findingId": "f_orelhas_normais",
+        "explanation": "Otite é frequente na dermatite atópica; lesões nas margens das orelhas sugerem escabiose. Orelhas normais reforçam outras hipóteses."
+      },
+      {
+        "id": "e_otopodal",
+        "label": "Reflexo otopodal",
+        "group": "especifico",
+        "result": "Negativo (sem movimento do membro pélvico ao friccionar a margem da orelha).",
+        "reference": "Negativo",
+        "status": "normal",
+        "relevance": "complementary",
+        "findingId": "f_otopodal_negativo",
+        "explanation": "O reflexo otopodal positivo é sugestivo de escabiose; o resultado negativo reduz, mas não exclui, essa hipótese."
+      }
+    ]
+  },
+  "tests": {
+    "budgetHint": 120,
+    "items": [
+      {
+        "id": "t_papel",
+        "name": "Pesquisa de fezes de pulga em papel umedecido",
+        "cost": 10,
+        "turnaround": "Imediato",
+        "category": "indicated",
+        "result": "Os grânulos escuros coletados se dissolvem formando halos avermelhados no papel umedecido: compatível com fezes de pulga (sangue digerido).",
+        "findingId": "f_papel_positivo",
+        "justification": "Exame simples, barato e imediato que confirma a natureza dos grânulos observados no pelame."
+      },
+      {
+        "id": "t_raspado",
+        "name": "Raspados cutâneos (superficial e profundo)",
+        "cost": 40,
+        "turnaround": "30 min",
+        "category": "indicated",
+        "result": "Raspado profundo: negativo para Demodex spp. Raspados superficiais: negativos para Sarcoptes scabiei.",
+        "findingId": "f_raspado_negativo",
+        "justification": "Exame de primeira linha em todo cão com prurido ou alopecia. O raspado profundo é confiável para demodicose; o superficial tem BAIXA sensibilidade para escabiose (negativo não exclui)."
+      },
+      {
+        "id": "t_citologia",
+        "name": "Citologia cutânea (fita adesiva / imprint)",
+        "cost": 35,
+        "turnaround": "30 min",
+        "category": "indicated",
+        "result": "Raros neutrófilos. Ausência de bactérias intracelulares e de leveduras em número significativo.",
+        "findingId": "f_citologia_sem_infeccao",
+        "justification": "Identifica infecções secundárias (piodermite, Malassezia) que alteram a conduta e evita antimicrobianos desnecessários."
+      },
+      {
+        "id": "t_tricograma",
+        "name": "Tricograma",
+        "cost": 25,
+        "turnaround": "30 min",
+        "category": "acceptable",
+        "result": "Pontas de pelos fraturadas, compatíveis com autotrauma por prurido. Sem esporos ou hifas visíveis.",
+        "justification": "Pode confirmar que a alopecia é autoinduzida, mas acrescenta pouco quando o prurido já é evidente."
+      },
+      {
+        "id": "t_hemograma",
+        "name": "Hemograma",
+        "cost": 60,
+        "turnaround": "4 h",
+        "category": "acceptable",
+        "result": "Sem alterações significativas.",
+        "table": [
+          {
+            "param": "Hematócrito",
+            "value": "45 %",
+            "ref": "37–55 %",
+            "flag": ""
+          },
+          {
+            "param": "Leucócitos",
+            "value": "12.800 /µL",
+            "ref": "6.000–17.000 /µL",
+            "flag": ""
+          },
+          {
+            "param": "Eosinófilos",
+            "value": "1.100 /µL",
+            "ref": "100–1.250 /µL",
+            "flag": ""
+          },
+          {
+            "param": "Plaquetas",
+            "value": "280.000 /µL",
+            "ref": "200.000–500.000 /µL",
+            "flag": ""
+          }
+        ],
+        "justification": "Avaliação geral aceitável, mas sem valor diagnóstico direto para o prurido neste contexto."
+      },
+      {
+        "id": "t_bioquimica",
+        "name": "Bioquímica sérica (ALT, FA, ureia, creatinina)",
+        "cost": 90,
+        "turnaround": "4 h",
+        "category": "unnecessary",
+        "result": "Todos os parâmetros dentro dos intervalos de referência.",
+        "justification": "Não contribui para o diagnóstico do prurido neste paciente jovem e hígido. Pode ser considerada antes de terapias sistêmicas prolongadas, a critério do veterinário."
+      },
+      {
+        "id": "t_cultura_fungica",
+        "name": "Cultura fúngica para dermatófitos",
+        "cost": 80,
+        "turnaround": "10 a 21 dias",
+        "category": "acceptable",
+        "result": "Resultado parcial: sem crescimento sugestivo de dermatófitos até o momento.",
+        "justification": "Dermatofitose costuma ser pouco pruriginosa e a evidência de pulgas torna a hipótese menos provável. Útil se não houver resposta ao controle de pulgas."
+      },
+      {
+        "id": "t_copro",
+        "name": "Exame coproparasitológico (flutuação)",
+        "cost": 30,
+        "turnaround": "24 h",
+        "category": "acceptable",
+        "result": "Negativo para ovos de helmintos. Observação: a flutuação tem baixa sensibilidade para Dipylidium caninum, cujos proglotes costumam ser vistos ao redor do ânus ou nas fezes.",
+        "justification": "Pertinente porque pulgas são hospedeiras intermediárias de Dipylidium caninum (zoonose), mas não esclarece a causa do prurido."
+      },
+      {
+        "id": "t_alergia",
+        "name": "Teste alérgico sorológico (IgE alérgeno-específica)",
+        "cost": 350,
+        "turnaround": "7 dias",
+        "category": "unnecessary",
+        "result": "Reatividade para ácaros de poeira domiciliar e saliva de pulga.",
+        "justification": "Testes alérgicos NÃO diagnosticam dermatite atópica: cães sem doença podem ter resultados positivos. São usados para selecionar alérgenos para imunoterapia após diagnóstico clínico e exclusão de outras causas, incluindo pulgas."
+      },
+      {
+        "id": "t_biopsia",
+        "name": "Biópsia de pele (histopatologia)",
+        "cost": 300,
+        "turnaround": "7 a 10 dias",
+        "category": "unnecessary",
+        "result": "Dermatite perivascular superficial com eosinófilos — padrão inespecífico compatível com hipersensibilidade.",
+        "justification": "Não é exame de primeira linha para prurido: padrões de hipersensibilidade são inespecíficos. Reservada para lesões atípicas ou sem resposta terapêutica."
+      },
+      {
+        "id": "t_radiografia",
+        "name": "Radiografia (coluna e pelve)",
+        "cost": 150,
+        "turnaround": "1 h",
+        "category": "unnecessary",
+        "result": "Sem alterações ósseas ou articulares dignas de nota.",
+        "justification": "Não há indicação clínica: o prurido não é explicado por alterações ósseas."
+      },
+      {
+        "id": "t_ultrassom",
+        "name": "Ultrassonografia abdominal",
+        "cost": 180,
+        "turnaround": "1 h",
+        "category": "unnecessary",
+        "result": "Órgãos abdominais sem alterações.",
+        "justification": "Sem sinais clínicos abdominais que justifiquem o exame."
+      }
+    ]
+  },
+  "findings": [
+    {
+      "id": "f_prurido_intenso",
+      "label": "Prurido intenso (relato do tutor)",
+      "supports": [
+        "h_dapp",
+        "h_atopia",
+        "h_sarna",
+        "h_rafa",
+        "h_malassezia",
+        "h_piodermite"
+      ]
+    },
+    {
+      "id": "f_sazonal",
+      "label": "Piora em meses quentes e recorrência no verão anterior",
+      "supports": [
+        "h_dapp",
+        "h_atopia"
+      ]
+    },
+    {
+      "id": "f_relato_caudal",
+      "label": "Tutor relata prurido no lombo, base da cauda e coxas",
+      "supports": [
+        "h_dapp"
+      ]
+    },
+    {
+      "id": "f_controle_irregular",
+      "label": "Controle de ectoparasitas irregular (última dose há ~5 meses)",
+      "supports": [
+        "h_dapp",
+        "h_sarna"
+      ]
+    },
+    {
+      "id": "f_contactante_gato",
+      "label": "Convive com gata com acesso à rua",
+      "supports": [
+        "h_dapp"
+      ]
+    },
+    {
+      "id": "f_gata_sem_controle",
+      "label": "Gata contactante sem controle de pulgas; tutor viu “bichinhos pretos” nela",
+      "supports": [
+        "h_dapp"
+      ]
+    },
+    {
+      "id": "f_sem_lesoes_humanas",
+      "label": "Ninguém da casa com lesões de pele",
+      "supports": [
+        "h_dapp",
+        "h_atopia",
+        "h_rafa",
+        "h_demodicose"
+      ]
+    },
+    {
+      "id": "f_ambiente_compartilhado",
+      "label": "Dorme em sofá e tapete compartilhados com a gata",
+      "supports": [
+        "h_dapp"
+      ]
+    },
+    {
+      "id": "f_linfonodo_reativo",
+      "label": "Linfonodos poplíteos discretamente aumentados",
+      "supports": [
+        "h_dapp",
+        "h_atopia",
+        "h_sarna",
+        "h_piodermite",
+        "h_demodicose"
+      ]
+    },
+    {
+      "id": "f_lesoes_lombossacras",
+      "label": "Lesões papulocrostosas na região lombossacra, base da cauda e coxas",
+      "supports": [
+        "h_dapp"
+      ]
+    },
+    {
+      "id": "f_pulgas",
+      "label": "Pulga adulta e grânulos escuros no pelame",
+      "supports": [
+        "h_dapp"
+      ]
+    },
+    {
+      "id": "f_orelhas_normais",
+      "label": "Orelhas, face e patas sem lesões",
+      "supports": [
+        "h_dapp"
+      ]
+    },
+    {
+      "id": "f_otopodal_negativo",
+      "label": "Reflexo otopodal negativo",
+      "supports": [
+        "h_dapp",
+        "h_atopia",
+        "h_rafa"
+      ]
+    },
+    {
+      "id": "f_papel_positivo",
+      "label": "Teste do papel umedecido positivo (fezes de pulga)",
+      "supports": [
+        "h_dapp"
+      ]
+    },
+    {
+      "id": "f_raspado_negativo",
+      "label": "Raspados negativos para Demodex e Sarcoptes",
+      "supports": [
+        "h_dapp",
+        "h_atopia",
+        "h_rafa"
+      ]
+    },
+    {
+      "id": "f_citologia_sem_infeccao",
+      "label": "Citologia sem bactérias ou leveduras significativas",
+      "supports": [
+        "h_dapp",
+        "h_atopia",
+        "h_sarna",
+        "h_rafa"
+      ]
+    }
+  ],
+  "diagnosis": {
+    "correctId": "h_dapp",
+    "expectedDifferentials": [
+      "h_dapp",
+      "h_atopia",
+      "h_sarna",
+      "h_rafa"
+    ],
+    "keyEvidence": [
+      "f_lesoes_lombossacras",
+      "f_pulgas",
+      "f_controle_irregular",
+      "f_gata_sem_controle"
+    ],
+    "minDifferentials": 3,
+    "maxDifferentials": 6,
+    "explanation": "A DAPP é o diagnóstico mais provável: prurido intenso com distribuição lombossacra/caudal, evidência direta de pulgas, controle de ectoparasitas irregular e uma gata contactante sem controle. O diagnóstico é clínico e se confirma pela resposta ao controle rigoroso de pulgas. Se o prurido persistir apesar do controle adequado, investigam-se dermatite atópica e reação adversa ao alimento (dieta de eliminação).",
+    "hypotheses": [
+      {
+        "id": "h_dapp",
+        "name": "Dermatite alérgica à picada de pulgas (DAPP)",
+        "plausibility": "key",
+        "vetidexId": "doenca_dapp",
+        "explanation": "Hipersensibilidade a antígenos da saliva da pulga. Distribuição caudal clássica."
+      },
+      {
+        "id": "h_atopia",
+        "name": "Dermatite atópica canina",
+        "plausibility": "key",
+        "vetidexId": "doenca_atopia",
+        "explanation": "Diferencial importante de prurido crônico/sazonal, mas costuma afetar face, orelhas, patas, axilas e região inguinal. Diagnóstico por exclusão."
+      },
+      {
+        "id": "h_sarna",
+        "name": "Escabiose (sarna sarcóptica)",
+        "plausibility": "key",
+        "vetidexId": "doenca_sarna_sarcoptica",
+        "explanation": "Prurido muito intenso, lesões em margens de orelhas, cotovelos e jarretes; zoonótica. Raspado negativo não exclui."
+      },
+      {
+        "id": "h_rafa",
+        "name": "Reação adversa ao alimento",
+        "plausibility": "key",
+        "vetidexId": "doenca_rafa",
+        "explanation": "Prurido não sazonal; diagnóstico apenas por dieta de eliminação. Considerada se o prurido persistir após controle de pulgas."
+      },
+      {
+        "id": "h_demodicose",
+        "name": "Demodicose",
+        "plausibility": "plausible",
+        "vetidexId": "doenca_demodicose",
+        "explanation": "Mais associada a alopecia; prurido ocorre principalmente com piodermite secundária. Excluída por raspado profundo negativo."
+      },
+      {
+        "id": "h_piodermite",
+        "name": "Piodermite superficial primária",
+        "plausibility": "plausible",
+        "vetidexId": "doenca_piodermite",
+        "explanation": "Geralmente secundária a uma causa de base (alergias, parasitas). Citologia sem bactérias não sustenta infecção ativa."
+      },
+      {
+        "id": "h_malassezia",
+        "name": "Dermatite por Malassezia",
+        "plausibility": "plausible",
+        "vetidexId": "micro_malassezia",
+        "explanation": "Costuma ser secundária e acometer áreas úmidas e de dobras; citologia não mostrou leveduras significativas."
+      },
+      {
+        "id": "h_dermatofitose",
+        "name": "Dermatofitose",
+        "plausibility": "plausible",
+        "explanation": "Geralmente com prurido discreto e alopecia circular; menos provável aqui."
+      },
+      {
+        "id": "h_leish",
+        "name": "Leishmaniose visceral canina",
+        "plausibility": "plausible",
+        "explanation": "Relevante em áreas endêmicas do Brasil; lesões cutâneas costumam ser esfoliativas e pouco pruriginosas, frequentemente com sinais sistêmicos — ausentes neste paciente."
+      },
+      {
+        "id": "h_hipotireoidismo",
+        "name": "Hipotireoidismo",
+        "plausibility": "unlikely",
+        "explanation": "Endocrinopatia que causa alopecia geralmente NÃO pruriginosa, além de sinais sistêmicos (letargia, ganho de peso)."
+      },
+      {
+        "id": "h_hac",
+        "name": "Hiperadrenocorticismo",
+        "plausibility": "unlikely",
+        "explanation": "Causa alopecia simétrica não pruriginosa, poliúria/polidipsia e abdome pendular — sinais ausentes."
+      }
+    ]
+  },
+  "conduct": {
+    "explanation": "O tratamento da DAPP baseia-se no controle integrado de pulgas: todos os animais da casa, de forma contínua, e o ambiente. O controle do prurido pode ser associado por curto período, conforme avaliação do médico-veterinário. A escolha do produto deve respeitar espécie, idade, peso e histórico (ex.: convulsões).",
+    "options": [
+      {
+        "id": "c_controle_todos",
+        "text": "Controle de pulgas contínuo com produto de uso veterinário registrado, adequado à espécie e ao peso, em TODOS os animais da casa (Thor e Pipoca).",
+        "type": "prevencao",
+        "category": "correct",
+        "explanation": "Animais contactantes sem tratamento mantêm o ciclo e a reinfestação. Cada produto deve ser específico para a espécie.",
+        "pharmacology": {
+          "drugClass": "Ectoparasiticidas (ex.: isoxazolinas)",
+          "mechanism": "Isoxazolinas inibem canais de cloreto controlados por GABA e glutamato dos artrópodes, causando hiperexcitação e morte do parasita.",
+          "indications": "Tratamento e prevenção de infestações por pulgas e carrapatos em cães e gatos, conforme registro de cada produto.",
+          "contraindications": "Usar com cautela em animais com histórico de convulsões (alerta regulatório sobre eventos neurológicos). Respeitar espécie, idade e peso mínimos indicados em bula.",
+          "principles": "Escolher produto registrado para a espécie, considerar histórico clínico, manter regularidade e tratar todos os contactantes."
+        }
+      },
+      {
+        "id": "c_ambiente",
+        "text": "Controle ambiental: aspirar tapetes, sofás e frestas com frequência, lavar camas e mantas em água quente e descartar o conteúdo do aspirador.",
+        "type": "prevencao",
+        "category": "correct",
+        "explanation": "A maior parte da população de pulgas está no ambiente na forma de ovos, larvas e pupas."
+      },
+      {
+        "id": "c_orientacao",
+        "text": "Explicar ao tutor o ciclo da pulga e que o controle deve ser contínuo, mesmo após a melhora.",
+        "type": "prevencao",
+        "category": "correct",
+        "explanation": "A adesão do tutor determina o sucesso. Interrupções levam a recidivas, especialmente em períodos quentes."
+      },
+      {
+        "id": "c_vermifugo",
+        "text": "Orientar vermifugação com produto eficaz contra Dipylidium caninum, conforme prescrição do veterinário responsável.",
+        "type": "prevencao",
+        "category": "correct",
+        "explanation": "O cão se infecta ao ingerir pulgas contendo o cisticercoide. D. caninum é zoonótico (infecção acidental, principalmente em crianças)."
+      },
+      {
+        "id": "c_retorno",
+        "text": "Agendar retorno em 3 a 4 semanas para reavaliar prurido e lesões.",
+        "type": "observacao",
+        "category": "correct",
+        "explanation": "A resposta ao controle rigoroso de pulgas confirma o diagnóstico. Sem melhora, reavaliar os diferenciais."
+      },
+      {
+        "id": "c_prurido",
+        "text": "Discutir com a supervisora o controle do prurido por curto período com fármaco de uso veterinário, conforme avaliação clínica.",
+        "type": "tratamento",
+        "category": "acceptable",
+        "explanation": "Pode trazer conforto enquanto o controle de pulgas faz efeito, mas não substitui o tratamento da causa. Escolha e dose são decisões do médico-veterinário.",
+        "pharmacology": {
+          "drugClass": "Antipruriginosos (glicocorticoides; inibidores de Janus quinase)",
+          "mechanism": "Glicocorticoides reduzem a transcrição de mediadores inflamatórios; inibidores de JAK bloqueiam a sinalização de citocinas pruridogênicas.",
+          "indications": "Controle sintomático do prurido em dermatites alérgicas, por período definido pelo veterinário.",
+          "contraindications": "Infecções ativas, diabetes, uso concomitante de AINEs (glicocorticoides); restrições de idade e de condição clínica conforme cada produto.",
+          "principles": "Tratar a causa de base; usar a menor intervenção eficaz pelo menor tempo; monitorar efeitos adversos."
+        }
+      },
+      {
+        "id": "c_permetrina_gato",
+        "text": "Aplicar na gata o mesmo antipulgas spot-on à base de permetrina comprado para o cão.",
+        "type": "tratamento",
+        "category": "critical",
+        "explanation": "Produtos caninos concentrados em permetrina são tóxicos para gatos.",
+        "consequence": "A Pipoca poderia desenvolver tremores, fasciculações e convulsões, exigindo atendimento de emergência. Gatos têm capacidade reduzida de glicuronidação hepática.",
+        "pharmacology": {
+          "drugClass": "Piretroides (permetrina)",
+          "mechanism": "Prolongam a abertura dos canais de sódio voltagem-dependentes dos neurônios do artrópode.",
+          "indications": "Alguns ectoparasiticidas de uso EXCLUSIVO em cães.",
+          "contraindications": "Gatos: contraindicado (toxicidade neurológica). Evitar inclusive contato próximo do gato com cão recém-tratado com produtos concentrados.",
+          "principles": "Sempre conferir a espécie indicada no rótulo; nunca transferir produtos entre espécies."
+        }
+      },
+      {
+        "id": "c_so_cao",
+        "text": "Tratar apenas o Thor, já que a gata “não se coça”.",
+        "type": "tratamento",
+        "category": "incorrect",
+        "explanation": "Gatos frequentemente albergam pulgas sem prurido evidente e mantêm a infestação da casa."
+      },
+      {
+        "id": "c_corticoide_isolado",
+        "text": "Usar corticoide prolongado como única medida, sem controle de pulgas.",
+        "type": "tratamento",
+        "category": "incorrect",
+        "explanation": "Mascara o prurido sem tratar a causa e expõe o paciente a efeitos adversos."
+      },
+      {
+        "id": "c_antibiotico",
+        "text": "Iniciar antibiótico sistêmico empírico.",
+        "type": "tratamento",
+        "category": "incorrect",
+        "explanation": "A citologia não mostrou infecção bacteriana. O uso racional de antimicrobianos previne resistência."
+      },
+      {
+        "id": "c_dieta",
+        "text": "Trocar imediatamente a ração por outra marca qualquer.",
+        "type": "tratamento",
+        "category": "incorrect",
+        "explanation": "Trocar de marca não é dieta de eliminação. Um teste de dieta só seria planejado se o prurido persistir após controle rigoroso de pulgas."
+      },
+      {
+        "id": "c_pomada_humana",
+        "text": "Manter a pomada humana com corticoide que o tutor já usava.",
+        "type": "tratamento",
+        "category": "incorrect",
+        "explanation": "Medicamentos humanos sem orientação veterinária não são adequados; o animal pode lamber o produto."
+      },
+      {
+        "id": "c_banho_diario",
+        "text": "Recomendar banhos diários com sabão de coco.",
+        "type": "suporte",
+        "category": "incorrect",
+        "explanation": "Banhos excessivos com produtos inadequados ressecam e irritam a pele e não controlam a infestação."
+      },
+      {
+        "id": "c_internacao",
+        "text": "Internar o Thor para observação.",
+        "type": "internacao",
+        "category": "incorrect",
+        "explanation": "O paciente está estável; internação não traz benefício e aumenta custos e estresse."
+      }
+    ]
+  },
+  "outcome": {
+    "success": "Quatro semanas depois, Sr. Joaquim volta sorrindo: com o controle de pulgas no Thor, na Pipoca e na casa, o prurido diminuiu muito e o pelo está crescendo. A resposta ao tratamento reforça o diagnóstico de DAPP.",
+    "partial": "O Thor melhorou parcialmente, mas o prurido voltou em algumas semanas. Faltaram peças importantes na investigação ou na conduta — revise o feedback e tente novamente.",
+    "critical": "Uma decisão colocou um animal em risco. A Dra. Helena interrompe o plano a tempo e explica o problema. Em situações reais, erros de segurança podem causar danos graves — revise o conteúdo antes de tentar novamente."
+  },
+  "vetidexUnlocks": [
+    "especie_cao",
+    "doenca_dapp",
+    "parasita_ctenocephalides",
+    "parasita_dipylidium",
+    "doenca_atopia",
+    "doenca_sarna_sarcoptica",
+    "doenca_demodicose",
+    "doenca_rafa",
+    "doenca_piodermite",
+    "micro_malassezia",
+    "exame_raspado",
+    "exame_citologia_pele",
+    "exame_papel_umido",
+    "farm_isoxazolinas",
+    "farm_toxicidade_felina",
+    "farm_antipruriginosos",
+    "prev_controle_pulgas",
+    "manif_prurido"
+  ],
+  "review": {
+    "topics": [
+      {
+        "id": "rt_contactantes",
+        "title": "Investigação de contactantes e controle de ectoparasitas",
+        "section": "anamnesis",
+        "vetidexId": "prev_controle_pulgas"
+      },
+      {
+        "id": "rt_distribuicao",
+        "title": "Exame dermatológico: distribuição das lesões",
+        "section": "physicalExam",
+        "vetidexId": "doenca_dapp"
+      },
+      {
+        "id": "rt_exames_derm",
+        "title": "Exames dermatológicos de primeira linha",
+        "section": "tests",
+        "vetidexId": "exame_raspado"
+      },
+      {
+        "id": "rt_diferenciais",
+        "title": "Diagnóstico diferencial do cão com prurido",
+        "section": "diagnosis",
+        "vetidexId": "doenca_atopia"
+      },
+      {
+        "id": "rt_conduta",
+        "title": "Controle integrado de pulgas e segurança em felinos",
+        "section": "conduct",
+        "vetidexId": "farm_toxicidade_felina"
+      }
+    ],
+    "questions": [
+      {
+        "id": "rq_dapp_dist",
+        "topic": "Dermatologia",
+        "prompt": "Qual distribuição de lesões é mais típica da DAPP em cães?",
+        "options": [
+          "Região lombossacra, base da cauda e face caudal das coxas",
+          "Margens das orelhas, cotovelos e jarretes",
+          "Face, axilas e espaços interdigitais",
+          "Plano nasal e coxins"
+        ],
+        "correctIndex": 0,
+        "explanation": "Margens de orelhas e cotovelos sugerem escabiose; face, axilas e patas sugerem dermatite atópica.",
+        "triggeredBy": [
+          "e_derm",
+          "h_dapp",
+          "f_lesoes_lombossacras",
+          "q_local"
+        ]
+      },
+      {
+        "id": "rq_contactantes",
+        "topic": "Parasitologia",
+        "prompt": "Por que todos os animais da casa devem receber controle de pulgas?",
+        "options": [
+          "Porque contactantes, mesmo sem prurido, podem manter a infestação",
+          "Porque todos certamente têm DAPP",
+          "Porque o produto do cão perde efeito se a gata não for tratada",
+          "Não é necessário tratar contactantes sem sinais"
+        ],
+        "correctIndex": 0,
+        "explanation": "Animais sem prurido podem albergar pulgas e manter o ciclo no ambiente.",
+        "triggeredBy": [
+          "q_outros_animais",
+          "q_gata_antipulgas",
+          "c_controle_todos",
+          "c_so_cao",
+          "f_gata_sem_controle"
+        ]
+      },
+      {
+        "id": "rq_permetrina",
+        "topic": "Farmacologia",
+        "prompt": "Por que produtos caninos concentrados em permetrina não devem ser usados em gatos?",
+        "options": [
+          "Gatos têm capacidade reduzida de glicuronidação, favorecendo toxicidade neurológica",
+          "Porque a permetrina não age em pulgas de gatos",
+          "Porque gatos eliminam o fármaco rápido demais",
+          "Porque a permetrina causa apenas irritação local leve"
+        ],
+        "correctIndex": 0,
+        "explanation": "A toxicose por permetrina em gatos causa tremores, fasciculações e convulsões.",
+        "triggeredBy": [
+          "c_permetrina_gato",
+          "c_controle_todos"
+        ]
+      },
+      {
+        "id": "rq_raspado",
+        "topic": "Diagnóstico",
+        "prompt": "Um raspado superficial negativo para Sarcoptes scabiei:",
+        "options": [
+          "Não exclui escabiose, pois o exame tem baixa sensibilidade",
+          "Exclui definitivamente a escabiose",
+          "Confirma DAPP",
+          "Indica demodicose"
+        ],
+        "correctIndex": 0,
+        "explanation": "Em suspeita forte de escabiose, pode-se recorrer a teste terapêutico conforme avaliação veterinária.",
+        "triggeredBy": [
+          "t_raspado",
+          "h_sarna"
+        ]
+      },
+      {
+        "id": "rq_alergia",
+        "topic": "Diagnóstico",
+        "prompt": "Testes alérgicos (sorológicos ou intradérmicos) em cães:",
+        "options": [
+          "Não diagnosticam dermatite atópica; ajudam a selecionar alérgenos para imunoterapia após o diagnóstico clínico",
+          "São o padrão-ouro para diagnosticar dermatite atópica",
+          "Diagnosticam DAPP com precisão",
+          "Substituem a dieta de eliminação"
+        ],
+        "correctIndex": 0,
+        "explanation": "O diagnóstico da dermatite atópica é clínico e por exclusão (Hensel et al., 2015).",
+        "triggeredBy": [
+          "t_alergia",
+          "h_atopia",
+          "t_raspado",
+          "t_citologia"
+        ]
+      },
+      {
+        "id": "rq_ciclo",
+        "topic": "Parasitologia",
+        "prompt": "Em uma infestação por Ctenocephalides felis, onde está a maior parte da população?",
+        "options": [
+          "No ambiente, como ovos, larvas e pupas",
+          "Nos adultos sobre o animal",
+          "Dentro do intestino do animal",
+          "Nas pessoas da casa"
+        ],
+        "correctIndex": 0,
+        "explanation": "Por isso o controle ambiental e a continuidade do tratamento são essenciais.",
+        "triggeredBy": [
+          "c_ambiente",
+          "c_orientacao",
+          "q_ambiente"
+        ]
+      },
+      {
+        "id": "rq_dipylidium",
+        "topic": "Parasitologia",
+        "prompt": "Qual parasita é transmitido ao cão pela ingestão de pulgas infectadas?",
+        "options": [
+          "Dipylidium caninum",
+          "Toxocara canis",
+          "Ancylostoma caninum",
+          "Giardia duodenalis"
+        ],
+        "correctIndex": 0,
+        "explanation": "A pulga é hospedeira intermediária de D. caninum, que também pode infectar acidentalmente pessoas.",
+        "triggeredBy": [
+          "c_vermifugo",
+          "t_copro",
+          "q_antiparasitario"
+        ]
+      },
+      {
+        "id": "rq_atopia_dist",
+        "topic": "Dermatologia",
+        "prompt": "Quais regiões são mais acometidas na dermatite atópica canina?",
+        "options": [
+          "Face, orelhas, patas, axilas e região inguinal",
+          "Região lombossacra e base da cauda",
+          "Apenas o dorso",
+          "Plano nasal e coxins exclusivamente"
+        ],
+        "correctIndex": 0,
+        "explanation": "A distribuição ajuda a diferenciar dermatite atópica de DAPP (caudal) e escabiose (margens de orelhas, cotovelos).",
+        "triggeredBy": [
+          "h_atopia",
+          "e_derm",
+          "q_local"
+        ]
+      },
+      {
+        "id": "rq_sarna_zoonose",
+        "topic": "Saúde Única",
+        "prompt": "Qual destas dermatopatias caninas pode causar lesões pruriginosas transitórias em pessoas da casa?",
+        "options": [
+          "Escabiose (Sarcoptes scabiei)",
+          "Demodicose",
+          "Dermatite atópica",
+          "Hipotireoidismo"
+        ],
+        "correctIndex": 0,
+        "explanation": "Por isso perguntar sobre lesões em pessoas da casa faz parte da anamnese dermatológica.",
+        "triggeredBy": [
+          "h_sarna",
+          "q_humanos"
+        ]
+      },
+      {
+        "id": "rq_dieta_elim",
+        "topic": "Diagnóstico",
+        "prompt": "Como se diagnostica a reação adversa ao alimento em cães?",
+        "options": [
+          "Dieta de eliminação por várias semanas seguida de reexposição",
+          "Exame de sangue para alergia alimentar",
+          "Trocar para outra marca de ração por 3 dias",
+          "Biópsia de pele"
+        ],
+        "correctIndex": 0,
+        "explanation": "Testes sorológicos para alergia alimentar não são confiáveis; o padrão é a dieta de eliminação.",
+        "triggeredBy": [
+          "h_rafa",
+          "c_dieta",
+          "q_alimentacao"
+        ]
+      },
+      {
+        "id": "rq_demodex",
+        "topic": "Diagnóstico",
+        "prompt": "Qual exame é mais adequado para pesquisar Demodex canis?",
+        "options": [
+          "Raspado cutâneo profundo (ou tricograma)",
+          "Raspado superficial apenas",
+          "Cultura fúngica",
+          "Hemograma"
+        ],
+        "correctIndex": 0,
+        "explanation": "O Demodex vive nos folículos pilosos; o raspado profundo é feito até ocorrer sangramento capilar.",
+        "triggeredBy": [
+          "t_raspado",
+          "h_demodicose"
+        ]
+      },
+      {
+        "id": "rq_citologia",
+        "topic": "Uso racional",
+        "prompt": "Por que fazer citologia de pele antes de iniciar antimicrobianos?",
+        "options": [
+          "Para confirmar infecção secundária e evitar antimicrobiano desnecessário",
+          "Porque a citologia substitui o exame físico",
+          "Para medir a gravidade da coceira",
+          "Para diagnosticar atopia"
+        ],
+        "correctIndex": 0,
+        "explanation": "O uso racional de antimicrobianos previne resistência bacteriana.",
+        "triggeredBy": [
+          "t_citologia",
+          "c_antibiotico"
+        ]
+      },
+      {
+        "id": "rq_papel",
+        "topic": "Diagnóstico",
+        "prompt": "No teste do papel umedecido, o que indica um halo vermelho-acastanhado ao redor dos grânulos?",
+        "options": [
+          "Fezes de pulga contendo sangue digerido",
+          "Ovos de carrapato",
+          "Crostas de piodermite",
+          "Esporos de dermatófitos"
+        ],
+        "correctIndex": 0,
+        "explanation": "É um teste simples, barato e imediato para confirmar a infestação por pulgas.",
+        "triggeredBy": [
+          "t_papel",
+          "e_pente"
+        ]
+      },
+      {
+        "id": "rq_isox_conv",
+        "topic": "Farmacologia",
+        "prompt": "Um cão com histórico de convulsões precisa de controle de pulgas. Sobre as isoxazolinas:",
+        "options": [
+          "Devem ser usadas com cautela; o veterinário avalia alternativas",
+          "São totalmente contraindicadas em qualquer cão",
+          "Não têm efeitos adversos neurológicos descritos",
+          "Devem ter a dose dobrada"
+        ],
+        "correctIndex": 0,
+        "explanation": "Há alerta regulatório sobre tremores, ataxia e convulsões associados a essa classe.",
+        "triggeredBy": [
+          "c_controle_todos"
+        ]
+      },
+      {
+        "id": "rq_pomada_humana",
+        "topic": "Uso de medicamentos",
+        "prompt": "O tutor usava uma pomada humana com corticoide no cão. Qual o problema principal?",
+        "options": [
+          "Uso sem orientação veterinária, risco de ingestão por lambedura e mascaramento do quadro",
+          "Nenhum, pomadas são inócuas",
+          "Só o cheiro incomoda o animal",
+          "A pomada cura a DAPP"
+        ],
+        "correctIndex": 0,
+        "explanation": "Medicamentos devem ser prescritos para a espécie e o problema certos.",
+        "triggeredBy": [
+          "c_pomada_humana",
+          "q_medicamentos_detalhe"
+        ]
+      }
+    ]
+  }
+}

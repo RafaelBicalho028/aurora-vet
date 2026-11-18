@@ -1,0 +1,140 @@
+{
+  "_comment": "Catálogo central de referências. Casos, minigames e VetiDex apontam para estes ids. Não adicione referências que não possam ser verificadas. O conteúdo do jogo é uma síntese educacional e deve ser conferido nas edições disponíveis por um(a) médico(a)-veterinário(a) revisor(a).",
+  "references": [
+    {
+      "id": "dyce2010",
+      "type": "livro",
+      "citation": "DYCE, K. M.; SACK, W. O.; WENSING, C. J. G. Textbook of Veterinary Anatomy. 4. ed. St. Louis: Saunders/Elsevier, 2010. (Edição brasileira: Tratado de Anatomia Veterinária, Elsevier.)"
+    },
+    {
+      "id": "klein2020",
+      "type": "livro",
+      "citation": "KLEIN, B. G. (ed.). Cunningham's Textbook of Veterinary Physiology. 6. ed. St. Louis: Elsevier, 2020. (Edição brasileira: Cunningham — Tratado de Fisiologia Veterinária, Elsevier.)"
+    },
+    {
+      "id": "ettinger2017",
+      "type": "livro",
+      "citation": "ETTINGER, S. J.; FELDMAN, E. C.; CÔTÉ, E. Textbook of Veterinary Internal Medicine. 8. ed. St. Louis: Elsevier, 2017."
+    },
+    {
+      "id": "nelson2019",
+      "type": "livro",
+      "citation": "NELSON, R. W.; COUTO, C. G. Small Animal Internal Medicine. 6. ed. St. Louis: Elsevier, 2019."
+    },
+    {
+      "id": "merck",
+      "type": "manual",
+      "citation": "MERCK VETERINARY MANUAL. Edição online. Rahway, NJ: Merck & Co., Inc.",
+      "url": "https://www.merckvetmanual.com"
+    },
+    {
+      "id": "miller2013",
+      "type": "livro",
+      "citation": "MILLER, W. H.; GRIFFIN, C. E.; CAMPBELL, K. L. Muller & Kirk's Small Animal Dermatology. 7. ed. St. Louis: Elsevier, 2013."
+    },
+    {
+      "id": "rust1997",
+      "type": "artigo",
+      "citation": "RUST, M. K.; DRYDEN, M. W. The biology, ecology, and management of the cat flea. Annual Review of Entomology, v. 42, p. 451-473, 1997."
+    },
+    {
+      "id": "hensel2015",
+      "type": "artigo",
+      "citation": "HENSEL, P.; SANTORO, D.; FAVROT, C.; HILL, P.; GRIFFIN, C. Canine atopic dermatitis: detailed guidelines for diagnosis and allergen identification. BMC Veterinary Research, v. 11, 196, 2015."
+    },
+    {
+      "id": "boland2010",
+      "type": "artigo",
+      "citation": "BOLAND, L. A.; ANGLES, J. M. Feline permethrin toxicity: retrospective study of 42 cases. Journal of Feline Medicine and Surgery, v. 12, n. 2, p. 61-71, 2010."
+    },
+    {
+      "id": "fda2018",
+      "type": "diretriz",
+      "citation": "U.S. FOOD AND DRUG ADMINISTRATION (FDA). Fact Sheet for Pet Owners and Veterinarians about Potential Adverse Events Associated with Isoxazoline Flea and Tick Products. 2018.",
+      "url": "https://www.fda.gov"
+    },
+    {
+      "id": "center2005",
+      "type": "artigo",
+      "citation": "CENTER, S. A. Feline hepatic lipidosis. Veterinary Clinics of North America: Small Animal Practice, v. 35, n. 1, p. 225-269, 2005."
+    },
+    {
+      "id": "valtolina2017",
+      "type": "artigo",
+      "citation": "VALTOLINA, C.; FAVIER, R. P. Feline hepatic lipidosis. Veterinary Clinics of North America: Small Animal Practice, v. 47, n. 3, p. 683-702, 2017."
+    },
+    {
+      "id": "who2009",
+      "type": "diretriz",
+      "citation": "WORLD HEALTH ORGANIZATION. WHO Guidelines on Hand Hygiene in Health Care. Geneva: WHO, 2009."
+    },
+    {
+      "id": "cfmv1138",
+      "type": "diretriz",
+      "citation": "CONSELHO FEDERAL DE MEDICINA VETERINÁRIA (CFMV). Resolução CFMV nº 1138, de 2016 — Código de Ética do Médico-Veterinário.",
+      "url": "https://www.cfmv.gov.br"
+    },
+    {
+      "id": "day2016",
+      "type": "diretriz",
+      "citation": "DAY, M. J.; HORZINEK, M. C.; SCHULTZ, R. D.; SQUIRES, R. A. WSAVA Guidelines for the vaccination of dogs and cats. Journal of Small Animal Practice, v. 57, n. 1, p. E1-E45, 2016."
+    },
+    {
+      "id": "taylor2016",
+      "type": "livro",
+      "citation": "TAYLOR, M. A.; COOP, R. L.; WALL, R. L. Veterinary Parasitology. 4. ed. Chichester: Wiley-Blackwell, 2016."
+    },
+    {
+      "id": "thrall2012",
+      "type": "livro",
+      "citation": "THRALL, M. A.; WEISER, G.; ALLISON, R. W.; CAMPBELL, T. W. Veterinary Hematology and Clinical Chemistry. 2. ed. Ames: Wiley-Blackwell, 2012."
+    },
+    {
+      "id": "feitosa2014",
+      "type": "livro",
+      "citation": "FEITOSA, F. L. F. Semiologia Veterinária: a arte do diagnóstico. 3. ed. São Paulo: Roca, 2014."
+    },
+    {
+      "id": "anvisa_rdc222",
+      "type": "diretriz",
+      "citation": "BRASIL. Agência Nacional de Vigilância Sanitária. Resolução RDC nº 222, de 28 de março de 2018 — Boas práticas de gerenciamento dos resíduos de serviços de saúde.",
+      "url": "https://www.gov.br/anvisa"
+    },
+    {
+      "id": "nr32",
+      "type": "diretriz",
+      "citation": "BRASIL. Ministério do Trabalho. Norma Regulamentadora NR 32 — Segurança e Saúde no Trabalho em Serviços de Saúde (Portaria nº 485, de 11 de novembro de 2005)."
+    },
+    {
+      "id": "cdc_epi",
+      "type": "diretriz",
+      "citation": "CENTERS FOR DISEASE CONTROL AND PREVENTION (CDC). Sequence for Putting On and Removing Personal Protective Equipment (PPE).",
+      "url": "https://www.cdc.gov"
+    },
+    {
+      "id": "who_rabies2018",
+      "type": "diretriz",
+      "citation": "WORLD HEALTH ORGANIZATION. Rabies vaccines: WHO position paper — April 2018. Weekly Epidemiological Record, v. 93, n. 16, p. 201-220, 2018."
+    },
+    {
+      "id": "gough2018",
+      "type": "livro",
+      "citation": "GOUGH, A.; THOMAS, A.; O'NEILL, D. Breed Predispositions to Disease in Dogs and Cats. 3. ed. Hoboken: Wiley-Blackwell, 2018."
+    },
+    {
+      "id": "quesenberry2012",
+      "type": "livro",
+      "citation": "QUESENBERRY, K. E.; CARPENTER, J. W. (eds.). Ferrets, Rabbits, and Rodents: Clinical Medicine and Surgery. 3. ed. St. Louis: Elsevier Saunders, 2012."
+    },
+    {
+      "id": "harrison2006",
+      "type": "livro",
+      "citation": "HARRISON, G. J.; LIGHTFOOT, T. L. (eds.). Clinical Avian Medicine. Palm Beach: Spix Publishing, 2006."
+    },
+    {
+      "id": "nicholas2010",
+      "type": "livro",
+      "citation": "NICHOLAS, F. W. Introduction to Veterinary Genetics. 3. ed. Chichester: Wiley-Blackwell, 2010."
+    }
+  ]
+}
