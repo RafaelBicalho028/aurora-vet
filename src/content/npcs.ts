@@ -1,4 +1,4 @@
-/** Personagens originais do VetQuest e animais do mundo. */
+/** Personagens originais do Aurora Vet e animais do mundo. */
 import type { AnimalDef, NpcDef } from '../world/mapTypes';
 import { HAIR_COLORS, SKIN_TONES, UNIFORM_COLORS, type CharacterLook } from '../art/characters';
 

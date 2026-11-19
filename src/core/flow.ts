@@ -21,7 +21,7 @@ export function startGame(isNew: boolean): void {
       void showLines([
         'Universidade Veterinária de Aurora — primeiro dia do primeiro período.',
         'Você, {nome}, acaba de ingressar no curso de Medicina Veterinária. Pela frente: anatomia, fisiologia, biossegurança... e muitos animais que vão precisar do seu cuidado.',
-        'No VetQuest, níveis e etapas representam seu progresso de estudos — não uma habilitação profissional. Todo atendimento é feito sob supervisão.',
+        'No Aurora Vet, níveis e etapas representam seu progresso de estudos — não uma habilitação profissional. Todo atendimento é feito sob supervisão.',
         'Use WASD ou as setas para andar, E para interagir, Shift para correr e Esc para o menu. Procure o Lucas na avenida central!',
       ]);
     }, 450);

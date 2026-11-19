@@ -131,7 +131,7 @@ export type ImportResult = { ok: true; data: SaveData } | { ok: false; error: st
 /** Lê um código de salvamento, verificando integridade, estrutura e versão. */
 export function importSaveCode(code: string): ImportResult {
   const clean = code.replace(/\s+/g, '');
-  if (!clean.startsWith(CODE_PREFIX)) return { ok: false, error: 'Este texto não é um código de salvamento do VetQuest.' };
+  if (!clean.startsWith(CODE_PREFIX)) return { ok: false, error: 'Este texto não é um código de salvamento do Aurora Vet.' };
   const rest = clean.slice(CODE_PREFIX.length);
   const dash = rest.indexOf('-');
   if (dash < 0) return { ok: false, error: 'Código incompleto. Copie o código inteiro, do início ao fim.' };

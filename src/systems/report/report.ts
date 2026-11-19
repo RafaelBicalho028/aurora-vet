@@ -85,7 +85,7 @@ const csvCell = (v: string | number | null) => {
 /** CSV com separador ";" (abre direto no Excel/LibreOffice em português). */
 export function reportToCsv(r: StudentReport): string {
   const lines: (string | number | null)[][] = [
-    ['VetQuest — Relatório de desempenho'],
+    ['Aurora Vet — Relatório de desempenho'],
     ['Aluno(a)', r.student], ['Gerado em', r.generatedAt], ['Nível', r.level], ['Etapa', r.stage], ['XP total', r.xp],
     ['Dia no jogo', r.day], ['Tempo de jogo', r.playTime],
     ['Atendimentos', r.attendances], ['Aprovados', r.approved], ['Média (0-100)', r.average], ['Melhor nota', r.best], ['Decisões críticas', r.criticalErrors],
@@ -109,7 +109,7 @@ export function reportToCsv(r: StudentReport): string {
 export function reportToText(r: StudentReport): string {
   const opt = (v: number | null, suf = '') => (v === null ? '—' : `${v}${suf}`);
   return [
-    `VetQuest — Relatório de desempenho`,
+    `Aurora Vet — Relatório de desempenho`,
     `Aluno(a): ${r.student} • Gerado em ${r.generatedAt}`,
     `${r.stage} • Nível ${r.level} • ${r.xp} XP • Dia ${r.day} no jogo • ${r.playTime} de jogo`,
     ``,

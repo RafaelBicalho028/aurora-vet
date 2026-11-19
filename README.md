@@ -1,4 +1,4 @@
-# VetQuest: Jornada Veterinária — MVP jogável
+# Aurora Vet: Jornada Veterinária — MVP jogável
 
 RPG educacional 2D em pixel art, para navegador, em que estudantes de Medicina Veterinária exploram a Universidade de Aurora, conhecem personagens, encontram animais e conduzem **atendimentos clínicos supervisionados** (anamnese → exame físico → exames complementares → diagnóstico → conduta → resultado).
 

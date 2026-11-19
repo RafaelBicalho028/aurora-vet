@@ -33,7 +33,7 @@ function boot(): void {
     const ctx = { referenceIds: new Set(Object.keys(REFERENCE_MAP)), vetidexIds: new Set(VETIDEX.map((e) => e.id)) };
     for (const c of Object.values(CASES)) {
       const errs = validateCase(c, ctx);
-      if (errs.length) console.error('[VetQuest] Caso clínico inválido:', errs);
+      if (errs.length) console.error('[Aurora Vet] Caso clínico inválido:', errs);
     }
   }
 

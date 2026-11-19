@@ -41,13 +41,13 @@ export function showTitle(cb: TitleCallbacks): Modal {
     }, '✚ Novo jogo'));
     menu.appendChild(h('button', { class: 'btn', onclick: () => { app.audio.unlock(); openSettings(); } }, save ? '⚙ Configurações e backup' : '⚙ Configurações / ⇪ Restaurar progresso'));
     menu.appendChild(h('button', { class: 'btn', onclick: () => { app.audio.unlock(); toggleFullscreen(); } }, '⛶ Tela cheia'));
-    menu.appendChild(h('button', { class: 'btn', onclick: () => { app.audio.unlock(); openAbout(); } }, 'ℹ Sobre o VetQuest'));
+    menu.appendChild(h('button', { class: 'btn', onclick: () => { app.audio.unlock(); openAbout(); } }, 'ℹ Sobre o Aurora Vet'));
   };
   render();
   container.append(
     h('div', { class: 'logo' },
       h('div', { class: 'logo-mark' }, '✚'),
-      h('h1', null, 'VetQuest'),
+      h('h1', null, 'Aurora Vet'),
       h('div', { class: 'logo-sub' }, 'Jornada Veterinária'),
     ),
     menu,
@@ -66,8 +66,8 @@ function openSettings(): void {
 
 function openAbout(): void {
   const el = h('div', { class: 'overlay' }, h('div', { class: 'menu panel narrow about' },
-    h('h2', null, 'Sobre o VetQuest'),
-    h('p', null, 'VetQuest: Jornada Veterinária é um RPG educacional que transforma conteúdos da graduação em Medicina Veterinária em exploração, atendimentos supervisionados e raciocínio clínico.'),
+    h('h2', null, 'Sobre o Aurora Vet'),
+    h('p', null, 'Aurora Vet: Jornada Veterinária é um RPG educacional que transforma conteúdos da graduação em Medicina Veterinária em exploração, atendimentos supervisionados e raciocínio clínico.'),
     h('h3', null, 'Aviso educacional'),
     h('ul', null,
       h('li', null, 'Todo o conteúdo clínico é material educacional simplificado e está pendente de validação por médico(a)-veterinário(a).'),
