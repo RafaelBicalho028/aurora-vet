@@ -15,6 +15,7 @@ export class Hud {
   private xpFill = h('div', { class: 'xp-fill' });
   private xpText = h('div', { class: 'xp-text' });
   private stage = h('div', { class: 'hud-stage' });
+  private day = h('div', { class: 'hud-day' });
   private objective = h('div', { class: 'hud-objective' });
   private hint = h('div', { class: 'hud-hint' });
   private location = h('div', { class: 'hud-location' });
@@ -26,6 +27,7 @@ export class Hud {
       h('div', { class: 'hud-row' }, this.name, this.level),
       h('div', { class: 'xp-bar', title: 'Experiência' }, this.xpFill, this.xpText),
       this.stage,
+      this.day,
     );
     const objCard = h('div', { class: 'hud-obj panel' }, h('div', { class: 'hud-obj-label' }, 'Objetivo'), this.objective);
     const btns = h('div', { class: 'hud-buttons' },
@@ -61,6 +63,9 @@ export class Hud {
     this.xpText.textContent = `${p.current}/${p.needed} XP`;
     const storyStage = st.data.flags['etapa2_liberada'] ? 2 : 1;
     this.stage.textContent = `Etapa ${stageFor(p.level, storyStage).id}: ${stageFor(p.level, storyStage).title}`;
+    const cal = st.calendar;
+    this.day.textContent = `${['☀', '🌤', '🌙'][cal.period]} ${st.dayLabel()}`;
+    this.day.title = cal.period === 2 ? 'É noite: volte para casa e durma para começar um novo dia.' : 'Cada atendimento ocupa um período do dia.';
     this.objective.textContent = st.activeObjectiveText() ?? 'Explore o campus e revise conteúdos.';
   }
 

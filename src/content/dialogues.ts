@@ -383,6 +383,21 @@ export const DIALOGUES: Record<string, DialogueDef> = {
     },
   },
 
+  // ---------------------------------------------------------------- CASA
+  cama: {
+    entries: [{ start: 'cama' }],
+    nodes: {
+      cama: {
+        speaker: 'narrador',
+        text: 'Sua cama, arrumadinha. Dormir leva à manhã seguinte: pacientes atendidos recebem alta e novos pacientes chegam.',
+        choices: [
+          { text: '🌙 Dormir até amanhã', effects: [{ type: 'sleep' }] },
+          { text: 'Ainda não' },
+        ],
+      },
+    },
+  },
+
   // ---------------------------------------------------------------- ETAPA 2: VILA DOS ANIMAIS
   marcos: {
     entries: [

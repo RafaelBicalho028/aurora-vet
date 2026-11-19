@@ -1,3 +1,4 @@
+import type { CalendarState } from '../systems/days/calendar';
 /**
  * Tipos compartilhados do estado do jogo e do salvamento.
  */
@@ -101,6 +102,8 @@ export interface SaveData {
   questionStats: Record<string, { seen: number; correct: number; last: number; lastCorrect: boolean }>;
   pets: { owned: PetRecord[]; companion: string | null };
   stats: GameStats;
+  /** calendário do jogo: dia, período e pacientes do dia (opcional em saves antigos) */
+  calendar?: CalendarState;
 }
 
 export interface Settings {

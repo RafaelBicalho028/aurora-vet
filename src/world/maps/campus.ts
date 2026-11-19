@@ -32,6 +32,7 @@ function build(): string[] {
   fill(36, 16, 1, 1, '=');  // porta da biblioteca
   fill(7, 26, 1, 1, '=');   // salas de aula
   fill(36, 26, 1, 1, '=');  // laboratórios
+  fill(15, 26, 1, 1, '=');  // sua casa
   fill(20, 32, 4, 2, '=');  // saída sul (Vila)
   // Praça central
   fill(17, 11, 10, 8, 'p');
@@ -59,6 +60,7 @@ const HOSPITAL: BuildingStyle = { roof: '#3d6fb6', wall: '#f1ece0', trim: '#2b50
 const ANATOMIA: BuildingStyle = { roof: '#c46a3a', wall: '#efe2c8', trim: '#8a4a28', icon: 'bone', accent: '#d98f4e' };
 const BIBLIOTECA: BuildingStyle = { roof: '#6a4a9c', wall: '#ece6da', trim: '#4c3475', icon: 'book', accent: '#6a4a9c' };
 const AULAS: BuildingStyle = { roof: '#b8506a', wall: '#eee8d8', trim: '#8a3450', icon: 'heart', accent: '#d65a7a' };
+const CASA: BuildingStyle = { roof: '#d0703a', wall: '#f4ead8', trim: '#9a4e24', icon: 'house', accent: '#e08a4a' };
 const LABS: BuildingStyle = { roof: '#2a8f99', wall: '#e8eef0', trim: '#1d6970', icon: 'flask', accent: '#2a8f99' };
 
 export const campus: MapDef = {
@@ -74,6 +76,7 @@ export const campus: MapDef = {
       id: 'hospital', name: 'Hospital Veterinário Universitário', x: 16, y: 2, w: 12, h: 7, style: HOSPITAL,
       doors: [{ dx: 6, warp: { map: 'hospital', x: 10, y: 13, facing: 'up' }, locked: { message: 'O Hospital Veterinário recebe estudantes após a primeira aula de anatomia. Fale com o Prof. Otávio no Laboratório de Anatomia (oeste).', when: { questNotStarted: 'q_biosseguranca' } } }],
     },
+    { id: 'casa', name: 'Sua casa', x: 13, y: 21, w: 5, h: 5, style: CASA, doors: [{ dx: 2, warp: { map: 'casa', x: 6, y: 8, facing: 'up' } }] },
     { id: 'anatomia', name: 'Laboratório de Anatomia', x: 3, y: 10, w: 8, h: 6, style: ANATOMIA, doors: [{ dx: 4, warp: { map: 'anatomia', x: 8, y: 11, facing: 'up' } }] },
     { id: 'biblioteca', name: 'Biblioteca Central', x: 33, y: 10, w: 8, h: 6, style: BIBLIOTECA, doors: [{ dx: 3, warp: { map: 'biblioteca', x: 8, y: 11, facing: 'up' } }] },
     { id: 'aulas', name: 'Instituto de Fisiologia', x: 3, y: 20, w: 8, h: 6, style: AULAS, doors: [{ dx: 4, warp: { map: 'fisiologia', x: 7, y: 10, facing: 'up' } }] },

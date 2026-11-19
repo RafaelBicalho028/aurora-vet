@@ -22,6 +22,7 @@ import { openPetChooser } from './ui/PetChooser';
 import { openPetCheckup } from './ui/PetCheckup';
 import { openReview } from './ui/ReviewSession';
 import { openLesson } from './ui/LessonViewer';
+import { openSleep } from './ui/SleepScreen';
 import { openMenu } from './ui/MenuScreen';
 import { CASES, REFERENCE_MAP, VETIDEX } from './content';
 import { validateCase } from './systems/cases/validateCase';
@@ -39,15 +40,16 @@ function boot(): void {
   applyTextSize();
   ui();
   initToasts();
-  bus.on('ui:startCase', (id: string) => openCase(id));
+  bus.on('ui:startCase', (arg: string | { id: string; patient?: string }) => (typeof arg === 'string' ? openCase(arg) : openCase(arg.id, arg.patient)));
+  bus.on('ui:sleep', () => openSleep());
   bus.on('ui:startMinigame', (id: string) => openMinigame(id));
   bus.on('ui:startQuiz', (id: string) => openQuiz(id));
   bus.on('ui:adoptPet', () => openPetChooser());
   bus.on('ui:petCheckup', () => openPetCheckup());
   bus.on('ui:openReview', () => openReview());
   bus.on('ui:openLesson', (id: string) => openLesson(id));
-  bus.on('ui:openPanel', (p: 'performance' | 'vetidex' | 'journal' | 'map' | 'inventory') => {
-    const map = { performance: 'desempenho', vetidex: 'vetidex', journal: 'diario', map: 'mapa', inventory: 'mochila' } as const;
+  bus.on('ui:openPanel', (p: 'performance' | 'vetidex' | 'journal' | 'map' | 'inventory' | 'pets') => {
+    const map = { performance: 'desempenho', vetidex: 'vetidex', journal: 'diario', map: 'mapa', inventory: 'mochila', pets: 'pets' } as const;
     openMenu(map[p]);
   });
 

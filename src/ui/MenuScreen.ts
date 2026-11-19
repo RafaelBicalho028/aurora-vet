@@ -1,6 +1,7 @@
 /**
  * Menu com abas: Mochila, Mapa, VetiDex, Diário de missões, Desempenho e Configurações.
  */
+import { openReport } from './ReportScreen';
 import { app, requireState } from '../core/context';
 import { ITEMS, QUESTS, QUEST_MAP } from '../content/quests';
 import { VETIDEX, VETIDEX_CATEGORIES, VETIDEX_MAP, REFERENCE_MAP, CASES } from '../content';
@@ -368,7 +369,7 @@ function renderPerformance(): HTMLElement {
   const hours = Math.floor(d.stats.playTimeSec / 3600), mins = Math.floor((d.stats.playTimeSec % 3600) / 60);
 
   return h('div', { class: 'tab-pane perf' },
-    h('h2', null, 'Painel de progresso acadêmico'),
+    h('div', { class: 'perf-head' }, h('h2', null, 'Painel de progresso acadêmico'), h('button', { class: 'btn btn-primary', onclick: () => openReport() }, '📤 Estatísticas e exportação')),
     h('div', { class: 'stat-row' },
       h('div', { class: 'stat' }, h('div', { class: 'stat-num' }, String(p.level)), h('div', { class: 'stat-label' }, 'Nível')),
       h('div', { class: 'stat' }, h('div', { class: 'stat-num' }, String(d.totalXp)), h('div', { class: 'stat-label' }, 'XP total')),

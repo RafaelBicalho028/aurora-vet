@@ -1,3 +1,4 @@
+import { newCalendar } from '../systems/days/calendar';
 /**
  * Salvamento local (LocalStorage) com versionamento, validação e migração.
  * A dependência de armazenamento é injetável para permitir testes automatizados.
@@ -91,6 +92,7 @@ export function migrate(raw: any): SaveData {
   if (!d.pets) d.pets = { owned: [], companion: null };
   if (!d.stats) d.stats = { playTimeSec: 0, steps: 0, casesCompleted: 0 };
   if (!d.vetidex.seen) d.vetidex.seen = [];
+  if (!d.calendar) d.calendar = newCalendar();
   d.version = SAVE_VERSION;
   return d as SaveData;
 }

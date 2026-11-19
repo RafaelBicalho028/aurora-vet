@@ -17,6 +17,8 @@ import { recordAnswer } from '../systems/questions/bank';
 import type { ClinicalCase, ScoreReport } from '../systems/cases/caseTypes';
 import { masteryGains } from '../systems/cases/scoring';
 import vetidexData from '../content/vetidex.json';
+import { CASES } from '../content';
+import { advancePeriod, newCalendar, nextDay, periodLabel, type CalendarState, type DailyCase, type DailyPatient, type DayReport } from '../systems/days/calendar';
 
 const DEX_NAMES: Record<string, string> = Object.fromEntries(vetidexData.entries.map((e) => [e.id, e.name]));
 
@@ -37,6 +39,7 @@ export function newSaveData(name: string, appearance: Appearance, now = Date.now
     questionStats: {},
     pets: { owned: [], companion: null },
     stats: { playTimeSec: 0, steps: 0, casesCompleted: 0 },
+    calendar: newCalendar(),
   };
 }
 
@@ -80,6 +83,7 @@ export class GameState {
     if (c.caseNotPassed && this.hasPassedCase(c.caseNotPassed)) return false;
     if (c.hasItem && !this.data.inventory[c.hasItem]) return false;
     if (c.hasPet !== undefined && (this.data.pets.owned.length > 0) !== c.hasPet) return false;
+    if (c.patientPresent && this.calendar.storyDischarged.includes(c.patientPresent)) return false;
     if (c.all && !c.all.every((x) => this.check(x))) return false;
     if (c.any && !c.any.some((x) => this.check(x))) return false;
     return true;
@@ -101,7 +105,8 @@ export class GameState {
         case 'item': this.giveItem(e.id, e.qty ?? 1); break;
         case 'dex': this.unlockDex(e.ids); break;
         case 'mastery': if (this.once(onceKey, `m:${e.discipline}.${e.skill}`)) this.addMastery(e.discipline, e.skill, e.xp); break;
-        case 'startCase': bus.emit('ui:startCase', e.caseId); break;
+        case 'startCase': bus.emit('ui:startCase', { id: e.caseId, patient: e.patient }); break;
+        case 'sleep': bus.emit('ui:sleep'); break;
         case 'startMinigame': bus.emit('ui:startMinigame', e.id); break;
         case 'startQuiz': bus.emit('ui:startQuiz', e.id); break;
         case 'adoptPet': bus.emit('ui:adoptPet'); break;
@@ -315,10 +320,18 @@ export class GameState {
 
   /** Registra um atendimento clínico concluído e aplica XP, domínio, revisão e missões. */
   recordClinicalCase(c: ClinicalCase, report: ScoreReport): { xp: number; record: CaseRecord } {
+    const daily = (c as Partial<DailyCase>).dailyUid ? this.dailyPatient((c as DailyCase).dailyUid) : undefined;
     const alreadyPassed = this.hasPassedCase(c.id);
     const attempt = this.attemptsOf(c.id) + 1;
-    const xp = caseXp(c.baseXp, report.total, { attempt, alreadyPassed, passScore: c.passScore });
-    const factor = alreadyPassed ? 0.25 : attempt <= 1 ? 1 : 0.5;
+    // pacientes do dia são pacientes novos: metade do XP de uma primeira tentativa
+    const xp = daily
+      ? Math.round(caseXp(c.baseXp, report.total, { attempt: 1, alreadyPassed: false, passScore: c.passScore }) * 0.5)
+      : caseXp(c.baseXp, report.total, { attempt, alreadyPassed, passScore: c.passScore });
+    const factor = daily ? 0.5 : alreadyPassed ? 0.25 : attempt <= 1 ? 1 : 0.5;
+    if (daily && report.passed) { daily.status = 'treated'; daily.score = report.total; }
+    const wasNight = this.calendar.period === 2;
+    this.data.calendar = advancePeriod(this.calendar); // cada atendimento consome um período do dia
+    if (!wasNight && this.calendar.period === 2) bus.emit(Events.Toast, { text: 'Anoiteceu! Quando quiser, volte para casa e durma: amanhã chegam novos pacientes.', icon: '🌙' });
     for (const g of masteryGains(c, report, factor)) this.addMastery(g.discipline, g.skill, g.xp);
 
     const record: CaseRecord = {
@@ -346,6 +359,33 @@ export class GameState {
     if (report.passed) this.completeObjective(c.missionId, 'o_atender');
     this.save();
     return { xp, record };
+  }
+
+  // ------------------------------------------------------------ dias e pacientes do dia
+  get calendar(): CalendarState {
+    if (!this.data.calendar) this.data.calendar = newCalendar();
+    return this.data.calendar;
+  }
+  get storyStage(): number { return this.data.flags['etapa2_liberada'] ? 2 : 1; }
+  dayLabel(): string { return periodLabel(this.calendar); }
+  dailyPatient(uid: string): DailyPatient | undefined { return this.calendar.patients.find((p) => p.uid === uid); }
+
+  /** Dorme até a manhã seguinte: altas, novos pacientes e salvamento. */
+  sleep(rnd: () => number = Math.random): DayReport {
+    const passed = (id: string) => this.hasPassedCase(id);
+    const all = Object.values(CASES);
+    const ctx = {
+      pool: all.filter((c) => passed(c.id) && c.minStage <= this.storyStage),
+      storyStage: this.storyStage,
+      passedStoryCases: all.filter((c) => c.missionId && passed(c.id)).map((c) => c.id),
+    };
+    const { cal, report } = nextDay(this.calendar, ctx, rnd);
+    this.data.calendar = cal;
+    // nomes legíveis para as altas dos pacientes da história
+    report.discharged = report.discharged.map((d) => (d.where === 'story' ? { ...d, name: CASES[d.name]?.patient.name ?? d.name } : d));
+    bus.emit(Events.StateChanged);
+    this.save();
+    return report;
   }
 
   recordMinigame(params: { id: string; title: string; missionId: string; total: number; passScore: number; baseXp: number; sections: Record<string, number>; disciplines: { discipline: string; skill: string; pct: number }[]; dex: string[] }): { xp: number } {

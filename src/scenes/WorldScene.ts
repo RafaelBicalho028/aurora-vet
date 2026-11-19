@@ -2,6 +2,7 @@
  * Cena de exploração: renderiza o mapa, controla o jogador em grade, NPCs, animais,
  * interações, portas e transições entre ambientes.
  */
+import { syncDynamicActors } from '../world/dynamicActors';
 import Phaser from 'phaser';
 import { app, requireState } from '../core/context';
 import { bus, Events } from '../core/EventBus';
@@ -157,6 +158,7 @@ export class WorldScene extends Phaser.Scene {
   // ------------------------------------------------------------ atores
   private spawnActors(): void {
     const st = requireState();
+    syncDynamicActors(st);
     for (const n of NPCS) {
       if (n.map !== this.map.id || !st.check(n.visibleWhen)) continue;
       const k = `npc_${n.id}`;
@@ -165,6 +167,7 @@ export class WorldScene extends Phaser.Scene {
     }
     for (const a of ANIMALS) {
       if (a.map !== this.map.id || !st.check(a.visibleWhen)) continue;
+      if (a.sprite.startsWith('pet_')) petTexture(this, a.sprite.slice(4));
       this.animals.push(new AnimalEntity(this, a.id, a.sprite, a.x, a.y, a.behavior, a.wander ?? 0, !!a.flip));
     }
   }
@@ -173,6 +176,7 @@ export class WorldScene extends Phaser.Scene {
   private refreshActors(): void {
     if (!this.scene.isActive()) return;
     const st = requireState();
+    syncDynamicActors(st);
     const wantNpc = new Set(NPCS.filter((n) => n.map === this.map.id && st.check(n.visibleWhen)).map((n) => n.id));
     const wantAnimal = new Set(ANIMALS.filter((a) => a.map === this.map.id && st.check(a.visibleWhen)).map((a) => a.id));
     const haveNpc = new Set(this.npcs.map((n) => n.id));

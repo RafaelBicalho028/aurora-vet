@@ -1,7 +1,7 @@
 {
   "name": "vetquest",
   "private": true,
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "VetQuest: Jornada Veterinária — RPG educacional 2D para estudantes de Medicina Veterinária",
   "type": "module",
   "scripts": {

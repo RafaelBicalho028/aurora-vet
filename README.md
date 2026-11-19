@@ -88,6 +88,13 @@ Todas as teclas podem ser **remapeadas** em *Menu → Configurações*. Em telas
 | Diário de missões (principais e secundárias) | ✅ |
 | Tela de desempenho educacional (histórico, médias por etapa, disciplinas, conteúdos para revisar, evolução, revisão espaçada) | ✅ |
 
+### Novidades da versão 0.6 — Dias, casa e relatório
+
+- **Sistema de dias**: o HUD mostra o dia e o período (☀ manhã, 🌤 tarde, 🌙 noite). Cada atendimento ocupa um período; à noite, um aviso sugere voltar para casa.
+- **Altas e novos pacientes**: ao amanhecer, os pacientes atendidos recebem alta e saem da sala de espera (inclusive os da história). Chegam **1 ou 2 pacientes novos por dia** ao Hospital (Etapa 1) e à Clínica da Vila (Etapa 2), sorteados entre os quadros clínicos que você já resolveu na história — com outro animal, outro tutor e as opções embaralhadas. Valem metade do XP de um caso inédito.
+- **Sua casa** (moradia estudantil no campus, ao lado da avenida central): **cama para dormir** e passar para o dia seguinte (com resumo de altas e chegadas), **cantinho dos pets** — os pets que não são o companheiro ficam passeando em casa — e um **computador** que abre o painel de desempenho.
+- **Estatísticas e exportação** (aba Desempenho → “📤 Estatísticas e exportação”): resumo de nível, atendimentos, médias por etapa do atendimento, domínio por disciplina e histórico, com **download da planilha (CSV)**, **resumo em texto**, **copiar** e **imprimir/salvar em PDF**.
+
 ### Novidades da versão 0.5 — Etapa 2: Vila dos Animais
 
 - **Etapa 2 liberada**: ao concluir “Rumo à Etapa 2” (nível 5), o **Portão Sul** do campus se abre. Saves antigos que já tinham concluído essa missão recebem a liberação automaticamente.

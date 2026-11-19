@@ -310,6 +310,24 @@ function reviewTerminal(ctx: CanvasRenderingContext2D) {
   outlined(ctx, 16, 24);
 }
 
+function bed(ctx: CanvasRenderingContext2D, seed: number) {
+  const blanket = ['#4f7fc8', '#c8506a', '#3f9d76', '#8a6bc9'][seed % 4];
+  box(ctx, 1, 1, 14, 6, '#8a5e3b'); px(ctx, 2, 2, '#a8754a', 12, 2);        // cabeceira
+  box(ctx, 1, 6, 14, 24, '#f2efe8');                                        // lençol
+  px(ctx, 3, 8, '#ffffff', 10, 5); px(ctx, 3, 12, '#d9d4c8', 10, 1);        // travesseiro
+  box(ctx, 1, 15, 14, 15, blanket); px(ctx, 2, 16, shade(blanket, 0.25), 12, 2);
+  for (let y = 20; y < 29; y += 4) px(ctx, 2, y, shade(blanket, -0.15), 12, 1);
+  px(ctx, 1, 29, '#5e3e26', 2, 3); px(ctx, 13, 29, '#5e3e26', 2, 3);
+  outlined(ctx, 16, 32);
+}
+
+function petBed(ctx: CanvasRenderingContext2D) {
+  box(ctx, 1, 6, 14, 9, '#b8553a');
+  px(ctx, 3, 8, '#e8c9a0', 10, 5); px(ctx, 4, 9, '#f4e2c8', 8, 3);
+  px(ctx, 6, 3, '#e8c13c', 4, 3); px(ctx, 7, 2, '#e8c13c', 2, 1);          // osso de brinquedo
+  outlined(ctx, 16, 16);
+}
+
 function carrier(ctx: CanvasRenderingContext2D) {
   box(ctx, 1, 4, 14, 11, '#6fb0e8');
   px(ctx, 2, 5, '#9fcdf2', 12, 2);
@@ -350,6 +368,8 @@ export const OBJECTS: Record<string, ObjectArt> = {
   study_table: { w: 32, h: 24, blocks: [[0, 0], [1, 0]], draw: tableChairs },
   terminal: { w: 16, h: 24, blocks: [[0, 0]], draw: reviewTerminal },
   carrier: { w: 16, h: 16, blocks: [[0, 0]], draw: carrier },
+  bed: { w: 16, h: 32, blocks: [[0, 0], [0, -1]], draw: bed },
+  pet_bed: { w: 16, h: 16, blocks: [[0, 0]], draw: petBed },
 };
 
 export function renderObject(type: string, seed: number): HTMLCanvasElement {

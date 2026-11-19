@@ -15,6 +15,8 @@ export interface Condition {
   caseNotPassed?: string;
   hasItem?: string;
   hasPet?: boolean;
+  /** paciente da história ainda no hospital (não recebeu alta) — id do caso */
+  patientPresent?: string;
   all?: Condition[];
   any?: Condition[];
 }
@@ -27,14 +29,15 @@ export type Effect =
   | { type: 'item'; id: string; qty?: number }
   | { type: 'dex'; ids: string[] }
   | { type: 'mastery'; discipline: string; skill: string; xp: number }
-  | { type: 'startCase'; caseId: string }
+  | { type: 'startCase'; caseId: string; patient?: string }
   | { type: 'startMinigame'; id: string }
   | { type: 'startQuiz'; id: string }
   | { type: 'adoptPet' }
   | { type: 'petCheckup' }
   | { type: 'openReview' }
+  | { type: 'sleep' }
   | { type: 'openLesson'; id: string }
-  | { type: 'openPanel'; panel: 'performance' | 'vetidex' | 'journal' | 'map' | 'inventory' }
+  | { type: 'openPanel'; panel: 'performance' | 'vetidex' | 'journal' | 'map' | 'inventory' | 'pets' }
   | { type: 'save' };
 
 export interface DialogueChoice {

@@ -2,6 +2,8 @@
  * Tela de atendimento clínico: Anamnese → Exame físico → Exames complementares → Diagnóstico → Conduta → Resultado.
  * A lógica de pontuação fica em systems/cases/scoring.ts (pura e testada).
  */
+import { dailyCase } from '../systems/days/calendar';
+import { dailyTutorId } from '../world/dynamicActors';
 import { askConfirm } from './ConfirmDialog';
 import { app, requireState } from '../core/context';
 import { bus, Events } from '../core/EventBus';
@@ -41,11 +43,19 @@ function npcPortrait(id: string, expr: 'neutro' | 'feliz' | 'preocupado' | 'surp
   return n ? buildPortrait(n.look, expr).toDataURL() : '';
 }
 
-export function openCase(caseId: string): void {
-  const c = CASES[caseId];
-  if (!c) { console.error('Caso inexistente', caseId); return; }
-  const attempt = requireState().attemptsOf(caseId);
-  new CaseSession(attempt === 0 ? c : shuffledCase(c, attempt)).open();
+export function openCase(caseId: string, patientUid?: string): void {
+  const base = CASES[caseId];
+  if (!base) { console.error('Caso inexistente', caseId); return; }
+  const st = requireState();
+  const attempt = st.attemptsOf(caseId);
+  const patient = patientUid ? st.dailyPatient(patientUid) : undefined;
+  if (patient) {
+    // paciente do dia: mesmo quadro com outro animal e tutor; opções sempre embaralhadas
+    const c = dailyCase(base, patient, dailyTutorId(patient.uid));
+    new CaseSession({ ...shuffledCase(c, attempt + patient.seed % 97 + 1), dailyUid: patient.uid } as ClinicalCase).open();
+    return;
+  }
+  new CaseSession(attempt === 0 ? base : shuffledCase(base, attempt)).open();
 }
 
 class CaseSession {
