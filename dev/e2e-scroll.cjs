@@ -1,5 +1,6 @@
 // Verifica que a tela de atendimento NÃO volta ao topo ao avaliar/interpretar itens (desktop e celular).
 const { chromium, devices } = require('playwright');
+const { devLogin } = require('./e2e-auth.cjs');
 (async () => {
   const b = await chromium.launch();
   for (const [name, opts] of [['desktop', { viewport: { width: 1280, height: 720 } }], ['celular', devices['Pixel 7']]]) {
@@ -8,6 +9,7 @@ const { chromium, devices } = require('playwright');
     p.on('dialog', (d) => d.accept());
     await p.goto(process.env.URL || 'http://localhost:5173/');
     await p.waitForTimeout(1200);
+    await devLogin(p); // contas: entra antes de jogar
     await p.click('text=Novo jogo');
     await p.fill('.name-input', 'Rolagem');
     await p.click('text=Iniciar jornada');

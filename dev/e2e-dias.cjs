@@ -2,6 +2,7 @@
 // atende um paciente do dia no hospital e exporta o relatório de desempenho.
 // Uso: SP=<pasta de capturas> URL=http://localhost:5173/ node dev/e2e-dias.cjs
 const { chromium } = require('playwright');
+const { devLogin } = require('./e2e-auth.cjs');
 const fs = require('fs');
 const { playCase } = require('./e2e-full.cjs');
 const SP = process.env.SP || '.';
@@ -52,6 +53,7 @@ function variant(base, p) {
 
   await p.goto(process.env.URL || 'http://localhost:5173/');
   await p.waitForTimeout(1200);
+  await devLogin(p); // contas: entra antes de jogar
   await p.click('text=Novo jogo');
   await p.fill('.name-input', 'Lia');
   await p.click('text=Iniciar jornada');

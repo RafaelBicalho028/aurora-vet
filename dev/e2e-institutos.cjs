@@ -1,6 +1,7 @@
 // E2E das disciplinas: caminha do campus ao Setor dos Institutos pela avenida oeste, entra em um
 // prédio pela porta, assiste à aula (quadros clínicos) e faz o questionário com cada professor.
 const { chromium } = require('playwright');
+const { devLogin } = require('./e2e-auth.cjs');
 const { answerBankQuiz } = require('./e2e-full.cjs');
 const SP = process.env.SP || '.';
 (async () => {
@@ -27,6 +28,7 @@ const SP = process.env.SP || '.';
   const hold = async (key, ms) => { await p.keyboard.down(key); await p.waitForTimeout(ms); await p.keyboard.up(key); await p.waitForTimeout(400); };
   await p.goto(process.env.URL || 'http://localhost:5173/');
   await p.waitForTimeout(1200);
+  await devLogin(p); // contas: entra antes de jogar
   await p.click('text=Novo jogo');
   await p.fill('.name-input', 'Ana');
   await p.click('.chip:has-text("Feminino")');

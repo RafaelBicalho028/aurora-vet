@@ -28,7 +28,22 @@ jobs:
         run: npm ci
       - name: Testes automatizados
         run: npm test
+      - name: Verificar configuração do serviço de contas
+        # sem o Supabase configurado, o jogo não libera o acesso: não publica (o site anterior continua no ar)
+        env:
+          SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ vars.SUPABASE_ANON_KEY }}
+        run: |
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_ANON_KEY" ]; then
+            echo "::error::Configure as variáveis SUPABASE_URL e SUPABASE_ANON_KEY (Settings → Secrets and variables → Actions → Variables). Veja docs/CONTAS.md."
+            exit 1
+          fi
       - name: Build do jogo e montagem do site
+        env:
+          VITE_SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ vars.SUPABASE_ANON_KEY }}
+          VITE_CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
+          VITE_SUPABASE_REGION_LABEL: ${{ vars.SUPABASE_REGION_LABEL }}
         run: npm run build:site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

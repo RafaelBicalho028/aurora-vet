@@ -94,6 +94,17 @@ Todas as teclas podem ser **remapeadas** em *Menu → Configurações*. Em telas
 | Diário de missões (principais e secundárias) | ✅ |
 | Tela de desempenho educacional (histórico, médias por etapa, disciplinas, conteúdos para revisar, evolução, revisão espaçada) | ✅ |
 
+### Novidades da versão 0.7 — Contas, login e termos de uso
+
+- **Acesso com conta**: tela inicial com Entrar, Criar conta, Sobre o jogo, Termos de Uso e Política de Privacidade. Não é possível jogar sem estar autenticado; a sessão fica salva (sem novo login a cada partida).
+- **Cadastro**: nome de usuário, e-mail, senha e confirmação, **perfil profissional** obrigatório (Estudante de Medicina Veterinária, Médico(a)-veterinário(a) formado(a) ou Explorador(a), autodeclarado), aceite dos Termos, ciência da Política, declaração de 18 anos ou mais e consentimento **opcional** para novidades — todas as caixas desmarcadas. Confirmação por **link enviado por e-mail**.
+- **Autenticação real** com **Supabase Auth** (senhas com hash, recuperação de senha por e-mail, limites de tentativas do servidor + freio local) e banco PostgreSQL com **regras de acesso por conta (RLS)**.
+- **Aviso educacional** obrigatório no primeiro acesso ("Entendi, continuar"), disponível depois em Minha Conta, nas configurações e nos Termos.
+- **Progresso na conta**, sincronizado entre aparelhos, com migração segura (verificada) do progresso antigo do navegador, que nunca é apagado.
+- **Minha Conta**: alterar nome de usuário, perfil e senha (com a senha atual), recuperar acesso, comunicações, documentos, baixar meus dados (JSON), excluir conta (com senha) e sair.
+- Registro de aceite com versão, data/hora e identificador da conta. Termos de Uso v1.0 (texto-base fornecido) e Política de Privacidade v1.0 (LGPD, com bases legais por finalidade).
+- **Configuração**: veja [`docs/CONTAS.md`](docs/CONTAS.md). A publicação só acontece com o Supabase configurado.
+
 ### Novidades da versão 0.6 — Dias, casa e relatório
 
 - **Sistema de dias**: o HUD mostra o dia e o período (☀ manhã, 🌤 tarde, 🌙 noite). Cada atendimento ocupa um período; à noite, um aviso sugere voltar para casa.

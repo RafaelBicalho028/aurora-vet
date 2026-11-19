@@ -2,6 +2,7 @@
 // entra na clínica, atende o Bidu e a Luna e conclui as missões do pet shop e do centro de adoção.
 // Uso: SP=<pasta de capturas> URL=http://localhost:5173/ node dev/e2e-vila.cjs
 const { chromium } = require('playwright');
+const { devLogin } = require('./e2e-auth.cjs');
 const fs = require('fs');
 const { playCase } = require('./e2e-full.cjs');
 const SP = process.env.SP || '.';
@@ -33,6 +34,7 @@ const luna = JSON.parse(fs.readFileSync('src/content/cases/luna-permetrina.json'
 
   await p.goto(process.env.URL || 'http://localhost:5173/');
   await p.waitForTimeout(1200);
+  await devLogin(p); // contas: entra antes de jogar
   await p.click('text=Novo jogo');
   await p.fill('.name-input', 'Rui');
   await p.click('.chip:has-text("Masculino")');

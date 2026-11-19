@@ -1,4 +1,6 @@
 /** Painel de configurações (áudio, texto, controles de toque, remapeamento de teclas, dados). */
+import { openAccountPanel } from './account/AccountPanel';
+import { openLegal } from './account/LegalView';
 import { askConfirm } from './ConfirmDialog';
 import { app, saveSettings } from '../core/context';
 import { ACTION_LABELS, keyLabel, type Action } from '../core/InputManager';
@@ -60,6 +62,14 @@ export function renderSettingsPanel(inGame: boolean): HTMLElement {
       binds,
       h('button', { class: 'btn small', onclick: () => { s.keybinds = JSON.parse(JSON.stringify(DEFAULT_KEYBINDS)); saveSettings(); renderBinds(); } }, 'Restaurar padrão'),
     ),
+    h('section', { class: 'card' },
+      h('h3', null, 'Conta e documentos'),
+      h('div', { class: 'acc-links' },
+        h('button', { class: 'btn small', onclick: () => openAccountPanel() }, '👤 Minha Conta'),
+        h('button', { class: 'btn small', onclick: () => openLegal('aviso') }, '⚠ Aviso educacional'),
+        h('button', { class: 'btn small', onclick: () => openLegal('termos') }, '📄 Termos de Uso'),
+        h('button', { class: 'btn small', onclick: () => openLegal('privacidade') }, '🔒 Política de Privacidade')),
+    ),
     renderBackupSection(() => {
       app.state = null;
       ui().closeAll();
@@ -67,11 +77,11 @@ export function renderSettingsPanel(inGame: boolean): HTMLElement {
     }),
     !inGame ? null : h('section', { class: 'card danger' },
       h('h3', null, 'Dados'),
-      h('p', { class: 'muted small' }, 'O progresso é salvo automaticamente neste navegador (LocalStorage).'),
+      h('p', { class: 'muted small' }, 'O progresso é salvo automaticamente na sua conta (com uma cópia neste aparelho).'),
       h('button', {
         class: 'btn btn-danger',
         onclick: async () => {
-          if (await askConfirm('Apagar todo o progresso salvo? Esta ação não pode ser desfeita.', 'Apagar')) {
+          if (await askConfirm('Apagar todo o progresso salvo na sua conta? Esta ação não pode ser desfeita. (Para excluir a conta inteira, use “Minha Conta”.)', 'Apagar')) {
             app.saver.clear();
             app.state = null;
             ui().closeAll();

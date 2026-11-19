@@ -8,6 +8,8 @@ import type { SaveData, Settings } from './types';
 export const SAVE_KEY = 'vetquest.save.v1';
 export const SETTINGS_KEY = 'vetquest.settings.v1';
 export const SAVE_VERSION = 1;
+/** progresso de cada conta neste aparelho (cópia local da nuvem): aurora.save.u.<id da conta> */
+export const ACCOUNT_SAVE_PREFIX = 'aurora.save.u.';
 
 export interface KeyValueStorage {
   getItem(key: string): string | null;
@@ -147,7 +149,21 @@ export function importSaveCode(code: string): ImportResult {
 }
 
 export class SaveManager {
-  constructor(private storage: KeyValueStorage = defaultStorage()) {}
+  /** sem conta: chave antiga (saves anteriores ao sistema de contas e testes) */
+  private key = SAVE_KEY;
+  /** chamado após cada gravação local — usado para sincronizar com a conta */
+  onPersist: ((data: SaveData) => void) | null = null;
+  /** chamado quando o progresso é apagado — usado para apagar também na conta */
+  onClear: (() => void) | null = null;
+
+  constructor(readonly storage: KeyValueStorage = defaultStorage()) {}
+
+  /** Passa a ler e gravar o progresso da conta indicada (null = chave antiga, sem conta). */
+  setAccount(userId: string | null): void {
+    this.key = userId ? ACCOUNT_SAVE_PREFIX + userId : SAVE_KEY;
+  }
+
+  get currentKey(): string { return this.key; }
 
   hasSave(): boolean {
     return this.load() !== null;
@@ -156,7 +172,19 @@ export class SaveManager {
   save(data: SaveData): boolean {
     try {
       const toSave: SaveData = { ...data, updatedAt: Date.now(), version: SAVE_VERSION };
-      this.storage.setItem(SAVE_KEY, JSON.stringify(toSave));
+      this.storage.setItem(this.key, JSON.stringify(toSave));
+      this.onPersist?.(toSave);
+      return true;
+    } catch (e) {
+      console.error('[SaveManager] falha ao salvar', e);
+      return false;
+    }
+  }
+
+  /** Grava exatamente o conteúdo recebido (sem mudar a data nem disparar sincronização). */
+  saveExact(data: SaveData): boolean {
+    try {
+      this.storage.setItem(this.key, JSON.stringify(data));
       return true;
     } catch (e) {
       console.error('[SaveManager] falha ao salvar', e);
@@ -165,8 +193,16 @@ export class SaveManager {
   }
 
   load(): SaveData | null {
+    return this.parse(this.storage.getItem(this.key));
+  }
+
+  /** Progresso salvo neste navegador antes do sistema de contas (nunca é apagado automaticamente). */
+  loadLegacy(): SaveData | null {
+    return this.parse(this.storage.getItem(SAVE_KEY));
+  }
+
+  private parse(raw: string | null): SaveData | null {
     try {
-      const raw = this.storage.getItem(SAVE_KEY);
       if (!raw) return null;
       const parsed = JSON.parse(raw);
       if (!isValidSave(parsed)) {
@@ -185,11 +221,12 @@ export class SaveManager {
   }
 
   clear(): void {
-    this.storage.removeItem(SAVE_KEY);
+    this.storage.removeItem(this.key);
+    this.onClear?.();
   }
 
   exportString(): string | null {
-    return this.storage.getItem(SAVE_KEY);
+    return this.storage.getItem(this.key);
   }
 
   /** Substitui o progresso salvo pelo conteúdo de um código de salvamento. */

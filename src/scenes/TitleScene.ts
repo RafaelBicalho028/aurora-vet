@@ -11,6 +11,7 @@ import { ui, type Modal } from '../ui/UIManager';
 import { showTitle } from '../ui/TitleMenu';
 import { GameState } from '../core/GameState';
 import { startGame } from '../core/flow';
+import { ensureAccess } from '../ui/account/AccessScreen';
 
 export class TitleScene extends Phaser.Scene {
   private modal: Modal | null = null;
@@ -45,6 +46,16 @@ export class TitleScene extends Phaser.Scene {
 
     app.state = null;
     ui().closeAll();
+    app.audio.play('title');
+    // acesso obrigatório: conta autenticada, aceites em dia e progresso sincronizado antes do menu
+    void ensureAccess().then(() => {
+      if (!this.scene.isActive()) return;
+      this.openMenu();
+    });
+    this.events.once('shutdown', () => { if (this.modal) ui().close(this.modal); this.modal = null; });
+  }
+
+  private openMenu(): void {
     this.modal = showTitle({
       onContinue: () => {
         const data = app.saver.load();
@@ -57,8 +68,6 @@ export class TitleScene extends Phaser.Scene {
         this.leave(() => startGame(true));
       },
     });
-    app.audio.play('title');
-    this.events.once('shutdown', () => { if (this.modal) ui().close(this.modal); this.modal = null; });
   }
 
   private leave(next: () => void): void {

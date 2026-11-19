@@ -8,3 +8,5 @@ hospedagem/
 site-dist/
 site/assets/
 site/jogo.html
+.env.local
+.env

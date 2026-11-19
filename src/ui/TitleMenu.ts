@@ -13,6 +13,10 @@ import { ui, type Modal } from './UIManager';
 import { toggleFullscreen } from './fullscreen';
 import { renderSettingsPanel } from './SettingsPanel';
 import { REFERENCES } from '../content';
+import { account } from '../account';
+import { PROFILE_LABEL } from '../account/types';
+import { bus } from '../core/EventBus';
+import { openAccountPanel } from './account/AccountPanel';
 
 export interface TitleCallbacks {
   onContinue: () => void;
@@ -39,11 +43,22 @@ export function showTitle(cb: TitleCallbacks): Modal {
         openCreator(cb.onNewGame);
       },
     }, '✚ Novo jogo'));
+    menu.appendChild(h('button', { class: 'btn', onclick: () => { app.audio.unlock(); openAccountPanel(); } }, '👤 Minha Conta'));
     menu.appendChild(h('button', { class: 'btn', onclick: () => { app.audio.unlock(); openSettings(); } }, save ? '⚙ Configurações e backup' : '⚙ Configurações / ⇪ Restaurar progresso'));
     menu.appendChild(h('button', { class: 'btn', onclick: () => { app.audio.unlock(); toggleFullscreen(); } }, '⛶ Tela cheia'));
     menu.appendChild(h('button', { class: 'btn', onclick: () => { app.audio.unlock(); openAbout(); } }, 'ℹ Sobre o Aurora Vet'));
   };
   render();
+  const acc = account();
+  const greeting = acc?.profile ? h('div', { class: 'acc-greeting' },
+    h('span', null, `Olá, ${acc.profile.username}`),
+    h('span', { class: 'small muted' }, PROFILE_LABEL[acc.profile.professional_profile]),
+    h('button', { class: 'link-btn small', onclick: async () => {
+      if (!(await askConfirm('Sair da conta neste aparelho? Seu progresso fica salvo na conta.', 'Sair'))) return;
+      await acc.signOut();
+      bus.emit('account:signedOut');
+    } }, 'Sair')) : null;
+  if (greeting) container.append(greeting);
   container.append(
     h('div', { class: 'logo' },
       h('div', { class: 'logo-mark' }, '✚'),
@@ -51,7 +66,7 @@ export function showTitle(cb: TitleCallbacks): Modal {
       h('div', { class: 'logo-sub' }, 'Jornada Veterinária'),
     ),
     menu,
-    h('div', { class: 'title-foot' }, 'RPG educacional para estudantes de Medicina Veterinária • Conteúdo educacional pendente de validação técnica • v0.6'),
+    h('div', { class: 'title-foot' }, 'RPG educacional para estudantes de Medicina Veterinária • Conteúdo educacional pendente de validação técnica • v0.7'),
   );
   const modal = ui().open({ el: container, persistent: true, onAction: () => false });
   container.addEventListener('pointerdown', () => { app.audio.unlock(); app.audio.play('title'); }, { once: true });
@@ -64,7 +79,7 @@ function openSettings(): void {
   const m = ui().open({ el });
 }
 
-function openAbout(): void {
+export function openAbout(): void {
   const el = h('div', { class: 'overlay' }, h('div', { class: 'menu panel narrow about' },
     h('h2', null, 'Sobre o Aurora Vet'),
     h('p', null, 'Aurora Vet: Jornada Veterinária é um RPG educacional que transforma conteúdos da graduação em Medicina Veterinária em exploração, atendimentos supervisionados e raciocínio clínico.'),
@@ -85,7 +100,7 @@ function openAbout(): void {
 // ------------------------------------------------------------------ Criação de personagem
 function openCreator(onDone: (s: GameState) => void): void {
   const a: Appearance = { skin: 1, hairColor: 1, hairStyle: 'curto', uniform: 'jaleco', uniformColor: 0, glasses: false, sex: 'feminino', pattern: 'liso', patternColor: 0 };
-  let name = '';
+  let name = (account()?.profile?.username ?? '').replace(/[._\d]+/g, ' ').trim().slice(0, 14);
   const preview = h('canvas', { class: 'pixel creator-preview', width: String(FRAME_W), height: String(FRAME_H), 'aria-label': 'Prévia do personagem' }) as HTMLCanvasElement;
   const pctx = preview.getContext('2d')!;
   let sheet = buildCharacterSheet(lookFromAppearance(a));
@@ -122,6 +137,7 @@ function openCreator(onDone: (s: GameState) => void): void {
 
   const nameInput = h('input', { type: 'text', maxlength: '14', placeholder: 'Seu nome', class: 'name-input', 'aria-label': 'Nome do personagem', autofocus: true }) as HTMLInputElement;
   const err = h('div', { class: 'small bad' });
+  nameInput.value = name;
   nameInput.addEventListener('input', () => { name = nameInput.value; err.textContent = ''; });
   const confirmBtn = h('button', { class: 'btn btn-primary' }, 'Iniciar jornada ▶');
   const submit = () => {

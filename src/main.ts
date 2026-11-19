@@ -8,7 +8,9 @@ import '@fontsource/nunito/latin-400.css';
 import '@fontsource/nunito/latin-700.css';
 import './styles/main.css';
 import { app, applyTextSize } from './core/context';
-import { bus } from './core/EventBus';
+import { bus, Events } from './core/EventBus';
+import { account, initAccount } from './account';
+import { goToTitle } from './core/flow';
 import { BootScene } from './scenes/BootScene';
 import { TitleScene } from './scenes/TitleScene';
 import { WorldScene } from './scenes/WorldScene';
@@ -70,8 +72,17 @@ function boot(): void {
     banner: false,
   });
 
-  // salva ao fechar/ocultar a aba
-  const persist = () => { if (app.state) app.state.save(); };
+  // conta: saída (ou exclusão) volta à tela de acesso
+  bus.on('account:signedOut', (why?: unknown) => {
+    app.state = null;
+    ui().closeAll();
+    goToTitle();
+    if (why === 'deleted') setTimeout(() => bus.emit(Events.Toast, { text: 'Sua conta e seus dados foram excluídos.', icon: '🗑' }), 600);
+  });
+  void initAccount();
+
+  // salva ao fechar/ocultar a aba (e envia para a conta o que estiver pendente)
+  const persist = () => { if (app.state) app.state.save(); void account()?.flush(); };
   window.addEventListener('beforeunload', persist);
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') persist(); });
   document.addEventListener('pointerdown', () => app.audio.unlock(), { once: true });

@@ -1,5 +1,6 @@
 // E2E das missões secundárias: fazenda-escola (interação por cima da cerca), Profa. Lívia e biblioteca.
 const { chromium } = require('playwright');
+const { devLogin } = require('./e2e-auth.cjs');
 const { answerBankQuiz } = require('./e2e-full.cjs');
 const SP = process.env.SP || '.';
 (async () => {
@@ -24,6 +25,7 @@ const SP = process.env.SP || '.';
   const warp = async (m, x, y, f) => { await p.evaluate(([a, b2, c, d]) => window.__vetquest.game.scene.getScene('World').warp(a, b2, c, d), [m, x, y, f]); await p.waitForTimeout(900); };
   await p.goto(process.env.URL || 'http://localhost:5173/');
   await p.waitForTimeout(1200);
+  await devLogin(p); // contas: entra antes de jogar
   await p.click('text=Novo jogo');
   await p.fill('.name-input', 'Caio');
   await p.click('text=Iniciar jornada');

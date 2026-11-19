@@ -1,6 +1,7 @@
 // E2E completo: joga as missões principais de ponta a ponta no navegador real.
 // Uso: SP=<pasta de capturas> URL=http://localhost:5173/ node dev/e2e-full.cjs
 const { chromium } = require('playwright');
+const { devLogin } = require('./e2e-auth.cjs');
 const fs = require('fs');
 const SP = process.env.SP || '.';
 const thor = JSON.parse(fs.readFileSync('src/content/cases/thor-prurido.json'));
@@ -113,6 +114,7 @@ if (require.main === module) (async () => {
 
   await p.goto(process.env.URL || 'http://localhost:5173/');
   await p.waitForTimeout(1200);
+  await devLogin(p); // contas: entra antes de jogar
   await p.click('text=Novo jogo');
   await p.fill('.name-input', 'Ana');
   await p.click('.chip:has-text("Cacheado")');
@@ -291,6 +293,7 @@ if (require.main === module) (async () => {
   p2.on('pageerror', (e) => errs.push('pageerror(p2): ' + e.message));
   await p2.goto(process.env.URL || 'http://localhost:5173/');
   await p2.waitForTimeout(1200);
+  await devLogin(p2); // navegador novo: outra conta, sem progresso
   const hasContinue = await p2.locator('text=Continuar').count();
   await p2.click('text=Restaurar progresso');
   await p2.fill('#save-code-in', code);

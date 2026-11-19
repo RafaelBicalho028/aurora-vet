@@ -21,3 +21,5 @@ jobs:
         run: npm test
       - name: Build de produção
         run: npm run build
+      - name: Testes do banco de dados (regras de acesso por conta, em PostgreSQL)
+        run: npm run test:db
