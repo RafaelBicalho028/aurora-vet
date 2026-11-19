@@ -1,5 +1,5 @@
 {
-  "name": "vetquest",
+  "name": "aurora-vet",
   "private": true,
   "version": "0.6.0",
   "description": "Aurora Vet: Jornada Veterinária — RPG educacional 2D para estudantes de Medicina Veterinária",
@@ -13,7 +13,8 @@
     "validate:content": "vitest run tests/content.test.ts",
     "e2e": "node dev/e2e-full.cjs",
     "e2e:side": "node dev/e2e-side.cjs",
-    "e2e:mobile": "node dev/e2e-mobile.cjs"
+    "e2e:mobile": "node dev/e2e-mobile.cjs",
+    "build:site": "npm run build && node scripts/build-site.mjs"
   },
   "dependencies": {
     "@fontsource/nunito": "5.3.0",

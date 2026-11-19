@@ -8,6 +8,12 @@ Tecnologias: **TypeScript + Phaser 3.90 + Vite 6**, interface em DOM/CSS, salvam
 
 ---
 
+## Jogue agora
+
+**https://rafaelbicalho028.github.io/aurora-vet/** — página de apresentação, guia do testador e o jogo (`/jogo.html`).
+
+O site é publicado automaticamente pelo GitHub Actions (`.github/workflows/pages.yml`) a cada envio para a branch `main`: o fluxo roda os testes, gera o build e monta o site com `npm run build:site` (script `scripts/build-site.mjs`, saída em `site-dist/`).
+
 ## 1. Instalação e execução
 
 Requisitos: Node.js 18+ (testado com Node 22) e npm.
