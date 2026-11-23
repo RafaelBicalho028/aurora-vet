@@ -726,3 +726,7 @@ body.touch-ui .toast-layer { padding-top: calc(140px + env(safe-area-inset-top, 
   .acc-card { animation: none; }
   .btn.is-busy::before, .acc-spinner { animation-duration: 2s; }
 }
+
+.acc-details { width: 100%; font-size: 0.88rem; }
+.acc-details summary { cursor: pointer; color: #c2e8ff; }
+.acc-details[open] { display: grid; gap: 6px; justify-items: start; }

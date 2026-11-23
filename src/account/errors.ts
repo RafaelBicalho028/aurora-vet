@@ -33,7 +33,11 @@ export function normalizeError(err: unknown): AccountError {
   const e = (err ?? {}) as { code?: string; status?: number; message?: string; name?: string };
   const code = String(e.code ?? '');
   const msg = String(e.message ?? '');
-  if (e.name === 'AuthRetryableFetchError' || /Failed to fetch|NetworkError|Load failed/i.test(msg)) return accountError('network');
+  if (e.name === 'AuthRetryableFetchError' || /Failed to fetch|NetworkError|Load failed/i.test(msg)) {
+    const net = accountError('network');
+    net.detail = !msg ? 'falha de conexão' : e.name && !msg.startsWith(e.name) ? `${e.name}: ${msg}` : msg;
+    return net;
+  }
   if (code === 'user_already_exists' || code === 'email_exists') return accountError('email_in_use', 'email');
   if (code === 'invalid_credentials' || /invalid login credentials/i.test(msg)) return accountError('invalid_credentials');
   if (code === 'email_not_confirmed' || /email not confirmed/i.test(msg)) return accountError('email_not_confirmed');

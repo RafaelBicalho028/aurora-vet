@@ -7,7 +7,7 @@
  */
 import { app } from '../core/context';
 import { AccountService } from './AccountService';
-import { readAccountConfig } from './config';
+import { checkConnection, readAccountConfig, type ConnectionCheck } from './config';
 import { SupabaseBackend } from './supabaseBackend';
 import type { AuthBackend, AuthEvent } from './types';
 
@@ -64,4 +64,10 @@ export function bootLinkError(): string | null {
   const code = p.get('error_code') ?? p.get('error') ?? '';
   if (/expired/i.test(code + (p.get('error_description') ?? ''))) return 'Este link expirou ou já foi usado. Peça um novo link (reenvio da confirmação ou “Esqueci minha senha”).';
   return 'Não foi possível validar o link recebido por e-mail. Peça um novo link e tente novamente.';
+}
+
+/** Testa a conexão com o servidor de contas (usado na mensagem de falha de rede). */
+export async function testAccountConnection(): Promise<ConnectionCheck | null> {
+  const cfg = readAccountConfig();
+  return cfg ? checkConnection(cfg) : null;
 }

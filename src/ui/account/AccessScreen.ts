@@ -9,7 +9,7 @@ import { app } from '../../core/context';
 import { h } from '../dom';
 import { ui, type Modal } from '../UIManager';
 import { askConfirm } from '../ConfirmDialog';
-import { account, bootLinkError, BOOT_HASH, initAccount, onAccountEvent, takeRecoveryPending } from '../../account';
+import { account, bootLinkError, BOOT_HASH, initAccount, onAccountEvent, takeRecoveryPending, testAccountConnection } from '../../account';
 import { SignUpValidationError, type AccountService } from '../../account/AccountService';
 import { AccountError } from '../../account/types';
 import { validateSignUp, type FieldErrors } from '../../account/validation';
@@ -21,6 +21,24 @@ import { openLegal, renderLegal } from './LegalView';
 import { openAbout } from '../TitleMenu';
 
 type View = (card: HTMLElement) => void;
+
+/** Em falhas de rede: detalhe técnico + botão "Testar conexão" (ajuda o jogador e o suporte). */
+function networkHelp(e: unknown): HTMLElement | undefined {
+  if (!(e instanceof AccountError) || e.code !== 'network') return undefined;
+  const out = h('p', { class: 'small', role: 'status' });
+  const btn = h('button', { type: 'button', class: 'btn small' }, '🔌 Testar conexão') as HTMLButtonElement;
+  btn.addEventListener('click', async () => {
+    btn.disabled = true;
+    out.textContent = 'Testando…';
+    const r = await testAccountConnection();
+    out.textContent = r ? `${r.ok ? '✓' : '✗'} ${r.summary}` : 'Serviço de contas não configurado.';
+    btn.disabled = false;
+  });
+  return h('details', { class: 'acc-details' },
+    h('summary', null, 'Detalhes técnicos'),
+    e.detail ? h('p', { class: 'small muted' }, `Erro do navegador: ${e.detail}`) : null,
+    btn, out);
+}
 
 class AccessFlow {
   private modal: Modal;
@@ -169,7 +187,7 @@ class AccessFlow {
               try { await acc.backend.resendConfirmation(email.value()); b.show('success', 'Enviamos um novo link de confirmação. Confira sua caixa de entrada e o spam.'); } catch (x) { b.show('error', (x as Error).message); }
             } }, 'Reenviar e-mail de confirmação');
             b.show('error', err.message, resend);
-          } else b.show('error', err?.message ?? 'Não foi possível entrar.');
+          } else b.show('error', err?.message ?? 'Não foi possível entrar.', networkHelp(err));
           pass.input.value = '';
         }
       });
@@ -227,7 +245,7 @@ class AccessFlow {
         } catch (e) {
           app.audio.sfx('error');
           if (e instanceof SignUpValidationError) { setErrors(e.fields); b.show('error', 'Revise os campos destacados.'); }
-          else b.show('error', e instanceof AccountError ? e.message : 'Não foi possível criar a conta.');
+          else b.show('error', e instanceof AccountError ? e.message : 'Não foi possível criar a conta.', networkHelp(e));
         }
       });
       c.append(h('h2', null, 'Criar conta'), h('p', { class: 'muted small' }, 'Todos os campos são obrigatórios, exceto o de novidades.'), form,
@@ -278,7 +296,7 @@ class AccessFlow {
           b.show('success', 'Se houver uma conta com este e-mail, você receberá um link para criar uma nova senha. Abra-o neste aparelho.');
         } catch (e) {
           const err = e as AccountError;
-          if (err.field === 'email') email.setError(err.message); else b.show('error', err.message);
+          if (err.field === 'email') email.setError(err.message); else b.show('error', err.message, networkHelp(err));
         }
       });
       c.append(h('h2', null, 'Recuperar acesso'), h('p', { class: 'muted small' }, 'Informe o e-mail da conta. Enviaremos um link para você definir uma nova senha.'), form,
@@ -304,7 +322,7 @@ class AccessFlow {
           setTimeout(resolve, 900);
         } catch (e) {
           const err = e as AccountError;
-          if (err.field === 'password') pass.setError(err.message); else b.show('error', err.message);
+          if (err.field === 'password') pass.setError(err.message); else b.show('error', err.message, networkHelp(err));
         }
       });
       c.append(h('h2', null, 'Criar nova senha'), h('p', { class: 'muted small' }, 'Você abriu o link de recuperação. Defina a nova senha da sua conta.'), form);

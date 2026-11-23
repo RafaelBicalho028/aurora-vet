@@ -62,6 +62,8 @@ export type AuthEvent = 'SIGNED_IN' | 'SIGNED_OUT' | 'PASSWORD_RECOVERY' | 'USER
 
 /** Erro com código estável e mensagem pronta para o jogador (em português). */
 export class AccountError extends Error {
+  /** detalhe técnico (ex.: mensagem do navegador numa falha de rede), mostrado só em "detalhes" */
+  detail?: string;
   constructor(public code: AccountErrorCode, message: string, public field?: string) {
     super(message);
     this.name = 'AccountError';

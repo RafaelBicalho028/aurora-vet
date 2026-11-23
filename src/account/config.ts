@@ -40,3 +40,32 @@ function decodeRole(key: string): string | null {
 export function redirectUrl(): string {
   return `${location.origin}${location.pathname}`;
 }
+
+export type ConnectionCheck = { ok: boolean; summary: string };
+
+/**
+ * Teste de conexão com o Supabase, para o jogador (ou o suporte) entender uma falha de rede.
+ * Chama o endpoint público de saúde do Auth com a chave pública.
+ */
+export async function checkConnection(cfg: AccountConfig, fetchFn: typeof fetch = fetch): Promise<ConnectionCheck> {
+  const host = new URL(cfg.url).host;
+  const ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+  const timer = setTimeout(() => ctrl?.abort(), 12000);
+  try {
+    const r = await fetchFn(`${cfg.url}/auth/v1/health`, { headers: { apikey: cfg.anonKey }, signal: ctrl?.signal });
+    if (r.ok) return { ok: true, summary: `Servidor ${host} respondeu normalmente (HTTP ${r.status}).` };
+    if (r.status === 401) return { ok: false, summary: `Servidor ${host} respondeu, mas recusou a chave pública (HTTP 401). Confira a variável SUPABASE_ANON_KEY.` };
+    if (r.status === 540 || r.status === 503) return { ok: false, summary: `Servidor ${host} respondeu HTTP ${r.status}: o projeto Supabase pode estar pausado ou indisponível.` };
+    return { ok: false, summary: `Servidor ${host} respondeu HTTP ${r.status}.` };
+  } catch (e) {
+    const err = e as Error;
+    return {
+      ok: false,
+      summary: err.name === 'AbortError'
+        ? `Sem resposta de ${host} em 12 segundos.`
+        : `Não foi possível alcançar ${host} (${err.name}: ${err.message}). Possíveis causas: rede ou extensão do navegador bloqueando o endereço, projeto pausado ou endereço incorreto.`,
+    };
+  } finally {
+    clearTimeout(timer);
+  }
+}

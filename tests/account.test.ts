@@ -10,7 +10,7 @@ import { AccountService, SignUpValidationError, canonical } from '../src/account
 import { AccountError, type SignUpInput } from '../src/account/types';
 import { validateSignUp, validatePassword } from '../src/account/validation';
 import { normalizeError } from '../src/account/errors';
-import { readAccountConfig } from '../src/account/config';
+import { checkConnection, readAccountConfig } from '../src/account/config';
 import { LoginThrottle } from '../src/account/throttle';
 import { MemoryStorage, SaveManager, SAVE_KEY, type KeyValueStorage } from '../src/core/SaveManager';
 import { GameState, newSaveData } from '../src/core/GameState';
@@ -363,3 +363,28 @@ describe('Configuração e mensagens de erro', () => {
     expect(normalizeError({ message: 'qualquer outra coisa' }).message).toBe('Algo deu errado. Tente novamente em instantes.');
   });
 });
+
+describe('Diagnóstico de conexão', () => {
+  const cfg = { url: 'https://abc.supabase.co', anonKey: 'sb_publishable_x' };
+  const res = (status: number) => (async () => ({ ok: status >= 200 && status < 300, status })) as unknown as typeof fetch;
+  it('falha de rede guarda o detalhe técnico do navegador', () => {
+    const e = normalizeError(new TypeError('Failed to fetch'));
+    expect(e.code).toBe('network');
+    expect(e.detail).toBe('TypeError: Failed to fetch');
+  });
+  it('servidor respondendo', async () => {
+    expect(await checkConnection(cfg, res(200))).toMatchObject({ ok: true });
+  });
+  it('chave pública recusada', async () => {
+    expect((await checkConnection(cfg, res(401))).summary).toMatch(/SUPABASE_ANON_KEY/);
+  });
+  it('projeto pausado', async () => {
+    expect((await checkConnection(cfg, res(540))).summary).toMatch(/pausado/);
+  });
+  it('sem conexão com o servidor', async () => {
+    const r = await checkConnection(cfg, (async () => { throw new TypeError('Failed to fetch'); }) as unknown as typeof fetch);
+    expect(r.ok).toBe(false);
+    expect(r.summary).toMatch(/Não foi possível alcançar abc\.supabase\.co/);
+  });
+});
+
