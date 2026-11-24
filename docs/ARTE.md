@@ -6,7 +6,7 @@ Toda a arte do MVP é **gerada por código** (pixel art procedural original) em 
 
 | Chave | Formato | Origem |
 |---|---|---|
-| `player`, `npc_<id>` | folha 192×24, 12 quadros 16×24: baixo×3, esquerda×3, direita×3, cima×3 (parado, passo A, passo B) | `characters.ts` |
+| `player`, `npc_<id>` | folha 264×28, 12 quadros 22×28 (proporção chibi, origem embaixo no centro): baixo×3, esquerda×3, direita×3, cima×3 (parado, passo A, passo B) | `characters.ts` |
 | `dog_caramelo`, `dog_campus` | 4 quadros 20×16 (parado, rabo, coçando, piscando) | `animals.ts` |
 | `cat_laranja`, `cat_cinza` | 4 quadros 16×16 | `animals.ts` |
 | `cow` | 2 quadros 32×24 (parado, pastando) | `animals.ts` |

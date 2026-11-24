@@ -4,16 +4,16 @@ import { frameTemplate, HAIR_STYLES, lookFromAppearance, OUTFITS, PATTERNS, PATT
 import type { Appearance } from '../src/core/types';
 
 const base: Appearance = { skin: 1, hairColor: 1, hairStyle: 'curto', uniform: 'pijama', uniformColor: 0, glasses: false };
-const VALID = /^[.HhLSsEOGCcUTPpBKkMRrQZz]{16}$/;
+const VALID = /^[.HhLdSsEIWOGCcUTPpBKkMRrQZz]{22}$/;
 const dirs = ['down', 'up', 'right'] as const;
 
 describe('aparência do personagem', () => {
-  it('todas as combinações de cabelo, roupa, estampa e sexo geram quadros 16x24 válidos', () => {
+  it('todas as combinações de cabelo, roupa, estampa e sexo geram quadros 22x28 válidos', () => {
     for (const hairStyle of HAIR_STYLES) for (const uniform of OUTFITS) for (const pattern of PATTERNS) for (const sex of ['feminino', 'masculino', undefined] as const) {
       const look = lookFromAppearance({ ...base, hairStyle, uniform, pattern, sex });
       for (const d of dirs) for (const step of [0, 1, 2] as const) {
         const rows = frameTemplate(look, d, step);
-        expect(rows).toHaveLength(24);
+        expect(rows).toHaveLength(28);
         for (const r of rows) expect(r).toMatch(VALID);
       }
     }
@@ -35,7 +35,7 @@ describe('aparência do personagem', () => {
       const rows = frameTemplate(lookFromAppearance({ ...base, pattern: p }), 'down', 0);
       expect(rows.join(''), p).toMatch(/[Zz]/);
       // nada da estampa fora do tronco
-      rows.forEach((r, y) => { if (y < 14 || y > 20) expect(r).not.toMatch(/[Zz]/); });
+      rows.forEach((r, y) => { if (y < 16 || y > 24) expect(r).not.toMatch(/[Zz]/); });
     }
     // no jaleco, a estampa fica só na roupa de baixo: a parte branca (C) não muda
     const coat = frameTemplate(lookFromAppearance({ ...base, uniform: 'jaleco', pattern: 'listras' }), 'down', 0).join('');
@@ -57,7 +57,7 @@ describe('aparência do personagem', () => {
     for (const uniform of OUTFITS) for (const d of dirs) for (const step of [0, 1, 2] as const) {
       const f = frameTemplate(lookFromAppearance({ ...base, uniform, sex: 'feminino' }), d, step);
       const m = frameTemplate(lookFromAppearance({ ...base, uniform, sex: 'masculino' }), d, step);
-      const bodyDiff = f.slice(14, 21).join('') !== m.slice(14, 21).join('');
+      const bodyDiff = f.slice(16, 27).join('') !== m.slice(16, 27).join('');
       expect(bodyDiff, `${uniform} ${d} ${step}`).toBe(true);
     }
   });
@@ -65,12 +65,13 @@ describe('aparência do personagem', () => {
   it('feminino tem laço no cabelo e bochechas rosadas; masculino tem ombros mais largos', () => {
     const f = frameTemplate(lookFromAppearance({ ...base, sex: 'feminino' }), 'down', 0);
     const m = frameTemplate(lookFromAppearance({ ...base, sex: 'masculino' }), 'down', 0);
-    expect(f.slice(0, 14).join('')).toMatch(/R/);
+    expect(f.slice(0, 6).join('')).toMatch(/R/);
     expect(f.join('')).toMatch(/Q/);
     expect(m.join('')).not.toMatch(/[RQ]/);
     const width = (r: string) => r.replace(/^\.+|\.+$/g, '').length;
-    expect(width(m[15])).toBeGreaterThan(width(f[15]));
-    expect(width(f[20])).toBeGreaterThan(width(m[20]));
+    expect(width(m[17])).toBeGreaterThan(width(f[17]));
+    const torso = (r: string) => r.slice(5, 17).replace(/^[^C]+|[^C]+$/g, '').length; // largura do tronco na cintura
+    expect(torso(m[22])).toBeGreaterThan(torso(f[22]));
   });
 
   it('roupas têm visual próprio e índices de cor fora da paleta caem no padrão', () => {
