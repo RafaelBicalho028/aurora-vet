@@ -27,6 +27,12 @@ Verificação de tipos (`npm run typecheck`): sem erros. Build (`npm run build`)
 
 `supabase/schema.sql` aplicado duas vezes (idempotente) num PostgreSQL 16 local, com o schema `auth` do Supabase simulado (`supabase/tests/auth_stub.sql`). **24 verificações, todas aprovadas**: cadastro válido cria perfil e registros de aceite (termos, privacidade, maioridade, com versão e data/hora); o servidor recusa cadastro sem termos, sem ciência da privacidade, sem declaração de maioridade, sem perfil ou com perfil fora das 3 opções, com nome de usuário repetido e com e-mail já cadastrado; visitante sem login não lê tabelas nem exporta dados; **uma conta não lê, não altera, não apaga, não toma para si e não grava em nome do progresso, perfil ou aceites de outra**; o jogador não forja versão de termos nem insere ou apaga registros de aceite; funções de aceite, aviso educacional, consentimento e exportação (só os próprios dados); **exclusão de conta recusada sem autenticação recente** e, com ela, remove conta, perfil, aceites e progresso sem afetar outras contas.
 
+## 1c. Teste real no Supabase de produção (24/11/2026)
+
+Feito direto na API do projeto `eyodychnnrkpkkzfuqzb` (São Paulo), com uma conta temporária criada e excluída no próprio teste. **15/15 aprovados**: servidor de autenticação respondendo com a chave pública; schema aplicado (função `username_available`); cadastro **sem confirmação de e-mail** já devolve sessão; e-mail repetido recusado (`user_already_exists`); cadastro sem aceite dos termos recusado pelo servidor; login correto e incorreto (`invalid_credentials`); perfil e registros de aceite (termos, privacidade, maioridade, versão 1.0) criados no cadastro e só o próprio perfil visível; progresso salvo na conta; gravar progresso em nome de outra conta bloqueado pela RLS (HTTP 403); visitante sem login não lê progresso; ciência do aviso educacional registrada; exclusão da conta com reautenticação recente; conta excluída não entra mais.
+
+Achado durante o diagnóstico: o erro "Não foi possível conectar ao servidor" relatado no primeiro teste ocorreu porque o projeto Supabase estava com status `COMING_UP` (ainda ligando ou sendo reativado); com o projeto `ACTIVE_HEALTHY`, a conexão funcionou.
+
 ## 2. Verificação ponta a ponta no navegador (Playwright, sobre o build de produção)
 
 Roteiros em `dev/` (precisam de um servidor rodando: `npm run dev` ou `npm run preview`; defina `URL`).
