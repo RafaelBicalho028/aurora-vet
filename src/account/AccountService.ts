@@ -52,7 +52,10 @@ export class AccountService {
     try { available = await this.backend.usernameAvailable(input.username); } catch (e) { throw normalizeError(e); }
     if (!available) throw new SignUpValidationError({ username: 'Este nome de usuário já está em uso. Escolha outro.' });
     try {
-      return await this.backend.signUp(input, { terms: TERMS_VERSION, privacy: PRIVACY_VERSION });
+      const r = await this.backend.signUp(input, { terms: TERMS_VERSION, privacy: PRIVACY_VERSION });
+      // sem confirmação de e-mail, o cadastro já abre a sessão
+      if (!r.needsConfirmation) await this.restore();
+      return r;
     } catch (e) {
       const err = normalizeError(e);
       if (err.field) throw new SignUpValidationError({ [err.field]: err.message } as FieldErrors);

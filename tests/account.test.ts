@@ -22,9 +22,10 @@ const input = (o: Partial<SignUpInput> = {}): SignUpInput => ({
   professionalProfile: 'estudante', termsAccepted: true, privacyAcknowledged: true, adultDeclared: true, marketingOptIn: false, ...o,
 });
 
-function setup(storage: KeyValueStorage = new MemoryStorage()) {
+/** confirm = opção "Confirm email" do Supabase (os testes antigos cobrem o modo com confirmação) */
+function setup(storage: KeyValueStorage = new MemoryStorage(), confirm = true) {
   const saver = new SaveManager(storage);
-  const backend = new DevBackend(storage);
+  const backend = new DevBackend(storage, Date.now, confirm);
   const acc = new AccountService(backend, saver, storage, 0);
   return { storage, saver, backend, acc };
 }
@@ -74,7 +75,34 @@ describe('Validação do cadastro', () => {
   });
 });
 
-describe('Cadastro, confirmação e login', () => {
+describe('Cadastro sem confirmação de e-mail (configuração atual)', () => {
+  it('a conta é criada e já entra logada, sem e-mail de confirmação', async () => {
+    const env = setup(new MemoryStorage(), false);
+    const r = await env.acc.signUp(input());
+    expect(r.needsConfirmation).toBe(false);
+    expect(env.acc.user?.email).toBe('ana@exemplo.com');
+    expect(env.saver.currentKey).toBe(`aurora.save.u.${env.acc.user!.id}`);
+    expect(env.backend.outbox()).toHaveLength(0);
+    expect(env.backend.inspect().consents.map((c) => c.document)).toEqual(['termos_de_uso', 'politica_de_privacidade', 'maioridade']);
+    expect((await env.acc.loadProfile())?.professional_profile).toBe('estudante');
+  });
+  it('sair e entrar de novo só com e-mail e senha', async () => {
+    const env = setup(new MemoryStorage(), false);
+    await env.acc.signUp(input());
+    await env.acc.signOut();
+    expect((await env.acc.signIn('ana@exemplo.com', 'gatos123')).email).toBe('ana@exemplo.com');
+  });
+  it('continua recusando e-mail já cadastrado e termos não aceitos', async () => {
+    const env = setup(new MemoryStorage(), false);
+    await env.acc.signUp(input());
+    await env.acc.signOut();
+    const dup = await env.acc.signUp(input({ username: 'outra' })).then(() => null, (e) => e);
+    expect((dup as SignUpValidationError).fields.email).toMatch(/Já existe uma conta/);
+    await expect(env.acc.signUp(input({ email: 'b@exemplo.com', username: 'bia', termsAccepted: false }))).rejects.toBeInstanceOf(SignUpValidationError);
+  });
+});
+
+describe('Cadastro, confirmação e login (com "Confirm email" ligado)', () => {
   it('cadastro válido exige confirmação por e-mail e registra perfil e aceites com versão e data', async () => {
     const { acc, backend } = setup();
     const r = await acc.signUp(input({ marketingOptIn: true }));

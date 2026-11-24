@@ -66,26 +66,15 @@ const check = (name, ok, extra = '') => { results.push({ name, ok }); console.lo
   check('Termos não aceitos impedem o cadastro', /Termos de Uso/.test(await fieldError('terms')) && (await outbox()).length === 0);
   await p.screenshot({ path: SP + '/c03_cadastro_erros.png', fullPage: true });
 
-  // ---------------------------------------------------------------- 3. cadastro válido e verificação
+  // ---------------------------------------------------------------- 3. cadastro válido (sem confirmação de e-mail)
   await fillSignup({ username: 'ana_vet', email: 'ana@exemplo.com', password: 'gatos123', profile: 'estudante' });
-  await p.click('.acc-form button[type=submit]'); await p.waitForTimeout(500);
-  check('Cadastro válido → tela "Confirme seu e-mail"', await p.locator('text=Confirme seu e-mail').count() > 0);
-  await p.screenshot({ path: SP + '/c04_confirme_email.png' });
+  await p.click('.acc-form button[type=submit]');
+  await p.waitForSelector('text=Entendi, continuar', { timeout: 6000 });
+  check('Cadastro válido entra direto, sem pedir confirmação de e-mail', await p.locator('text=Confirme seu e-mail').count() === 0 && (await outbox()).length === 0);
   const reg = await p.evaluate(() => { const d = window.__auroraDevAuth.inspect(); return { prof: d.profiles[0]?.professional_profile, consents: d.consents.map((c) => `${c.document}:${c.version}`) }; });
   check('Perfil profissional e aceites registrados (versão + data)', reg.prof === 'estudante' && reg.consents.includes('termos_de_uso:1.0') && reg.consents.includes('politica_de_privacidade:1.0'), JSON.stringify(reg));
-  await p.click('text=Já confirmei — entrar'); await p.waitForTimeout(200);
-  await p.fill('input[name=password]', 'gatos123');
-  await p.click('.acc-form button[type=submit]'); await p.waitForTimeout(400);
-  check('Login antes de confirmar o e-mail é bloqueado', /Confirme seu e-mail/.test(await banner()));
-  // cadastro duplicado (em outra aba da mesma tela)
-  await p.click('text=Criar uma conta'); await p.waitForTimeout(200);
-  await fillSignup({ username: 'outro_nome', email: 'ana@exemplo.com', password: 'gatos123', profile: 'explorador' });
-  await p.click('.acc-form button[type=submit]'); await p.waitForTimeout(400);
-  check('Cadastro com e-mail já utilizado é recusado', /Já existe uma conta/.test(await fieldError('email')));
-  await openLastMail('signup');
-  await p.waitForSelector('text=Entendi, continuar', { timeout: 5000 });
   const notice = await p.locator('.acc-card').innerText();
-  check('Verificação de e-mail pelo link → aviso educacional obrigatório (texto completo)', notice.includes('AVISO IMPORTANTE') && notice.includes('Ministério da Educação (MEC)') && notice.includes('Decisões clínicas devem ser tomadas por profissionais legalmente habilitados'));
+  check('Primeiro acesso → aviso educacional obrigatório (texto completo)', notice.includes('AVISO IMPORTANTE') && notice.includes('Ministério da Educação (MEC)') && notice.includes('Decisões clínicas devem ser tomadas por profissionais legalmente habilitados'));
   await p.screenshot({ path: SP + '/c05_aviso.png' });
   await p.click('text=Entendi, continuar');
   await p.waitForSelector('.title-menu >> text=Novo jogo', { timeout: 6000 });
@@ -122,8 +111,12 @@ const check = (name, ok, extra = '') => { results.push({ name, ok }); console.lo
   await p.click('.acc-panel >> text=Sair da conta'); await p.click('.confirm-box .btn-primary'); await p.waitForTimeout(1500);
   check('Logout volta à tela de acesso', await p.locator('.acc-home').count() === 1);
 
-  // ---------------------------------------------------------------- 6. login incorreto, correto e reabertura
-  await p.click('.acc-home >> text=Entrar'); await p.waitForTimeout(200);
+  // ---------------------------------------------------------------- 6. e-mail repetido, login incorreto, correto e reabertura
+  await p.click('.acc-home >> text=Criar conta'); await p.waitForTimeout(200);
+  await fillSignup({ username: 'outro_nome', email: 'ana@exemplo.com', password: 'gatos123', profile: 'explorador' });
+  await p.click('.acc-form button[type=submit]'); await p.waitForTimeout(400);
+  check('Cadastro com e-mail já utilizado é recusado', /Já existe uma conta/.test(await fieldError('email')));
+  await p.click('text=Já tenho conta'); await p.waitForTimeout(200);
   await p.fill('input[name=email]', 'ana@exemplo.com'); await p.fill('input[name=password]', 'errada99');
   await p.click('.acc-form button[type=submit]'); await p.waitForTimeout(400);
   check('Login incorreto mostra erro claro', /E-mail ou senha incorretos/.test(await banner()));
@@ -165,7 +158,6 @@ const check = (name, ok, extra = '') => { results.push({ name, ok }); console.lo
   await p.evaluate(async () => {
     const d = window.__auroraDevAuth;
     await d.signUp({ username: 'bruno', email: 'bruno@exemplo.com', password: 'gatos123', passwordConfirm: 'gatos123', professionalProfile: 'veterinario', termsAccepted: true, privacyAcknowledged: true, adultDeclared: true, marketingOptIn: false }, { terms: '1.0', privacy: '1.0' });
-    await d.openEmailLink(d.outbox().filter((m) => m.to === 'bruno@exemplo.com').pop().token);
   });
   await p.click('text=Entendi, continuar').catch(() => {});
   await p.waitForSelector('text=Progresso encontrado neste navegador', { timeout: 6000 });
@@ -199,6 +191,24 @@ const check = (name, ok, extra = '') => { results.push({ name, ok }); console.lo
   await p.click('text=Excluir definitivamente'); await p.waitForTimeout(1800);
   const del = await p.evaluate(() => { const d = window.__auroraDevAuth.inspect(); return { bruno: d.users.some((u) => u.email === 'bruno@exemplo.com'), ana: d.users.some((u) => u.email === 'ana@exemplo.com') }; });
   check('Conta excluída (e só ela) e volta à tela de acesso', !del.bruno && del.ana && await p.locator('.acc-home').count() === 1);
+
+  // ---------------------------------------------------------------- 10b. se a confirmação de e-mail for religada no Supabase
+  const pc = await (await b.newContext({ viewport: { width: 1280, height: 800 } })).newPage();
+  await pc.goto(URL + '?confirmemail'); await pc.waitForTimeout(2500);
+  await pc.click('.acc-home >> text=Criar conta'); await pc.waitForTimeout(200);
+  await pc.fill('input[name=username]', 'carla'); await pc.fill('input[name=email]', 'carla@exemplo.com');
+  await pc.fill('input[name=new-password]', 'gatos123'); await pc.fill('input[name=confirm-password]', 'gatos123');
+  await pc.click('.acc-profile:has(input[value="veterinario"])');
+  for (const k of ['terms', 'privacy', 'adult']) await pc.click(`input[name=${k}]`);
+  await pc.click('.acc-form button[type=submit]'); await pc.waitForTimeout(500);
+  const confirmScreen = await pc.locator('text=Confirme seu e-mail').count() > 0;
+  await pc.click('text=Já confirmei — entrar'); await pc.fill('input[name=password]', 'gatos123');
+  await pc.click('.acc-form button[type=submit]'); await pc.waitForTimeout(400);
+  const blocked = /Confirme seu e-mail/.test(await pc.locator('.acc-card .acc-banner:not([hidden])').first().innerText());
+  await pc.click('.acc-devmail-btn'); await pc.locator('.acc-devmail-item >> text=Abrir link').first().click();
+  await pc.waitForSelector('text=Entendi, continuar', { timeout: 5000 });
+  check('Com "Confirm email" ligado: pede confirmação, bloqueia login antes do link e libera depois', confirmScreen && blocked);
+  await pc.close();
 
   // ---------------------------------------------------------------- 11. celular
   const m = await b.newPage({ ...devices['Pixel 7'] });

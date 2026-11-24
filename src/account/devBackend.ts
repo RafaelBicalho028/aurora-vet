@@ -48,7 +48,11 @@ export class DevBackend implements AuthBackend {
   /** simula o limite de taxa do servidor (ex.: o Supabase limita tentativas por IP) */
   serverFailures = 0;
 
-  constructor(private storage: KeyValueStorage, private now: () => number = Date.now) {}
+  /**
+   * confirmEmail: simula a opção "Confirm email" do Supabase. Desligada (padrão do jogo), a conta já
+   * entra logada no cadastro; ligada, o primeiro login exige abrir o link enviado por e-mail.
+   */
+  constructor(private storage: KeyValueStorage, private now: () => number = Date.now, private confirmEmail = false) {}
 
   // ---------------------------------------------------------------- persistência da simulação
   private db(): DevDb {
@@ -123,7 +127,7 @@ export class DevBackend implements AuthBackend {
     if (i.password.length < 8) throw accountError('weak_password', 'password');
     const id = newId();
     const createdAt = new Date(this.now()).toISOString();
-    d.users.push({ id, email, passwordHash: devHash(i.password), confirmed: false, createdAt });
+    d.users.push({ id, email, passwordHash: devHash(i.password), confirmed: !this.confirmEmail, createdAt });
     d.profiles.push({
       id, username: i.username.trim(), professional_profile: i.professionalProfile, marketing_opt_in: i.marketingOptIn,
       terms_version: v.terms, privacy_version: v.privacy, educational_notice_version: null, educational_notice_ack_at: null, created_at: createdAt,
@@ -132,6 +136,13 @@ export class DevBackend implements AuthBackend {
     this.consent(d, id, 'politica_de_privacidade', v.privacy, 'ciencia');
     this.consent(d, id, 'maioridade', v.terms, 'declaracao');
     if (i.marketingOptIn) this.consent(d, id, 'comunicacoes', v.privacy, 'consentimento');
+    if (!this.confirmEmail) {
+      // sem confirmação de e-mail: a conta é criada e a sessão começa na hora (como no Supabase)
+      this.write(d);
+      this.setSession({ userId: id, authAt: this.now() });
+      this.emit('SIGNED_IN');
+      return { needsConfirmation: false };
+    }
     const token = newId();
     d.tokens[token] = { userId: id, type: 'signup' };
     d.outbox.push({ to: email, type: 'signup', token, at: createdAt });

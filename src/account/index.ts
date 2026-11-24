@@ -30,7 +30,9 @@ export function initAccount(): Promise<AccountService | null> {
     if (cfg && !forceDev) backend = new SupabaseBackend(cfg);
     else if (devAllowed) {
       const { DevBackend } = await import('./devBackend');
-      backend = new DevBackend(app.saver.storage);
+      // modo de teste: confirmação de e-mail desligada por padrão; ?confirmemail na URL liga
+      const confirm = typeof location !== 'undefined' && new URLSearchParams(location.search).has('confirmemail');
+      backend = new DevBackend(app.saver.storage, Date.now, confirm);
       (window as unknown as { __auroraDevAuth?: unknown }).__auroraDevAuth = backend;
     }
     if (!backend) return null;

@@ -13,8 +13,9 @@ async function devLogin(p, opts = {}) {
     const exists = dev.inspect().users.some((u) => u.email === email);
     if (!exists) {
       await dev.signUp({ username, email, password, passwordConfirm: password, professionalProfile: 'estudante', termsAccepted: true, privacyAcknowledged: true, adultDeclared: true, marketingOptIn: false }, { terms: '1.0', privacy: '1.0' });
+      // sem confirmação de e-mail o cadastro já abre a sessão; com confirmação, abre o link
       const mail = dev.outbox().filter((m) => m.to === email).pop();
-      await dev.openEmailLink(mail.token); // abre a sessão, como o link do e-mail
+      if (mail) await dev.openEmailLink(mail.token);
     } else {
       await dev.signIn(email, password);
     }

@@ -26,7 +26,8 @@ Como o jogo não tem servidor, a autenticação real exige um serviço externo. 
 
 ```
 Abrir o jogo → [tela de acesso] Entrar | Criar conta | Sobre | Termos | Privacidade
-   Criar conta (usuário, e-mail, senha, confirmação, perfil, aceites) → "Confirme seu e-mail" → link do e-mail
+   Criar conta (usuário, e-mail, senha, confirmação, perfil, aceites) → já entra logado
+   (se "Confirm email" estiver ligado no Supabase: "Confirme seu e-mail" → link do e-mail → entrar)
    Entrar → (novo aceite, se os documentos mudaram) → aviso educacional (1º acesso)
    → sincronização do progresso → (vincular progresso antigo deste navegador?) → menu: Novo jogo / Continuar
 ```
@@ -86,7 +87,7 @@ O e-mail e a senha ficam no Supabase Auth (`auth.users`). A senha é guardada s�
 ### 4.3 Autenticação
 4. Em **Authentication → Sign In / Providers → Email**:
    - mantenha **Email** ativado;
-   - mantenha **Confirm email** ativado;
+   - **Confirm email**: **desligado** (escolha atual: o jogador cria a conta e já entra, só com e-mail e senha). O jogo funciona também com ele ligado — aí a conta só é liberada depois do link enviado por e-mail. Desligado, alguém poderia cadastrar um e-mail que não é seu; o dono real do e-mail ainda consegue recuperar a conta por “Esqueci minha senha”;
    - ative **Secure email change**.
 5. Em **Authentication → Policies** (ou nas configurações de senha):
    - comprimento mínimo de **8**;
@@ -99,7 +100,7 @@ O e-mail e a senha ficam no Supabase Auth (`auth.users`). A senha é guardada s�
 7. Em **Authentication → Rate Limits**, mantenha os limites padrão (ou reduza-os). Eles são a proteção do servidor contra tentativas abusivas. O jogo soma a isso um freio local: depois de 5 erros, uma espera que começa em 30 s e dobra a cada erro.
 
 ### 4.4 Envio de e-mails (obrigatório para abrir ao público)
-8. O serviço de e-mail padrão do Supabase serve só para testes. Ele tem limite baixo e **envia apenas para endereços da equipe do projeto**.
+8. Mesmo sem confirmação de cadastro, o e-mail continua sendo usado na **recuperação de senha**. O serviço de e-mail padrão do Supabase serve só para testes. Ele tem limite baixo e **envia apenas para endereços da equipe do projeto**.
 9. Para testadores de fora, configure um SMTP próprio em **Authentication → Emails → SMTP Settings**, com um provedor como Resend, Brevo ou Amazon SES.
 10. Adicione esse provedor à Política de Privacidade, no item 4, se ele não for coberto pelo Supabase.
 11. Opcional: traduza os modelos em **Authentication → Emails → Templates** (Confirm signup, Reset password). Exemplo de assunto: "Confirme sua conta no Aurora Vet".

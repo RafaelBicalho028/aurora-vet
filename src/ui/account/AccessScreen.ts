@@ -205,7 +205,7 @@ class AccessFlow {
       const b = banner();
       const username = textField({ label: 'Nome de usuário', name: 'username', autocomplete: 'nickname', maxlength: 20, hint: 'De 3 a 20 caracteres: letras sem acento, números, ponto ou sublinhado. Aparece no jogo.' });
       username.input.setAttribute('data-autofocus', '');
-      const email = textField({ label: 'E-mail', type: 'email', name: 'email', autocomplete: 'email', hint: 'Usado para entrar, confirmar a conta e recuperar a senha.' });
+      const email = textField({ label: 'E-mail', type: 'email', name: 'email', autocomplete: 'email', hint: 'Usado para entrar e para recuperar a senha, se você esquecê-la.' });
       const pass = passwordField({ label: 'Senha', name: 'new-password', autocomplete: 'new-password', withChecklist: true });
       const confirm = passwordField({ label: 'Confirmação da senha', name: 'confirm-password', autocomplete: 'new-password' });
       const profile = profileCards();

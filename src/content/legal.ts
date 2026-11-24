@@ -182,7 +182,7 @@ export const PRIVACY: LegalDocument = {
       rows: [
         ['Criar e manter sua conta, permitir o login e manter a sessão', 'Cadastro, autenticação', 'Execução de contrato (art. 7º, V) — os Termos de Uso'],
         ['Salvar e sincronizar seu progresso e oferecer o jogo', 'Progresso no jogo, identificador da conta', 'Execução de contrato (art. 7º, V)'],
-        ['Enviar e-mails de confirmação de cadastro e de recuperação de senha', 'E-mail', 'Execução de contrato (art. 7º, V)'],
+        ['Enviar e-mails de recuperação de senha (e de confirmação de cadastro, quando ativada)', 'E-mail', 'Execução de contrato (art. 7º, V)'],
         ['Registrar o aceite dos Termos, a ciência da Política e do aviso educacional e a declaração de maioridade', 'Registros de aceite', 'Exercício regular de direitos (art. 7º, VI)'],
         ['Proteger contas, impedir abusos e tentativas repetidas de login, investigar incidentes', 'Autenticação e segurança', 'Legítimo interesse (art. 7º, IX) e, quando aplicável, cumprimento de obrigação legal (art. 7º, II)'],
         ['Adaptar, no futuro, a linguagem e a dificuldade dos conteúdos ao seu perfil', 'Perfil profissional autodeclarado', 'Execução de contrato (art. 7º, V)'],
