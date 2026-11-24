@@ -298,23 +298,53 @@ export function frameTemplate(look: CharacterLook, dir: Dir, step: 0 | 1 | 2): s
   for (const ov of HAIR_OVERLAYS[look.hairStyle][dir]) rows = applyOverlay(rows, ov);
   if (look.hat) rows = applyOverlay(rows, HATS[dir]);
   if (look.beard && dir !== 'up') rows = applyOverlay(rows, BEARD[dir]);
+  if (look.sex) rows = applySexShape(rows, look.sex, dir);
   if (look.sex && dir !== 'up') rows = applyOverlay(rows, SEX_FEATURES[look.sex][dir]);
+  if (look.sex === 'feminino' && !look.hat) rows = applyOverlay(rows, HAIR_BOW[dir]);
   if (look.glasses && dir !== 'up') rows = applyOverlay(rows, GLASSES[dir]);
   rows = applyOutfitDetails(rows, look, dir);
   return rows;
 }
 
-// Traços sutis: cílios e lábios (feminino) ou sobrancelhas marcadas (masculino).
+// Rosto: feminino com cílios, bochechas rosadas (Q) e lábios (M); masculino com sobrancelhas
+// grossas e boca neutra. Visíveis no tamanho real do jogo e nos retratos dos diálogos.
 const SEX_FEATURES: Record<Sex, Record<'down' | 'right', Overlay>> = {
   feminino: {
-    down: { y: 9, rows: ['....E......E....', '................', '................', '.......MM.......'] },
-    right: { y: 9, rows: ['............E...', '................', '................', '.........M......'] },
+    down: { y: 9, rows: ['....E......E....', '................', '....Q......Q....', '.......MM.......'] },
+    right: { y: 9, rows: ['............E...', '................', '..........Q.....', '.........M......'] },
   },
   masculino: {
-    down: { y: 8, rows: ['....hh....hh....'] },
-    right: { y: 8, rows: ['..........hh....'] },
+    down: { y: 8, rows: ['...hhh....hhh...', '................', '................', '................', '.......ss.......'] },
+    right: { y: 8, rows: ['..........hhh...', '................', '................', '................', '..........s.....'] },
   },
 };
+
+// Laço no cabelo (feminino): 2x2 pixels de cor viva, bem visível na silhueta.
+const HAIR_BOW: Record<Dir, Overlay> = {
+  down: { y: 4, rows: ['...........RR...', '...........rR...'] },
+  up: { y: 4, rows: ['...RR...........', '...Rr...........'] },
+  right: { y: 3, rows: ['....RR..........', '....rR..........'] },
+};
+
+/**
+ * Silhueta: masculino com ombros mais largos e quadrados; feminino com cintura marcada e a barra
+ * da blusa abrindo no quadril. Só altera pixels vazios ou do tronco, em todos os quadros da animação.
+ */
+function applySexShape(rows: string[], sex: Sex, dir: Dir): string[] {
+  const out = rows.map((r) => r.split(''));
+  const put = (x: number, y: number, ch: string, only: string) => { if (only.includes(out[y][x])) out[y][x] = ch; };
+  if (dir === 'right') {
+    if (sex === 'masculino') { put(4, 14, 'C', '.'); }
+    else { put(4, 20, 'c', '.'); put(11, 20, 'c', '.'); }
+  } else if (sex === 'masculino') {
+    put(2, 14, 'C', '.'); put(13, 14, 'C', '.');
+    put(1, 15, 'C', '.'); put(14, 15, 'C', '.');
+  } else {
+    put(4, 19, '.', 'C'); put(11, 19, '.', 'C');      // cintura
+    put(3, 20, 'c', '.'); put(12, 20, 'c', '.');      // quadril / barra da blusa
+  }
+  return out.map((r) => r.join(''));
+}
 
 /** Estampas: função (x, y) -> pinta? Coordenadas do quadro 16x24; o tronco ocupa as linhas 14–20. */
 const PATTERN_FN: Record<PatternId, (x: number, y: number, dir: Dir) => boolean> = {
@@ -365,7 +395,7 @@ function colorMap(look: CharacterLook): ColorMap {
     P: look.pants, p: shade(look.pants, -0.25),
     B: look.shoes,
     K: look.hat ?? '#d8b25a', k: shade(look.hat ?? '#d8b25a', -0.25),
-    M: '#c4626f', R: '#e8566a',
+    M: '#c4626f', R: '#e8566a', r: shade('#e8566a', -0.25), Q: '#f2a0a8',
     Z: look.patternColor ?? '#f4f0e6', z: shade(look.patternColor ?? '#f4f0e6', -0.2),
   };
 }
